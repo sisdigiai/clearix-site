@@ -1,0 +1,42 @@
+name: IndexNow notification
+
+# Notifica Bing/Yandex/Naver/Seznam quando o site é deployado.
+# Roda automaticamente após push pra main.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'astro.config.mjs'
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Cloudflare deploy
+        run: sleep 90
+
+      - name: Ping IndexNow API
+        run: |
+          curl -sS -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -H "User-Agent: clearix-site-ci/1.0" \
+            -d '{
+              "host": "clearix.app.br",
+              "key": "8f4004a3daa3425862f94b3f02d59868",
+              "keyLocation": "https://clearix.app.br/8f4004a3daa3425862f94b3f02d59868.txt",
+              "urlList": [
+                "https://clearix.app.br/",
+                "https://clearix.app.br/ecossistema",
+                "https://clearix.app.br/planos",
+                "https://clearix.app.br/para-quem",
+                "https://clearix.app.br/contato",
+                "https://clearix.app.br/llms.txt",
+                "https://clearix.app.br/llms-full.txt",
+                "https://clearix.app.br/sitemap-index.xml"
+              ]
+            }' \
+            -w "\nHTTP %{http_code}\n" \
+            --fail-with-body

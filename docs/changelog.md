@@ -15,9 +15,27 @@ Site dedicado do ecossistema Clearix criado do zero (Astro 5 + Tailwind 3), espe
 
 **Design:** tema Clearix (dark editorial cyan/navy), logo mark canônico inline, classes `lux`/HUD reaproveitadas da família de marcas DIGIAI.
 
+## 2026-06-01 — v0.2.0 · brilhar + paridade de deploy
+
+Polimento e preparação para publicação no mesmo nível do `digiai-site`.
+
+**Brilhar:**
+- Seção "painel ao vivo" no hero (visualização do produto com sparkline + números reais).
+- Faixa-manifesto ("Clareza com profundidade · Transformando informação em decisão").
+- OG image branded (`public/og-default.png`, 1200×630) gerada com o mark Clearix.
+
+**Paridade de deploy (Cloudflare Pages, igual digiai-site):**
+- `robots.txt` com allowlist completa de crawlers de LLM + sitemap.
+- `public/_headers` (segurança + cache + content-type dos llms).
+- `llms-full.txt` (conteúdo completo em markdown para LLMs).
+- IndexNow: chave `8f4004a3…txt` + `.github/workflows/indexnow.yml`.
+- Links de descoberta LLM no `<head>`.
+- README com guia de deploy Cloudflare + DNS `clearix.app.br`.
+
 ### Pendências conhecidas
-- [ ] `public/og-default.png` — imagem Open Graph (1200×630) ainda não gerada; meta aponta para ela.
-- [ ] Endpoint real do formulário de contato (hoje usa atributo Netlify Forms; validar no provedor de deploy escolhido).
-- [ ] Confirmar domínio `clearix.app.br` no DNS e no provedor.
+- [ ] Endpoint real do formulário de contato (hoje usa atributo Netlify Forms; no Cloudflare Pages usar Pages Functions ou webhook).
+- [ ] Confirmar domínio `clearix.app.br` no DNS (Registro.br) e conectar no Cloudflare Pages.
+- [ ] Criar repo GitHub `sisdigiai/clearix-site` e fazer o push inicial.
 - [ ] Apontar o `/clearix` do `digiai-site` para este novo site (teaser → site dedicado).
+- [ ] Verificação Bing/Google (meta tags) quando os tokens existirem.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).

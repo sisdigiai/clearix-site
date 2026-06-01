@@ -1,4 +1,77 @@
+# Clearix — política explícita para todos os crawlers
+# Documentação canônica: https://clearix.app.br/llms.txt
+
+# ---- Crawlers genéricos ----
 User-agent: *
 Allow: /
 
+# ---- LLM crawlers oficiais (explicitamente liberados) ----
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google (Bard / Gemini training)
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl (alimenta múltiplos LLMs)
+User-agent: CCBot
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# Meta (Llama training)
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ---- Sitemaps ----
 Sitemap: https://clearix.app.br/sitemap-index.xml
+
+# ---- IndexNow (Bing/Yandex/Naver/Seznam push indexing) ----
+# Chave pública em /8f4004a3daa3425862f94b3f02d59868.txt
+
+# ---- Diretórios para LLM (formato Jeremy Howard 2024) ----
+# https://clearix.app.br/llms.txt        (resumo)
+# https://clearix.app.br/llms-full.txt   (conteúdo completo em markdown)

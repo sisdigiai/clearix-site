@@ -62,6 +62,11 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
     <StructuredData />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- LLM discovery (formato Jeremy Howard) -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumo para LLMs" />
+    <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Conteúdo completo para LLMs" />
+
     <ClientRouter />
   </head>
   <body class="min-h-screen bg-ink-base text-clarity-off antialiased">

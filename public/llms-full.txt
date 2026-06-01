@@ -1,0 +1,111 @@
+# Clearix — conteúdo completo
+
+> Ecossistema operacional para óticas brasileiras: 16 apps integrados num só login.
+> Produto-âncora da DIGIAI (DIGIAI ÓTICA E TECNOLOGIA LTDA), Suzano-SP, Brasil.
+> Site: https://clearix.app.br · Empresa: https://digiai.app.br
+
+---
+
+## O que é o Clearix
+
+Clearix integra a operação inteira de uma ótica num único ecossistema, onde o dado entra
+uma vez e flui entre todos os apps: a venda alimenta o laboratório, que avisa o paciente,
+que conta no financeiro, que aparece no BI — sem ninguém digitar duas vezes.
+
+Foi construído por quem vive o setor óptico e roda em operação real há mais de 5 anos.
+
+## Para quem é
+
+Donos e gerentes de óticas brasileiras, da ótica solo independente à rede e franquia
+(1 a 20+ lojas). Cinco perfis:
+
+1. **Ótica solo** — 1 loja: tira venda, paciente e financeiro do improviso.
+2. **2 a 4 lojas** — recupera a visão consolidada entre filiais.
+3. **Rede média** — padroniza sem engessar, com BI multi-loja.
+4. **Franquia / cadeia** — governança C-level, SLA e segurança para 20+ lojas.
+5. **Ótica + clínica** — unifica a jornada do paciente e a do cliente.
+
+## Os 16 apps (voltados ao cliente)
+
+### Vender
+- **Vendas** — PDV, orçamento, caixa, carnês e entregas.
+- **Express** — checkout rápido para leads de campanha.
+- **Loyalty** — fidelidade, carteiras e cupons.
+
+### Atender
+- **Clinics** — anamnese, prescrições e prontuário clínico.
+- **Paciente** — portal do paciente por WhatsApp (pedidos, receitas, fidelidade).
+- **Client** — portal B2B do cliente para acompanhar pedidos.
+- **DCL** — laboratório em kanban; a produção fala com a loja em tempo real.
+
+### Gerir
+- **Finance** — DRE, fluxo de caixa, contas a pagar/receber, NF-e.
+- **Estoque** — inventários, movimentações e código de barras.
+- **Lens** — catálogo de lentes, pricing e motor óptico.
+- **RH** — ponto, escalas, férias e comissões.
+
+### Crescer
+- **Marketing** — campanhas no WhatsApp e automações com IA.
+- **BI** — dashboards cross-app: a operação inteira numa visão só.
+- **AR Vision** — prova virtual de armações pelo celular.
+- **Import** — importação do sistema antigo com datas originais preservadas.
+
+(O ecossistema também tem **Hub** — login único e visão geral — além de camadas internas
+de governança e segurança não comercializadas separadamente.)
+
+## Planos
+
+| Plano | Preço/mês | Apps | Lojas | Para quem |
+|---|---|---|---|---|
+| Essencial | R$ 349 | 7 | 1 | Ótica solo independente |
+| Controle | R$ 899 | 11 | até 5 | Ótica em crescimento, 2 a 4 lojas |
+| Crescimento | R$ 1.499 | 16 | até 8 | Rede média e franquias |
+| Completo | sob consulta | todo o ecossistema + SLA | ilimitadas | Rede, cadeia, franqueadora |
+
+- **Demonstração grátis por 30 dias.**
+- Sobe de plano sem migração e sem perder histórico — os mesmos dados, mais apps liberados.
+
+### Add-ons (sob consulta)
+- Migração de base legada (Acert, CODEC e outros).
+- Inclusão de laboratório parceiro.
+- Site institucional em domínio próprio.
+- E-commerce integrado ao Clearix.
+
+## Prova de operação real
+
+Em uso real no Grupo Mello Óticas há mais de 5 anos (desde out/2020), migrado para o Clearix:
+
+- 20.488 vendas
+- 22.299 ordens de serviço
+- 19.737 pacientes
+- 97.996 lançamentos financeiros
+- 10 lojas
+- Mais de R$ 17 milhões rastreados no sistema (receita auditável no banco)
+
+Recall de cliente com IA: de ~3% manual para ~33% automatizado (cerca de 10× mais retorno).
+
+## Perguntas frequentes
+
+**Preciso trocar meu sistema inteiro de uma vez?**
+Não. A migração é guiada e pode ser por etapa.
+
+**Vocês migram meus dados antigos?**
+Sim — pacientes, vendas e histórico com as datas originais preservadas.
+
+**Funciona com mais de uma loja?**
+Sim. É multi-loja: cada unidade com seus dados e o dono enxerga tudo numa visão só.
+
+**Meus dados de paciente ficam seguros?**
+Sim. Isolamento por loja, acesso por papel e portal do paciente só por link — conforme a LGPD.
+
+**Como começo?**
+Pelo agendamento de uma demonstração em https://clearix.app.br/contato.
+
+## Contato
+
+- Site: https://clearix.app.br
+- Demonstração: https://clearix.app.br/contato
+- WhatsApp: +55 11 98602-7415
+- E-mail: sisdigiai@gmail.com
+- Clientes (login): https://clearixhub.netlify.app
+- Empresa-mãe (DIGIAI): https://digiai.app.br

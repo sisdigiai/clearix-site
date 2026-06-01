@@ -57,8 +57,40 @@ const faq = [
     </div>
   </section>
 
+  <!-- Painel ao vivo — "o produto é o demo" -->
+  <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid grid md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-5">
+        <p class="label mb-4">Veja rodando</p>
+        <h2 class="h-section mb-4">A ótica em tempo real.</h2>
+        <p class="body-lg">Não é print parado — é a operação real do dia a dia fluindo entre os apps do Clearix, numa visão só.</p>
+      </div>
+      <div class="md:col-span-7">
+        <div class="border border-clarity-off/15 bg-ink-base rounded-lg overflow-hidden reveal">
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-clarity-off/10">
+            <span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clearix-cyan/60"></span>
+            <span class="ml-3 font-mono text-label-sm text-clarity-muted">clearix · painel</span>
+            <span class="ml-auto flex items-center gap-2"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-clearix-cyan opacity-60 animate-ping"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-clearix-cyan"></span></span><span class="font-mono text-label-sm text-clearix-cyan">ao vivo</span></span>
+          </div>
+          <div class="grid grid-cols-3 gap-px bg-clarity-off/10">
+            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">20.488</span><span class="text-clarity-muted text-label-sm">vendas</span></div>
+            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">22.299</span><span class="text-clarity-muted text-label-sm">ordens</span></div>
+            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clearix-cyan">+192</span><span class="text-clarity-muted text-label-sm">últimos 30d</span></div>
+          </div>
+          <div class="bg-ink-surface p-5 border-t border-clarity-off/10">
+            <div class="flex items-end gap-1 h-16">
+              {[35,52,40,68,55,72,60,84,70,90,78,96].map((h) => <span class="flex-1 bg-clearix-cyan/40 rounded-t-sm" style={`height:${h}%`}></span>)}
+            </div>
+            <span class="font-mono text-label-sm text-clarity-muted mt-3 block">vendas / mês — operação Grupo Mello</span>
+          </div>
+        </div>
+        <p class="label-sm normal-case tracking-wide text-clarity-muted/60 mt-4">Painel ilustrativo com dados reais — evolui para clipe do Clearix em produção.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Promessas / prova rápida -->
-  <section class="py-16 md:py-20 bg-ink-deep border-b border-clarity-off/10">
+  <section class="py-16 md:py-20 border-b border-clarity-off/10">
     <div class="container-grid grid grid-cols-1 md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
       {promessas.map((p) => (
         <div class="bg-ink-surface p-8">
@@ -123,6 +155,17 @@ const faq = [
         </div>
       ))}
       <a href="/ecossistema" class="inline-block mt-8 font-mono text-label-md uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Conhecer cada app →</a>
+    </div>
+  </section>
+
+  <!-- Faixa-manifesto -->
+  <section data-lux class="lux-cyan relative overflow-hidden py-20 md:py-28 border-b border-clarity-off/10 text-center">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl relative z-10 reveal">
+      <h2 class="font-serif text-[32px] leading-tight md:text-[44px] md:leading-[1.15] tracking-tight">
+        Clareza com profundidade.<br/>
+        <span class="text-clearix-cyan italic">Transformando informação em decisão.</span>
+      </h2>
     </div>
   </section>
 
