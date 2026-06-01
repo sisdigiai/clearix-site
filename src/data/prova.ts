@@ -18,9 +18,9 @@ export const vivo = [
   { valor: '+104', label: 'pacientes novos' },
 ];
 
-// Promessas defensáveis (com prova ou literatura). Ver clearix_pitch/02_posicionamento.md.
+// Resultados pro comprador (promessas defensáveis, copy do COPY_BRIEFING + pitch).
 export const promessas = [
-  { valor: '10×', label: 'mais retorno de cliente', nota: 'recall com IA: de 3% manual para ~33%' },
-  { valor: '5+ anos', label: 'de operação real', nota: 'Grupo Mello, desde out/2020' },
-  { valor: '+R$ 17 mi', label: 'rastreados no sistema', nota: 'receita auditável no banco' },
+  { valor: '12 min → 90 s', label: 'Orçamento na hora', nota: 'do atendimento à proposta, sem digitar duas vezes' },
+  { valor: '3% → 33%', label: 'Clientes que voltam', nota: 'recall com IA — até 10× mais retorno' },
+  { valor: '16 em 1', label: 'Apps, um só login', nota: 'caixa, clínica, lab, financeiro e BI conversando' },
 ];

@@ -8,8 +8,8 @@ import { promessas } from '../data/prova';
 
 const HUB = 'https://clearixhub.netlify.app';
 
-const antes = ['Caixa num sistema, estoque numa planilha', 'WhatsApp do vendedor é pessoal', 'Ninguém enxerga a rede inteira', 'Cliente some sem ninguém perceber'];
-const depois = ['Tudo num ecossistema só', 'Dado entra uma vez, flui pra todos', 'A rede inteira numa visão só', 'Recall com IA traz o cliente de volta'];
+const antes = ['20 a 40 clientes somem por mês — e ninguém liga', '4h por dia respondendo "meu óculos já tá pronto?"', 'Você não sabe qual loja lucra mais que a outra', 'Caixa, estoque e WhatsApp que não se falam'];
+const depois = ['Recall com IA traz o cliente de volta — 10×', 'O laboratório avisa o paciente sozinho', 'A rede inteira numa visão só, em tempo real', 'O dado entra uma vez e flui pra todos os apps'];
 
 const faq = [
   { q: 'Preciso trocar meu sistema inteiro de uma vez?', a: 'Não. A migração é guiada e pode ser por etapa — começamos pelo que dói mais e o resto entra no ritmo da loja.' },
@@ -18,23 +18,44 @@ const faq = [
   { q: 'Meus dados de paciente ficam seguros?', a: 'Sim. Segurança por padrão: isolamento por loja, acesso por papel e portal do paciente só por link — em conformidade com a LGPD.' },
   { q: 'Como começo?', a: 'Pelo agendamento de uma demonstração. A partir dela montamos o plano de setup e migração da sua ótica.' },
 ];
+
+const passos = [
+  { n: '01', t: 'Demonstração', d: 'Mostramos o Clearix rodando com dados parecidos com os da sua ótica.' },
+  { n: '02', t: 'Setup e migração', d: 'Importamos seu histórico e configuramos lojas, papéis e regras — sem parar a operação.' },
+  { n: '03', t: 'Operação no ar', d: 'A equipe opera no Clearix, com acompanhamento próximo no começo.' },
+];
+
+const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
 ---
 
 <BaseLayout>
   <!-- Hero -->
   <section data-lux class="lux-cyan relative overflow-hidden grid-bg grid-bg-anim pt-32 pb-20 md:pt-44 md:pb-28 border-b border-clarity-off/10">
     <div class="lux-glow"></div>
-    <div class="lux-lasers"></div>
-    <!-- anel HUD decorativo -->
-    <div class="absolute -right-32 -top-24 w-[520px] h-[520px] opacity-30 pointer-events-none hidden md:block">
-      <svg viewBox="0 0 200 200" fill="none" class="hud-cw w-full h-full">
-        <circle cx="100" cy="100" r="92" stroke="#06B6D4" stroke-width="0.4" stroke-dasharray="1 5" />
-        <circle cx="100" cy="100" r="74" stroke="#06B6D4" stroke-width="0.5" />
-        <circle cx="100" cy="100" r="74" stroke="#06B6D4" stroke-width="2" stroke-dasharray="40 220" />
-      </svg>
-      <svg viewBox="0 0 200 200" fill="none" class="hud-ccw w-full h-full absolute inset-0">
-        <circle cx="100" cy="100" r="58" stroke="#06B6D4" stroke-width="0.5" stroke-dasharray="8 6" />
-        <circle cx="100" cy="100" r="44" stroke="#06B6D4" stroke-width="1" stroke-dasharray="30 90" />
+    <div class="lux-beams"></div>
+    <!-- lente refrativa (dispersão de luz) -->
+    <div class="absolute -right-40 -top-36 w-[620px] h-[620px] opacity-70 pointer-events-none hidden md:block">
+      <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
+        <defs>
+          <radialGradient id="lensG" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30" />
+            <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.10" />
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="72" fill="url(#lensG)" />
+        <g class="lens-cw" style="transform-origin:100px 100px">
+          <circle cx="100" cy="100" r="80" stroke="#67E8F9" stroke-width="0.5" stroke-opacity="0.5" />
+          <circle cx="100" cy="100" r="80" stroke="#22D3EE" stroke-width="1.6" stroke-dasharray="38 210" stroke-opacity="0.85" />
+        </g>
+        <g class="lens-ccw" style="transform-origin:100px 100px">
+          <circle cx="100" cy="100" r="58" stroke="#93C5FD" stroke-width="0.5" stroke-opacity="0.45" stroke-dasharray="6 8" />
+        </g>
+        <circle cx="100" cy="100" r="40" stroke="#67E8F9" stroke-width="0.6" stroke-opacity="0.5" />
+        <line x1="100" y1="100" x2="184" y2="58" stroke="#3B82F6" stroke-width="0.8" stroke-opacity="0.55" />
+        <line x1="100" y1="100" x2="186" y2="65" stroke="#22D3EE" stroke-width="0.8" stroke-opacity="0.55" />
+        <line x1="100" y1="100" x2="188" y2="72" stroke="#a78bfa" stroke-width="0.8" stroke-opacity="0.5" />
+        <circle cx="100" cy="100" r="3" fill="#22D3EE" />
       </svg>
     </div>
     <div class="container-grid max-w-3xl anim-fade-in relative z-10">
@@ -49,9 +70,14 @@ const faq = [
       </p>
       <div class="flex flex-wrap gap-4">
         <a href="/contato" class="btn-primary">Começar grátis por 30 dias</a>
-        <a href="/ecossistema" class="btn-outline">Ver o ecossistema →</a>
+        <a href="/contato" class="btn-outline">Agendar demonstração</a>
       </div>
-      <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted/70 mt-8">
+      <p class="text-clarity-muted text-body-md mt-5">
+        <span class="text-clearix-cyan-bright">✓</span> Sem cartão de crédito
+        <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Migração guiada
+        <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Seus dados preservados
+      </p>
+      <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted/70 mt-6">
         Feito por quem vive o setor óptico · operação real há mais de 5 anos
       </p>
     </div>
@@ -66,7 +92,7 @@ const faq = [
         <p class="body-lg">Não é print parado — é a operação real do dia a dia fluindo entre os apps do Clearix, numa visão só.</p>
       </div>
       <div class="md:col-span-7">
-        <div class="border border-clarity-off/15 bg-ink-base rounded-lg overflow-hidden reveal">
+        <div class="glass rounded-xl overflow-hidden reveal">
           <div class="flex items-center gap-2 px-4 py-3 border-b border-clarity-off/10">
             <span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clearix-cyan/60"></span>
             <span class="ml-3 font-mono text-label-sm text-clarity-muted">clearix · painel</span>
@@ -95,7 +121,7 @@ const faq = [
       {promessas.map((p) => (
         <div class="bg-ink-surface p-8">
           <span class="block font-mono tabular-nums text-4xl text-clearix-cyan mb-2">{p.valor}</span>
-          <span class="block font-serif text-lg text-clarity-off mb-1">{p.label}</span>
+          <span class="block font-display font-semibold text-lg text-clarity-off mb-1">{p.label}</span>
           <span class="block text-clarity-muted text-body-md">{p.nota}</span>
         </div>
       ))}
@@ -125,6 +151,25 @@ const faq = [
   </section>
 
   <ProvaOperacao />
+
+  <!-- Depoimento (MOCK — trocar por depoimento real com nome/cargo antes de publicar) -->
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid max-w-4xl">
+      <figure class="glass rounded-2xl p-8 md:p-12">
+        <div class="prism-edge h-[2px] w-20 mb-8 rounded-full"></div>
+        <blockquote class="font-display font-semibold text-[22px] md:text-[30px] leading-snug tracking-tight text-clarity-off">
+          “Migramos mais de cinco anos de operação para o Clearix sem parar a loja. Hoje a rede inteira está numa tela só, o laboratório avisa o cliente sozinho — e quem sumia, volta.”
+        </blockquote>
+        <figcaption class="mt-8 flex items-center gap-4">
+          <span class="w-12 h-12 rounded-full bg-clearix-navy/40 border border-clearix-navy-soft/30 grid place-items-center font-display font-bold text-clearix-cyan-bright">GM</span>
+          <span>
+            <span class="block text-clarity-off font-semibold">Grupo Mello Óticas</span>
+            <span class="block text-clarity-muted text-body-md">Cliente desde 2020 · 10 lojas</span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
 
   <!-- Ecossistema por jornada -->
   <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
@@ -162,7 +207,8 @@ const faq = [
   <section data-lux class="lux-cyan relative overflow-hidden py-20 md:py-28 border-b border-clarity-off/10 text-center">
     <div class="lux-glow"></div>
     <div class="container-grid max-w-3xl relative z-10 reveal">
-      <h2 class="font-serif text-[32px] leading-tight md:text-[44px] md:leading-[1.15] tracking-tight">
+      <div class="prism-edge h-[2px] w-32 mx-auto mb-8 rounded-full"></div>
+      <h2 class="font-display font-extrabold text-[32px] leading-tight md:text-[44px] md:leading-[1.05] tracking-[-0.03em]">
         Clareza com profundidade.<br/>
         <span class="text-clearix-cyan italic">Transformando informação em decisão.</span>
       </h2>
@@ -180,7 +226,7 @@ const faq = [
         {planos.map((p) => (
           <div class={`bg-ink-surface p-6 flex flex-col ${p.destaque ? 'ring-1 ring-clearix-cyan/40' : ''}`}>
             {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-clearix-cyan mb-2">Mais escolhido</span>}
-            <h3 class="font-serif text-xl text-clarity-off">{p.nome}</h3>
+            <h3 class="font-display font-semibold text-xl text-clarity-off">{p.nome}</h3>
             <p class="mt-2 mb-1"><span class="font-mono tabular-nums text-2xl text-clarity-off">{p.preco}</span><span class="text-clarity-muted text-body-md">{p.precoNota ?? ''}</span></p>
             <p class="text-clarity-muted text-[13px] mb-4">{p.apps} apps · {p.lojas}</p>
             <p class="text-clarity-dim text-body-md mt-auto">{p.publico}</p>
@@ -191,13 +237,37 @@ const faq = [
     </div>
   </section>
 
+  <!-- Como começar -->
+  <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12 md:mb-16">
+        <p class="label mb-4">Como começar</p>
+        <h2 class="h-section">No ar em semanas, não meses.</h2>
+        <p class="body-lg mt-5">Sem trauma de migração: a gente importa seu histórico e a loja não para.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-xl overflow-hidden reveal">
+        {passos.map((p) => (
+          <div class="bg-ink-surface p-8">
+            <span class="font-mono tabular-nums text-4xl text-clearix-cyan-bright">{p.n}</span>
+            <h3 class="font-display font-semibold text-xl mt-4 mb-2 text-clarity-off">{p.t}</h3>
+            <p class="text-clarity-muted text-body-md">{p.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Aura (IA) -->
   <section data-lux class="lux-cyan relative overflow-hidden py-24 md:py-32 border-b border-clarity-off/10">
     <div class="lux-glow"></div>
-    <div class="absolute -left-24 -bottom-28 w-[440px] h-[440px] opacity-25 pointer-events-none hidden md:block">
-      <svg viewBox="0 0 200 200" fill="none" class="hud-ccw w-full h-full">
-        <circle cx="100" cy="100" r="88" stroke="#06B6D4" stroke-width="0.5" stroke-dasharray="2 6" />
-        <circle cx="100" cy="100" r="66" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="50 180" />
+    <div class="absolute -left-28 -bottom-32 w-[480px] h-[480px] opacity-50 pointer-events-none hidden md:block">
+      <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
+        <circle cx="100" cy="100" r="70" fill="url(#lensG)" />
+        <g class="lens-ccw" style="transform-origin:100px 100px">
+          <circle cx="100" cy="100" r="80" stroke="#67E8F9" stroke-width="0.5" stroke-opacity="0.4" stroke-dasharray="3 7" />
+          <circle cx="100" cy="100" r="64" stroke="#22D3EE" stroke-width="1.4" stroke-dasharray="48 170" stroke-opacity="0.7" />
+        </g>
+        <circle cx="100" cy="100" r="3" fill="#22D3EE" />
       </svg>
     </div>
     <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
@@ -225,12 +295,31 @@ const faq = [
         {faq.map((f) => (
           <details class="group border-b border-clarity-off/10">
             <summary class="list-none cursor-pointer flex items-center justify-between gap-4 py-5">
-              <span class="font-serif text-xl">{f.q}</span>
+              <span class="font-display font-semibold text-xl">{f.q}</span>
               <span class="font-mono text-clearix-cyan text-2xl leading-none group-open:rotate-45 transition-transform">+</span>
             </summary>
             <p class="text-clarity-muted text-body-md pb-6 max-w-2xl">{f.a}</p>
           </details>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Segurança + tecnologia (autoridade) -->
+  <section class="py-14 md:py-20 border-b border-clarity-off/10">
+    <div class="container-grid grid md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-7">
+        <p class="label mb-3">Segurança por padrão</p>
+        <p class="body-lg max-w-xl">
+          Isolamento de dados por loja, acesso por papel e portal do paciente só por link —
+          em conformidade com a LGPD. Dado clínico e financeiro tratado com rigor.
+        </p>
+      </div>
+      <div class="md:col-span-5">
+        <p class="label-sm mb-4 md:text-right">Construído sobre tecnologia de ponta</p>
+        <div class="flex flex-wrap md:justify-end items-center gap-x-8 gap-y-3 font-mono text-label-md uppercase tracking-widest text-clarity-muted/80">
+          {tech.map((t) => <span>{t}</span>)}
+        </div>
       </div>
     </div>
   </section>

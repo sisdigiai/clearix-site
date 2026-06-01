@@ -76,6 +76,20 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
     </main>
     <Footer />
 
+    <!-- WhatsApp — micro-conversão para quem ainda está pesquisando -->
+    <a
+      href="https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix"
+      target="_blank"
+      rel="noopener"
+      class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full glass px-4 py-3 text-clarity-off font-semibold text-[14px] hover:text-clearix-cyan-bright transition-colors"
+      aria-label="Falar no WhatsApp"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z" />
+      </svg>
+      <span class="hidden sm:inline">Falar no WhatsApp</span>
+    </a>
+
     <!-- Luz interativa: glow cyan segue o cursor nos elementos [data-lux] -->
     <script is:inline>
       function initLux() {

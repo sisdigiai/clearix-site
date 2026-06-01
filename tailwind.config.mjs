@@ -4,53 +4,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Clearix marketing — dark editorial navy-tinted (família de marcas DIGIAI).
-        // O ecossistema Clearix usa o tom cyan forte (.lux-cyan no DS).
+        // Clearix Lens — "vidro escuro refrativo". Ótica de precisão: vidro + luz.
+        // Base azul-vidro profunda (NÃO navy-black neutro). Blue + cyan protagonistas.
         ink: {
-          base: '#0A1420',      // background principal (navy-black)
-          surface: '#0F1C2E',   // containers
-          deep: '#070E18',      // surface mais baixa
-          high: '#16273C',      // surface elevada
+          base: '#060E1C',     // vidro ótico profundo (fundo)
+          surface: '#0B1B33',  // superfície de vidro
+          deep: '#040A15',     // mais fundo (seções)
+          high: '#13294A',     // vidro elevado
         },
-        // Acentos da marca Clearix (DS: mark navy + ponto cyan)
         clearix: {
-          cyan: '#06B6D4',      // ponto refrativo — acento primário de marketing
+          blue: '#3B82F6',
+          'blue-bright': '#60A5FA',
+          cyan: '#06B6D4',
+          'cyan-bright': '#22D3EE',  // luz refratada — acento de destaque
           'cyan-soft': '#67E8F9',
-          navy: '#1A3A5C',      // arco do mark
-          'navy-soft': '#93C5FD', // mark em fundo escuro (blue-300)
-          blue: '#3B82F6',      // action-primary do app (Clearix Lens)
+          navy: '#1A3A5C',
+          'navy-soft': '#93C5FD',    // mark em fundo escuro
         },
         clarity: {
-          off: '#F5F9FF',       // texto principal
-          dim: '#D6E2F0',       // texto secundário
-          muted: '#8DA2BC',     // texto terciário (navy-tinted)
-          line: '#2A3B4F',      // outline-variant
+          off: '#EAF3FF',      // texto principal (branco-frio)
+          dim: '#C2D4EA',      // texto secundário
+          muted: '#7E97B8',    // texto terciário (azul-acinzentado)
+          line: '#21385A',     // linhas/contornos (azul)
         },
       },
       fontFamily: {
-        serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        // Clearix usa Inter (sem serif — serif é assinatura DIGIAI). Linear/Stripe/Vercel.
+        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        'display-lg': ['64px', { lineHeight: '72px', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'headline-lg': ['48px', { lineHeight: '56px', letterSpacing: '-0.01em', fontWeight: '600' }],
-        'headline-md': ['32px', { lineHeight: '40px', fontWeight: '600' }],
-        'body-lg': ['18px', { lineHeight: '28px' }],
-        'body-md': ['16px', { lineHeight: '24px' }],
-        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.05em', fontWeight: '500' }],
-        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.08em', fontWeight: '500' }],
+        'display-2xl': ['76px', { lineHeight: '1.02', letterSpacing: '-0.035em', fontWeight: '800' }],
+        'display-lg': ['60px', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '800' }],
+        'headline-lg': ['44px', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '700' }],
+        'headline-md': ['30px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'body-lg': ['18px', { lineHeight: '1.6' }],
+        'body-md': ['16px', { lineHeight: '1.55' }],
+        'label-md': ['13px', { lineHeight: '1.4', letterSpacing: '0.12em', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '1.4', letterSpacing: '0.14em', fontWeight: '600' }],
       },
       maxWidth: {
         container: '1440px',
       },
       borderRadius: {
-        // Clearix Lens = cantos suaves (≠ DIGIAI House sharp). Raio discreto.
+        // Clearix Lens = cantos suaves (≠ DIGIAI House sharp).
         none: '0',
-        DEFAULT: '6px',
-        md: '6px',
-        lg: '8px',
-        xl: '12px',
+        DEFAULT: '8px',
+        md: '8px',
+        lg: '12px',
+        xl: '16px',
+        '2xl': '22px',
       },
     },
   },

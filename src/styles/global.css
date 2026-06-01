@@ -1,25 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Clearix marketing — base reset (dark editorial, navy-tinted) */
+/* Clearix Lens — vidro escuro refrativo. Ótica de precisão: foco + luz. */
 @layer base {
   :root {
     color-scheme: dark;
-    --color-base: #0A1420;
-    --color-surface: #0F1C2E;
-    --color-cyan: #06B6D4;
-    --color-navy: #1A3A5C;
-    --color-off: #F5F9FF;
-    --color-line: rgba(245, 249, 255, 0.10);
-    --color-line-soft: rgba(245, 249, 255, 0.05);
+    --color-base: #060E1C;
+    --color-surface: #0B1B33;
+    --color-cyan: #22D3EE;
+    --color-blue: #3B82F6;
+    --color-off: #EAF3FF;
+    --color-line: rgba(147, 197, 253, 0.12);
+    --color-line-soft: rgba(147, 197, 253, 0.06);
   }
 
-  * {
-    border-color: var(--color-line);
-  }
+  * { border-color: var(--color-line); }
 
   html {
     scroll-behavior: smooth;
@@ -32,145 +30,127 @@
     color: var(--color-off);
     font-family: Inter, system-ui, sans-serif;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.55;
     overflow-x: hidden;
   }
 
-  ::selection {
-    background-color: var(--color-cyan);
-    color: #04121b;
-  }
+  ::selection { background-color: var(--color-cyan); color: #04121b; }
 }
 
 @layer components {
-  .container-grid {
-    @apply mx-auto px-4 md:px-8 lg:px-16 max-w-container;
-  }
+  .container-grid { @apply mx-auto px-4 md:px-8 lg:px-16 max-w-container; }
 
-  .label {
-    @apply font-mono text-label-md uppercase tracking-wider text-clearix-cyan;
-  }
+  .label { @apply font-mono text-label-md uppercase text-clearix-cyan-bright; }
+  .label-sm { @apply font-mono text-label-sm uppercase text-clarity-muted; }
 
-  .label-sm {
-    @apply font-mono text-label-sm uppercase tracking-widest text-clarity-muted;
-  }
+  /* Headings — Inter heavy, tight. Sem serif. */
+  .h-display { @apply font-display font-extrabold text-[40px] leading-[1.05] tracking-[-0.03em] md:text-display-lg; }
+  .h-section { @apply font-display font-bold text-[28px] leading-[1.1] tracking-[-0.025em] md:text-headline-lg; }
+  .h-sub { @apply font-display font-bold text-headline-md tracking-[-0.02em]; }
 
-  .h-display {
-    @apply font-serif text-[40px] leading-[48px] md:text-display-lg tracking-tight;
-  }
+  .body-lg { @apply font-sans text-body-lg text-clarity-dim; }
 
-  .h-section {
-    @apply font-serif text-[28px] leading-[36px] md:text-headline-lg tracking-tight;
-  }
-
-  .h-sub {
-    @apply font-serif text-headline-md tracking-tight;
-  }
-
-  .body-lg {
-    @apply font-sans text-body-lg text-clarity-dim;
-  }
-
+  /* CTA primário = luz refratada (cyan-bright sólido, texto escuro) */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded bg-clearix-cyan text-ink-deep px-6 py-3 font-mono text-label-md uppercase tracking-wider hover:bg-clearix-cyan-soft transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
+    @apply inline-flex items-center justify-center rounded-lg bg-clearix-cyan-bright text-ink-deep px-6 py-3 font-semibold text-[14px] tracking-tight
+           shadow-[0_8px_30px_-8px_rgba(34,211,238,0.55)] hover:bg-clearix-cyan-soft transition-all
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
   }
-
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded border border-clarity-off/20 text-clarity-off px-6 py-3 font-mono text-label-md uppercase tracking-wider hover:border-clearix-cyan hover:text-clearix-cyan transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
+    @apply inline-flex items-center justify-center rounded-lg border border-clearix-navy-soft/30 text-clarity-off px-6 py-3 font-semibold text-[14px] tracking-tight
+           hover:border-clearix-cyan-bright hover:text-clearix-cyan-bright transition-colors
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
   }
 
-  .card {
-    @apply bg-ink-surface border border-clarity-off/10 p-8 rounded-lg;
+  /* Vidro (glassmorphism) — superfície ótica */
+  .glass {
+    background: linear-gradient(180deg, rgba(30, 58, 95, 0.42), rgba(11, 27, 51, 0.55));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(147, 197, 253, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 30px 70px -34px rgba(6, 182, 212, 0.40);
   }
+  .card { @apply glass p-8 rounded-2xl; }
 
-  .divider {
-    @apply border-t border-clarity-off/10;
-  }
+  .divider { @apply border-t border-clarity-off/10; }
 
+  /* grade ótica sutil */
   .grid-bg {
     background-image:
       linear-gradient(var(--color-line-soft) 1px, transparent 1px),
       linear-gradient(90deg, var(--color-line-soft) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-size: 44px 44px;
+  }
+
+  /* aresta de prisma — luz dispersa (assinatura Clearix) */
+  .prism-edge {
+    background: linear-gradient(90deg, transparent, #3B82F6, #22D3EE, #a78bfa, transparent);
+    background-size: 100% 100%;
   }
 }
 
-/* ── Animações silenciosas (Quiet Tech) ──────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+/* ── Animações silenciosas ──────────────────────────── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .anim-fade-in { animation: fadeUp 0.7s ease-out both; }
 
-/* revelar ao rolar — CSS scroll-driven, zero-JS. Fallback visível. */
 .reveal { opacity: 1; }
 @supports (animation-timeline: view()) {
-  .reveal {
-    animation: fadeUp linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 22%;
-  }
+  .reveal { animation: fadeUp linear both; animation-timeline: view(); animation-range: entry 0% cover 22%; }
 }
 
-@keyframes gridBreath {
-  0%, 100% { background-position: 0 0; }
-  50%      { background-position: 40px 40px; }
-}
-.grid-bg-anim { animation: gridBreath 16s ease-in-out infinite; }
+@keyframes gridBreath { 0%,100% { background-position: 0 0; } 50% { background-position: 44px 44px; } }
+.grid-bg-anim { animation: gridBreath 18s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-fade-in, .reveal, .grid-bg-anim {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .anim-fade-in, .reveal, .grid-bg-anim { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
-/* ── Luz interativa (cursor-reativa) — tom Clearix cyan ──────────── */
-@keyframes laserMove { from { background-position: -30% 0; } to { background-position: 130% 0; } }
+/* ── Luz refratada interativa (cursor) — tom Clearix ──────────── */
+@keyframes beamMove { from { background-position: -30% 0; } to { background-position: 130% 0; } }
 
 .lux-glow {
   position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background: radial-gradient(circle var(--lux-size, 320px) at var(--mx, 50%) var(--my, 50%), var(--lux-color, rgba(6, 182, 212, 0.22)), transparent 60%);
+  background: radial-gradient(circle var(--lux-size, 380px) at var(--mx, 50%) var(--my, 50%), var(--lux-color, rgba(34, 211, 238, 0.20)), transparent 62%);
   transition: background 0.12s ease-out;
 }
-.lux-lasers { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
-.lux-lasers::before, .lux-lasers::after {
-  content: ''; position: absolute; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--lux-line, rgba(6, 182, 212, 0.7)), transparent);
-  background-size: 30% 100%; background-repeat: no-repeat;
-  animation: laserMove 5s linear infinite;
-}
-.lux-lasers::before { top: 30%; }
-.lux-lasers::after { top: 70%; animation-delay: 2.5s; animation-duration: 6.5s; }
 
-.lux-cyan { --lux-color: rgba(6, 182, 212, 0.26); --lux-line: rgba(6, 182, 212, 0.8); --lux-size: 360px; }
+/* feixes de luz horizontais (luz através do vidro) */
+.lux-beams { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.lux-beams::before, .lux-beams::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.75), transparent);
+  background-size: 30% 100%; background-repeat: no-repeat;
+  animation: beamMove 6s linear infinite;
+}
+.lux-beams::before { top: 32%; }
+.lux-beams::after { top: 68%; animation-delay: 3s; animation-duration: 7.5s; }
+
+.lux-cyan { --lux-color: rgba(34, 211, 238, 0.22); --lux-size: 420px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .lux-lasers::before, .lux-lasers::after { animation: none; opacity: 0.2; }
+  .lux-beams::before, .lux-beams::after { animation: none; opacity: 0.2; }
 }
 
-/* anel HUD (Clearix) — toque hi-tech disciplinado */
+/* lente refrativa — rotação lenta (≠ HUD radar) */
 @keyframes spinCW { to { transform: rotate(360deg); } }
 @keyframes spinCCW { to { transform: rotate(-360deg); } }
-.hud-cw { animation: spinCW 80s linear infinite; transform-origin: center; }
-.hud-ccw { animation: spinCCW 110s linear infinite; transform-origin: center; }
-@media (prefers-reduced-motion: reduce) { .hud-cw, .hud-ccw { animation: none; } }
+.lens-cw { animation: spinCW 90s linear infinite; transform-origin: center; }
+.lens-ccw { animation: spinCCW 120s linear infinite; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) { .lens-cw, .lens-ccw { animation: none; } }
 
-/* ── mesh-gradient animado (CSS puro, sem WebGL) — tom Clearix ── */
+/* ── caustics / mesh refrativo (luz através do vidro) ── */
 .mesh {
-  background-color: #0A1420;
+  background-color: #060E1C;
   background-image:
-    radial-gradient(at 18% 28%, rgba(26, 58, 92, 0.55) 0px, transparent 50%),
-    radial-gradient(at 82% 18%, rgba(6, 182, 212, 0.30) 0px, transparent 50%),
-    radial-gradient(at 62% 72%, rgba(59, 130, 246, 0.22) 0px, transparent 50%),
-    radial-gradient(at 28% 82%, rgba(26, 58, 92, 0.45) 0px, transparent 50%);
+    radial-gradient(at 16% 24%, rgba(59, 130, 246, 0.40) 0px, transparent 50%),
+    radial-gradient(at 84% 16%, rgba(34, 211, 238, 0.34) 0px, transparent 48%),
+    radial-gradient(at 64% 74%, rgba(103, 232, 249, 0.22) 0px, transparent 50%),
+    radial-gradient(at 26% 82%, rgba(26, 58, 92, 0.50) 0px, transparent 52%);
   background-size: 180% 180%;
-  animation: meshMove 20s ease-in-out infinite;
+  animation: meshMove 22s ease-in-out infinite;
 }
 @keyframes meshMove {
-  0%, 100% { background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%; }
-  50%      { background-position: 100% 60%, 0% 40%, 30% 50%, 70% 30%; }
+  0%,100% { background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%; }
+  50%     { background-position: 100% 60%, 0% 40%, 30% 50%, 70% 30%; }
 }
 @media (prefers-reduced-motion: reduce) { .mesh { animation: none; } }
