@@ -28,11 +28,15 @@ import { planos, demo, addons } from '../data/planos';
         <span class="font-mono text-label-sm uppercase tracking-widest text-ink-deep bg-clearix-cyan-bright rounded px-2.5 py-1">Preço de lançamento</span>
         <span class="text-clarity-dim text-body-md">Condição das primeiras óticas — garanta agora e mantenha o valor enquanto for cliente.</span>
       </div>
+      <p class="text-clarity-dim text-body-lg mb-8 max-w-3xl">
+        Um só Clearix no lugar de <span class="text-clarity-off font-semibold">5 sistemas separados</span> — caixa, estoque, laboratório, CRM e financeiro. A partir de <span class="text-clearix-cyan-bright font-semibold">R$ 349/mês</span>.
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
         {planos.map((p) => (
-          <div class={`bg-ink-surface p-7 flex flex-col ${p.destaque ? 'ring-1 ring-inset ring-clearix-cyan/50' : ''}`}>
-            {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-clearix-cyan mb-3">Mais escolhido</span>}
-            {!p.destaque && <span class="h-[20px] mb-3"></span>}
+          <div class={`relative p-7 flex flex-col ${p.destaque ? 'bg-clearix-navy/20 ring-2 ring-inset ring-clearix-cyan-bright' : 'bg-ink-surface'}`}>
+            {p.destaque && <span class="prism-edge absolute top-0 inset-x-0 h-[3px]"></span>}
+            {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-ink-deep bg-clearix-cyan-bright rounded px-2 py-0.5 self-start mb-3">★ Mais escolhido</span>}
+            {!p.destaque && <span class="h-[26px] mb-3"></span>}
             <h2 class="font-display font-bold text-2xl text-clarity-off">{p.nome}</h2>
             <p class="mt-3 mb-1">
               <span class="font-mono tabular-nums text-3xl text-clarity-off">{p.preco}</span>

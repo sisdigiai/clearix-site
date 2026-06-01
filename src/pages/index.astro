@@ -59,17 +59,19 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
       </svg>
     </div>
     <div class="container-grid max-w-3xl anim-fade-in relative z-10">
-      <p class="label mb-6">Ecossistema para óticas · em produção</p>
+      <p class="inline-flex items-center gap-2 mb-6 font-mono text-label-md uppercase tracking-wider text-amber-400">
+        <span aria-hidden="true">▾</span> 20 a 40 clientes somem da sua ótica todo mês
+      </p>
       <h1 class="h-display mb-6">
-        A ótica inteira,<br/>
-        <span class="text-clearix-cyan italic">numa só inteligência</span>.
+        Pare de perder cliente.<br/>
+        A ótica inteira, <span class="text-clearix-cyan-bright italic">numa só inteligência</span>.
       </h1>
       <p class="body-lg max-w-2xl mb-10">
         Clearix é o ecossistema completo para a ótica que quer crescer com método, tecnologia e inteligência.
         Vendas, clínica, laboratório, financeiro, marketing com IA e prova virtual — 16 apps, um só login.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a href="/contato" class="btn-primary">Começar grátis por 30 dias</a>
+        <a href="/contato" class="btn-primary cta-pulse">Começar grátis por 30 dias</a>
         <a href="/contato" class="btn-outline">Agendar demonstração</a>
       </div>
       <p class="text-clarity-muted text-body-md mt-5">
@@ -77,9 +79,13 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
         <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Migração guiada
         <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Seus dados preservados
       </p>
-      <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted/70 mt-6">
-        Feito por quem vive o setor óptico · operação real há mais de 5 anos
-      </p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80">
+        <span><span class="text-clarity-off">10</span> lojas reais</span>
+        <span class="text-clarity-muted/30" aria-hidden="true">·</span>
+        <span><span class="text-clarity-off">+20 mil</span> vendas processadas</span>
+        <span class="text-clarity-muted/30" aria-hidden="true">·</span>
+        <span><span class="text-clarity-off">5+ anos</span> em produção</span>
+      </div>
     </div>
   </section>
 
@@ -135,15 +141,15 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
       <h2 class="h-section mb-12">Da operação no improviso ao sistema inteligente.</h2>
       <div class="grid md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
         <div class="bg-ink-base p-8">
-          <p class="label-sm text-clarity-muted mb-6">Antes — no improviso</p>
+          <p class="label-sm text-amber-400/90 mb-6">Antes — no improviso</p>
           <ul class="space-y-4">
-            {antes.map((i) => <li class="flex gap-3 text-clarity-muted text-body-md"><span class="text-clarity-muted/40">✕</span>{i}</li>)}
+            {antes.map((i) => <li class="flex gap-3 text-clarity-muted text-body-md"><span class="text-amber-400/70 shrink-0">✕</span>{i}</li>)}
           </ul>
         </div>
         <div class="bg-ink-surface p-8">
-          <p class="label-sm text-clearix-cyan mb-6">Depois — no Clearix</p>
+          <p class="label-sm text-clearix-cyan-bright mb-6">Depois — no Clearix</p>
           <ul class="space-y-4">
-            {depois.map((i) => <li class="flex gap-3 text-clarity-off text-body-md"><span class="text-clearix-cyan">→</span>{i}</li>)}
+            {depois.map((i) => <li class="flex gap-3 text-clarity-off text-body-md"><span class="text-clearix-cyan-bright shrink-0">→</span>{i}</li>)}
           </ul>
         </div>
       </div>

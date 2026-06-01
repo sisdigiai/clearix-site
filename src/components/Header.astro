@@ -13,7 +13,18 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => path === href;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-ink-base/90 backdrop-blur-sm border-b border-clarity-off/10">
+<header class="fixed top-0 left-0 right-0 z-50">
+  <!-- Barra de urgência (escassez/lançamento) -->
+  <a href="/planos" class="relative block overflow-hidden bg-clearix-cyan-bright text-ink-deep text-center text-[13px] font-semibold py-1.5 px-4 hover:brightness-105 transition">
+    <span class="bar-shine absolute inset-0 pointer-events-none"></span>
+    <span class="relative inline-flex items-center gap-2">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-ink-deep/70 animate-pulse"></span>
+      <strong>Preço de lançamento</strong> — trave o valor enquanto for cliente. Condição das primeiras óticas.
+      <span aria-hidden="true">→</span>
+    </span>
+  </a>
+
+  <div class="bg-ink-base/90 backdrop-blur-sm border-b border-clarity-off/10">
   <div class="container-grid flex items-center justify-between h-16">
     <a href="/" aria-label="Clearix — início">
       <Logo />
@@ -35,5 +46,6 @@ const isActive = (href: string) => path === href;
         </nav>
       </details>
     </div>
+  </div>
   </div>
 </header>
