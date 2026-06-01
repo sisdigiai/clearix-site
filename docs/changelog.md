@@ -35,7 +35,7 @@ Polimento e preparação para publicação no mesmo nível do `digiai-site`.
 ### Pendências conhecidas
 - [ ] Endpoint real do formulário de contato (hoje usa atributo Netlify Forms; no Cloudflare Pages usar Pages Functions ou webhook).
 - [ ] Confirmar domínio `clearix.app.br` no DNS (Registro.br) e conectar no Cloudflare Pages.
-- [ ] Criar repo GitHub `sisdigiai/clearix-site` e fazer o push inicial.
+- [ ] Criar repo GitHub `mellooticas/clearix_site` e fazer o push inicial.
 - [ ] Apontar o `/clearix` do `digiai-site` para este novo site (teaser → site dedicado).
 - [ ] Verificação Bing/Google (meta tags) quando os tokens existirem.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).
