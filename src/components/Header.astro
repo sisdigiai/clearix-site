@@ -1,0 +1,39 @@
+---
+import Logo from './Logo.astro';
+
+const HUB = 'https://clearixhub.netlify.app';
+const nav = [
+  { label: 'Ecossistema', href: '/ecossistema' },
+  { label: 'Planos', href: '/planos' },
+  { label: 'Para quem', href: '/para-quem' },
+  { label: 'Contato', href: '/contato' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-ink-base/90 backdrop-blur-sm border-b border-clarity-off/10">
+  <div class="container-grid flex items-center justify-between h-16">
+    <a href="/" aria-label="Clearix — início">
+      <Logo />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 font-mono text-label-md uppercase tracking-wider">
+      {nav.map((n) => (
+        <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined} class={`transition-colors ${isActive(n.href) ? 'text-clearix-cyan' : 'text-clarity-muted hover:text-clarity-off'}`}>{n.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={HUB} target="_blank" rel="noopener" class="btn-primary text-label-sm py-2 px-4" aria-label="Entrar no Clearix Hub">Entrar →</a>
+
+      <details class="md:hidden relative">
+        <summary class="list-none cursor-pointer font-mono text-label-sm uppercase tracking-wider text-clarity-muted px-2 py-2 select-none">Menu</summary>
+        <nav class="absolute right-0 top-full mt-2 w-64 bg-ink-surface border border-clarity-off/10 rounded-lg p-4 flex flex-col gap-3 font-mono text-label-md uppercase tracking-wider">
+          {nav.map((n) => <a href={n.href} class="text-clarity-muted hover:text-clarity-off">{n.label}</a>)}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

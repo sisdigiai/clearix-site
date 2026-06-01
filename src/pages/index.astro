@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProvaOperacao from '../components/ProvaOperacao.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import { apps, jornadas } from '../data/apps';
+import { planos } from '../data/planos';
+import { promessas } from '../data/prova';
+
+const HUB = 'https://clearixhub.netlify.app';
+
+const antes = ['Caixa num sistema, estoque numa planilha', 'WhatsApp do vendedor é pessoal', 'Ninguém enxerga a rede inteira', 'Cliente some sem ninguém perceber'];
+const depois = ['Tudo num ecossistema só', 'Dado entra uma vez, flui pra todos', 'A rede inteira numa visão só', 'Recall com IA traz o cliente de volta'];
+
+const faq = [
+  { q: 'Preciso trocar meu sistema inteiro de uma vez?', a: 'Não. A migração é guiada e pode ser por etapa — começamos pelo que dói mais e o resto entra no ritmo da loja.' },
+  { q: 'Vocês migram meus dados antigos?', a: 'Sim. Pacientes, vendas e histórico são importados com as datas originais preservadas — sua operação não começa do zero.' },
+  { q: 'Funciona com mais de uma loja?', a: 'Sim. O Clearix é multi-loja: cada unidade com seus dados, e o dono enxerga tudo numa visão só.' },
+  { q: 'Meus dados de paciente ficam seguros?', a: 'Sim. Segurança por padrão: isolamento por loja, acesso por papel e portal do paciente só por link — em conformidade com a LGPD.' },
+  { q: 'Como começo?', a: 'Pelo agendamento de uma demonstração. A partir dela montamos o plano de setup e migração da sua ótica.' },
+];
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg grid-bg-anim pt-32 pb-20 md:pt-44 md:pb-28 border-b border-clarity-off/10">
+    <div class="lux-glow"></div>
+    <div class="lux-lasers"></div>
+    <!-- anel HUD decorativo -->
+    <div class="absolute -right-32 -top-24 w-[520px] h-[520px] opacity-30 pointer-events-none hidden md:block">
+      <svg viewBox="0 0 200 200" fill="none" class="hud-cw w-full h-full">
+        <circle cx="100" cy="100" r="92" stroke="#06B6D4" stroke-width="0.4" stroke-dasharray="1 5" />
+        <circle cx="100" cy="100" r="74" stroke="#06B6D4" stroke-width="0.5" />
+        <circle cx="100" cy="100" r="74" stroke="#06B6D4" stroke-width="2" stroke-dasharray="40 220" />
+      </svg>
+      <svg viewBox="0 0 200 200" fill="none" class="hud-ccw w-full h-full absolute inset-0">
+        <circle cx="100" cy="100" r="58" stroke="#06B6D4" stroke-width="0.5" stroke-dasharray="8 6" />
+        <circle cx="100" cy="100" r="44" stroke="#06B6D4" stroke-width="1" stroke-dasharray="30 90" />
+      </svg>
+    </div>
+    <div class="container-grid max-w-3xl anim-fade-in relative z-10">
+      <p class="label mb-6">Ecossistema para óticas · em produção</p>
+      <h1 class="h-display mb-6">
+        A ótica inteira,<br/>
+        <span class="text-clearix-cyan italic">numa só inteligência</span>.
+      </h1>
+      <p class="body-lg max-w-2xl mb-10">
+        Clearix é o ecossistema completo para a ótica que quer crescer com método, tecnologia e inteligência.
+        Vendas, clínica, laboratório, financeiro, marketing com IA e prova virtual — 16 apps, um só login.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/contato" class="btn-primary">Começar grátis por 30 dias</a>
+        <a href="/ecossistema" class="btn-outline">Ver o ecossistema →</a>
+      </div>
+      <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted/70 mt-8">
+        Feito por quem vive o setor óptico · operação real há mais de 5 anos
+      </p>
+    </div>
+  </section>
+
+  <!-- Promessas / prova rápida -->
+  <section class="py-16 md:py-20 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid grid grid-cols-1 md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+      {promessas.map((p) => (
+        <div class="bg-ink-surface p-8">
+          <span class="block font-mono tabular-nums text-4xl text-clearix-cyan mb-2">{p.valor}</span>
+          <span class="block font-serif text-lg text-clarity-off mb-1">{p.label}</span>
+          <span class="block text-clarity-muted text-body-md">{p.nota}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Antes / depois -->
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid">
+      <p class="label mb-4">Por que Clearix</p>
+      <h2 class="h-section mb-12">Da operação no improviso ao sistema inteligente.</h2>
+      <div class="grid md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+        <div class="bg-ink-base p-8">
+          <p class="label-sm text-clarity-muted mb-6">Antes — no improviso</p>
+          <ul class="space-y-4">
+            {antes.map((i) => <li class="flex gap-3 text-clarity-muted text-body-md"><span class="text-clarity-muted/40">✕</span>{i}</li>)}
+          </ul>
+        </div>
+        <div class="bg-ink-surface p-8">
+          <p class="label-sm text-clearix-cyan mb-6">Depois — no Clearix</p>
+          <ul class="space-y-4">
+            {depois.map((i) => <li class="flex gap-3 text-clarity-off text-body-md"><span class="text-clearix-cyan">→</span>{i}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ProvaOperacao />
+
+  <!-- Ecossistema por jornada -->
+  <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12 md:mb-16">
+        <p class="label mb-4">Ecossistema integrado</p>
+        <h2 class="h-section">16 apps. Um ecossistema. Zero atrito.</h2>
+        <p class="body-lg mt-5">Não são ferramentas soltas: cada app compartilha os mesmos dados, regras e identidade — organizados pela jornada da sua ótica.</p>
+      </div>
+
+      {jornadas.map((j) => (
+        <div class="mb-10 last:mb-0">
+          <div class="flex items-baseline gap-3 mb-4">
+            <h3 class="font-mono text-label-md uppercase tracking-widest text-clearix-cyan">{j.titulo}</h3>
+            <span class="text-clarity-muted text-body-md">{j.desc}</span>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+            {apps.filter((a) => a.jornada === j.key).map((a) => (
+              <div class="bg-ink-surface p-5 flex flex-col gap-2 transition-shadow hover:shadow-[0_0_40px_-14px_#06B6D4]">
+                <span class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full shrink-0" style={`background:${a.cor}`}></span>
+                  <span class="font-mono text-label-sm uppercase tracking-widest text-clarity-off">{a.nome}</span>
+                </span>
+                <span class="text-clarity-muted text-[13px] leading-snug">{a.tagline}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      <a href="/ecossistema" class="inline-block mt-8 font-mono text-label-md uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Conhecer cada app →</a>
+    </div>
+  </section>
+
+  <!-- Planos (preview) -->
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12 md:mb-16">
+        <p class="label mb-4">Planos</p>
+        <h2 class="h-section">Comece pequeno. Cresça sem trocar de sistema.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+        {planos.map((p) => (
+          <div class={`bg-ink-surface p-6 flex flex-col ${p.destaque ? 'ring-1 ring-clearix-cyan/40' : ''}`}>
+            {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-clearix-cyan mb-2">Mais escolhido</span>}
+            <h3 class="font-serif text-xl text-clarity-off">{p.nome}</h3>
+            <p class="mt-2 mb-1"><span class="font-mono tabular-nums text-2xl text-clarity-off">{p.preco}</span><span class="text-clarity-muted text-body-md">{p.precoNota ?? ''}</span></p>
+            <p class="text-clarity-muted text-[13px] mb-4">{p.apps} apps · {p.lojas}</p>
+            <p class="text-clarity-dim text-body-md mt-auto">{p.publico}</p>
+          </div>
+        ))}
+      </div>
+      <a href="/planos" class="inline-block mt-8 font-mono text-label-md uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Ver planos e o que cada um inclui →</a>
+    </div>
+  </section>
+
+  <!-- Aura (IA) -->
+  <section data-lux class="lux-cyan relative overflow-hidden py-24 md:py-32 border-b border-clarity-off/10">
+    <div class="lux-glow"></div>
+    <div class="absolute -left-24 -bottom-28 w-[440px] h-[440px] opacity-25 pointer-events-none hidden md:block">
+      <svg viewBox="0 0 200 200" fill="none" class="hud-ccw w-full h-full">
+        <circle cx="100" cy="100" r="88" stroke="#06B6D4" stroke-width="0.5" stroke-dasharray="2 6" />
+        <circle cx="100" cy="100" r="66" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="50 180" />
+      </svg>
+    </div>
+    <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
+      <div class="md:col-span-5">
+        <p class="label mb-4">Inteligência · em construção</p>
+        <h2 class="h-section italic mb-2">Aura</h2>
+        <p class="font-mono text-label-md uppercase tracking-wider text-clarity-muted">A camada de IA do Clearix</p>
+      </div>
+      <p class="md:col-span-7 body-lg">
+        A Aura é a camada de inteligência do Clearix — em construção e crescendo a cada ciclo.
+        Ela lê os dados reais da operação para apoiar as decisões do dia a dia da ótica, com a
+        visão de fazer o ecossistema trabalhar com menos esforço e mais clareza.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16">
+      <div class="md:col-span-4">
+        <p class="label mb-4">Dúvidas</p>
+        <h2 class="h-sub">Perguntas frequentes</h2>
+      </div>
+      <div class="md:col-span-8 border-t border-clarity-off/10">
+        {faq.map((f) => (
+          <details class="group border-b border-clarity-off/10">
+            <summary class="list-none cursor-pointer flex items-center justify-between gap-4 py-5">
+              <span class="font-serif text-xl">{f.q}</span>
+              <span class="font-mono text-clearix-cyan text-2xl leading-none group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="text-clarity-muted text-body-md pb-6 max-w-2xl">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaFinal />
+</BaseLayout>

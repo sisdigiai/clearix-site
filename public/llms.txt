@@ -1,0 +1,35 @@
+# Clearix
+
+> Ecossistema operacional para óticas brasileiras — 16 apps integrados num só login.
+> Produto-âncora da DIGIAI (DIGIAI ÓTICA E TECNOLOGIA LTDA), Suzano-SP.
+
+## O que é
+
+Clearix integra a operação inteira de uma ótica: vendas (PDV), clínica (anamnese e
+prescrições), laboratório (DCL), financeiro, estoque, catálogo de lentes, RH, fidelidade,
+marketing com IA, BI e prova virtual de armações (AR Vision). O dado entra uma vez e flui
+entre todos os apps.
+
+## Para quem
+
+Donos e gerentes de óticas — da ótica solo independente a redes e franquias (1 a 20+ lojas).
+
+## Planos
+
+- Essencial — R$ 349/mês — 7 apps — 1 loja
+- Controle — R$ 899/mês — 11 apps — até 5 lojas
+- Crescimento — R$ 1.499/mês — 16 apps — até 8 lojas
+- Completo — sob consulta — todo o ecossistema + SLA — lojas ilimitadas
+- Demonstração grátis por 30 dias
+
+## Prova
+
+Em operação real no Grupo Mello Óticas há mais de 5 anos: 20.488 vendas, 22.299 ordens de
+serviço, 19.737 pacientes e 97.996 lançamentos financeiros migrados e operando no Clearix.
+
+## Links
+
+- Site: https://clearix.app.br
+- Demonstração: https://clearix.app.br/contato
+- Empresa (DIGIAI): https://digiai.app.br
+- Clientes (login): https://clearixhub.netlify.app

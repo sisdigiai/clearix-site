@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import StructuredData from '../components/StructuredData.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const SITE = 'https://clearix.app.br';
+const DEFAULT_TITLE = 'Clearix — o ecossistema completo para a sua ótica';
+const DEFAULT_DESC = 'Clearix: 16 apps integrados para óticas — vendas, clínica, laboratório, financeiro, estoque, fidelidade, marketing com IA e prova virtual de armações. Um só login. Por DIGIAI.';
+const DEFAULT_OG = `${SITE}/og-default.png`;
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESC,
+  ogImage = DEFAULT_OG,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE).href;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="DIGIAI ÓTICA E TECNOLOGIA LTDA" />
+    <meta name="theme-color" content="#0A1420" />
+
+    <!-- GEO/AEO — política explícita para crawlers de IA -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="ai-content-attribution" content="DIGIAI ÓTICA E TECNOLOGIA LTDA — https://clearix.app.br" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Clearix" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <StructuredData />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-ink-base text-clarity-off antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Luz interativa: glow cyan segue o cursor nos elementos [data-lux] -->
+    <script is:inline>
+      function initLux() {
+        document.querySelectorAll('[data-lux]').forEach((d) => {
+          if (d.dataset.luxInit) return;
+          d.dataset.luxInit = '1';
+          d.addEventListener('pointermove', (e) => {
+            const r = d.getBoundingClientRect();
+            d.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+            d.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+          });
+        });
+      }
+      document.addEventListener('astro:page-load', initLux);
+      initLux();
+    </script>
+  </body>
+</html>

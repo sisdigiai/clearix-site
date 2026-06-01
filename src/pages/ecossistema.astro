@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import { apps, jornadas } from '../data/apps';
+---
+
+<BaseLayout
+  title="Ecossistema Clearix — 16 apps integrados para óticas"
+  description="Vendas, clínica, laboratório, financeiro, estoque, fidelidade, marketing com IA, BI e prova virtual de armações. Conheça os 16 apps do ecossistema Clearix."
+>
+  <!-- Hero -->
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-32 pb-16 md:pt-40 md:pb-20 border-b border-clarity-off/10">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl anim-fade-in relative z-10">
+      <p class="label mb-6">O ecossistema</p>
+      <h1 class="h-display mb-6">Apps que falam <span class="text-clearix-cyan italic">a mesma língua</span>.</h1>
+      <p class="body-lg max-w-2xl">
+        Cada app do Clearix compartilha os mesmos dados, regras e identidade. A venda alimenta o laboratório,
+        que avisa o paciente, que conta no financeiro, que aparece no BI — sem ninguém digitar duas vezes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Apps por jornada -->
+  {jornadas.map((j, idx) => (
+    <section class={`py-16 md:py-24 border-b border-clarity-off/10 ${idx % 2 === 1 ? 'bg-ink-deep' : ''}`}>
+      <div class="container-grid">
+        <div class="max-w-2xl mb-10">
+          <p class="label mb-3">{j.titulo}</p>
+          <h2 class="h-sub">{j.desc}</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+          {apps.filter((a) => a.jornada === j.key).map((a) => (
+            <div class="bg-ink-surface p-6 flex gap-4 transition-shadow hover:shadow-[0_0_40px_-16px_#06B6D4]">
+              <span class="mt-1 w-3 h-3 rounded-full shrink-0" style={`background:${a.cor}`}></span>
+              <div>
+                <h3 class="font-serif text-xl text-clarity-off mb-1">Clearix {a.nome}</h3>
+                <p class="text-clarity-muted text-body-md">{a.tagline}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Nota integração -->
+  <section class="py-16 md:py-20 border-b border-clarity-off/10">
+    <div class="container-grid max-w-3xl text-center">
+      <p class="body-lg">
+        Além dos apps de cliente, o Clearix conta com camadas internas de governança e segurança —
+        isolamento de dados por loja, acesso por papel e auditoria — para que a sua operação cresça com confiança.
+      </p>
+    </div>
+  </section>
+
+  <CtaFinal titulo="Quer ver os apps rodando juntos?" texto="Agende uma demonstração e veja o dado fluindo de um app pro outro, em tempo real." />
+</BaseLayout>

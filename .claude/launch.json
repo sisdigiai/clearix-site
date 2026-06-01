@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "clearix-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "D:/projetos/clearix-site", "run", "dev"],
+      "port": 4321
+    }
+  ]
+}

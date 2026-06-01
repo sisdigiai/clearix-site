@@ -1,0 +1,23 @@
+---
+const HUB = 'https://clearixhub.netlify.app';
+interface Props {
+  titulo?: string;
+  texto?: string;
+}
+const {
+  titulo = 'Veja o Clearix na sua ótica.',
+  texto = 'Agende uma demonstração e veja a operação inteira rodando numa só inteligência.',
+} = Astro.props;
+---
+
+<section data-lux class="lux-cyan relative overflow-hidden py-28 md:py-36 text-center">
+  <div class="lux-glow"></div>
+  <div class="container-grid max-w-2xl relative z-10 reveal">
+    <h2 class="h-section mb-6">{titulo}</h2>
+    <p class="body-lg mb-10">{texto}</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="/contato" class="btn-primary">Começar grátis por 30 dias</a>
+      <a href={HUB} target="_blank" rel="noopener" class="btn-outline">Já sou cliente →</a>
+    </div>
+  </div>
+</section>

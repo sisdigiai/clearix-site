@@ -1,0 +1,58 @@
+---
+import Logo from './Logo.astro';
+const ano = 2026;
+
+const navegar = [
+  { label: 'Ecossistema', href: '/ecossistema' },
+  { label: 'Planos', href: '/planos' },
+  { label: 'Para quem', href: '/para-quem' },
+  { label: 'Contato', href: '/contato' },
+];
+---
+
+<footer class="bg-ink-deep py-16 md:py-20 border-t border-clarity-off/10">
+  <div class="container-grid">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-16 mb-12 md:mb-16">
+      <div class="md:col-span-5">
+        <Logo class="mb-5" />
+        <p class="text-clarity-muted text-body-md max-w-md">
+          O ecossistema operacional para óticas que querem crescer com método, tecnologia e inteligência. Um produto DIGIAI.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="font-mono text-label-md uppercase text-clearix-cyan mb-4 tracking-wider">Produto</p>
+        <ul class="space-y-2 text-clarity-muted text-body-md">
+          {navegar.map((n) => (
+            <li><a href={n.href} class="hover:text-clarity-off transition-colors">{n.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <p class="font-mono text-label-md uppercase text-clearix-cyan mb-4 tracking-wider">Empresa</p>
+        <ul class="space-y-2 text-clarity-muted text-body-md">
+          <li><a href="https://digiai.app.br" target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">DIGIAI →</a></li>
+          <li><a href="https://clearixhub.netlify.app" target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">Já sou cliente →</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <p class="font-mono text-label-md uppercase text-clearix-cyan mb-4 tracking-wider">Legal</p>
+        <ul class="space-y-2 text-clarity-muted text-body-md">
+          <li>DIGIAI ÓTICA E TECNOLOGIA LTDA</li>
+          <li class="font-mono text-label-md">CNPJ 12.549.582/0001-49</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider pt-8 flex flex-col md:flex-row justify-between gap-4 text-clarity-muted text-body-md">
+      <p class="font-mono text-label-sm uppercase tracking-widest">
+        © {ano} Clearix · DIGIAI · Suzano-SP · Brasil
+      </p>
+      <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted/60">
+        Clareza com profundidade.
+      </p>
+    </div>
+  </div>
+</footer>

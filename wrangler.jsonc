@@ -1,0 +1,21 @@
+/**
+ * Cloudflare Workers + Static Assets config
+ * Doc: https://developers.cloudflare.com/workers/static-assets/
+ *
+ * Astro 5 gera site 100% estatico em ./dist via "npm run build".
+ * Cloudflare serve direto da pasta dist como Workers Static Assets,
+ * sem precisar de Worker code custom (compatibilidade total com SPA/SSG).
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "clearix-site",
+  "compatibility_date": "2026-01-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

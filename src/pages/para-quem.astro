@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+
+// Personas canônicas — clearix_pitch/02_posicionamento.md + 03_mercado.md
+const personas = [
+  { tag: 'Ótica solo', titulo: 'Você toca tudo sozinho', dor: 'Caixa apertado e um sistema antigo que trava na hora da venda.', solucao: 'O Essencial coloca venda, paciente e financeiro num lugar só — simples de operar no balcão.', plano: 'Essencial' },
+  { tag: '2 a 4 lojas', titulo: 'Você abriu a segunda (e a terceira)', dor: 'Perdeu a visão consolidada: cada filial fala uma língua.', solucao: 'O Controle traz clínica, laboratório e estoque integrados, com BI gerencial pra enxergar a rede.', plano: 'Controle' },
+  { tag: 'Rede média', titulo: 'Você gerencia uma rede', dor: 'Padronizar sem engessar, com compliance em todas as unidades.', solucao: 'O Crescimento adiciona marketing com IA, fidelidade, prova virtual e BI multi-loja.', plano: 'Crescimento' },
+  { tag: 'Franquia / cadeia', titulo: 'Você responde por governança', dor: 'Visão C-level, SLA e segurança para 20+ lojas.', solucao: 'O Completo entrega todo o ecossistema com SLA dedicado e integrações enterprise.', plano: 'Completo' },
+  { tag: 'Ótica + clínica', titulo: 'Você atende e vende', dor: 'A jornada do paciente e a do cliente vivem em sistemas separados.', solucao: 'Clinics + Paciente + Vendas na mesma base: do exame à entrega, sem retrabalho.', plano: 'Controle' },
+];
+---
+
+<BaseLayout
+  title="Para quem é o Clearix — da ótica solo à franquia"
+  description="Da ótica independente que vende sozinha à rede com governança C-level. Veja qual ponto de partida combina com a sua operação."
+>
+  <!-- Hero -->
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-32 pb-16 md:pt-40 md:pb-20 border-b border-clarity-off/10">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl anim-fade-in relative z-10">
+      <p class="label mb-6">Para quem é</p>
+      <h1 class="h-display mb-6">Da ótica solo <span class="text-clearix-cyan italic">à rede inteira</span>.</h1>
+      <p class="body-lg max-w-2xl">
+        O Clearix nasceu dentro de uma ótica de verdade. Por isso ele acompanha cada estágio do negócio —
+        do primeiro balcão à governança de uma franqueadora.
+      </p>
+    </div>
+  </section>
+
+  <!-- Personas -->
+  <section class="py-16 md:py-24">
+    <div class="container-grid">
+      <div class="grid gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+        {personas.map((p) => (
+          <div class="bg-ink-surface p-7 md:p-9 grid md:grid-cols-12 gap-4 md:gap-8 items-start">
+            <div class="md:col-span-3">
+              <span class="font-mono text-label-sm uppercase tracking-widest text-clearix-cyan">{p.tag}</span>
+              <h2 class="font-serif text-xl text-clarity-off mt-2">{p.titulo}</h2>
+            </div>
+            <div class="md:col-span-5">
+              <p class="label-sm text-clarity-muted mb-2">A dor</p>
+              <p class="text-clarity-dim text-body-md">{p.dor}</p>
+            </div>
+            <div class="md:col-span-4">
+              <p class="label-sm text-clearix-cyan mb-2">No Clearix</p>
+              <p class="text-clarity-dim text-body-md mb-3">{p.solucao}</p>
+              <a href="/planos" class="font-mono text-label-sm uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Plano {p.plano} →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaFinal titulo="Não sabe por onde começar?" texto="Conte o tamanho da sua operação e a gente indica o ponto de partida certo — sem empurrar plano." />
+</BaseLayout>

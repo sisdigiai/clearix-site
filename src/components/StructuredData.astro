@@ -1,0 +1,56 @@
+---
+// JSON-LD: SoftwareApplication (Clearix) + Organization (DIGIAI, marca-mãe) + ofertas.
+// Números e preços canônicos — não inventar.
+const SITE = 'https://clearix.app.br';
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': `${SITE}/#clearix`,
+  name: 'Clearix',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: 'Ecossistema operacional para óticas: vendas, clínica, laboratório, financeiro, estoque, fidelidade, marketing com IA, BI e prova virtual de armações — integrados num só login.',
+  url: SITE,
+  inLanguage: 'pt-BR',
+  publisher: { '@id': `${SITE}/#organization` },
+  offers: [
+    { '@type': 'Offer', name: 'Essencial', price: '349.00', priceCurrency: 'BRL', description: '7 apps, 1 loja' },
+    { '@type': 'Offer', name: 'Controle', price: '899.00', priceCurrency: 'BRL', description: '11 apps, até 5 lojas' },
+    { '@type': 'Offer', name: 'Crescimento', price: '1499.00', priceCurrency: 'BRL', description: '16 apps, até 8 lojas' },
+  ],
+};
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE}/#organization`,
+  name: 'DIGIAI',
+  legalName: 'DIGIAI ÓTICA E TECNOLOGIA LTDA',
+  url: 'https://digiai.app.br',
+  taxID: '12.549.582/0001-49',
+  email: 'sisdigiai@gmail.com',
+  telephone: '+5511986027415',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Suzano',
+    addressRegion: 'SP',
+    addressCountry: 'BR',
+  },
+  brand: { '@id': `${SITE}/#clearix` },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Preciso trocar meu sistema inteiro de uma vez?', acceptedAnswer: { '@type': 'Answer', text: 'Não. A migração é guiada e pode ser por etapa — começamos pelo que dói mais e o resto entra no ritmo da loja.' } },
+    { '@type': 'Question', name: 'Vocês migram meus dados antigos?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. Pacientes, vendas e histórico são importados com as datas originais preservadas — sua operação não começa do zero.' } },
+    { '@type': 'Question', name: 'Funciona com mais de uma loja?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. O Clearix é multi-loja: cada unidade com seus dados, e o dono enxerga tudo numa visão só.' } },
+    { '@type': 'Question', name: 'Quanto custa?', acceptedAnswer: { '@type': 'Answer', text: 'Os planos vão de R$ 349/mês (Essencial) a R$ 1.499/mês (Crescimento), além do plano Completo sob consulta. Há demonstração grátis por 30 dias.' } },
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

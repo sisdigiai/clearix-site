@@ -1,0 +1,20 @@
+---
+// Mark canônico Clearix (DS: arco navy + ponto refrativo cyan).
+// Geometria oficial — não redesenhar. Em fundo escuro o arco usa o tom claro (blue-300).
+// Fonte: Cockpit/clearix_design/assets/BRAND_BOOK_LOGO.md
+interface Props {
+  variant?: 'full' | 'mark';
+  class?: string;
+  arco?: string;  // cor do arco (default: tom claro p/ fundo escuro)
+}
+const { variant = 'full', class: klass = '', arco = '#93C5FD' } = Astro.props;
+---
+<span class={`inline-flex items-center gap-2.5 ${klass}`} aria-label="Clearix">
+  <svg viewBox="0 0 100 100" fill="none" class="h-7 w-7 shrink-0" role="img" aria-hidden="true">
+    <path d="M 74.75 25.25 A 35 35 0 1 0 74.75 74.75" stroke={arco} stroke-width="14" stroke-linecap="round" />
+    <circle cx="85" cy="50" r="7" fill="#06B6D4" />
+  </svg>
+  {variant === 'full' && (
+    <span class="font-sans font-semibold text-[19px] tracking-tight text-clarity-off">Clearix</span>
+  )}
+</span>

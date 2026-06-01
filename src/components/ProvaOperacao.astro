@@ -1,0 +1,52 @@
+---
+import { base, vivo } from '../data/prova';
+---
+
+<section id="operacao" class="py-24 md:py-32 border-b border-clarity-off/10 relative overflow-hidden">
+  <div class="container-grid relative z-10">
+    <div class="max-w-2xl mb-14 md:mb-20">
+      <p class="label mb-4">Operação real · não é demonstração</p>
+      <h2 class="h-section mb-5">A base de uma ótica de verdade, rodando no Clearix.</h2>
+      <p class="body-lg">
+        O Grupo Mello migrou mais de cinco anos de operação para o Clearix — e segue operando nele todo dia.
+      </p>
+    </div>
+
+    <!-- Base acumulada -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-x-6 gap-y-12 text-center reveal">
+      {base.map((m) => (
+        <div class="flex flex-col items-center">
+          <span class="font-mono font-medium tabular-nums whitespace-nowrap leading-none text-clarity-off text-[clamp(1.5rem,3.2vw,3rem)]">
+            {m.valor}
+          </span>
+          <span class="block w-10 h-px bg-clarity-off/10 my-4"></span>
+          <p class="text-body-md text-clarity-muted">{m.label}</p>
+        </div>
+      ))}
+    </div>
+    <p class="label-sm normal-case tracking-wide text-clarity-muted/60 mt-8 text-center">
+      Base acumulada desde 2020, migrada para o Clearix.
+    </p>
+
+    <!-- Selo ao vivo -->
+    <div class="mt-16 md:mt-20 pt-10 border-t border-clarity-off/10 flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
+      <div class="flex items-center gap-3 shrink-0">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-clearix-cyan opacity-60 animate-ping"></span>
+          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-clearix-cyan"></span>
+        </span>
+        <span class="label">Ao vivo · últimos 30 dias</span>
+      </div>
+      <div class="flex flex-wrap gap-x-8 gap-y-2 font-mono text-label-md text-clarity-dim">
+        {vivo.map((v) => (
+          <span><span class="text-clearix-cyan">{v.valor}</span> {v.label}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- watermark -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.015]">
+    <span class="font-serif font-bold text-[200px] md:text-[340px] leading-none">CLEARIX</span>
+  </div>
+</section>

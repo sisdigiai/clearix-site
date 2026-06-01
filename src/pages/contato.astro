@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const HUB = 'https://clearixhub.netlify.app';
+const WHATS = 'https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix';
+---
+
+<BaseLayout
+  title="Agende uma demonstração do Clearix"
+  description="Veja o Clearix rodando com dados parecidos com os da sua ótica. Demonstração grátis, sem compromisso."
+>
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-32 pb-16 md:pt-40 md:pb-20 border-b border-clarity-off/10">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl anim-fade-in relative z-10">
+      <p class="label mb-6">Contato</p>
+      <h1 class="h-display mb-6">Veja o Clearix <span class="text-clearix-cyan italic">na sua ótica</span>.</h1>
+      <p class="body-lg max-w-2xl">
+        Agende uma demonstração: mostramos o ecossistema rodando com dados parecidos com os da sua operação
+        e montamos o plano de setup junto com você.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container-grid grid md:grid-cols-12 gap-10 md:gap-16">
+      <!-- Formulário -->
+      <div class="md:col-span-7">
+        <form
+          name="contato"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="grid gap-5"
+        >
+          <input type="hidden" name="form-name" value="contato" />
+          <p class="hidden"><label>Não preencha: <input name="bot-field" /></label></p>
+
+          <label class="grid gap-2">
+            <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">Seu nome</span>
+            <input type="text" name="nome" required autocomplete="name"
+              class="bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off placeholder:text-clarity-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan"
+              placeholder="Como podemos te chamar?" />
+          </label>
+
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="grid gap-2">
+              <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">WhatsApp</span>
+              <input type="tel" name="whatsapp" required autocomplete="tel"
+                class="bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off placeholder:text-clarity-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan"
+                placeholder="(11) 90000-0000" />
+            </label>
+            <label class="grid gap-2">
+              <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">E-mail</span>
+              <input type="email" name="email" autocomplete="email"
+                class="bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off placeholder:text-clarity-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan"
+                placeholder="voce@suaotica.com.br" />
+            </label>
+          </div>
+
+          <label class="grid gap-2">
+            <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">Quantas lojas você tem?</span>
+            <select name="lojas"
+              class="bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan">
+              <option value="1">1 loja</option>
+              <option value="2-4">2 a 4 lojas</option>
+              <option value="5-15">5 a 15 lojas</option>
+              <option value="16+">16 lojas ou mais</option>
+            </select>
+          </label>
+
+          <label class="grid gap-2">
+            <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">Conte rápido sobre sua operação</span>
+            <textarea name="mensagem" rows="4"
+              class="bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off placeholder:text-clarity-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan"
+              placeholder="Que sistema usa hoje? O que mais incomoda no dia a dia?"></textarea>
+          </label>
+
+          <button type="submit" class="btn-primary justify-self-start">Agendar demonstração</button>
+          <p class="label-sm normal-case tracking-wide text-clarity-muted/60">
+            Seus dados são usados só para o contato comercial, conforme a LGPD.
+          </p>
+        </form>
+      </div>
+
+      <!-- Canais diretos -->
+      <div class="md:col-span-5">
+        <div class="card">
+          <p class="label mb-4">Prefere falar direto?</p>
+          <ul class="space-y-5 text-body-md">
+            <li>
+              <a href={WHATS} target="_blank" rel="noopener" class="flex flex-col hover:text-clearix-cyan transition-colors">
+                <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">WhatsApp</span>
+                <span class="font-mono text-clarity-off">+55 11 98602-7415</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:sisdigiai@gmail.com" class="flex flex-col hover:text-clearix-cyan transition-colors">
+                <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">E-mail</span>
+                <span class="font-mono text-clarity-off">sisdigiai@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a href={HUB} target="_blank" rel="noopener" class="flex flex-col hover:text-clearix-cyan transition-colors">
+                <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">Já sou cliente</span>
+                <span class="font-mono text-clarity-off">Entrar no Hub →</span>
+              </a>
+            </li>
+          </ul>
+          <div class="divider mt-6 pt-6 text-clarity-muted text-body-md">
+            <p>Suzano-SP · Brasil</p>
+            <p class="font-mono text-label-sm mt-1">Seg a Sex · horário comercial</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
