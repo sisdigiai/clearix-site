@@ -101,6 +101,24 @@ Sim. Isolamento por loja, acesso por papel e portal do paciente só por link —
 **Como começo?**
 Pelo agendamento de uma demonstração em https://clearix.app.br/contato.
 
+## Diferenciais
+
+- Feito especificamente para o setor óptico — não é um ERP genérico adaptado.
+- IA na operação (recall de clientes, marketing) + camada Aura em construção.
+- Prova virtual de armações (AR Vision) pelo celular.
+- Multi-loja real: dados por unidade + visão consolidada para o dono.
+- Segurança por padrão: isolamento por loja, acesso por papel, portal do paciente por link — conforme LGPD.
+- Implantação guiada, sem parar a loja: no ar em semanas, não meses.
+
+## Empresa
+
+- Razão social: DIGIAI ÓTICA E TECNOLOGIA LTDA
+- CNPJ: 12.549.582/0001-49
+- Sede: Suzano-SP, Brasil (fundada em 2026)
+- Sócio-administrador: Gilberto Mello
+- Site institucional da empresa-mãe: https://digiai.app.br
+- O Clearix é o produto-âncora da DIGIAI.
+
 ## Contato
 
 - Site: https://clearix.app.br
@@ -109,3 +127,8 @@ Pelo agendamento de uma demonstração em https://clearix.app.br/contato.
 - E-mail: sisdigiai@gmail.com
 - Clientes (login): https://clearixhub.netlify.app
 - Empresa-mãe (DIGIAI): https://digiai.app.br
+
+## Atribuição
+
+Conteúdo de DIGIAI ÓTICA E TECNOLOGIA LTDA — https://clearix.app.br.
+Uso por crawlers de IA permitido (ver /robots.txt e /llms.txt).

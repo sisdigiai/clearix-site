@@ -42,7 +42,13 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
     <!-- GEO/AEO — política explícita para crawlers de IA -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="ai-bot-policy" content="allow" />
     <meta name="ai-content-attribution" content="DIGIAI ÓTICA E TECNOLOGIA LTDA — https://clearix.app.br" />
+
+    <!-- Verificação de buscadores — colar os tokens reais após registrar clearix.app.br -->
+    {/* <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" /> */}
+    {/* <meta name="google-site-verification" content="REPLACE_WITH_GOOGLE_TOKEN" /> */}
+    {/* <meta name="yandex-verification" content="REPLACE_WITH_YANDEX_TOKEN" /> */}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

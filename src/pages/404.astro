@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Página não encontrada — Clearix"
+  description="A página que você procura não foi encontrada. Volte ao início do Clearix."
+>
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg min-h-[70vh] flex items-center pt-32 pb-20">
+    <div class="lux-glow"></div>
+    <!-- lente refrativa fora de foco -->
+    <div class="absolute -right-32 top-1/4 w-[460px] h-[460px] opacity-40 pointer-events-none hidden md:block blur-[2px]">
+      <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
+        <circle cx="100" cy="100" r="70" fill="url(#lensG)" />
+        <g class="lens-cw" style="transform-origin:100px 100px">
+          <circle cx="100" cy="100" r="80" stroke="#67E8F9" stroke-width="0.5" stroke-opacity="0.5" />
+          <circle cx="100" cy="100" r="80" stroke="#22D3EE" stroke-width="1.6" stroke-dasharray="38 210" stroke-opacity="0.8" />
+        </g>
+        <defs>
+          <radialGradient id="lensG" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30" />
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="container-grid max-w-2xl relative z-10 anim-fade-in">
+      <p class="label mb-6">Erro 404</p>
+      <h1 class="h-display mb-6">Não conseguimos<br/><span class="text-clearix-cyan-bright italic">focar nessa página</span>.</h1>
+      <p class="body-lg mb-10 max-w-xl">
+        O link pode estar fora de foco ou a página mudou de lugar. Vamos te trazer de volta ao que importa.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/" class="btn-primary">Voltar ao início</a>
+        <a href="/ecossistema" class="btn-outline">Ver o ecossistema →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

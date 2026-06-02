@@ -1,35 +1,66 @@
 # Clearix
 
 > Ecossistema operacional para óticas brasileiras — 16 apps integrados num só login.
-> Produto-âncora da DIGIAI (DIGIAI ÓTICA E TECNOLOGIA LTDA), Suzano-SP.
+> Produto-âncora da DIGIAI (DIGIAI ÓTICA E TECNOLOGIA LTDA), Suzano-SP, Brasil.
+> "O ecossistema completo para a ótica que quer crescer com método, tecnologia e inteligência."
 
 ## O que é
 
-Clearix integra a operação inteira de uma ótica: vendas (PDV), clínica (anamnese e
-prescrições), laboratório (DCL), financeiro, estoque, catálogo de lentes, RH, fidelidade,
-marketing com IA, BI e prova virtual de armações (AR Vision). O dado entra uma vez e flui
-entre todos os apps.
+Clearix integra a operação inteira de uma ótica num único ecossistema: o dado entra uma
+vez e flui entre todos os apps — a venda alimenta o laboratório, que avisa o paciente, que
+conta no financeiro, que aparece no BI. Sem digitar duas vezes, sem sistemas desconectados.
 
 ## Para quem
 
-Donos e gerentes de óticas — da ótica solo independente a redes e franquias (1 a 20+ lojas).
+Donos e gerentes de óticas brasileiras — da ótica solo independente a redes e franquias
+(1 a 20+ lojas). Também óticas com clínica (dupla jornada paciente + cliente).
+
+## Os 16 apps (voltados ao cliente)
+
+- Vender: Vendas (PDV/orçamento/caixa/carnês), Express (checkout de campanha), Loyalty (fidelidade)
+- Atender: Clinics (prontuário), Paciente (portal WhatsApp), Client (portal B2B), DCL (laboratório kanban)
+- Gerir: Finance (DRE/fluxo/NF-e), Estoque, Lens (catálogo de lentes), RH
+- Crescer: Marketing (WhatsApp + IA), BI (dashboards cross-app), AR Vision (prova virtual), Import (migração)
+- Núcleo: Hub (login único + visão geral)
 
 ## Planos
 
 - Essencial — R$ 349/mês — 7 apps — 1 loja
-- Controle — R$ 899/mês — 11 apps — até 5 lojas
+- Controle — R$ 899/mês — 11 apps — até 5 lojas (mais escolhido)
 - Crescimento — R$ 1.499/mês — 16 apps — até 8 lojas
 - Completo — sob consulta — todo o ecossistema + SLA — lojas ilimitadas
-- Demonstração grátis por 30 dias
+- Demonstração grátis por 30 dias, sem cartão de crédito.
 
-## Prova
+## Diferenciais
 
-Em operação real no Grupo Mello Óticas há mais de 5 anos: 20.488 vendas, 22.299 ordens de
-serviço, 19.737 pacientes e 97.996 lançamentos financeiros migrados e operando no Clearix.
+- Feito especificamente para o setor óptico (não é ERP genérico adaptado).
+- IA na operação: recall de clientes, marketing, e a camada Aura em construção.
+- Prova virtual de armações (AR Vision) — o cliente experimenta pelo celular.
+- Multi-loja real: cada unidade com seus dados, visão consolidada para o dono.
+- Segurança por padrão: isolamento por loja, acesso por papel, portal do paciente por link — conforme LGPD.
 
-## Links
+## Prova de operação real
+
+Em uso real no Grupo Mello Óticas há mais de 5 anos (desde out/2020), migrado para o Clearix:
+20.488 vendas, 22.299 ordens de serviço, 19.737 pacientes, 97.996 lançamentos financeiros,
+10 lojas, mais de R$ 17 milhões rastreados. Recall de cliente com IA: de ~3% manual para ~33%.
+
+## Empresa
+
+- Razão social: DIGIAI ÓTICA E TECNOLOGIA LTDA
+- CNPJ: 12.549.582/0001-49
+- Sede: Suzano-SP, Brasil
+- Sócio-administrador: Gilberto Mello
+- Site institucional: https://digiai.app.br
+
+## Contato
 
 - Site: https://clearix.app.br
 - Demonstração: https://clearix.app.br/contato
-- Empresa (DIGIAI): https://digiai.app.br
+- WhatsApp: +55 11 98602-7415
+- E-mail: sisdigiai@gmail.com
 - Clientes (login): https://clearixhub.netlify.app
+
+## Atribuição
+
+Conteúdo de DIGIAI ÓTICA E TECNOLOGIA LTDA — https://clearix.app.br. Uso por crawlers de IA permitido.
