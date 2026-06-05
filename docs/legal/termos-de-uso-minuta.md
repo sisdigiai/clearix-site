@@ -57,7 +57,7 @@ Esta é a parte mais importante destes Termos, e pedimos atenção especial.
 
 4.3. **Dados de saúde exigem cuidado reforçado.** O módulo de prontuário e prescrições trata **dados pessoais sensíveis de saúde** (LGPD, art. 11). Você se compromete a coletar e tratar esses dados com base legal adequada (por exemplo, tutela da saúde) e a só inserir no Clearix dados que tenha o direito de tratar.
 
-4.4. A relação de tratamento de dados entre você (Controlador) e a DIGIAI (Operadora) é detalhada na nossa **Política de Privacidade** e, quando aplicável, em **Acordo de Tratamento de Dados (DPA)** específico. [A DEFINIR — revisão jurídica: se o DPA será documento à parte anexo ao contrato.]
+4.4. O tratamento de dados pessoais entre você (Controlador) e a DIGIAI (Operadora) é regido pela nossa **Política de Privacidade** e pelo **Acordo de Tratamento de Dados (DPA)**, que integra estes Termos como anexo e deles é parte indissociável. Em caso de conflito entre estes Termos e o DPA quanto a tratamento de dados pessoais, **prevalece o DPA**. O DPA detalha: objeto e duração do tratamento, categorias de dados e de titulares, medidas de segurança, suboperadores, resposta a incidentes e a titulares, e devolução/eliminação ao término. [A DEFINIR — revisão jurídica: finalizar o DPA como anexo obrigatório, sobretudo por envolver dados de saúde (art. 11) e transferência internacional (art. 33).]
 
 ## 5. Planos, assinatura, pagamento e renovação
 
@@ -146,26 +146,84 @@ Ao usar o Clearix, você se compromete a:
 
 13.2. Mudanças relevantes serão comunicadas com antecedência razoável pelos canais de contato. Se você continuar usando o Clearix após a entrada em vigor, considera-se que aceitou a nova versão. [A DEFINIR — revisão jurídica: forma de notificação e prazo.]
 
-## 14. Foro e legislação aplicável
+## 14. Confidencialidade
 
-14.1. Estes Termos são regidos pela legislação brasileira.
+14.1. No curso da relação, cada parte pode ter acesso a informações confidenciais da outra — incluindo, da DIGIAI: arquitetura, funcionalidades não públicas, preços negociados e roadmap do Clearix; e do Cliente: dados de operação, estratégia comercial e os dados pessoais sob sua titularidade.
 
-14.2. Fica eleito o foro da Comarca de **[A DEFINIR — revisão jurídica: São Paulo/SP ou Suzano/SP]**, Estado de São Paulo, para dirimir controvérsias, com renúncia a qualquer outro, por mais privilegiado que seja.
+14.2. Cada parte se obriga a manter sigilo sobre as informações confidenciais da outra, usá-las apenas para cumprir estes Termos e não divulgá-las a terceiros sem autorização escrita, salvo a colaboradores e prestadores que precisem conhecê-las e estejam sujeitos a dever de sigilo equivalente.
 
-## 15. Contato
+14.3. Não são confidenciais informações que: (a) sejam ou se tornem públicas sem violação destes Termos; (b) já fossem conhecidas da parte receptora sem dever de sigilo; ou (c) devam ser reveladas por exigência legal ou ordem de autoridade — caso em que a parte obrigada avisará a outra com antecedência, quando legalmente possível.
+
+14.4. O dever de confidencialidade subsiste por [A DEFINIR — revisão jurídica, sugestão: 5 anos] após o término do contrato. Segredos de negócio e dados pessoais permanecem protegidos enquanto mantiverem essa natureza.
+
+## 15. Escopo da licença de uso
+
+15.1. A DIGIAI concede ao Cliente uma licença não exclusiva, intransferível e não sublicenciável de uso do Clearix, limitada à operação interna do próprio Cliente e de suas filiais/lojas cobertas pelo plano contratado, durante a vigência do contrato.
+
+15.2. O Cliente não pode revender, alugar, ceder, hospedar para terceiros ou disponibilizar o acesso ao Clearix a quem não seja usuário autorizado de sua própria organização, salvo os portais de cliente/paciente, que se destinam, por natureza, aos seus pacientes e clientes finais.
+
+15.3. O Cliente é responsável pelos atos de seus usuários autorizados como se fossem seus próprios.
+
+## 16. Indenização
+
+16.1. O Cliente indenizará a DIGIAI por perdas, danos e despesas (incluindo honorários razoáveis) decorrentes de: (a) uso do Clearix em violação a estes Termos ou à lei; (b) inserção no sistema de dados que o Cliente não tinha o direito de tratar, ou tratamento sem base legal adequada (LGPD, art. 7º e art. 11); (c) reclamações de titulares de dados ou terceiros relativas a decisões e finalidades definidas pelo Cliente na qualidade de Controlador.
+
+16.2. A DIGIAI indenizará o Cliente por perdas decorrentes de violação destes Termos atribuível à DIGIAI no fornecimento do serviço, observados os limites da cláusula de Limitação de Responsabilidade (cláusula 12).
+
+16.3. A parte que receber uma reclamação coberta por esta cláusula notificará a outra em prazo razoável e cooperará na defesa.
+
+## 17. Caso fortuito e força maior
+
+17.1. Nenhuma parte responde por descumprimento causado por evento de força maior ou caso fortuito (CC, art. 393), incluindo, sem limitação: falhas de provedores de infraestrutura em nuvem, interrupções de internet ou energia, ataques cibernéticos de larga escala, atos de autoridade, calamidades e pandemias.
+
+17.2. A parte afetada comunicará a outra assim que possível e envidará esforços razoáveis para mitigar os efeitos. Persistindo o evento por mais de [A DEFINIR — revisão jurídica, sugestão: 30 dias], qualquer parte poderá rescindir sem ônus.
+
+## 18. Cessão
+
+18.1. O Cliente não pode ceder ou transferir este contrato sem anuência escrita da DIGIAI, exceto em caso de reorganização societária do próprio Cliente (fusão, aquisição, sucessão), mediante aviso.
+
+18.2. A DIGIAI pode ceder este contrato a empresa do mesmo grupo ou sucessora, ou em operação societária, mantidas as condições contratadas e a proteção dos dados do Cliente, com comunicação ao Cliente quando houver troca de Operador (coerente com o DPA).
+
+## 19. Sobrevivência
+
+Sobrevivem ao término deste contrato, pela natureza ou pelo prazo nelas previsto, as cláusulas de: Confidencialidade (14), Propriedade Intelectual (9), Indenização (16), Limitação de Responsabilidade (12), Portabilidade e Exclusão de Dados (11), Foro (20), e as obrigações do DPA relativas a devolução/eliminação de dados.
+
+## 20. Foro e legislação aplicável
+
+20.1. Estes Termos são regidos pela legislação brasileira.
+
+20.2. Fica eleito o foro da Comarca de **[A DEFINIR — revisão jurídica: sugestão Suzano/SP, sede da DIGIAI — em contrato B2B o foro da sede do fornecedor é válido]**, Estado de São Paulo, para dirimir controvérsias, com renúncia a qualquer outro, por mais privilegiado que seja.
+
+## 21. Contato
 
 Dúvidas sobre estes Termos ou sobre o tratamento de dados: **dpo@digiai.app.br**.
+[A DEFINIR — comercial: avaliar separar canal contratual/comercial do canal de privacidade (DPO), para não misturar cancelamento com prazo de incidente de dados.]
 
 ---
 
-## PONTOS PARA O ADVOGADO (Termos)
-1. **Foro** (14.2): São Paulo/SP ou Suzano/SP.
-2. **Renovação automática e fidelidade** (5.3).
-3. **Reajuste** (5.4): periodicidade, índice, prazo de aviso.
-4. **Cancelamento** (6.2): aviso prévio, multa, reembolso proporcional.
-5. **SLA** (7.4): "melhor esforço" vs SLA com uptime/créditos.
-6. **Suspensão/encerramento** (10.2): prazos de aviso.
-7. **Portabilidade** (11.1): prazo da janela de exportação.
-8. **Limitação de responsabilidade** (12.3): teto monetário (não afastar LGPD inafastável).
-9. **DPA** (4.4): anexo separado ou incorporado.
-10. **Notificação de mudança** (13.2): forma e prazo.
+## RECOMENDAÇÕES DE MERCADO PARA OS `[A DEFINIR]` (decisão do dono/advogado)
+
+> Referência de SaaS B2B brasileiro de ticket R$349–1499/mês. **Não é definição** — é insumo para o dono/advogado decidir.
+
+| Cláusula | Item | Recomendação de mercado |
+|---|---|---|
+| 20.2 | Foro | **Suzano/SP** (sede). Em B2B o foro da sede do fornecedor é válido. |
+| 5.3 | Renovação/fidelidade | Renovação automática mensal, cancelável a qualquer tempo; sem fidelidade no plano de entrada (opção 12m c/ desconto nos altos). |
+| 5.4 | Reajuste | Anual por **IPCA**, aviso de **30 dias** (Lei 10.192/2001 — periodicidade mín. anual). |
+| 6.2 | Cancelamento | Efeito ao fim do ciclo vigente; **sem multa** no mensal; sem reembolso proporcional do mês iniciado. |
+| 7.4 | SLA | **99,5%/mês** se quiser número comercializável; senão manter "melhor esforço". Sem crédito automático no início. |
+| 10.2 | Suspensão | **10 dias** após vencimento p/ suspender; **30 dias** p/ encerrar. |
+| 11.1 | Portabilidade | **30 dias** após o término para exportar (alinha LGPD art. 18). |
+| 12.3 | Teto de responsabilidade | **Valor pago nos últimos 12 meses**; ressalva LGPD inafastável (mantida). |
+| 13.2 | Notificação de mudança | E-mail + aviso no painel, **30 dias** antes. |
+| 14.4 | Prazo de confidencialidade | **5 anos** após o término. |
+| 17.2 | Força maior — rescisão | Após **30 dias** de evento persistente. |
+
+## PONTOS QUE EXIGEM ADVOGADO HUMANO
+1. Sign-off final de todos os `[A DEFINIR]` da tabela acima (decisões comerciais + jurídicas vinculantes).
+2. **Teto de responsabilidade** (12.3) × LGPD inafastável — redação que limite risco sem ser nula perante titulares de dados de saúde.
+3. **Indenização cruzada** (16) — equilíbrio de risco Controlador × Operador no cenário de dado sensível.
+4. **DPA completo** (alçada do advogado-lgpd + revisão humana) — art. 11 (saúde), art. 33 (transferência internacional), retenção de prontuário. Interface dos Termos já aponta o DPA como anexo prevalente (4.4).
+5. **Fidelidade/multa** (se adotadas) — calibrar contrapartida p/ não ser abusiva.
+6. **Aceite por clique (clickwrap)** — validade para vincular a PJ contratante (quem aceita tem poderes?).
+7. 🚫 **BLOQUEIO DE PUBLICAÇÃO:** a cl. 1 diz "microempresa em constituição / CNPJ em transição na RFB". **Não publicar os Termos enquanto a DIGIAI ÓTICA E TECNOLOGIA LTDA não estiver regular na RFB** — contratar em nome de PJ ainda não constituída é vício de capacidade. Pré-condição, não só redação.
