@@ -58,5 +58,5 @@ Home reencenada como experiência cinematográfica da marca (a lente Clearix foc
 - [ ] Apontar o `/clearix` do `digiai-site` para este novo site (teaser → site dedicado).
 - [ ] Verificação Bing/Google (meta tags) quando os tokens existirem.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).
-- [ ] Depoimento da home ainda é MOCK — trocar por depoimento real com nome/cargo antes de publicar.
+- [x] ~~Depoimento da home ainda é MOCK~~ — reescrito como case factual (2026-07-11): sem citação inventada, só fatos verificáveis + números de `prova.ts`. Depoimento com nome/cargo pode substituir no futuro.
 - [ ] "Garantia Clearix de migração sem trauma" (RiscoZero): validar com o comercial que a promessa (30 dias + dados exportáveis) é o que se pratica.

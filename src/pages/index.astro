@@ -7,7 +7,7 @@ import RiscoZero from '../components/RiscoZero.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { apps, jornadas } from '../data/apps';
 import { planos } from '../data/planos';
-import { promessas } from '../data/prova';
+import { promessas, base } from '../data/prova';
 
 const HUB = 'https://clearixhub.netlify.app';
 
@@ -107,22 +107,25 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
   <!-- Cuidado — ato claro da página (Precisão e Cuidado): a lente deixa a luz passar -->
   <Cuidado />
 
-  <!-- Depoimento (MOCK — trocar por depoimento real com nome/cargo antes de publicar) -->
+  <!-- Case real de operação (fatos verificáveis, números de src/data/prova.ts — sem citação inventada) -->
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
     <div class="container-grid max-w-4xl">
-      <figure class="glass rounded-2xl p-8 md:p-12 focus3d">
-        <div class="prism-edge h-[2px] w-20 mb-8 rounded-full"></div>
-        <blockquote class="font-display font-semibold text-[22px] md:text-[30px] leading-snug tracking-tight text-clarity-off">
-          “Migramos mais de cinco anos de operação para o Clearix sem parar a loja. Hoje a rede inteira está numa tela só, o laboratório avisa o cliente sozinho — e quem sumia, volta.”
-        </blockquote>
-        <figcaption class="mt-8 flex items-center gap-4">
-          <span class="w-12 h-12 rounded-full bg-clearix-navy/40 border border-clearix-navy-soft/30 grid place-items-center font-display font-bold text-clearix-cyan-bright">GM</span>
-          <span>
-            <span class="block text-clarity-off font-semibold">Grupo Mello Óticas</span>
-            <span class="block text-clarity-muted text-body-md">Cliente desde 2020 · 10 lojas</span>
+      <div class="glass rounded-2xl p-8 md:p-12 focus3d">
+        <div class="prism-edge h-[2px] w-20 mb-6 rounded-full"></div>
+        <p class="label mb-5">Case real · Grupo Mello Óticas</p>
+        <p class="font-display font-semibold text-[22px] md:text-[30px] leading-snug tracking-tight text-clarity-off">
+          10 lojas migraram mais de cinco anos de operação para o Clearix — sem parar de vender.
+          Hoje a rede inteira está numa tela só, o laboratório avisa o cliente sozinho, e quem sumia, o recall traz de volta.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+          <span class="w-12 h-12 rounded-full bg-clearix-navy/40 border border-clearix-navy-soft/30 grid place-items-center font-display font-bold text-clearix-cyan-bright shrink-0">GM</span>
+          <span class="flex flex-wrap gap-x-6 gap-y-1 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80">
+            <span><span class="text-clearix-cyan-bright">{base.find((m) => m.label === 'Vendas')?.valor}</span> vendas</span>
+            <span><span class="text-clearix-cyan-bright">{base.find((m) => m.label === 'Pacientes')?.valor}</span> pacientes</span>
+            <span><span class="text-clearix-cyan-bright">desde 2020</span> em produção</span>
           </span>
-        </figcaption>
-      </figure>
+        </div>
+      </div>
     </div>
   </section>
 
