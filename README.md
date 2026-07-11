@@ -25,12 +25,14 @@ npm run preview  # serve ./dist
 
 ### 1. Repositório GitHub
 
-Repo: `mellooticas/clearix_site` (push na `main` dispara o build).
+Repo de produção: **`sisdigiai/clearix-site`** (o `origin`; push na `main` dispara o build no Cloudflare — verificado em 2026-07-11).
+
+> `mellooticas/clearix_site` é espelho histórico — push lá NÃO publica nada. Este repo local usa `credential.username=sisdigiai` (config local) para o push.
 
 ### 2. Conectar no Cloudflare Pages
 
 1. Cloudflare Dashboard → **Workers & Pages → Create → Pages → Connect to Git**
-2. Selecione `mellooticas/clearix_site`
+2. Selecione `sisdigiai/clearix-site`
 3. Build settings:
    - Build command: `npm run build`
    - Output directory: `dist`

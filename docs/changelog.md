@@ -54,7 +54,7 @@ Home reencenada como experiência cinematográfica da marca (a lente Clearix foc
 ### Pendências conhecidas
 - [ ] Endpoint real do formulário de contato (hoje usa atributo Netlify Forms; no Cloudflare Pages usar Pages Functions ou webhook).
 - [ ] Confirmar domínio `clearix.app.br` no DNS (Registro.br) e conectar no Cloudflare Pages.
-- [ ] Criar repo GitHub `mellooticas/clearix_site` e fazer o push inicial.
+- [x] ~~Criar repo GitHub `mellooticas/clearix_site` e fazer o push inicial~~ — produção mudou: o Cloudflare observa **`sisdigiai/clearix-site`** (verificado 2026-07-11); `mellooticas/clearix_site` é só espelho.
 - [ ] Apontar o `/clearix` do `digiai-site` para este novo site (teaser → site dedicado).
 - [ ] Verificação Bing/Google (meta tags) quando os tokens existirem.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).
