@@ -1,0 +1,100 @@
+---
+/**
+ * Cuidado — o ato claro da página (conceito "Precisão e Cuidado", mock claude-designer).
+ * Único trecho em tom claro da landing: a lente deixa a luz passar — o momento humano
+ * entre as seções de precisão. Contraste claro/escuro como narrativa, sem trocar a
+ * identidade Clearix Lens (tokens blue/cyan preservados; nada de azul fora de token).
+ *
+ * Números reais do tenant Grupo Mello (src/data/prova.ts) — não usar mock aqui.
+ */
+import { base } from '../data/prova';
+
+const pacientes = base.find((m) => m.label === 'Pacientes')?.valor ?? '19.737';
+
+const cuidados = [
+  { t: 'Conforme LGPD', d: 'Dado clínico tratado como dado de saúde: isolamento por loja e acesso por papel.' },
+  { t: 'Continuidade', d: 'Receita, histórico e recall — o paciente nunca fica esquecido no balcão.' },
+  { t: 'Confiança', d: '5+ anos em produção cuidando de operação real, todos os dias.' },
+];
+---
+
+<section class="cuidado-light relative overflow-hidden py-20 md:py-28 border-y border-clearix-navy/10">
+  <!-- lente em modo claro: anéis azuis sutis -->
+  <div class="pointer-events-none absolute -right-44 -top-40 hidden h-[560px] w-[560px] opacity-60 md:block" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none" class="h-full w-full">
+      <circle cx="100" cy="100" r="72" fill="url(#lensLight)" />
+      <defs>
+        <radialGradient id="lensLight" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.16" />
+          <stop offset="55%" stop-color="#3B82F6" stop-opacity="0.06" />
+          <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <g class="lens-cw" style="transform-origin:100px 100px">
+        <circle cx="100" cy="100" r="80" stroke="#3B82F6" stroke-width="0.6" stroke-opacity="0.35" />
+        <circle cx="100" cy="100" r="80" stroke="#06B6D4" stroke-width="1.4" stroke-dasharray="38 210" stroke-opacity="0.5" />
+      </g>
+      <circle cx="100" cy="100" r="52" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.3" stroke-dasharray="5 9" />
+      <circle cx="100" cy="100" r="2.5" fill="#06B6D4" />
+    </svg>
+  </div>
+
+  <div class="container-grid relative z-10 grid gap-12 md:grid-cols-12 md:gap-16 md:items-center">
+    <div class="md:col-span-7 focus3d-soft">
+      <p class="mb-5 inline-flex items-center gap-2 font-mono text-label-md uppercase tracking-widest text-clearix-blue">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-clearix-cyan"></span>
+        Ótica · Saúde · Tecnologia
+      </p>
+      <h2 class="font-display font-extrabold text-[32px] leading-[1.08] tracking-[-0.03em] md:text-[44px] text-ink-surface mb-6">
+        A precisão de um sistema.<br/>
+        O <span class="text-clearix-blue">cuidado</span> de quem entende de
+        <span class="cuidado-underline">saúde</span>.
+      </h2>
+      <p class="max-w-xl text-body-lg text-ink-high/80 mb-8">
+        O Clearix cuida da sua ótica como você cuida do paciente: com atenção aos detalhes,
+        continuidade e confiança. Do primeiro atendimento à entrega do óculos — nada se perde
+        no caminho.
+      </p>
+      <div class="grid gap-4 sm:grid-cols-3">
+        {cuidados.map((c) => (
+          <div class="rounded-xl border border-clearix-navy/12 bg-white/70 p-4 shadow-[0_10px_30px_-18px_rgba(26,58,92,0.35)] backdrop-blur-sm">
+            <p class="mb-1 flex items-center gap-1.5 font-semibold text-[14px] text-ink-surface"><span class="text-clearix-cyan">✓</span> {c.t}</p>
+            <p class="text-[13px] leading-snug text-ink-high/70">{c.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Prova humana: pacientes reais -->
+    <div class="md:col-span-5 focus3d">
+      <div class="rounded-2xl border border-clearix-navy/12 bg-white/80 p-8 shadow-[0_30px_70px_-30px_rgba(26,58,92,0.45)] backdrop-blur-sm">
+        <p class="label-sm mb-6 !text-clearix-blue/80">Operação real · Grupo Mello</p>
+        <p class="font-mono tabular-nums text-[56px] leading-none tracking-tight text-ink-surface">{pacientes}</p>
+        <p class="mt-2 font-display text-lg font-semibold text-ink-surface">pacientes cuidados no Clearix</p>
+        <p class="mt-1 text-body-md text-ink-high/70">histórico clínico, receitas e recall — desde 2020, sem perder ninguém.</p>
+        <div class="prism-edge mt-7 h-[2px] w-24 rounded-full"></div>
+        <p class="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-label-sm uppercase tracking-widest text-ink-high/60">
+          <span><span class="text-clearix-blue">✓</span> dados seguros</span>
+          <span><span class="text-clearix-blue">✓</span> LGPD</span>
+          <span><span class="text-clearix-blue">✓</span> 5+ anos no ar</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* papel frio Clearix (≠ papel quente do mock): branco-azulado, tokens da casa */
+  .cuidado-light {
+    background:
+      radial-gradient(90% 70% at 85% 20%, rgba(34, 211, 238, 0.10), transparent 60%),
+      linear-gradient(180deg, #F7FAFF 0%, #EAF3FF 100%);
+  }
+  .cuidado-underline { position: relative; white-space: nowrap; }
+  .cuidado-underline::after {
+    content: '';
+    position: absolute; left: 0; right: 0; bottom: 0.04em; height: 0.14em;
+    background: linear-gradient(90deg, #06B6D4, #3B82F6);
+    border-radius: 999px; opacity: 0.45;
+  }
+</style>

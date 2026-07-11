@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroLente from '../components/HeroLente.astro';
 import ProvaOperacao from '../components/ProvaOperacao.astro';
+import Cuidado from '../components/Cuidado.astro';
+import RiscoZero from '../components/RiscoZero.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { apps, jornadas } from '../data/apps';
 import { planos } from '../data/planos';
@@ -29,65 +32,8 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
 ---
 
 <BaseLayout>
-  <!-- Hero -->
-  <section data-lux class="lux-cyan relative overflow-hidden grid-bg grid-bg-anim pt-32 pb-20 md:pt-44 md:pb-28 border-b border-clarity-off/10">
-    <div class="lux-glow"></div>
-    <div class="lux-beams"></div>
-    <!-- lente refrativa (dispersão de luz) -->
-    <div class="absolute -right-40 -top-36 w-[620px] h-[620px] opacity-70 pointer-events-none hidden md:block">
-      <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
-        <defs>
-          <radialGradient id="lensG" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30" />
-            <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.10" />
-            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-        <circle cx="100" cy="100" r="72" fill="url(#lensG)" />
-        <g class="lens-cw" style="transform-origin:100px 100px">
-          <circle cx="100" cy="100" r="80" stroke="#67E8F9" stroke-width="0.5" stroke-opacity="0.5" />
-          <circle cx="100" cy="100" r="80" stroke="#22D3EE" stroke-width="1.6" stroke-dasharray="38 210" stroke-opacity="0.85" />
-        </g>
-        <g class="lens-ccw" style="transform-origin:100px 100px">
-          <circle cx="100" cy="100" r="58" stroke="#93C5FD" stroke-width="0.5" stroke-opacity="0.45" stroke-dasharray="6 8" />
-        </g>
-        <circle cx="100" cy="100" r="40" stroke="#67E8F9" stroke-width="0.6" stroke-opacity="0.5" />
-        <line x1="100" y1="100" x2="184" y2="58" stroke="#3B82F6" stroke-width="0.8" stroke-opacity="0.55" />
-        <line x1="100" y1="100" x2="186" y2="65" stroke="#22D3EE" stroke-width="0.8" stroke-opacity="0.55" />
-        <line x1="100" y1="100" x2="188" y2="72" stroke="#a78bfa" stroke-width="0.8" stroke-opacity="0.5" />
-        <circle cx="100" cy="100" r="3" fill="#22D3EE" />
-      </svg>
-    </div>
-    <div class="container-grid max-w-3xl anim-fade-in relative z-10">
-      <p class="inline-flex items-center gap-2 mb-6 font-mono text-label-md uppercase tracking-wider text-amber-400">
-        <span aria-hidden="true">▾</span> 20 a 40 clientes somem da sua ótica todo mês
-      </p>
-      <h1 class="h-display mb-6">
-        Pare de perder cliente.<br/>
-        A ótica inteira, <span class="text-clearix-cyan-bright italic">numa só inteligência</span>.
-      </h1>
-      <p class="body-lg max-w-2xl mb-10">
-        Clearix é o ecossistema completo para a ótica que quer crescer com método, tecnologia e inteligência.
-        Vendas, clínica, laboratório, financeiro, marketing com IA e prova virtual — 16 apps, um só login.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="/contato" class="btn-primary cta-pulse">Começar grátis por 30 dias</a>
-        <a href="/contato" class="btn-outline">Agendar demonstração</a>
-      </div>
-      <p class="text-clarity-muted text-body-md mt-5">
-        <span class="text-clearix-cyan-bright">✓</span> Sem cartão de crédito
-        <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Migração guiada
-        <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Seus dados preservados
-      </p>
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80">
-        <span><span class="text-clarity-off">10</span> lojas reais</span>
-        <span class="text-clarity-muted/30" aria-hidden="true">·</span>
-        <span><span class="text-clarity-off">+20 mil</span> vendas processadas</span>
-        <span class="text-clarity-muted/30" aria-hidden="true">·</span>
-        <span><span class="text-clarity-off">5+ anos</span> em produção</span>
-      </div>
-    </div>
-  </section>
+  <!-- Hero-lente cinematográfico (scroll-scrub) — a lente Clearix focando -->
+  <HeroLente />
 
   <!-- Painel ao vivo — "o produto é o demo" -->
   <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
@@ -98,7 +44,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
         <p class="body-lg">Não é print parado — é a operação real do dia a dia fluindo entre os apps do Clearix, numa visão só.</p>
       </div>
       <div class="md:col-span-7">
-        <div class="glass rounded-xl overflow-hidden reveal">
+        <div class="glass rounded-xl overflow-hidden focus3d">
           <div class="flex items-center gap-2 px-4 py-3 border-b border-clarity-off/10">
             <span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clearix-cyan/60"></span>
             <span class="ml-3 font-mono text-label-sm text-clarity-muted">clearix · painel</span>
@@ -123,7 +69,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
 
   <!-- Promessas / prova rápida -->
   <section class="py-16 md:py-20 border-b border-clarity-off/10">
-    <div class="container-grid grid grid-cols-1 md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+    <div class="container-grid grid grid-cols-1 md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
       {promessas.map((p) => (
         <div class="bg-ink-surface p-8">
           <span class="block font-mono tabular-nums text-4xl text-clearix-cyan mb-2">{p.valor}</span>
@@ -139,7 +85,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
     <div class="container-grid">
       <p class="label mb-4">Por que Clearix</p>
       <h2 class="h-section mb-12">Da operação no improviso ao sistema inteligente.</h2>
-      <div class="grid md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+      <div class="grid md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
         <div class="bg-ink-base p-8">
           <p class="label-sm text-amber-400/90 mb-6">Antes — no improviso</p>
           <ul class="space-y-4">
@@ -158,10 +104,13 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
 
   <ProvaOperacao />
 
+  <!-- Cuidado — ato claro da página (Precisão e Cuidado): a lente deixa a luz passar -->
+  <Cuidado />
+
   <!-- Depoimento (MOCK — trocar por depoimento real com nome/cargo antes de publicar) -->
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
     <div class="container-grid max-w-4xl">
-      <figure class="glass rounded-2xl p-8 md:p-12">
+      <figure class="glass rounded-2xl p-8 md:p-12 focus3d">
         <div class="prism-edge h-[2px] w-20 mb-8 rounded-full"></div>
         <blockquote class="font-display font-semibold text-[22px] md:text-[30px] leading-snug tracking-tight text-clarity-off">
           “Migramos mais de cinco anos de operação para o Clearix sem parar a loja. Hoje a rede inteira está numa tela só, o laboratório avisa o cliente sozinho — e quem sumia, volta.”
@@ -186,25 +135,41 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
         <p class="body-lg mt-5">Não são ferramentas soltas: cada app compartilha os mesmos dados, regras e identidade — organizados pela jornada da sua ótica.</p>
       </div>
 
-      {jornadas.map((j) => (
-        <div class="mb-10 last:mb-0">
-          <div class="flex items-baseline gap-3 mb-4">
-            <h3 class="font-mono text-label-md uppercase tracking-widest text-clearix-cyan">{j.titulo}</h3>
-            <span class="text-clarity-muted text-body-md">{j.desc}</span>
-          </div>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
-            {apps.filter((a) => a.jornada === j.key).map((a) => (
-              <div class="bg-ink-surface p-5 flex flex-col gap-2 transition-shadow hover:shadow-[0_0_40px_-14px_#06B6D4]">
-                <span class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full shrink-0" style={`background:${a.cor}`}></span>
-                  <span class="font-mono text-label-sm uppercase tracking-widest text-clarity-off">{a.nome}</span>
+      {jornadas.map((j, ji) => {
+        const jApps = apps.filter((a) => a.jornada === j.key);
+        return (
+          <details class="lens-card group" open={ji === 0}>
+            <summary class="lens-summary flex items-center gap-4 p-5 md:p-6 hover:bg-clearix-navy/10 transition-colors">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-clearix-cyan/25 bg-clearix-navy/25 font-mono text-clearix-cyan-bright text-label-sm">{String(ji + 1).padStart(2, '0')}</span>
+              <span class="min-w-0 flex-1">
+                <span class="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                  <span class="font-mono text-label-md uppercase tracking-widest text-clearix-cyan">{j.titulo}</span>
+                  <span class="text-clarity-muted text-body-md">{j.desc}</span>
                 </span>
-                <span class="text-clarity-muted text-[13px] leading-snug">{a.tagline}</span>
+              </span>
+              <span class="flex shrink-0 items-center gap-3">
+                <span class="hidden sm:inline font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80"><span class="text-clarity-off">{jApps.length}</span> apps</span>
+                <span class="lens-chevron grid h-7 w-7 place-items-center rounded-full border border-clarity-off/15 text-clearix-cyan-bright" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </span>
+            </summary>
+            <div class="lens-card-body">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-clarity-off/10 border-t border-clarity-off/10">
+                {jApps.map((a) => (
+                  <div class="bg-ink-surface p-5 flex flex-col gap-2 transition-shadow hover:shadow-[0_0_40px_-14px_#06B6D4]">
+                    <span class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full shrink-0" style={`background:${a.cor}`}></span>
+                      <span class="font-mono text-label-sm uppercase tracking-widest text-clarity-off">{a.nome}</span>
+                    </span>
+                    <span class="text-clarity-muted text-[13px] leading-snug">{a.tagline}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      ))}
+            </div>
+          </details>
+        );
+      })}
       <a href="/ecossistema" class="inline-block mt-8 font-mono text-label-md uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Conhecer cada app →</a>
     </div>
   </section>
@@ -212,7 +177,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
   <!-- Faixa-manifesto -->
   <section data-lux class="lux-cyan relative overflow-hidden py-20 md:py-28 border-b border-clarity-off/10 text-center">
     <div class="lux-glow"></div>
-    <div class="container-grid max-w-3xl relative z-10 reveal">
+    <div class="container-grid max-w-3xl relative z-10 focus3d-soft">
       <div class="prism-edge h-[2px] w-32 mx-auto mb-8 rounded-full"></div>
       <h2 class="font-display font-extrabold text-[32px] leading-tight md:text-[44px] md:leading-[1.05] tracking-[-0.03em]">
         Clareza com profundidade.<br/>
@@ -228,7 +193,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
         <p class="label mb-4">Planos</p>
         <h2 class="h-section">Comece pequeno. Cresça sem trocar de sistema.</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
         {planos.map((p) => (
           <div class={`bg-ink-surface p-6 flex flex-col ${p.destaque ? 'ring-1 ring-clearix-cyan/40' : ''}`}>
             {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-clearix-cyan mb-2">Mais escolhido</span>}
@@ -251,7 +216,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
         <h2 class="h-section">No ar em semanas, não meses.</h2>
         <p class="body-lg mt-5">Sem trauma de migração: a gente importa seu histórico e a loja não para.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-xl overflow-hidden reveal">
+      <div class="grid md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-xl overflow-hidden focus3d">
         {passos.map((p) => (
           <div class="bg-ink-surface p-8">
             <span class="font-mono tabular-nums text-4xl text-clearix-cyan-bright">{p.n}</span>
@@ -268,6 +233,13 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
     <div class="lux-glow"></div>
     <div class="absolute -left-28 -bottom-32 w-[480px] h-[480px] opacity-50 pointer-events-none hidden md:block">
       <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
+        <defs>
+          <radialGradient id="lensG" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30" />
+            <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.10" />
+            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+          </radialGradient>
+        </defs>
         <circle cx="100" cy="100" r="70" fill="url(#lensG)" />
         <g class="lens-ccw" style="transform-origin:100px 100px">
           <circle cx="100" cy="100" r="80" stroke="#67E8F9" stroke-width="0.5" stroke-opacity="0.4" stroke-dasharray="3 7" />
@@ -276,7 +248,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
         <circle cx="100" cy="100" r="3" fill="#22D3EE" />
       </svg>
     </div>
-    <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
+    <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10 focus3d-soft">
       <div class="md:col-span-5">
         <p class="label mb-4">Inteligência · em construção</p>
         <h2 class="h-section italic mb-2">Aura</h2>
@@ -304,7 +276,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
               <span class="font-display font-semibold text-xl">{f.q}</span>
               <span class="font-mono text-clearix-cyan text-2xl leading-none group-open:rotate-45 transition-transform">+</span>
             </summary>
-            <p class="text-clarity-muted text-body-md pb-6 max-w-2xl">{f.a}</p>
+            <p class="unfold3d text-clarity-muted text-body-md pb-6 max-w-2xl">{f.a}</p>
           </details>
         ))}
       </div>
@@ -313,7 +285,7 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
 
   <!-- Segurança + tecnologia (autoridade) -->
   <section class="py-14 md:py-20 border-b border-clarity-off/10">
-    <div class="container-grid grid md:grid-cols-12 gap-8 items-center">
+    <div class="container-grid grid md:grid-cols-12 gap-8 items-center focus3d-soft">
       <div class="md:col-span-7">
         <p class="label mb-3">Segurança por padrão</p>
         <p class="body-lg max-w-xl">
@@ -329,6 +301,8 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
       </div>
     </div>
   </section>
+
+  <RiscoZero />
 
   <CtaFinal />
 </BaseLayout>

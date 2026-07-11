@@ -1,0 +1,141 @@
+---
+/**
+ * HeroLente — hero cinematográfico da home (scroll-scrub).
+ * A assinatura Clearix é a LENTE: ao rolar, luz/dados dispersos convergem por
+ * uma lente até um ponto de foco nítido — "informação vira decisão".
+ *
+ * Contrato do driver `/clearix-lens-hero.js` (idempotente, View Transitions):
+ *   [data-clearix-hero] (300vh) > [data-hero-sticky] (sticky 100vh)
+ *     > [data-hero-canvas] + 3× [data-chapter] + [data-hero-hud]
+ *   + [data-hero-rail] > [data-hero-rail-fill]  (fixo, progresso de leitura)
+ *
+ * reduced-motion: driver não fixa/scrub — mostra o capítulo 0 estático (focado).
+ */
+---
+
+<section data-clearix-hero data-lux class="lux-cyan relative bg-ink-base" style="height:300vh">
+  <div
+    data-hero-sticky
+    class="grid-bg grid-bg-anim overflow-hidden border-b border-clarity-off/10"
+    style="position:sticky;top:0;height:100vh"
+  >
+    <!-- Palco da lente (canvas 2D — leve, sem WebGL) -->
+    <canvas data-hero-canvas class="absolute inset-0 h-full w-full" aria-hidden="true"></canvas>
+
+    <!-- Scrim: garante leitura do texto (à esquerda) sobre o palco (foco à direita) -->
+    <div
+      class="pointer-events-none absolute inset-0 z-[1]"
+      style="background:radial-gradient(120% 100% at 0% 50%, rgba(4,10,21,0.86) 0%, rgba(4,10,21,0.55) 42%, transparent 72%)"
+    ></div>
+
+    <!-- HUD FOCO -->
+    <div class="absolute right-4 top-24 z-20 md:right-8 md:top-28">
+      <span
+        data-hero-hud
+        class="inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 font-mono text-label-sm uppercase tracking-widest text-clearix-cyan-bright"
+      >FOCO 00%</span>
+    </div>
+
+    <!-- Capítulos (cruzam no scrub: dor → problema ampliado → virada) -->
+    <div class="absolute inset-0 z-10">
+      <!-- Capítulo 0 — hero principal (estado focado / reduced-motion) -->
+      <div data-chapter="0" class="absolute inset-0 flex items-center will-change-transform">
+        <div class="container-grid max-w-3xl">
+          <p class="mb-6 inline-flex items-center gap-2 font-mono text-label-md uppercase tracking-wider text-amber-400">
+            <span aria-hidden="true">▾</span> 20 a 40 clientes somem da sua ótica todo mês
+          </p>
+          <h1 class="h-display mb-6">
+            Pare de perder cliente.<br/>
+            A ótica inteira, <span class="text-clearix-cyan-bright italic">numa só inteligência</span>.
+          </h1>
+          <p class="body-lg mb-9 max-w-2xl">
+            Clearix é o ecossistema completo para a ótica que quer crescer com método, tecnologia e
+            inteligência. Vendas, clínica, laboratório, financeiro, marketing com IA e prova virtual —
+            16 apps, um só login.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contato" class="btn-primary cta-pulse">Começar grátis por 30 dias</a>
+            <a href="/contato" class="btn-outline">Agendar demonstração</a>
+          </div>
+          <p class="mt-5 text-body-md text-clarity-muted">
+            <span class="text-clearix-cyan-bright">✓</span> Sem cartão de crédito
+            <span class="mx-2 text-clarity-muted/40">·</span><span class="text-clearix-cyan-bright">✓</span> Migração guiada
+            <span class="mx-2 text-clarity-muted/40">·</span><span class="text-clearix-cyan-bright">✓</span> Seus dados preservados
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80">
+            <span><span class="text-clarity-off">10</span> lojas reais</span>
+            <span class="text-clarity-muted/30" aria-hidden="true">·</span>
+            <span><span class="text-clarity-off">+20 mil</span> vendas processadas</span>
+            <span class="text-clarity-muted/30" aria-hidden="true">·</span>
+            <span><span class="text-clarity-off">5+ anos</span> em produção</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capítulo 1 — o problema ampliado (dado disperso, ruído) -->
+      <div data-chapter="1" class="absolute inset-0 flex items-center opacity-0 will-change-transform">
+        <div class="container-grid max-w-3xl">
+          <p class="mb-6 font-mono text-label-md uppercase tracking-wider text-amber-400">A ótica no improviso</p>
+          <h2 class="h-section mb-6 max-w-2xl">
+            Caixa, estoque e WhatsApp <span class="text-amber-400/90">que não se falam</span>.<br/>
+            O dado existe — mas ninguém <span class="text-amber-400/90">enxerga</span>.
+          </h2>
+          <ul class="max-w-xl space-y-3">
+            <li class="flex gap-3 text-body-md text-clarity-dim"><span class="shrink-0 text-amber-400/70">✕</span> 4h por dia respondendo “meu óculos já tá pronto?”</li>
+            <li class="flex gap-3 text-body-md text-clarity-dim"><span class="shrink-0 text-amber-400/70">✕</span> Você não sabe qual loja lucra mais que a outra</li>
+            <li class="flex gap-3 text-body-md text-clarity-dim"><span class="shrink-0 text-amber-400/70">✕</span> Cliente que sumiu, e ninguém liga de volta</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Capítulo 2 — a virada (foco: informação vira decisão) -->
+      <div data-chapter="2" class="absolute inset-0 flex items-center opacity-0 will-change-transform">
+        <div class="container-grid max-w-3xl">
+          <div class="prism-edge mb-8 h-[2px] w-24 rounded-full"></div>
+          <h2 class="h-display mb-6 max-w-2xl">
+            Tudo converge <span class="text-clearix-cyan-bright italic">num foco só</span>.<br/>
+            Informação vira decisão.
+          </h2>
+          <p class="body-lg mb-9 max-w-xl">
+            Recall com IA traz o cliente de volta, o laboratório avisa sozinho e a rede inteira aparece
+            numa visão só — em tempo real. Clareza com profundidade.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="/contato" class="btn-primary cta-pulse">Começar grátis por 30 dias</a>
+            <a href="/ecossistema" class="btn-outline">Ver o ecossistema →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pista de rolagem -->
+    <div class="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center">
+      <span class="inline-flex items-center gap-2 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/70">
+        <span class="anim-scroll-hint" aria-hidden="true">↓</span> role para focar
+      </span>
+    </div>
+  </div>
+
+  <!-- barra de progresso de leitura (global, fixa) -->
+  <div data-hero-rail class="fixed inset-x-0 top-0 z-40 h-[2px] bg-transparent">
+    <div
+      data-hero-rail-fill
+      class="prism-edge h-full origin-left"
+      style="transform:scaleX(0)"
+    ></div>
+  </div>
+</section>
+
+<style>
+  @keyframes scrollHint { 0%,100% { transform: translateY(0); opacity: .5 } 50% { transform: translateY(4px); opacity: 1 } }
+  .anim-scroll-hint { display: inline-block; animation: scrollHint 1.8s ease-in-out infinite; }
+
+  /* reduced-motion: não fixa nem scrub — hero de 1 viewport, foco estático (cap. 0) */
+  @media (prefers-reduced-motion: reduce) {
+    .anim-scroll-hint { animation: none; }
+    [data-clearix-hero] { height: auto !important; }
+    [data-hero-sticky] { position: relative !important; height: auto !important; min-height: 100vh; padding-block: 6rem; }
+    [data-chapter] { position: static !important; }
+    [data-chapter="1"], [data-chapter="2"] { display: none !important; }
+  }
+</style>

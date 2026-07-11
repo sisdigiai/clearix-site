@@ -24,14 +24,14 @@ import { planos, demo, addons } from '../data/planos';
   <!-- Tiers -->
   <section class="py-16 md:py-24 border-b border-clarity-off/10">
     <div class="container-grid">
-      <div class="glass rounded-xl px-5 py-4 mb-8 flex flex-wrap items-center gap-3 reveal">
+      <div class="glass rounded-xl px-5 py-4 mb-8 flex flex-wrap items-center gap-3 focus3d">
         <span class="font-mono text-label-sm uppercase tracking-widest text-ink-deep bg-clearix-cyan-bright rounded px-2.5 py-1">Preço de lançamento</span>
         <span class="text-clarity-dim text-body-md">Condição das primeiras óticas — garanta agora e mantenha o valor enquanto for cliente.</span>
       </div>
       <p class="text-clarity-dim text-body-lg mb-8 max-w-3xl">
         Um só Clearix no lugar de <span class="text-clarity-off font-semibold">5 sistemas separados</span> — caixa, estoque, laboratório, CRM e financeiro. A partir de <span class="text-clearix-cyan-bright font-semibold">R$ 349/mês</span>.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
         {planos.map((p) => (
           <div class={`relative p-7 flex flex-col ${p.destaque ? 'bg-clearix-navy/20 ring-2 ring-inset ring-clearix-cyan-bright' : 'bg-ink-surface'}`}>
             {p.destaque && <span class="prism-edge absolute top-0 inset-x-0 h-[3px]"></span>}
@@ -69,7 +69,7 @@ import { planos, demo, addons } from '../data/planos';
   <!-- Demo -->
   <section class="py-16 md:py-20 bg-ink-deep border-b border-clarity-off/10">
     <div class="container-grid">
-      <div class="card flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal">
+      <div class="card flex flex-col md:flex-row items-start md:items-center justify-between gap-6 focus3d">
         <div>
           <p class="label mb-2">{demo.preco}</p>
           <h2 class="h-sub mb-2">{demo.nome}</h2>
@@ -88,7 +88,7 @@ import { planos, demo, addons } from '../data/planos';
         <h2 class="h-sub">Add-ons sob medida</h2>
         <p class="body-lg mt-4">Serviços que ligam quando a ótica precisa — todos sob consulta, ativados com você.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
         {addons.map((a) => (
           <div class="bg-ink-surface p-6">
             <h3 class="font-display font-semibold text-lg text-clarity-off mb-1">{a.nome}</h3>

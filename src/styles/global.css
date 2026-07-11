@@ -123,6 +123,74 @@
   .anim-fade-in, .reveal, .grid-bg-anim { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
+/* ── Foco 3D ao rolar (base híbrida) — a seção "entra em foco" pela lente ──
+   Entra inclinada em perspectiva + levemente desfocada e gira até plana e nítida
+   conforme sobe na tela. Scroll-driven (sem JS), só onde o browser suporta. */
+@keyframes focusIn3D {
+  from { opacity: 0; transform: perspective(1600px) rotateX(-16deg) translateY(46px) scale(.965); filter: blur(5px); }
+  60%  { filter: blur(0); }
+  to   { opacity: 1; transform: perspective(1600px) rotateX(0deg) translateY(0) scale(1); filter: blur(0); }
+}
+.focus3d { transform-origin: 50% 100%; opacity: 1; }
+@supports (animation-timeline: view()) {
+  .focus3d {
+    animation: focusIn3D linear both;
+    animation-timeline: view();
+    animation-range: entry 2% cover 34%;
+    will-change: transform, opacity, filter;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus3d { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* ── Cartão-lente que abre em 3D no clique (vitrine híbrida) ──
+   <details.lens-card>: resumo sempre visível (SEO + escaneabilidade); ao abrir,
+   o corpo desdobra em 3D como uma lente/tampa que baixa até o foco. */
+/* Variante suave (texto centralizado): entra em foco/desfoque, sem tilt 3D. */
+@keyframes focusInSoft {
+  from { opacity: 0; transform: translateY(34px) scale(.99); filter: blur(6px); }
+  60%  { filter: blur(0); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+.focus3d-soft { opacity: 1; }
+@supports (animation-timeline: view()) {
+  .focus3d-soft {
+    animation: focusInSoft linear both;
+    animation-timeline: view();
+    animation-range: entry 2% cover 32%;
+    will-change: transform, opacity, filter;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .focus3d-soft { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* Corpo que desdobra em 3D dentro de qualquer <details> (FAQ etc.) sem chrome de cartão. */
+.unfold3d { transform-origin: top center; }
+details[open] > .unfold3d { animation: lensUnfold 0.5s cubic-bezier(.2,.7,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { details[open] > .unfold3d { animation: none; } }
+
+.lens-card { border: 1px solid var(--color-line); border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, rgba(30,58,95,0.22), rgba(11,27,51,0.30)); }
+.lens-card + .lens-card { margin-top: 0.75rem; }
+.lens-summary { list-style: none; cursor: pointer; }
+.lens-summary::-webkit-details-marker { display: none; }
+.lens-summary:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: -2px; }
+.lens-chevron { transition: transform 0.35s cubic-bezier(.2,.7,.2,1); }
+.lens-card[open] .lens-chevron { transform: rotate(180deg); }
+.lens-card[open] .lens-summary { border-bottom: 1px solid var(--color-line); }
+.lens-card-body { transform-origin: top center; }
+.lens-card[open] .lens-card-body { animation: lensUnfold 0.55s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes lensUnfold {
+  from { opacity: 0; transform: perspective(1400px) rotateX(-82deg); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: perspective(1400px) rotateX(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lens-card[open] .lens-card-body { animation: none; }
+  .lens-chevron { transition: none; }
+}
+
 /* ── Luz refratada interativa (cursor) — tom Clearix ──────────── */
 @keyframes beamMove { from { background-position: -30% 0; } to { background-position: 130% 0; } }
 

@@ -1,0 +1,63 @@
+---
+/**
+ * RiscoZero — bloco de conversão que ataca a objeção nº 1: medo de migrar.
+ * Reversão de risco (garantia) + prova de baixo atrito. Precede o CtaFinal.
+ *
+ * ⚠ A "garantia de migração sem trauma" precisa ser uma promessa que o comercial
+ * honra de fato — ajuste o texto ao que a operação realmente pratica.
+ */
+const garantias = [
+  { t: '30 dias grátis', d: 'Teste com a operação real da sua ótica. Sem cartão, sem compromisso.', ico: '◷' },
+  { t: 'Migração guiada', d: 'A gente importa pacientes, vendas e histórico com as datas originais. A loja não para.', ico: '⇄' },
+  { t: 'Seus dados são seus', d: 'Exportáveis quando quiser. Se sair, leva tudo — sem sequestro de dados.', ico: '⤓' },
+  { t: 'No ar em semanas', d: 'Setup por etapa: começa pelo que mais dói e o resto entra no ritmo da loja.', ico: '⚡' },
+];
+---
+
+<section data-lux class="lux-cyan relative overflow-hidden py-20 md:py-28 border-b border-clarity-off/10">
+  <div class="lux-glow"></div>
+  <div class="container-grid relative z-10">
+    <div class="grid gap-10 md:grid-cols-12 md:gap-16 md:items-start">
+      <!-- Selo de garantia (reversão de risco) -->
+      <div class="md:col-span-5">
+        <p class="label mb-4">Risco zero</p>
+        <h2 class="h-section mb-5">Migrar não pode dar medo. Então tiramos o risco de você.</h2>
+        <p class="body-lg mb-8 max-w-xl">
+          A maior objeção de toda ótica é a mesma: “e se der errado na migração?”. Por isso o começo é
+          sem cartão, sem trauma e sem porta trancada — a decisão continua sua o tempo todo.
+        </p>
+
+        <div class="glass inline-flex items-center gap-4 rounded-2xl p-5">
+          <span class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-clearix-cyan-bright/30 bg-clearix-navy/30 font-display text-2xl font-bold text-clearix-cyan-bright">✓</span>
+          <span>
+            <span class="block font-display text-lg font-semibold text-clarity-off">Garantia Clearix de migração sem trauma</span>
+            <span class="block text-body-md text-clarity-muted">30 dias para provar valor na sua operação — ou você leva seus dados e vai embora.</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Grade de garantias -->
+      <div class="md:col-span-7">
+        <div class="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 sm:grid-cols-2 focus3d">
+          {garantias.map((g) => (
+            <div class="bg-ink-surface p-6">
+              <span class="mb-4 grid h-10 w-10 place-items-center rounded-lg border border-clearix-cyan/25 bg-clearix-navy/25 font-mono text-lg text-clearix-cyan-bright" aria-hidden="true">{g.ico}</span>
+              <h3 class="mb-1.5 font-display text-lg font-semibold text-clarity-off">{g.t}</h3>
+              <p class="text-body-md text-clarity-muted">{g.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="/contato" class="btn-primary cta-pulse">Começar grátis por 30 dias</a>
+          <a href="/contato" class="btn-outline">Agendar demonstração</a>
+        </div>
+        <p class="mt-4 text-body-md text-clarity-muted">
+          <span class="text-clearix-cyan-bright">✓</span> Sem cartão de crédito
+          <span class="mx-2 text-clarity-muted/40">·</span><span class="text-clearix-cyan-bright">✓</span> Cancele quando quiser
+          <span class="mx-2 text-clarity-muted/40">·</span><span class="text-clearix-cyan-bright">✓</span> Dados exportáveis
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
