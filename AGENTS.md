@@ -1,3 +1,12 @@
+# Roteamento documental operacional
+
+Antes de qualquer alteração neste app, leia também:
+
+`D:\projetos\Cockpit\Apps\clearix-site\README.md`
+
+O app/código/filesystem é a verdade factual. O Cockpit é a fonte documental operacional. Se divergirem, o app vence e o Cockpit deve ser atualizado no mesmo turno.
+
+---
 # AGENTS.md — clearix-site
 
 > **Porta de entrada padronizada** para qualquer agente IA entrando neste app. Convenção em [ADR-0024](../Cockpit/ADR/ADR-0024-agents-md-por-app-aguardando-design-system.md).

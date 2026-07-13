@@ -23,17 +23,10 @@ const WHATS = 'https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix';
 
   <section class="py-16 md:py-24">
     <div class="container-grid grid md:grid-cols-12 gap-10 md:gap-16">
-      <!-- Formulário -->
+      <!-- Formulário — POSTa na edge fn lead-capture (banco digiai, marketing.landing_leads) -->
       <div class="md:col-span-7">
-        <form
-          name="contato"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="grid gap-5"
-        >
-          <input type="hidden" name="form-name" value="contato" />
-          <p class="hidden"><label>Não preencha: <input name="bot-field" /></label></p>
+        <form id="form-demo" method="POST" class="grid gap-5">
+          <p class="hidden" aria-hidden="true"><label>Não preencha: <input name="website" tabindex="-1" autocomplete="off" /></label></p>
 
           <label class="grid gap-2">
             <span class="font-mono text-label-sm uppercase tracking-wider text-clarity-muted">Seu nome</span>
@@ -75,11 +68,61 @@ const WHATS = 'https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix';
               placeholder="Que sistema usa hoje? O que mais incomoda no dia a dia?"></textarea>
           </label>
 
-          <button type="submit" class="btn-primary justify-self-start">Agendar demonstração</button>
-          <p class="label-sm normal-case tracking-wide text-clarity-muted/60">
+          <button type="submit" class="btn-primary justify-self-start" data-submit>Agendar demonstração</button>
+          <p class="label-sm normal-case tracking-wide text-clarity-muted/60" data-consent-text>
             Seus dados são usados só para o contato comercial, conforme a LGPD.
           </p>
+
+          <p data-form-ok hidden class="rounded-lg border border-clearix-cyan/30 bg-clearix-navy/20 px-4 py-3 text-body-md text-clarity-off">
+            <span class="text-clearix-cyan-bright">✓ Recebido!</span> Sua demonstração foi solicitada — a gente te chama no WhatsApp em horário comercial.
+          </p>
+          <p data-form-erro hidden class="rounded-lg border border-amber-400/30 bg-amber-400/5 px-4 py-3 text-body-md text-clarity-off">
+            Não conseguimos enviar agora. Tente de novo — ou chame direto no
+            <a href={WHATS} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline">WhatsApp</a>.
+          </p>
         </form>
+
+        <script is:inline>
+          (function () {
+            var form = document.getElementById('form-demo');
+            if (!form || form.dataset.init) return; form.dataset.init = '1';
+            var btn = form.querySelector('[data-submit]');
+            var ok = form.querySelector('[data-form-ok]');
+            var erro = form.querySelector('[data-form-erro]');
+            form.addEventListener('submit', async function (e) {
+              e.preventDefault();
+              ok.hidden = true; erro.hidden = true;
+              btn.disabled = true; var label = btn.textContent; btn.textContent = 'Enviando…';
+              var fd = new FormData(form);
+              try {
+                var params = new URLSearchParams(location.search);
+                var res = await fetch('https://hswyopqvnolqpmprqvzh.supabase.co/functions/v1/lead-capture', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    product: 'clearix',
+                    name: fd.get('nome') || '',
+                    whatsapp: fd.get('whatsapp') || '',
+                    email: fd.get('email') || '',
+                    notes: 'Lojas: ' + (fd.get('lojas') || '?') + (fd.get('mensagem') ? ' | ' + fd.get('mensagem') : ''),
+                    source_url: location.href.slice(0, 500),
+                    utm_source: params.get('utm_source') || '',
+                    utm_medium: params.get('utm_medium') || '',
+                    utm_campaign: params.get('utm_campaign') || '',
+                    utm_content: params.get('utm_content') || '',
+                    utm_term: params.get('utm_term') || '',
+                    consent_text: (form.querySelector('[data-consent-text]') || {}).textContent?.trim() || '',
+                    website: fd.get('website') || '',
+                  }),
+                });
+                var body = await res.json().catch(function () { return {}; });
+                if (res.ok && body.ok) { ok.hidden = false; form.reset(); }
+                else { erro.hidden = false; }
+              } catch (_) { erro.hidden = false; }
+              btn.disabled = false; btn.textContent = label;
+            });
+          })();
+        </script>
       </div>
 
       <!-- Canais diretos -->

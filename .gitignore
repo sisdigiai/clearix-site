@@ -15,6 +15,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# pacotes de handoff de agentes (referência local, não versionar)
+export/
+
 # macOS / editor
 .DS_Store
 Thumbs.db

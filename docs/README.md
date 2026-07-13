@@ -1,40 +1,19 @@
-# clearix-site
+# Docs — clearix-site
 
-Landing pública do **ecossistema Clearix** — `https://clearix.app.br`. Produto-âncora da DIGIAI, voltado a óticas e clínicas brasileiras.
+Esta pasta local é apenas ponte documental.
 
-Site estático (Astro + Tailwind) que apresenta o ecossistema (16 apps), planos, públicos e prova de operação real a três audiências: clientes (donos de óticas), parceiros/imprensa e quem já é cliente (rota para o Hub). Tema visual da **família de marcas Clearix** (dark editorial, acento cyan/navy), distinto do site institucional DIGIAI (`digiai-site`).
+A fonte documental operacional fica em:
 
-## Estrutura
-
-```
-clearix-site/
-├── src/
-│   ├── pages/         index · ecossistema · planos · para-quem · contato
-│   ├── components/     Header · Footer · Logo · StructuredData · ProvaOperacao · CtaFinal
-│   ├── layouts/        BaseLayout (head, SEO, JSON-LD, view transitions)
-│   ├── data/           apps.ts · planos.ts · prova.ts (dados canônicos)
-│   └── styles/         global.css (tokens + classes + animações lux/HUD)
-├── public/             favicon.svg · robots.txt · llms.txt
-└── docs/               esta pasta
+```text
+D:\projetos\Cockpit\Apps\clearix-site\README.md
 ```
 
-## Fonte de verdade dos dados
+Regra de verdade:
 
-- **Apps + cores:** `iam.clearix_apps` (banco `mhgbuplnxtfgipbemchb`) + `clearix_docs/plataforma/design_system_completo.md`
-- **Planos + add-ons:** `iam.clearix_packages` / `iam.clearix_addons` (seed `20260419062526`)
-- **Números de prova:** tenant Grupo Mello (`6292c9f0…`), puxados ao vivo 2026-05-30
-- **Copy/voz:** `Cockpit/clearix_design/assets/marketing-kit/COPY_BRIEFING.md`
+- O app/código/filesystem em `D:\projetos\clearix-site` é a verdade factual.
+- O Cockpit é a fonte documental operacional.
+- Se houver divergência, siga o app real e atualize o Cockpit no mesmo turno.
 
-Ao atualizar números ou preços, edite os arquivos em `src/data/` — nunca hardcode em página.
+Conteúdos locais antigos nesta pasta devem ser tratados como apoio histórico até serem migrados, arquivados ou removidos com confirmação humana.
 
-## Rodar local
-
-```bash
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # gera ./dist
-```
-
-## Deploy
-
-Site 100% estático em `./dist`. Alvo: Cloudflare/Netlify (config em `wrangler.jsonc`). Domínio: `clearix.app.br`.
+> Exceção viva: [`changelog.md`](changelog.md) segue sendo atualizado aqui (regra de docs por app do workspace).

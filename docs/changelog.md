@@ -32,6 +32,22 @@ Polimento e preparação para publicação no mesmo nível do `digiai-site`.
 - Links de descoberta LLM no `<head>`.
 - README com guia de deploy Cloudflare + DNS `clearix.app.br`.
 
+## 2026-07-13 — v0.4.0 · formulário liga no banco digiai (leads reais)
+
+**O form de contato agora grava lead de verdade** — fim do atributo Netlify Forms
+que não funcionava no Cloudflare (lead caía no vazio).
+
+- Pipeline: `/contato` → fetch POST → edge fn **`lead-capture`** (projeto digiai
+  `hswyopqvnolqpmprqvzh`, keyless) → RPC `fn_capture_landing_lead` → **`marketing.landing_leads`**
+  com `product='clearix'`. Intenções moram no app da DIGIAI (decisão do dono, 2026-07-13).
+- Campos extras do Clearix (`lojas` + `mensagem`) vão em `notes` (migration 047 no digiai
+  adicionou `p_notes` à RPC). UTM da URL + `source_url` + consent LGPD registrados.
+- Honeypot `website`, estados de sucesso/erro na UI (erro oferece o WhatsApp), telefone
+  normalizado E.164 na RPC. Testado de ponta a ponta (form local → linha no banco → limpo).
+- `AGENTS.md` e `docs/README.md`: encoding corrompido (mojibake de outra sessão) consertado,
+  preservando o roteamento documental para `Cockpit/Apps/clearix-site/`.
+- `export/` (handoff de agente) adicionado ao `.gitignore`.
+
 ## 2026-07-11 — v0.3.2 · 2ª zona lente-fundo (sutil) no fechamento
 
 `LenteFundo` ganha prop `sutil` (intensidades via CSS vars: `--dim-max`, `--lente-max`,
