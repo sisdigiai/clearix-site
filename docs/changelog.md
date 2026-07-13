@@ -32,6 +32,13 @@ Polimento e preparação para publicação no mesmo nível do `digiai-site`.
 - Links de descoberta LLM no `<head>`.
 - README com guia de deploy Cloudflare + DNS `clearix.app.br`.
 
+## 2026-07-11 — v0.3.2 · 2ª zona lente-fundo (sutil) no fechamento
+
+`LenteFundo` ganha prop `sutil` (intensidades via CSS vars: `--dim-max`, `--lente-max`,
+`--halo-max`, `--lente-tam`). Segunda zona envolve **Planos → FAQ** em voz baixa (véu 0.45,
+lente 105vh) — o site fecha com o mesmo vocabulário do 1º ato sem competir com ele.
+Fundo do "Como começar" translúcido (`bg-ink-deep/50`); cards continuam sólidos (legibilidade).
+
 ## 2026-07-11 — v0.3.1 · fundo-lente com escurecimento + correção do scrub
 
 **LenteFundo (`src/components/LenteFundo.astro`)** — zona do "Veja rodando" à Operação Real

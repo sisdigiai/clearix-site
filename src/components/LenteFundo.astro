@@ -7,10 +7,15 @@
  *
  * Fallback: sem suporte a animation-timeline, fica um fundo estático sutil.
  * reduced-motion: sem escurecimento progressivo nem rotação.
+ *
+ * Prop `sutil`: variante discreta para a 2ª zona (Planos → FAQ) — véu mais leve
+ * e lente menor, para não competir com o primeiro ato.
  */
+interface Props { sutil?: boolean }
+const { sutil = false } = Astro.props;
 ---
 
-<div class="lente-fundo relative">
+<div class:list={['lente-fundo relative', sutil && 'lente-fundo--sutil']}>
   <div class="lente-fundo-bg" aria-hidden="true">
     <svg viewBox="0 0 200 200" fill="none" class="lente-svg">
       <defs>
@@ -39,7 +44,25 @@
 </div>
 
 <style>
-  .lente-fundo { view-timeline-name: --lente-zona; }
+  .lente-fundo {
+    view-timeline-name: --lente-zona;
+    /* intensidades da zona padrão (1º ato) */
+    --lente-tam: min(150vh, 130vw);
+    --dim-max: 0.78;
+    --lente-max: 0.60;
+    --halo-max: 0.85;
+    --dim-fallback: 0.25;
+    --halo-fallback: 0.45;
+  }
+  /* variante discreta (2ª zona, Planos → FAQ): não compete com o 1º ato */
+  .lente-fundo--sutil {
+    --lente-tam: min(105vh, 92vw);
+    --dim-max: 0.45;
+    --lente-max: 0.34;
+    --halo-max: 0.5;
+    --dim-fallback: 0.15;
+    --halo-fallback: 0.3;
+  }
 
   /* palco fixo atrás do conteúdo (sticky + margem negativa = não ocupa fluxo) */
   .lente-fundo-bg {
@@ -48,21 +71,21 @@
   }
   .lente-svg {
     position: absolute; left: 50%; top: 50%;
-    width: min(150vh, 130vw); height: min(150vh, 130vw);
+    width: var(--lente-tam); height: var(--lente-tam);
     transform: translate(-50%, -50%);
     opacity: 0.5;
   }
   .lente-fundo-dim {
     position: absolute; inset: 0;
     background: #040A15;
-    opacity: 0.25; /* fallback estático (sem scroll-driven) */
+    opacity: var(--dim-fallback); /* fallback estático (sem scroll-driven) */
   }
 
   /* rim light da lente: anel de luz (não disco) — presença no fundo preto.
      Vive ACIMA do véu: enquanto tudo escurece, o contorno ganha força. */
   .lente-halo {
     position: absolute; left: 50%; top: 50%;
-    width: min(150vh, 130vw); height: min(150vh, 130vw);
+    width: var(--lente-tam); height: var(--lente-tam);
     transform: translate(-50%, -50%);
     background: radial-gradient(circle,
       transparent 36%,
@@ -71,7 +94,7 @@
       rgba(103, 232, 249, 0.05) 50%,
       rgba(59, 130, 246, 0.03) 55%,
       transparent 62%);
-    opacity: 0.45; /* fallback estático */
+    opacity: var(--halo-fallback); /* fallback estático */
   }
 
   /* escurece conforme a zona atravessa a viewport; a lente se forma no escuro */
@@ -92,23 +115,23 @@
       animation-range: cover 0% cover 100%;
     }
   }
-  @keyframes lenteEscurece { from { opacity: 0; } to { opacity: 0.78; } }
+  @keyframes lenteEscurece { from { opacity: 0; } to { opacity: var(--dim-max); } }
   /* invertido: a lente SE FORMA conforme se rola (rolar = focar) — difusa e
      grande no início, convergindo nítida no fim da zona, no auge quando a
      página abre no ato claro (Cuidado): a lente pronta deixa a luz passar */
   @keyframes lenteSurge {
     from { transform: translate(-50%, -50%) scale(1.18); opacity: 0.10; }
-    to   { transform: translate(-50%, -50%) scale(0.96); opacity: 0.60; }
+    to   { transform: translate(-50%, -50%) scale(0.96); opacity: var(--lente-max); }
   }
   /* rim light acompanha a lente: cresce junto com o escuro */
   @keyframes haloRespira {
     from { transform: translate(-50%, -50%) scale(1.18); opacity: 0.15; }
-    to   { transform: translate(-50%, -50%) scale(0.96); opacity: 0.85; }
+    to   { transform: translate(-50%, -50%) scale(0.96); opacity: var(--halo-max); }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .lente-fundo-dim, .lente-svg, .lente-halo { animation: none !important; }
-    .lente-fundo-dim { opacity: 0.25; }
-    .lente-halo { opacity: 0.45; }
+    .lente-fundo-dim { opacity: var(--dim-fallback); }
+    .lente-halo { opacity: var(--halo-fallback); }
   }
 </style>
