@@ -1,0 +1,114 @@
+---
+/**
+ * LenteFundo — fundo-lente com escurecimento por rolagem (scroll-driven, zero JS).
+ * Envolve as seções entre o hero e o ato claro (Cuidado): uma grande lente fixa
+ * ao fundo e um véu que escurece conforme se desce — "profundidade de campo".
+ * A chegada na seção Cuidado (clara) vira o contraste máximo: a lente deixa a luz passar.
+ *
+ * Fallback: sem suporte a animation-timeline, fica um fundo estático sutil.
+ * reduced-motion: sem escurecimento progressivo nem rotação.
+ */
+---
+
+<div class="lente-fundo relative">
+  <div class="lente-fundo-bg" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none" class="lente-svg">
+      <defs>
+        <radialGradient id="lenteFundoG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.10" />
+          <stop offset="55%" stop-color="#3B82F6" stop-opacity="0.05" />
+          <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="78" fill="url(#lenteFundoG)" />
+      <g class="lens-cw" style="transform-origin:100px 100px">
+        <circle cx="100" cy="100" r="88" stroke="#67E8F9" stroke-width="0.4" stroke-opacity="0.35" />
+        <circle cx="100" cy="100" r="88" stroke="#22D3EE" stroke-width="1.2" stroke-dasharray="34 220" stroke-opacity="0.5" />
+      </g>
+      <g class="lens-ccw" style="transform-origin:100px 100px">
+        <circle cx="100" cy="100" r="64" stroke="#93C5FD" stroke-width="0.4" stroke-opacity="0.3" stroke-dasharray="5 9" />
+      </g>
+      <circle cx="100" cy="100" r="42" stroke="#67E8F9" stroke-width="0.4" stroke-opacity="0.3" />
+      <circle cx="100" cy="100" r="2" fill="#22D3EE" fill-opacity="0.6" />
+    </svg>
+    <div class="lente-fundo-dim"></div>
+    <!-- rim light: halo anular FORA do véu — ganha presença conforme escurece -->
+    <div class="lente-halo"></div>
+  </div>
+  <div class="relative z-[1]"><slot /></div>
+</div>
+
+<style>
+  .lente-fundo { view-timeline-name: --lente-zona; }
+
+  /* palco fixo atrás do conteúdo (sticky + margem negativa = não ocupa fluxo) */
+  .lente-fundo-bg {
+    position: sticky; top: 0; height: 100vh; margin-bottom: -100vh;
+    overflow: hidden; pointer-events: none; z-index: 0;
+  }
+  .lente-svg {
+    position: absolute; left: 50%; top: 50%;
+    width: min(150vh, 130vw); height: min(150vh, 130vw);
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+  }
+  .lente-fundo-dim {
+    position: absolute; inset: 0;
+    background: #040A15;
+    opacity: 0.25; /* fallback estático (sem scroll-driven) */
+  }
+
+  /* rim light da lente: anel de luz (não disco) — presença no fundo preto.
+     Vive ACIMA do véu: enquanto tudo escurece, o contorno ganha força. */
+  .lente-halo {
+    position: absolute; left: 50%; top: 50%;
+    width: min(150vh, 130vw); height: min(150vh, 130vw);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+      transparent 36%,
+      rgba(34, 211, 238, 0.04) 42%,
+      rgba(34, 211, 238, 0.09) 46%,
+      rgba(103, 232, 249, 0.05) 50%,
+      rgba(59, 130, 246, 0.03) 55%,
+      transparent 62%);
+    opacity: 0.45; /* fallback estático */
+  }
+
+  /* escurece conforme a zona atravessa a viewport; a lente se forma no escuro */
+  @supports (animation-timeline: view()) {
+    .lente-fundo-dim {
+      animation: lenteEscurece linear both;
+      animation-timeline: --lente-zona;
+      animation-range: cover 8% cover 92%;
+    }
+    .lente-svg {
+      animation: lenteSurge linear both;
+      animation-timeline: --lente-zona;
+      animation-range: cover 0% cover 100%;
+    }
+    .lente-halo {
+      animation: haloRespira linear both;
+      animation-timeline: --lente-zona;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+  @keyframes lenteEscurece { from { opacity: 0; } to { opacity: 0.78; } }
+  /* invertido: a lente SE FORMA conforme se rola (rolar = focar) — difusa e
+     grande no início, convergindo nítida no fim da zona, no auge quando a
+     página abre no ato claro (Cuidado): a lente pronta deixa a luz passar */
+  @keyframes lenteSurge {
+    from { transform: translate(-50%, -50%) scale(1.18); opacity: 0.10; }
+    to   { transform: translate(-50%, -50%) scale(0.96); opacity: 0.60; }
+  }
+  /* rim light acompanha a lente: cresce junto com o escuro */
+  @keyframes haloRespira {
+    from { transform: translate(-50%, -50%) scale(1.18); opacity: 0.15; }
+    to   { transform: translate(-50%, -50%) scale(0.96); opacity: 0.85; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lente-fundo-dim, .lente-svg, .lente-halo { animation: none !important; }
+    .lente-fundo-dim { opacity: 0.25; }
+    .lente-halo { opacity: 0.45; }
+  }
+</style>

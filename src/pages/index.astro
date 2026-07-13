@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroLente from '../components/HeroLente.astro';
+import LenteFundo from '../components/LenteFundo.astro';
 import ProvaOperacao from '../components/ProvaOperacao.astro';
 import Cuidado from '../components/Cuidado.astro';
 import RiscoZero from '../components/RiscoZero.astro';
@@ -35,8 +36,11 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
   <!-- Hero-lente cinematográfico (scroll-scrub) — a lente Clearix focando -->
   <HeroLente />
 
+  <!-- Zona lente-fundo: escurece na rolagem até desaguar no ato claro (Cuidado) -->
+  <LenteFundo>
+
   <!-- Painel ao vivo — "o produto é o demo" -->
-  <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+  <section class="py-20 md:py-28 bg-ink-deep/50 border-b border-clarity-off/10">
     <div class="container-grid grid md:grid-cols-12 gap-10 items-center">
       <div class="md:col-span-5">
         <p class="label mb-4">Veja rodando</p>
@@ -103,6 +107,8 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
   </section>
 
   <ProvaOperacao />
+
+  </LenteFundo>
 
   <!-- Cuidado — ato claro da página (Precisão e Cuidado): a lente deixa a luz passar -->
   <Cuidado />

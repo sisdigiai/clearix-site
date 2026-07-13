@@ -80,13 +80,17 @@
 
       chapters.forEach(function (el, idx) {
         var centers = [0.0, 0.5, 1.0];
-        var a = 1 - Math.abs(progress - centers[idx]) / 0.4; a = Math.max(0, Math.min(1, a));
+        // janela estreita (0.26): um capítulo apaga antes do próximo acender —
+        // sem dupla exposição de texto no meio do scrub
+        var a = 1 - Math.abs(progress - centers[idx]) / 0.26; a = Math.max(0, Math.min(1, a));
         if (reduce) a = idx === 0 ? 1 : 0;
         el.style.opacity = String(a);
         el.style.transform = 'translateY(' + ((1 - a) * 20) + 'px)';
         el.style.pointerEvents = a > 0.5 ? 'auto' : 'none';
       });
       if (hud) hud.textContent = 'FOCO ' + String(Math.round(m * 100)).padStart(2, '0') + '%';
+      var hint = stage.querySelector('[data-hero-hint]');
+      if (hint) hint.style.opacity = String(Math.max(0, 1 - progress * 2.5));
       if (railFill) { var pt = document.documentElement.scrollHeight - window.innerHeight; railFill.style.transform = 'scaleX(' + (pt > 0 ? Math.max(0, Math.min(1, window.scrollY / pt)) : 0) + ')'; }
 
       mx += (tmx - mx) * 0.05; my += (tmy - my) * 0.05; if (!reduce) t += 0.016;

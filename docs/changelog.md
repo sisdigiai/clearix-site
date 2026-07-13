@@ -32,6 +32,22 @@ Polimento e preparação para publicação no mesmo nível do `digiai-site`.
 - Links de descoberta LLM no `<head>`.
 - README com guia de deploy Cloudflare + DNS `clearix.app.br`.
 
+## 2026-07-11 — v0.3.1 · fundo-lente com escurecimento + correção do scrub
+
+**LenteFundo (`src/components/LenteFundo.astro`)** — zona do "Veja rodando" à Operação Real
+ganha fundo-lente scroll-driven (CSS puro, zero JS): véu escurece ao rolar (profundidade)
+enquanto a lente **se forma** (invertido a pedido do dono: rolar = focar), com **rim light**
+anular acima do véu (contorno ganha presença no escuro — resolve lente sumida no fundo preto).
+Termina no auge exatamente onde a página abre no ato claro (Cuidado): a lente deixa a luz passar.
+Fallback estático sem `animation-timeline`; `reduced-motion` sem animação.
+
+**Correções:**
+- Hero: janela de crossfade dos capítulos 0.4 → 0.26 no driver — eliminada a dupla
+  exposição de texto que quebrava a leitura em ~30% do scrub.
+- Dica "role para focar" esvai conforme o foco fecha (`data-hero-hint`).
+- `global.css`: comentário-guarda no `overflow-x: hidden` do body (não mover para o html —
+  Chromium ≥148 mata a rolagem; não trocar por clip — não propaga pro viewport).
+
 ## 2026-07-10 — v0.3.0 · hero-lente 3D + Precisão e Cuidado + conversão
 
 Home reencenada como experiência cinematográfica da marca (a lente Clearix focando) + gatilhos de compra amplificados. Pacote iniciado pelo claude-designer (`export/clearix-site/`, só o driver JS veio; componentes criados nesta sessão).

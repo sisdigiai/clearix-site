@@ -31,6 +31,10 @@
     font-family: Inter, system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.55;
+    /* hidden no body propaga pro viewport (html é visible): bloqueia scroll
+       horizontal SEM virar scroll container — as view-timelines das
+       scroll-driven animations seguem no root. Não mover para o html
+       (Chromium ≥148 mata a rolagem) nem trocar por clip (não propaga). */
     overflow-x: hidden;
   }
 
