@@ -9,7 +9,9 @@
  */
 import { base } from '../data/prova';
 
-const pacientes = base.find((m) => m.label === 'Pacientes')?.valor ?? '19.737';
+// Sem fallback numérico: um número escrito aqui vira prova desatualizada e
+// silenciosa se o rótulo do prova.ts mudar. Melhor falhar visível.
+const pacientes = base.find((m) => m.label === 'Pacientes')?.valor ?? '—';
 
 const cuidados = [
   { t: 'Conforme LGPD', d: 'Dado clínico tratado como dado de saúde: isolamento por loja e acesso por papel.' },

@@ -42,8 +42,10 @@ Donos e gerentes de óticas brasileiras — da ótica solo independente a redes 
 ## Prova de operação real
 
 Em uso real no Grupo Mello Óticas há mais de 5 anos (desde out/2020), migrado para o Clearix:
-20.488 vendas, 22.299 ordens de serviço, 19.737 pacientes, 97.996 lançamentos financeiros,
-10 lojas, mais de R$ 17 milhões rastreados. Recall de cliente com IA: de ~3% manual para ~33%.
+20.915 vendas, 21.280 ordens de serviço, 15.788 pacientes, 64.215 lançamentos financeiros,
+6 lojas, R$ 12,4 milhões em vendas e R$ 19,5 milhões de movimentação financeira registrada.
+Recall de cliente com IA: de ~3% manual para ~33%.
+(Números auditados em 2026-08-05, contando apenas registros ativos.)
 
 ## Empresa
 

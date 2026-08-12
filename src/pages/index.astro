@@ -8,7 +8,16 @@ import RiscoZero from '../components/RiscoZero.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { apps, jornadas } from '../data/apps';
 import { planos } from '../data/planos';
-import { promessas, base } from '../data/prova';
+import { promessas, base, vivo } from '../data/prova';
+
+// O painel "ao vivo" tinha estes três números escritos na mão, então ficou
+// congelado em maio enquanto o prova.ts era corrigido — e é exatamente o que
+// o AGENTS.md §8 proíbe ("hardcode de número em página").
+const achar = (fonte: { valor: string; label: string }[], rotulo: string) =>
+  fonte.find((m) => m.label.toLowerCase() === rotulo)?.valor ?? '—';
+const vendas = achar(base, 'vendas');
+const ordens = achar(base, 'ordens de serviço');
+const vendas30d = achar(vivo, 'vendas');
 
 const HUB = 'https://clearixhub.netlify.app';
 
@@ -55,9 +64,9 @@ const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
             <span class="ml-auto flex items-center gap-2"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-clearix-cyan opacity-60 animate-ping"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-clearix-cyan"></span></span><span class="font-mono text-label-sm text-clearix-cyan">ao vivo</span></span>
           </div>
           <div class="grid grid-cols-3 gap-px bg-clarity-off/10">
-            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">20.488</span><span class="text-clarity-muted text-label-sm">vendas</span></div>
-            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">22.299</span><span class="text-clarity-muted text-label-sm">ordens</span></div>
-            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clearix-cyan">+192</span><span class="text-clarity-muted text-label-sm">últimos 30d</span></div>
+            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">{vendas}</span><span class="text-clarity-muted text-label-sm">vendas</span></div>
+            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">{ordens}</span><span class="text-clarity-muted text-label-sm">ordens</span></div>
+            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clearix-cyan">{vendas30d}</span><span class="text-clarity-muted text-label-sm">últimos 30d</span></div>
           </div>
           <div class="bg-ink-surface p-5 border-t border-clarity-off/10">
             <div class="flex items-end gap-1 h-16">

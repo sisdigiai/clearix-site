@@ -40,8 +40,8 @@ Landing pública do ecossistema Clearix (`https://clearix.app.br`) — site est�
 - **Porta dev:** 4321
 - **URL produção:** https://clearix.app.br (a configurar no DNS/deploy)
 - **Como rodar:** `npm run dev`
-- **Hospedagem:** estático (`./dist`) — Cloudflare/Netlify
-- **CI/CD:** a definir (manual por ora)
+- **Hospedagem:** **Cloudflare Workers Static Assets** (`wrangler.jsonc` → serve `./dist`). Não é Pages. `html_handling: auto-trailing-slash` — `/ecossistema` redireciona para `/ecossistema/`; ao conferir com `curl`, use `-L` ou você lê o corpo do redirect e acha que a página não subiu.
+- **CI/CD:** **automático no push para `main`** via Workers Builds (conexão git fica no painel do Cloudflare, não em arquivo do repo). O workflow `.github/workflows/indexnow.yml` depende disso — espera 90s pelo deploy antes de avisar os buscadores. Verificado em 2026-08-05: push → arquivo novo no ar sem intervenção.
 
 ## 5. Banco + permissões
 
