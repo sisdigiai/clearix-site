@@ -22,7 +22,7 @@ Landing pública do ecossistema Clearix (`https://clearix.app.br`) — site est�
 ## 2. Posição na DIGIAI
 
 - **Verdade Canônica que rege:** Clearix é o produto-âncora e prioridade máxima; DIGIAI é a empresa-mãe.
-- **Fase atual do app:** v0.1 — site recém-criado, ainda não publicado em produção.
+- **Fase atual do app:** v0.2 — **no ar** em `https://clearix.app.br` (Astro estático servido via Cloudflare), com captura de lead e atribuição first-party ligadas.
 - **Prioridade na matriz:** ALTA — vitrine de venda do produto-âncora.
 - **Categoria portfólio:** INSTITUCIONAL / MARKETING (vitrine do produto-âncora).
 
@@ -45,9 +45,11 @@ Landing pública do ecossistema Clearix (`https://clearix.app.br`) — site est�
 
 ## 5. Banco + permissões
 
-- **Projeto Supabase:** n/a — o site é estático e não acessa banco em runtime.
-- **MCP Supabase tem acesso direto?** n/a
-- **Dados** são copiados manualmente para `src/data/` a partir das fontes canônicas (não há fetch em runtime).
+- **Projeto Supabase:** nenhum cliente Supabase no site. O único canal de dados são **dois POSTs keyless** para edges públicas do projeto **digiai** (`hswyopqvnolqpmprqvzh`) — nunca o banco Clearix, que é isolado:
+  - `events-ingest` ← `public/clearix-attrib.js` (visita e clique de CTA, ZERO PII)
+  - `lead-capture` ← form de `/contato` (`product: 'clearix'` → `marketing.landing_leads`)
+- **MCP Supabase tem acesso direto?** Não (e não deve ter).
+- **Dados** são copiados manualmente para `src/data/` a partir das fontes canônicas (não há fetch em runtime). `apps.ts` deve bater com `iam.clearix_apps`: **16 de cliente** = 20 ativos − atlas/designer/docs (internos) − hub (é o login).
 - **Auth provider:** n/a (links para o Hub fazem o login do cliente).
 
 ## 6. Comandos
@@ -93,11 +95,12 @@ Tema da **família de marcas Clearix** (dark editorial, acento cyan `#06B6D4` + 
 
 ## 10. Pendências conhecidas
 
-- [ ] Gerar `public/og-default.png` (1200×630) para Open Graph.
-- [ ] Definir endpoint real do formulário de contato.
-- [ ] Confirmar domínio `clearix.app.br` (DNS + provedor).
+- [x] ~~Gerar `public/og-default.png`~~ — existe.
+- [x] ~~Definir endpoint real do formulário de contato~~ — edge `lead-capture` do digiai.
+- [x] ~~Confirmar domínio `clearix.app.br`~~ — no ar via Cloudflare.
 - [ ] Apontar `/clearix` do `digiai-site` para este site.
 - [ ] Definir CI/CD de deploy.
+- [ ] **`calc.clearix.app.br`** — DNS + SSL. ⚠️ O apex está no **Cloudflare**, não no Netlify: o CNAME precisa ficar **sem proxy (nuvem cinza)** até o certificado emitir, senão o desafio do Let's Encrypt não chega e o SSL falha em silêncio. Procedimento em [`../Cockpit/funil-calc-clearix-2026-08-05.md`](../Cockpit/funil-calc-clearix-2026-08-05.md) §4.
 
 ---
 

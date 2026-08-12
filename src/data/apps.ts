@@ -2,6 +2,12 @@
 // Fonte de verdade: iam.clearix_apps (banco mhgbuplnxtfgipbemchb) +
 // clearix_docs/plataforma/design_system_completo.md (cores, rev. 2026-05-17).
 // Apps INTERNOS (atlas, designer, docs) NÃO entram na vitrine de venda.
+//
+// A CONTA DOS 16 (conferida contra iam.clearix_apps em 2026-08-05):
+//   20 ativos no banco − atlas/designer/docs (internos) − hub (é o login, não
+//   um app de valor) = 16. É o número que a copy afirma em 6 lugares.
+// Este arquivo tinha 15 — faltava o Fone — então a vitrine mostrava 15 cards
+// sob um título que prometia 16, e o visitante consegue contar.
 
 export interface ClearixApp {
   slug: string;
@@ -17,6 +23,7 @@ export const apps: ClearixApp[] = [
   { slug: 'vendas',    nome: 'Vendas',    tagline: 'PDV, orçamento, caixa, carnês e entregas — atendimento que não esquece o cliente.', cor: '#3B82F6', jornada: 'vender', destaque: true },
   { slug: 'express',   nome: 'Express',   tagline: 'Checkout rápido para leads de campanha fecharem na hora.', cor: '#EF4444', jornada: 'vender' },
   { slug: 'loyalty',   nome: 'Loyalty',   tagline: 'Fidelidade, carteiras e cupons que trazem o cliente de volta.', cor: '#F59E0B', jornada: 'vender' },
+  { slug: 'fone',      nome: 'Fone',      tagline: 'Ligações, campanhas telefônicas e follow-up sem cair no esquecimento.', cor: '#14B8A6', jornada: 'vender' },
 
   // ── ATENDER ─────────────────────────────────────────────
   { slug: 'clinics',   nome: 'Clinics',   tagline: 'Anamnese, prescrições e prontuário clínico num só lugar.', cor: '#F43F5E', jornada: 'atender', destaque: true },

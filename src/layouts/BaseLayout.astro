@@ -115,5 +115,13 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
 
     <!-- Hero-lente cinematográfico (scroll-scrub) — idempotente / View Transitions -->
     <script is:inline src="/clearix-lens-hero.js"></script>
+
+    <!--
+      Atribuição first-party: captura UTM na 1ª visita e persiste, registra
+      visita/CTA na edge keyless do digiai e carimba os links de saída.
+      Precisa carregar em TODA página: o tráfego da isca chega em "/" e só
+      converte lá no /contato, e sem isto a origem se perde no caminho.
+    -->
+    <script is:inline src="/clearix-attrib.js"></script>
   </body>
 </html>

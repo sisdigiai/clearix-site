@@ -2,6 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { apps, jornadas } from '../data/apps';
+
+// UTM explícita: o clearix-attrib.js só carimba links que ainda não têm origem
+// própria, então esta marcação sobrevive.
+const CALC = 'https://clearixcalc.netlify.app/?utm_source=clearix&utm_medium=landing&utm_campaign=ecossistema';
 ---
 
 <BaseLayout
@@ -43,6 +47,34 @@ import { apps, jornadas } from '../data/apps';
       </div>
     </section>
   ))}
+
+  <!--
+    Isca recíproca. Quem está pesquisando ecossistema ainda não vai agendar
+    demo, mas usa uma ferramenta útil hoje — e é a calculadora que ele
+    compartilha com colega de profissão, que é o que gira o boca-a-boca.
+    Fica ANTES do CTA final de propósito: é o degrau de baixo compromisso
+    para quem não vai clicar em "agendar".
+  -->
+  <section class="py-16 md:py-20 border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="card flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div class="max-w-xl">
+          <p class="label mb-3">Grátis, sem cadastro</p>
+          <h2 class="h-sub mb-3">
+            Calculadora de grau <span class="text-clearix-cyan italic">para usar hoje</span>.
+          </h2>
+          <p class="text-clarity-muted text-body-md">
+            Transposição, distância vértice, equivalente esférico e mais — as contas do
+            balcão, feitas certo. Funciona offline no celular. É uma amostra de como o
+            Clearix trata o rigor óptico; não pede login e não expira.
+          </p>
+        </div>
+        <a href={CALC} target="_blank" rel="noopener" class="btn-primary shrink-0 self-start md:self-auto">
+          Abrir a calculadora →
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Nota integração -->
   <section class="py-16 md:py-20 border-b border-clarity-off/10">

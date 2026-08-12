@@ -8,6 +8,12 @@ const navegar = [
   { label: 'Para quem', href: '/para-quem' },
   { label: 'Contato', href: '/contato' },
 ];
+
+// Reciprocidade com a isca: quem chega primeiro pelo site também vira usuário
+// da calculadora, e a calc é a ferramenta que o dono da ótica compartilha com
+// colegas — é ela que gira o boca-a-boca. A UTM aqui é explícita porque o
+// clearix-attrib.js respeita link que já traz origem própria.
+const CALC = 'https://clearixcalc.netlify.app/?utm_source=clearix&utm_medium=landing';
 ---
 
 <footer class="bg-ink-deep py-16 md:py-20 border-t border-clarity-off/10">
@@ -26,6 +32,11 @@ const navegar = [
           {navegar.map((n) => (
             <li><a href={n.href} class="hover:text-clarity-off transition-colors">{n.label}</a></li>
           ))}
+          <li>
+            <a href={CALC} target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">
+              Calculadora de grau <span class="text-clearix-cyan">grátis</span> →
+            </a>
+          </li>
         </ul>
       </div>
 

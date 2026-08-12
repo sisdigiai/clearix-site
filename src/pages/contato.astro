@@ -95,7 +95,17 @@ const WHATS = 'https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix';
               btn.disabled = true; var label = btn.textContent; btn.textContent = 'Enviando…';
               var fd = new FormData(form);
               try {
+                /*
+                 * A atribuição vem do clearix-attrib.js, não de location.search.
+                 * Quem chega pela calc cai em "/" com a UTM, navega, e só depois
+                 * converte aqui — nesse ponto a query string já sumiu. O
+                 * fallback existe só para o caso do script não ter carregado.
+                 */
+                var attrib = window.clearixAttrib;
                 var params = new URLSearchParams(location.search);
+                var u = attrib ? attrib.utms() : {};
+                function utm(k) { return u[k] || params.get(k) || ''; }
+
                 var res = await fetch('https://hswyopqvnolqpmprqvzh.supabase.co/functions/v1/lead-capture', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
@@ -106,11 +116,15 @@ const WHATS = 'https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix';
                     email: fd.get('email') || '',
                     notes: 'Lojas: ' + (fd.get('lojas') || '?') + (fd.get('mensagem') ? ' | ' + fd.get('mensagem') : ''),
                     source_url: location.href.slice(0, 500),
-                    utm_source: params.get('utm_source') || '',
-                    utm_medium: params.get('utm_medium') || '',
-                    utm_campaign: params.get('utm_campaign') || '',
-                    utm_content: params.get('utm_content') || '',
-                    utm_term: params.get('utm_term') || '',
+                    // Liga este lead à sessão anônima que navegou o site (e, se
+                    // veio da calc, ao utm_content que ela mandou). É o gancho
+                    // da camada 2 de indicação.
+                    session_id: attrib ? attrib.sessionId() : null,
+                    utm_source: utm('utm_source'),
+                    utm_medium: utm('utm_medium'),
+                    utm_campaign: utm('utm_campaign'),
+                    utm_content: utm('utm_content'),
+                    utm_term: utm('utm_term'),
                     consent_text: (form.querySelector('[data-consent-text]') || {}).textContent?.trim() || '',
                     website: fd.get('website') || '',
                   }),
