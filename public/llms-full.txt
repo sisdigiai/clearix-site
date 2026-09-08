@@ -39,7 +39,7 @@ Donos e gerentes de óticas brasileiras, da ótica solo independente à rede e f
 - **DCL** — laboratório em kanban; a produção fala com a loja em tempo real.
 
 ### Gerir
-- **Finance** — DRE, fluxo de caixa, contas a pagar/receber, NF-e.
+- **Finance** — DRE, fluxo de caixa, contas a pagar e a receber.
 - **Estoque** — inventários, movimentações e código de barras.
 - **Lens** — catálogo de lentes, pricing e motor óptico.
 - **RH** — ponto, escalas, férias e comissões.
@@ -62,7 +62,7 @@ de governança e segurança não comercializadas separadamente.)
 | Crescimento | R$ 1.499 | 16 | até 8 | Rede média e franquias |
 | Completo | sob consulta | todo o ecossistema + SLA | ilimitadas | Rede, cadeia, franqueadora |
 
-- **Demonstração grátis por 30 dias.**
+- **Demonstração assistida antes de contratar.** A entrada é por piloto pago e assistido — não há teste gratuito self-service.
 - Sobe de plano sem migração e sem perder histórico — os mesmos dados, mais apps liberados.
 
 ### Add-ons (sob consulta)

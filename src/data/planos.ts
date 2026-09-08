@@ -59,8 +59,8 @@ export const planos: Plano[] = [
 
 export const demo = {
   nome: 'Demonstração',
-  preco: 'Grátis por 30 dias',
-  desc: 'Teste o Clearix com dados parecidos com os da sua ótica, sem compromisso.',
+  preco: 'Sob agendamento',
+  desc: 'Mostramos o Clearix rodando com dados parecidos com os da sua ótica, sem compromisso.',
 };
 
 // Add-ons (iam.clearix_addons, migration 20260421004618). Preço sempre sob consulta.

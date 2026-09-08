@@ -32,7 +32,7 @@ export const apps: ClearixApp[] = [
   { slug: 'dcl',       nome: 'DCL',       tagline: 'Laboratório em kanban — a produção fala com a loja em tempo real.', cor: '#06B6D4', jornada: 'atender' },
 
   // ── GERIR ───────────────────────────────────────────────
-  { slug: 'finance',   nome: 'Finance',   tagline: 'DRE, fluxo de caixa, contas a pagar/receber e NF-e.', cor: '#F59E0B', jornada: 'gerir', destaque: true },
+  { slug: 'finance',   nome: 'Finance',   tagline: 'DRE, fluxo de caixa, contas a pagar e a receber.', cor: '#F59E0B', jornada: 'gerir', destaque: true },
   { slug: 'estoque',   nome: 'Estoque',   tagline: 'Inventários, movimentações e código de barras.', cor: '#F97316', jornada: 'gerir' },
   { slug: 'lens',      nome: 'Lens',      tagline: 'Catálogo de lentes, pricing e motor óptico.', cor: '#8B5CF6', jornada: 'gerir' },
   { slug: 'rh',        nome: 'RH',        tagline: 'Ponto, escalas, férias e comissões da equipe.', cor: '#4F46E5', jornada: 'gerir' },

@@ -19,7 +19,7 @@ Donos e gerentes de óticas brasileiras — da ótica solo independente a redes 
 
 - Vender: Vendas (PDV/orçamento/caixa/carnês), Express (checkout de campanha), Loyalty (fidelidade)
 - Atender: Clinics (prontuário), Paciente (portal WhatsApp), Client (portal B2B), DCL (laboratório kanban)
-- Gerir: Finance (DRE/fluxo/NF-e), Estoque, Lens (catálogo de lentes), RH
+- Gerir: Finance (DRE/fluxo de caixa/contas), Estoque, Lens (catálogo de lentes), RH
 - Crescer: Marketing (WhatsApp + IA), BI (dashboards cross-app), AR Vision (prova virtual), Import (migração)
 - Núcleo: Hub (login único + visão geral)
 
@@ -29,7 +29,7 @@ Donos e gerentes de óticas brasileiras — da ótica solo independente a redes 
 - Controle — R$ 899/mês — 11 apps — até 5 lojas (mais escolhido)
 - Crescimento — R$ 1.499/mês — 16 apps — até 8 lojas
 - Completo — sob consulta — todo o ecossistema + SLA — lojas ilimitadas
-- Demonstração grátis por 30 dias, sem cartão de crédito.
+- Demonstração assistida antes de contratar. A entrada é por piloto pago e assistido — não há teste gratuito self-service.
 
 ## Diferenciais
 
