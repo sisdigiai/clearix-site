@@ -54,7 +54,8 @@ Um login por pessoa, com acesso por loja e por papel.
 | Completo | sob consulta |
 
 - Sem período grátis. Começa por uma demonstração assistida de 20 minutos; a entrada é por piloto pago e assistido.
-- A migração de dados do sistema antigo é serviço assistido e orçado à parte, com conferência dos dados antes de subir.
+- A migração de dados do sistema antigo é serviço orçado à parte, depois de examinarmos uma amostra do banco atual; os dados são conferidos antes de a loja operar.
+- Não entram: emissão fiscal, fidelidade por pontos, prova virtual, site e e-commerce, customização de código, garantia de percentual de disponibilidade.
 
 ## Prova de operação real
 
@@ -87,7 +88,7 @@ A implantação começa por uma parte da operação, com a gente acompanhando a 
 A demonstração vem antes da proposta: olhamos como a loja trabalha e mostramos onde o Clearix encaixa, e onde não encaixa.
 
 **Vocês trazem os dados do meu sistema antigo?**
-Sim, como serviço assistido e orçado à parte. Os dados são conferidos antes de subir.
+Sim, como serviço orçado à parte, depois de examinarmos uma amostra do seu banco. Os dados são conferidos antes de a loja operar.
 
 **Funciona para mais de uma loja?**
 Sim. Cada pessoa vê o que pode, por loja e por papel.

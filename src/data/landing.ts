@@ -82,7 +82,7 @@ export const pacientesReceitas: Numero[] = [
 export const faq = [
   { q: 'E se a minha equipe não se adaptar?', a: 'A implantação começa por uma parte da operação, com a gente acompanhando a equipe no começo. Ninguém recebe um sistema inteiro de uma vez.' },
   { q: 'O processo da minha loja é diferente.', a: 'Por isso a demonstração vem antes da proposta: olhamos como a sua loja trabalha e mostramos onde o Clearix encaixa, e onde não encaixa.' },
-  { q: 'Vocês trazem os dados do meu sistema antigo?', a: 'Sim, como serviço assistido e orçado à parte. Conferimos os dados antes de subir, porque dado errado na origem vira erro no balcão.' },
+  { q: 'Vocês trazem os dados do meu sistema antigo?', a: 'Sim, como serviço orçado à parte, depois de examinarmos uma amostra do seu banco. Os dados são conferidos antes de a loja operar, porque dado errado na origem vira erro no balcão.' },
   { q: 'Funciona para mais de uma loja?', a: 'Sim. Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele todos os dias e o histórico de outras cinco lojas da mesma rede está preservado no mesmo banco. Cada pessoa vê o que pode, por loja e por papel.' },
   { q: 'Quem me atende quando eu precisar?', a: 'Uma pessoa da DIGIAI, em horário comercial.' },
   { q: 'O Clearix emite nota fiscal?', a: 'Não nesta fase. Preferimos dizer isso agora do que prometer e não entregar.' },

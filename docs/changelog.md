@@ -145,3 +145,21 @@ Loyalty/AR Vision/Express na composição de `/planos`, que esperam a D5). OK de
 - [x] ~~Add-ons sem lastro~~ — "E-commerce" e "Inclusão de laboratório parceiro" saíram da página; migração reescrita como serviço assistido e orçado (eco, 14/09). `iam.clearix_addons` intocada.
 - [x] ~~Componentes sem uso~~ — HeroLente, LenteFundo, ProvaOperacao, Cuidado, RiscoZero, `prova.ts` e `public/clearix-lens-hero.js` removidos (OK do eco; ficam no histórico do git).
 - [ ] Canal oficial de e-mail: `/contato` segue com `sisdigiai@gmail.com`; vai ao dono junto com D2 (e-mail do domínio).
+
+## 2026-09-14 — v0.3.1 · verificação de promessas (publicada)
+
+A v0.3.0 foi publicada em 14/09 por decisão do dono (main `27295bf`). Em seguida o dono pediu **verificar com o
+orquestrador do eco Clearix todas as promessas no ar e corrigir o que fosse preciso**. Levantamento e veredito em
+`_VERIFICACAO_PROMESSAS_2026-09-14.md`; fontes: inventário de 14/09, kit o-que-pode-prometer, termo de piloto v1 e
+resposta do MKT.
+
+**Corrigido (conflitavam com o termo de piloto ou com o MKT):**
+- `/contato`: "a gente responde / te chama no WhatsApp" → "a gente entra em contato em horário comercial, pelo WhatsApp ou
+  e-mail que você deixou" (não há WhatsApp da empresa ligado; o termo proíbe número pessoal).
+- `/planos`: saíram "SLA 99,9%", "Suporte dedicado" e "Integrações enterprise" (Completo) e Loyalty, AR Vision e Express
+  (Crescimento); saiu o complemento "Site institucional". Preço, lojas e o resto da composição seguem na D5.
+
+**Reescrito (sustentado, mas prometia mais que o fato):** "A loja sabe antes do cliente perguntar" → "O atraso aparece na
+tela antes de virar ligação do cliente"; migração → "orçada à parte, depois de examinarmos uma amostra do seu banco; os
+dados são conferidos antes de a loja operar" (home, `/planos`, `llms-full.txt`); "Implantamos junto, do seu lado" →
+"Implantamos com a gente acompanhando"; demonstração "com dados parecidos com os da sua ótica" → "com dados de demonstração".
