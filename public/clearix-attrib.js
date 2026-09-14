@@ -168,8 +168,10 @@
       a.setAttribute('data-cta-done', '1');
       a.addEventListener('click', function (e) {
         var el = e.currentTarget;
+        // cta_id diz QUAL botão converteu (hero, oferta, faq, final…); código aprovado pelo Geral em 14/09.
         enviar(EV_CTA, {
           destino: destinoDoLink(el),
+          cta_id: el.getAttribute('data-cta') || '',
           texto: (el.textContent || '').trim().slice(0, 80)
         });
       });

@@ -98,4 +98,50 @@ Home reencenada como experiência cinematográfica da marca (a lente Clearix foc
 - [ ] Verificação Bing/Google (meta tags) quando os tokens existirem.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).
 - [x] ~~Depoimento da home ainda é MOCK~~ — reescrito como case factual (2026-07-11): sem citação inventada, só fatos verificáveis + números de `prova.ts`. Depoimento com nome/cargo pode substituir no futuro.
-- [ ] "Garantia Clearix de migração sem trauma" (RiscoZero): validar com o comercial que a promessa (30 dias + dados exportáveis) é o que se pratica.
+- [x] ~~"Garantia Clearix de migração sem trauma" (RiscoZero): validar com o comercial~~ — não se pratica; saiu da home em 2026-09-14 (ver abaixo).
+
+## 2026-09-14 — v0.3.0 · landing de vendas com prova do banco (branch `landing-vendas-2026-09`, NÃO publicada)
+
+Despacho `_DESPACHO_2026-09-14_LANDING_DE_VENDAS.md`. Desenho (`_DESENHO_2026-09-14_LANDING.md`) e copy
+(`_COPY_2026-09-14_LANDING.md`) aprovados pelo orquestrador do eco Clearix e revisados pelo Orquestrador Geral
+(`_REVISAO_GERAL_2026-09-14_COPY.md`). Fonte única de números: `Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md`
++ correções medidas pelo eco. **Build travado** até o portão 135 (D5, D8) e as lacunas D2 (WhatsApp), D3b (endereço) e D7 (termo de piloto).
+
+**Home (`/`) reescrita em S1–S10:** hero de 1 tela (sai o scroll-scrub de 300vh) → espelho da dor → a vida de uma OS em 6
+passos com número real → comparação de laboratórios (preço e prazo) → números do banco com data → assinatura DIGIAI →
+módulos em uso → fases + preço público → FAQ (mesma lista no JSON-LD) → CTA final com linha de prova. CTA único:
+"Agendar 20 minutos de demonstração", com `data-cta` por posição.
+
+**Saiu do site inteiro (sem fonte ou contra o inventário):** "20 a 40 clientes somem", "4h por dia", "12 min → 90 s",
+"3% → 33% / recall com IA", "10 lojas / 5+ anos / desde 2020", painel "ao vivo" com barras inventadas, Aura, "laboratório
+avisa sozinho", LGPD/isolamento (D6), garantia de migração, "cancele quando quiser", "no ar em semanas", "mais escolhido",
+"preço de lançamento / garanta agora", "5 sistemas separados", "16 apps", "Anthropic · Claude", R$ 12,4 mi / R$ 19,5 mi
+nos `llms*.txt`, Loyalty/AR Vision/Express/Fone/Import da vitrine, fundador no JSON-LD (D1).
+
+**Dados novos:** `src/data/landing.ts` (números com fonte por linha, CTA, FAQ) e `src/data/contato.ts` (lacunas `null`:
+WhatsApp some enquanto D2 não chega; endereço completo só com `endereco.confirmado`). `apps.ts` com 11 módulos em uso e
+nomes de uso. `planos.ts` sem `destaque`.
+
+**Outras páginas:** `/contato` com formulário de qualificação (função, sistema atual, principal problema em `notes`) e
+bloco "o que acontece agora?"; `/ecossistema`, `/para-quem`, `/planos` sem as promessas acima; Header com faixa sem
+número; Footer com razão social + CNPJ + cidade; `clearix-attrib.js` manda `metadata.cta_id`.
+
+**Da `clearix-site-v2`:** padrões (cadeia apagada × fluxo único, fases, FAQ com JSON-LD, formulário de qualificação,
+"módulos especializados, não puxadinhos"); nenhum código. Lista em `_DESENHO_…` §6.
+
+**Verificado:** `npm run build` ok; home no navegador em 375 px (capturas; sem rolagem horizontal) e em 1280 px (captura
+do hero + grades medidas 3/5/4/3 colunas; a captura do meio da página falhou no painel); `/contato` renderiza; console
+sem erro; formulário **não** foi enviado (grava lead real); varredura do `dist/` sem os termos proibidos (restam só SLA/enterprise e
+Loyalty/AR Vision/Express na composição de `/planos`, que esperam a D5). OK de tela do eco em desktop e 375 px.
+
+### Pendências desta versão
+- [x] ~~Contadores "7 / 11 / 16 apps" em `/planos`~~ — saíram (D3); nomes dos módulos no vocabulário da vitrine (eco, 14/09).
+- [ ] D5 (dono): composição dos planos em `planos.ts` e `/planos` (4 × 5 lojas, Loyalty/AR Vision/Express, SLA/enterprise).
+- [ ] D2: número de WhatsApp em `src/data/contato.ts` (com o código de origem já combinado com o MKT).
+- [ ] D3b: `endereco.confirmado = true` depois do cartão CNPJ.
+- [ ] D7: 3 linhas do termo de piloto em S8 e o complemento do FAQ "Quem me atende?".
+- [ ] D8: valor em R$ do carnê (padrão: só contagem).
+- [ ] Capturas do tenant sintético em `public/capturas/` para S4 (sem CPF e telefone).
+- [x] ~~Add-ons sem lastro~~ — "E-commerce" e "Inclusão de laboratório parceiro" saíram da página; migração reescrita como serviço assistido e orçado (eco, 14/09). `iam.clearix_addons` intocada.
+- [x] ~~Componentes sem uso~~ — HeroLente, LenteFundo, ProvaOperacao, Cuidado, RiscoZero, `prova.ts` e `public/clearix-lens-hero.js` removidos (OK do eco; ficam no histórico do git).
+- [ ] Canal oficial de e-mail: `/contato` segue com `sisdigiai@gmail.com`; vai ao dono junto com D2 (e-mail do domínio).

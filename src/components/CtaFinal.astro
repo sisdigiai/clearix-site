@@ -1,28 +1,37 @@
 ---
-const HUB = 'https://clearixhub.netlify.app';
+import { CTA, provaCtaFinal, medidoEm } from '../data/landing';
+import { linkWhatsapp, HUB } from '../data/contato';
+
 interface Props {
   titulo?: string;
   texto?: string;
+  prova?: boolean;
 }
 const {
-  titulo = 'Veja o Clearix na sua ótica.',
-  texto = 'Agende uma demonstração e veja a operação inteira rodando numa só inteligência.',
+  titulo = 'Vinte minutos para ver a sua ótica da receita à entrega.',
+  texto = 'Agende uma demonstração assistida. Se não fizer sentido para a sua loja, a gente fala isso na hora.',
+  prova = false,
 } = Astro.props;
+
+const whats = linkWhatsapp('site');
 ---
 
-<section data-lux class="lux-cyan relative overflow-hidden py-28 md:py-36 text-center">
+<section data-lux class="lux-cyan relative overflow-hidden py-24 md:py-32 text-center">
   <div class="lux-glow"></div>
-  <div class="container-grid max-w-2xl relative z-10 focus3d-soft">
+  <div class="container-grid max-w-2xl relative z-10">
     <h2 class="h-section mb-6">{titulo}</h2>
     <p class="body-lg mb-10">{texto}</p>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <a href="/contato" class="btn-primary">Agendar demonstração</a>
-      <a href={HUB} target="_blank" rel="noopener" class="btn-outline">Já sou cliente →</a>
-    </div>
-    <p class="text-clarity-muted text-body-md mt-5">
-      <span class="text-clearix-cyan-bright">✓</span> Demonstração assistida
-      <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Migração guiada
-      <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Cancele quando quiser
+    <a href="/contato" class="btn-primary" data-cta="final">{CTA}</a>
+    {prova && (
+      <p class="mt-5 font-mono text-label-sm uppercase tracking-widest text-clarity-muted">
+        <span class="tabular-nums text-clarity-off">{provaCtaFinal.valor}</span> {provaCtaFinal.label} · números do banco, {medidoEm}
+      </p>
+    )}
+    <p class="mt-6 text-body-md text-clarity-muted">
+      {whats && (
+        <>Prefere o WhatsApp? <a href={whats} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline underline-offset-4" data-cta="final_whatsapp">Falar com a gente</a><span class="mx-2 text-clarity-muted/40" aria-hidden="true">·</span></>
+      )}
+      Já é cliente? <a href={HUB} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline underline-offset-4">Entrar no Hub →</a>
     </p>
   </div>
 </section>

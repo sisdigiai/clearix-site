@@ -1,331 +1,297 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroLente from '../components/HeroLente.astro';
-import LenteFundo from '../components/LenteFundo.astro';
-import ProvaOperacao from '../components/ProvaOperacao.astro';
-import Cuidado from '../components/Cuidado.astro';
-import RiscoZero from '../components/RiscoZero.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { apps, jornadas } from '../data/apps';
 import { planos } from '../data/planos';
-import { promessas, base, vivo } from '../data/prova';
+import { CTA, medidoEm, heroProva, jornadaOS, provaBanco, pacientesReceitas, faq } from '../data/landing';
+import { linkWhatsapp } from '../data/contato';
 
-// O painel "ao vivo" tinha estes três números escritos na mão, então ficou
-// congelado em maio enquanto o prova.ts era corrigido — e é exatamente o que
-// o AGENTS.md §8 proíbe ("hardcode de número em página").
-const achar = (fonte: { valor: string; label: string }[], rotulo: string) =>
-  fonte.find((m) => m.label.toLowerCase() === rotulo)?.valor ?? '—';
-const vendas = achar(base, 'vendas');
-const ordens = achar(base, 'ordens de serviço');
-const vendas30d = achar(vivo, 'vendas');
+// Copy aprovada: _COPY_2026-09-14_LANDING.md (eco + revisão do Geral). Todo número vem de src/data/landing.ts.
+const whats = linkWhatsapp('site');
 
-const HUB = 'https://clearixhub.netlify.app';
-
-const antes = ['20 a 40 clientes somem por mês — e ninguém liga', '4h por dia respondendo "meu óculos já tá pronto?"', 'Você não sabe qual loja lucra mais que a outra', 'Caixa, estoque e WhatsApp que não se falam'];
-const depois = ['Recall com IA traz o cliente de volta — 10×', 'O laboratório avisa o paciente sozinho', 'A rede inteira numa visão só, em tempo real', 'O dado entra uma vez e flui pra todos os apps'];
-
-const faq = [
-  { q: 'Preciso trocar meu sistema inteiro de uma vez?', a: 'Não. A migração é guiada e pode ser por etapa — começamos pelo que dói mais e o resto entra no ritmo da loja.' },
-  { q: 'Vocês migram meus dados antigos?', a: 'Sim. Pacientes, vendas e histórico são importados com as datas originais preservadas — sua operação não começa do zero.' },
-  { q: 'Funciona com mais de uma loja?', a: 'Sim. O Clearix é multi-loja: cada unidade com seus dados, e o dono enxerga tudo numa visão só.' },
-  { q: 'Meus dados de paciente ficam seguros?', a: 'Sim. Segurança por padrão: isolamento por loja, acesso por papel e portal do paciente só por link — em conformidade com a LGPD.' },
-  { q: 'Como começo?', a: 'Pelo agendamento de uma demonstração. A partir dela montamos o plano de setup e migração da sua ótica.' },
+const dores = [
+  { dor: 'O cliente liga para perguntar se o óculos chegou, e ninguém sabe responder sem ligar para o laboratório.', resposta: 'Cada OS aparece por etapa, com alerta quando atrasa.' },
+  { dor: 'O óculos saiu com saldo em aberto e ninguém percebeu.', resposta: 'A entrega não passa enquanto houver saldo sem carnê.' },
+  { dor: 'O carnê mora num caderno e a parcela paga não foi baixada.', resposta: 'Carnê próprio da loja, com baixa e recibo na hora.' },
+  { dor: 'O caixa fecha em planilha, não bate com o banco, e o dono só descobre no fim do mês.', resposta: 'Caixa conferido, extrato conciliado e o painel do dono mostrando o dia.' },
 ];
 
-const passos = [
-  { n: '01', t: 'Demonstração', d: 'Mostramos o Clearix rodando com dados parecidos com os da sua ótica.' },
-  { n: '02', t: 'Setup e migração', d: 'Importamos seu histórico e configuramos lojas, papéis e regras — sem parar a operação.' },
-  { n: '03', t: 'Operação no ar', d: 'A equipe opera no Clearix, com acompanhamento próximo no começo.' },
-];
+const cadeiaSolta = ['Venda no balcão', 'Baixa no estoque', 'Pedido ao laboratório', 'Lançamento no financeiro'];
 
-const tech = ['Supabase', 'Anthropic · Claude', 'PostgreSQL'];
+const textosPasso: Record<string, string> = {
+  Receita: 'A venda começa pelo grau. O sistema filtra as lentes que servem para aquela receita e barra combinação impossível antes de fechar.',
+  Venda: 'À vista ou no carnê, no mesmo fluxo, com contrato e promissória gerados na hora.',
+  Laboratório: 'Antes de comprar a lente, veja preço e prazo lado a lado entre os laboratórios. A escolha é sua. A OS segue para o laboratório pelo WhatsApp.',
+  Acompanhamento: 'Kanban por etapa, linha do tempo de cada pedido e alerta de atraso. A loja sabe antes do cliente perguntar.',
+  Entrega: 'Só sai quitada ou com carnê. Garantia e segundo par ficam ligados à OS original.',
+  Fechamento: 'Parcela baixada, caixa conferido e comissão calculada da venda entregue, não de planilha.',
+};
+
+const receitas = pacientesReceitas[0];
+
+const fases = [
+  { t: 'Demonstração assistida', d: 'Vinte minutos, com a gente na tela: da receita à entrega, no fluxo que a sua loja já tem.' },
+  { t: 'Olhar o seu processo', d: 'Antes de propor qualquer coisa, entendemos como a sua loja trabalha hoje.' },
+  { t: 'Piloto pago e assistido', d: 'Implantamos junto, do seu lado. O que você usar define o que fica.' },
+];
 ---
 
-<BaseLayout>
-  <!-- Hero-lente cinematográfico (scroll-scrub) — a lente Clearix focando -->
-  <HeroLente />
-
-  <!-- Zona lente-fundo: escurece na rolagem até desaguar no ato claro (Cuidado) -->
-  <LenteFundo>
-
-  <!-- Painel ao vivo — "o produto é o demo" -->
-  <section class="py-20 md:py-28 bg-ink-deep/50 border-b border-clarity-off/10">
-    <div class="container-grid grid md:grid-cols-12 gap-10 items-center">
-      <div class="md:col-span-5">
-        <p class="label mb-4">Veja rodando</p>
-        <h2 class="h-section mb-4">A ótica em tempo real.</h2>
-        <p class="body-lg">Não é print parado — é a operação real do dia a dia fluindo entre os apps do Clearix, numa visão só.</p>
-      </div>
-      <div class="md:col-span-7">
-        <div class="glass rounded-xl overflow-hidden focus3d">
-          <div class="flex items-center gap-2 px-4 py-3 border-b border-clarity-off/10">
-            <span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clarity-off/20"></span><span class="w-2.5 h-2.5 rounded-full bg-clearix-cyan/60"></span>
-            <span class="ml-3 font-mono text-label-sm text-clarity-muted">clearix · painel</span>
-            <span class="ml-auto flex items-center gap-2"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full rounded-full bg-clearix-cyan opacity-60 animate-ping"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-clearix-cyan"></span></span><span class="font-mono text-label-sm text-clearix-cyan">ao vivo</span></span>
-          </div>
-          <div class="grid grid-cols-3 gap-px bg-clarity-off/10">
-            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">{vendas}</span><span class="text-clarity-muted text-label-sm">vendas</span></div>
-            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clarity-off">{ordens}</span><span class="text-clarity-muted text-label-sm">ordens</span></div>
-            <div class="bg-ink-surface p-5"><span class="block font-mono tabular-nums text-2xl text-clearix-cyan">{vendas30d}</span><span class="text-clarity-muted text-label-sm">últimos 30d</span></div>
-          </div>
-          <div class="bg-ink-surface p-5 border-t border-clarity-off/10">
-            <div class="flex items-end gap-1 h-16">
-              {[35,52,40,68,55,72,60,84,70,90,78,96].map((h) => <span class="flex-1 bg-clearix-cyan/40 rounded-t-sm" style={`height:${h}%`}></span>)}
-            </div>
-            <span class="font-mono text-label-sm text-clarity-muted mt-3 block">vendas / mês — operação Grupo Mello</span>
-          </div>
-        </div>
-        <p class="label-sm normal-case tracking-wide text-clarity-muted/60 mt-4">Painel ilustrativo com dados reais — evolui para clipe do Clearix em produção.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Promessas / prova rápida -->
-  <section class="py-16 md:py-20 border-b border-clarity-off/10">
-    <div class="container-grid grid grid-cols-1 md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
-      {promessas.map((p) => (
-        <div class="bg-ink-surface p-8">
-          <span class="block font-mono tabular-nums text-4xl text-clearix-cyan mb-2">{p.valor}</span>
-          <span class="block font-display font-semibold text-lg text-clarity-off mb-1">{p.label}</span>
-          <span class="block text-clarity-muted text-body-md">{p.nota}</span>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Antes / depois -->
-  <section class="py-20 md:py-28 border-b border-clarity-off/10">
-    <div class="container-grid">
-      <p class="label mb-4">Por que Clearix</p>
-      <h2 class="h-section mb-12">Da operação no improviso ao sistema inteligente.</h2>
-      <div class="grid md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
-        <div class="bg-ink-base p-8">
-          <p class="label-sm text-amber-400/90 mb-6">Antes — no improviso</p>
-          <ul class="space-y-4">
-            {antes.map((i) => <li class="flex gap-3 text-clarity-muted text-body-md"><span class="text-amber-400/70 shrink-0">✕</span>{i}</li>)}
-          </ul>
-        </div>
-        <div class="bg-ink-surface p-8">
-          <p class="label-sm text-clearix-cyan-bright mb-6">Depois — no Clearix</p>
-          <ul class="space-y-4">
-            {depois.map((i) => <li class="flex gap-3 text-clarity-off text-body-md"><span class="text-clearix-cyan-bright shrink-0">→</span>{i}</li>)}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <ProvaOperacao />
-
-  </LenteFundo>
-
-  <!-- Cuidado — ato claro da página (Precisão e Cuidado): a lente deixa a luz passar -->
-  <Cuidado />
-
-  <!-- Case real de operação (fatos verificáveis, números de src/data/prova.ts — sem citação inventada) -->
-  <section class="py-20 md:py-28 border-b border-clarity-off/10">
-    <div class="container-grid max-w-4xl">
-      <div class="glass rounded-2xl p-8 md:p-12 focus3d">
-        <div class="prism-edge h-[2px] w-20 mb-6 rounded-full"></div>
-        <p class="label mb-5">Case real · Grupo Mello Óticas</p>
-        <p class="font-display font-semibold text-[22px] md:text-[30px] leading-snug tracking-tight text-clarity-off">
-          10 lojas migraram mais de cinco anos de operação para o Clearix — sem parar de vender.
-          Hoje a rede inteira está numa tela só, o laboratório avisa o cliente sozinho, e quem sumia, o recall traz de volta.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-          <span class="w-12 h-12 rounded-full bg-clearix-navy/40 border border-clearix-navy-soft/30 grid place-items-center font-display font-bold text-clearix-cyan-bright shrink-0">GM</span>
-          <span class="flex flex-wrap gap-x-6 gap-y-1 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80">
-            <span><span class="text-clearix-cyan-bright">{base.find((m) => m.label === 'Vendas')?.valor}</span> vendas</span>
-            <span><span class="text-clearix-cyan-bright">{base.find((m) => m.label === 'Pacientes')?.valor}</span> pacientes</span>
-            <span><span class="text-clearix-cyan-bright">desde 2020</span> em produção</span>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ecossistema por jornada -->
-  <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
-    <div class="container-grid">
-      <div class="max-w-2xl mb-12 md:mb-16">
-        <p class="label mb-4">Ecossistema integrado</p>
-        <h2 class="h-section">16 apps. Um ecossistema. Zero atrito.</h2>
-        <p class="body-lg mt-5">Não são ferramentas soltas: cada app compartilha os mesmos dados, regras e identidade — organizados pela jornada da sua ótica.</p>
-      </div>
-
-      {jornadas.map((j, ji) => {
-        const jApps = apps.filter((a) => a.jornada === j.key);
-        return (
-          <details class="lens-card group" open={ji === 0}>
-            <summary class="lens-summary flex items-center gap-4 p-5 md:p-6 hover:bg-clearix-navy/10 transition-colors">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-clearix-cyan/25 bg-clearix-navy/25 font-mono text-clearix-cyan-bright text-label-sm">{String(ji + 1).padStart(2, '0')}</span>
-              <span class="min-w-0 flex-1">
-                <span class="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                  <span class="font-mono text-label-md uppercase tracking-widest text-clearix-cyan">{j.titulo}</span>
-                  <span class="text-clarity-muted text-body-md">{j.desc}</span>
-                </span>
-              </span>
-              <span class="flex shrink-0 items-center gap-3">
-                <span class="hidden sm:inline font-mono text-label-sm uppercase tracking-widest text-clarity-muted/80"><span class="text-clarity-off">{jApps.length}</span> apps</span>
-                <span class="lens-chevron grid h-7 w-7 place-items-center rounded-full border border-clarity-off/15 text-clearix-cyan-bright" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                </span>
-              </span>
-            </summary>
-            <div class="lens-card-body">
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-clarity-off/10 border-t border-clarity-off/10">
-                {jApps.map((a) => (
-                  <div class="bg-ink-surface p-5 flex flex-col gap-2 transition-shadow hover:shadow-[0_0_40px_-14px_#06B6D4]">
-                    <span class="flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full shrink-0" style={`background:${a.cor}`}></span>
-                      <span class="font-mono text-label-sm uppercase tracking-widest text-clarity-off">{a.nome}</span>
-                    </span>
-                    <span class="text-clarity-muted text-[13px] leading-snug">{a.tagline}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </details>
-        );
-      })}
-      <a href="/ecossistema" class="inline-block mt-8 font-mono text-label-md uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Conhecer cada app →</a>
-    </div>
-  </section>
-
-  <!-- Faixa-manifesto -->
-  <section data-lux class="lux-cyan relative overflow-hidden py-20 md:py-28 border-b border-clarity-off/10 text-center">
+<BaseLayout
+  title="Clearix — sistema para óticas, de orçamento a entrega"
+  description="Venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema, o mesmo que roda hoje no balcão de uma ótica de verdade. Agende 20 minutos de demonstração."
+>
+  <!-- S1 · Hero -->
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-36 pb-20 md:pt-44 md:pb-28 border-b border-clarity-off/10">
     <div class="lux-glow"></div>
-    <div class="container-grid max-w-3xl relative z-10 focus3d-soft">
-      <div class="prism-edge h-[2px] w-32 mx-auto mb-8 rounded-full"></div>
-      <h2 class="font-display font-extrabold text-[32px] leading-tight md:text-[44px] md:leading-[1.05] tracking-[-0.03em]">
-        Clareza com profundidade.<br/>
-        <span class="text-clearix-cyan italic">Transformando informação em decisão.</span>
-      </h2>
-    </div>
-  </section>
-
-  <!-- 2ª zona lente-fundo (sutil): Planos → FAQ, fecha o site com o mesmo vocabulário -->
-  <LenteFundo sutil>
-
-  <!-- Planos (preview) -->
-  <section class="py-20 md:py-28 border-b border-clarity-off/10">
-    <div class="container-grid">
-      <div class="max-w-2xl mb-12 md:mb-16">
-        <p class="label mb-4">Planos</p>
-        <h2 class="h-section">Comece pequeno. Cresça sem trocar de sistema.</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
-        {planos.map((p) => (
-          <div class={`bg-ink-surface p-6 flex flex-col ${p.destaque ? 'ring-1 ring-clearix-cyan/40' : ''}`}>
-            {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-clearix-cyan mb-2">Mais escolhido</span>}
-            <h3 class="font-display font-semibold text-xl text-clarity-off">{p.nome}</h3>
-            <p class="mt-2 mb-1"><span class="font-mono tabular-nums text-2xl text-clarity-off">{p.preco}</span><span class="text-clarity-muted text-body-md">{p.precoNota ?? ''}</span></p>
-            <p class="text-clarity-muted text-[13px] mb-4">{p.apps} apps · {p.lojas}</p>
-            <p class="text-clarity-dim text-body-md mt-auto">{p.publico}</p>
-          </div>
-        ))}
-      </div>
-      <a href="/planos" class="inline-block mt-8 font-mono text-label-md uppercase tracking-wider text-clearix-cyan hover:text-clearix-cyan-soft transition-colors">Ver planos e o que cada um inclui →</a>
-    </div>
-  </section>
-
-  <!-- Como começar -->
-  <section class="py-20 md:py-28 bg-ink-deep/50 border-b border-clarity-off/10">
-    <div class="container-grid">
-      <div class="max-w-2xl mb-12 md:mb-16">
-        <p class="label mb-4">Como começar</p>
-        <h2 class="h-section">No ar em semanas, não meses.</h2>
-        <p class="body-lg mt-5">Sem trauma de migração: a gente importa seu histórico e a loja não para.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-xl overflow-hidden focus3d">
-        {passos.map((p) => (
-          <div class="bg-ink-surface p-8">
-            <span class="font-mono tabular-nums text-4xl text-clearix-cyan-bright">{p.n}</span>
-            <h3 class="font-display font-semibold text-xl mt-4 mb-2 text-clarity-off">{p.t}</h3>
-            <p class="text-clarity-muted text-body-md">{p.d}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Aura (IA) -->
-  <section data-lux class="lux-cyan relative overflow-hidden py-24 md:py-32 border-b border-clarity-off/10">
-    <div class="lux-glow"></div>
-    <div class="absolute -left-28 -bottom-32 w-[480px] h-[480px] opacity-50 pointer-events-none hidden md:block">
-      <svg viewBox="0 0 200 200" fill="none" class="w-full h-full">
-        <defs>
-          <radialGradient id="lensG" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30" />
-            <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.10" />
-            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-        <circle cx="100" cy="100" r="70" fill="url(#lensG)" />
+    <div class="pointer-events-none absolute -right-40 top-10 hidden h-[560px] w-[560px] text-clearix-cyan-bright opacity-40 lg:block" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" class="h-full w-full">
         <g class="lens-ccw" style="transform-origin:100px 100px">
-          <circle cx="100" cy="100" r="80" stroke="#67E8F9" stroke-width="0.5" stroke-opacity="0.4" stroke-dasharray="3 7" />
-          <circle cx="100" cy="100" r="64" stroke="#22D3EE" stroke-width="1.4" stroke-dasharray="48 170" stroke-opacity="0.7" />
+          <circle cx="100" cy="100" r="82" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.5" stroke-dasharray="3 7" />
+          <circle cx="100" cy="100" r="66" stroke="currentColor" stroke-width="1.4" stroke-dasharray="48 170" stroke-opacity="0.8" />
         </g>
-        <circle cx="100" cy="100" r="3" fill="#22D3EE" />
+        <circle cx="100" cy="100" r="48" stroke="currentColor" stroke-width="0.6" stroke-opacity="0.35" />
+        <circle cx="100" cy="100" r="3" fill="currentColor" />
       </svg>
     </div>
-    <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10 focus3d-soft">
-      <div class="md:col-span-5">
-        <p class="label mb-4">Inteligência · em construção</p>
-        <h2 class="h-section italic mb-2">Aura</h2>
-        <p class="font-mono text-label-md uppercase tracking-wider text-clarity-muted">A camada de IA do Clearix</p>
+
+    <div class="container-grid relative z-10 max-w-4xl lg:max-w-container">
+      <div class="max-w-3xl anim-fade-in">
+        <p class="label mb-6">Sistema para óticas · feito dentro de uma ótica</p>
+        <h1 class="h-display mb-6">De orçamento a entrega, <span class="text-clearix-cyan-bright italic">sem perder ninguém no caminho</span>.</h1>
+        <p class="body-lg mb-9 max-w-2xl">
+          Venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema. O mesmo que roda hoje no balcão de
+          uma ótica de verdade.
+        </p>
+        <a href="/contato" class="btn-primary cta-pulse" data-cta="hero">{CTA}</a>
+        {whats && (
+          <p class="mt-4 text-body-md text-clarity-muted">
+            ou <a href={whats} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale com a gente no WhatsApp →</a>
+          </p>
+        )}
+        <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3 font-mono text-label-sm uppercase tracking-widest text-clarity-muted">
+          {heroProva.map((n) => (
+            <span><span class="tabular-nums text-body-lg normal-case tracking-normal text-clarity-off">{n.valor}</span> {n.label}</span>
+          ))}
+          <span class="normal-case tracking-wide text-clarity-muted/70">números do banco, {medidoEm}</span>
+        </div>
       </div>
-      <p class="md:col-span-7 body-lg">
-        A Aura é a camada de inteligência do Clearix — em construção e crescendo a cada ciclo.
-        Ela lê os dados reais da operação para apoiar as decisões do dia a dia da ótica, com a
-        visão de fazer o ecossistema trabalhar com menos esforço e mais clareza.
+    </div>
+  </section>
+
+  <!-- S2 · Espelho da dor -->
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12">
+        <p class="label mb-4">Se isso acontece na sua loja</p>
+        <h2 class="h-section">O problema não é a equipe. É o dado espalhado.</h2>
+      </div>
+      <ul class="grid gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-2">
+        {dores.map((d) => (
+          <li class="bg-ink-surface p-6 md:p-8">
+            <p class="mb-4 flex gap-3 text-body-md text-clarity-dim"><span class="shrink-0 text-amber-400/80" aria-hidden="true">✕</span>{d.dor}</p>
+            <p class="flex gap-3 text-body-md text-clarity-off"><span class="shrink-0 text-clearix-cyan-bright" aria-hidden="true">→</span>{d.resposta}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- S3 · O mecanismo: a vida de uma OS -->
+  <section id="como-funciona" class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-10">
+        <p class="label mb-4">Como funciona</p>
+        <h2 class="h-section">Uma OS, do grau à comissão, sem redigitar nada.</h2>
+      </div>
+
+      <div class="mb-14 grid gap-4">
+        <div>
+          <p class="label-sm mb-3">Hoje, cada etapa num lugar</p>
+          <ol class="flex flex-col gap-2 text-body-md text-clarity-muted/70 md:flex-row md:items-center">
+            {cadeiaSolta.map((c, i) => (
+              <li class="flex items-center gap-2">
+                <span class="rounded border border-clarity-off/10 bg-clarity-off/[0.03] px-4 py-2">{c}</span>
+                {i < cadeiaSolta.length - 1 && <span class="hidden md:inline" aria-hidden="true">·</span>}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p class="font-display text-headline-md text-clarity-off">No Clearix, <span class="text-clearix-cyan-bright">o mesmo pedido corre num fluxo só.</span></p>
+      </div>
+
+      <ol class="grid gap-px overflow-hidden rounded-xl border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-2 lg:grid-cols-3">
+        {jornadaOS.map((p, i) => (
+          <li class="flex flex-col bg-ink-surface p-7">
+            <span class="font-mono tabular-nums text-label-md text-clearix-cyan-bright">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-3 mb-2 font-display text-xl font-semibold text-clarity-off">{p.passo}</h3>
+            <p class="mb-6 text-body-md text-clarity-muted">{textosPasso[p.passo]}</p>
+            <ul class="mt-auto grid gap-2 border-t border-clarity-off/10 pt-4">
+              {p.numeros.map((n) => (
+                <li class="flex items-baseline gap-2">
+                  <span class="shrink-0 font-mono tabular-nums text-clarity-off">{n.valor}</span>
+                  <span class="text-[13px] leading-snug text-clarity-muted">{n.label}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+      <p class="label-sm mt-6 normal-case tracking-wide text-clarity-muted/70">Números da operação real, medidos em {medidoEm}.</p>
+    </div>
+  </section>
+
+  {/* S4 · O momento de valor (sem imagem até as capturas do tenant sintético chegarem em public/capturas/) */}
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid max-w-4xl">
+      <div class="card">
+        <div class="prism-edge mb-6 h-[2px] w-20 rounded-full"></div>
+        <p class="label mb-4">O que a gente mostra primeiro na demonstração</p>
+        <h2 class="h-section mb-5">A mesma lente, em laboratórios diferentes. Veja onde sai melhor antes de comprar.</h2>
+        <p class="body-lg mb-4">
+          Para a lente vendida, o Clearix lista as equivalentes nos laboratórios com que você tem acordo, com o custo e o
+          prazo de cada um. <strong class="text-clarity-off">Compara preço e prazo. Quem decide é você.</strong>
+        </p>
+        <p class="text-body-md text-clarity-muted">Não avaliamos qualidade de laboratório; esse julgamento continua sendo seu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 · Prova: números do banco -->
+  <section id="prova" class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12">
+        <p class="label mb-4">Operação real · medido em {medidoEm}</p>
+        <h2 class="h-section mb-5">Números do banco, não de pesquisa.</h2>
+        <p class="body-lg">Em vez de logotipos, mostramos o que o sistema registrou numa ótica real, com data.</p>
+      </div>
+      <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-5">
+        {provaBanco.map((n, i) => (
+          <li class={`bg-ink-surface p-6 ${i === provaBanco.length - 1 ? 'col-span-2 md:col-span-1' : ''}`}>
+            <span class="block font-mono tabular-nums text-[clamp(1.6rem,3vw,2.4rem)] leading-none text-clarity-off">{n.valor}</span>
+            <span class="mt-3 block text-[13px] leading-snug text-clarity-muted">{n.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="body-lg mt-10 max-w-3xl">
+        Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele todos os dias e o histórico de outras
+        cinco lojas da mesma rede está preservado no mesmo banco.
+      </p>
+      <p class="label-sm mt-4 max-w-3xl normal-case tracking-wide text-clarity-muted/70">
+        OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix. Números do banco
+        de produção, sem dado pessoal, medidos em {medidoEm}.
       </p>
     </div>
   </section>
 
-  <!-- FAQ -->
+  {/* S6 · Quem está por trás (D1: assinado pela DIGIAI, sem pessoa e sem foto) */}
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
-    <div class="container-grid grid md:grid-cols-12 gap-8 md:gap-16">
-      <div class="md:col-span-4">
-        <p class="label mb-4">Dúvidas</p>
-        <h2 class="h-sub">Perguntas frequentes</h2>
+    <div class="container-grid grid gap-8 md:grid-cols-12 md:items-start">
+      <div class="md:col-span-5">
+        <p class="label mb-4">Feito por quem opera ótica</p>
+        <h2 class="h-section">Construído dentro do balcão, não numa sala de reunião.</h2>
       </div>
-      <div class="md:col-span-8 border-t border-clarity-off/10">
-        {faq.map((f) => (
-          <details class="group border-b border-clarity-off/10">
-            <summary class="list-none cursor-pointer flex items-center justify-between gap-4 py-5">
-              <span class="font-display font-semibold text-xl">{f.q}</span>
-              <span class="font-mono text-clearix-cyan text-2xl leading-none group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <p class="unfold3d text-clarity-muted text-body-md pb-6 max-w-2xl">{f.a}</p>
-          </details>
-        ))}
+      <div class="md:col-span-7">
+        <p class="body-lg">
+          O Clearix é da DIGIAI Ótica e Tecnologia. Cada tela nasceu de um problema real de balcão: OS atrasada, carnê
+          perdido, caixa que não fecha. Primeiro resolvemos na nossa operação; depois oferecemos a outras óticas.
+        </p>
+        <p class="mt-6 font-mono text-label-md uppercase tracking-widest text-clearix-cyan-bright">DIGIAI</p>
       </div>
     </div>
   </section>
 
-  </LenteFundo>
-
-  <!-- Segurança + tecnologia (autoridade) -->
-  <section class="py-14 md:py-20 border-b border-clarity-off/10">
-    <div class="container-grid grid md:grid-cols-12 gap-8 items-center focus3d-soft">
-      <div class="md:col-span-7">
-        <p class="label mb-3">Segurança por padrão</p>
-        <p class="body-lg max-w-xl">
-          Isolamento de dados por loja, acesso por papel e portal do paciente só por link —
-          em conformidade com a LGPD. Dado clínico e financeiro tratado com rigor.
-        </p>
+  <!-- S7 · Módulos em uso -->
+  <section class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12">
+        <p class="label mb-4">O que vem no sistema</p>
+        <h2 class="h-section mb-5">Tudo o que a loja usa num dia, com um login só.</h2>
+        <p class="body-lg">Módulos especializados, não puxadinhos. Um acesso abre o que cada pessoa pode ver, por loja e por papel.</p>
       </div>
-      <div class="md:col-span-5">
-        <p class="label-sm mb-4 md:text-right">Construído sobre tecnologia de ponta</p>
-        <div class="flex flex-wrap md:justify-end items-center gap-x-8 gap-y-3 font-mono text-label-md uppercase tracking-widest text-clarity-muted/80">
-          {tech.map((t) => <span>{t}</span>)}
+      <div class="grid gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-2 lg:grid-cols-4">
+        {jornadas.map((j) => (
+          <div class="bg-ink-surface p-6">
+            <p class="mb-5 font-mono text-label-md uppercase tracking-widest text-clearix-cyan">{j.titulo}</p>
+            <ul class="space-y-5">
+              {apps.filter((a) => a.jornada === j.key).map((a) => (
+                <li>
+                  <span class="flex items-center gap-2">
+                    <span class="h-2 w-2 shrink-0 rounded-full" style={`background:${a.cor}`}></span>
+                    <span class="font-display font-semibold text-clarity-off">{a.nome}</span>
+                  </span>
+                  <span class="mt-1 block text-[13px] leading-snug text-clarity-muted">
+                    {a.tagline}
+                    {a.slug === 'clinics' && <> <span class="font-mono tabular-nums text-clarity-dim">{receitas.valor}</span> {receitas.label}.</>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <a href="/ecossistema" class="mt-8 inline-block font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver cada módulo →</a>
+    </div>
+  </section>
+
+  <!-- S8 · Oferta: como começa -->
+  <section id="como-comecar" class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-2xl mb-12">
+        <p class="label mb-4">Como começar</p>
+        <h2 class="h-section">Primeiro você vê. Depois decide.</h2>
+      </div>
+      <ol class="grid gap-px overflow-hidden rounded-xl border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-3">
+        {fases.map((f, i) => (
+          <li class="bg-ink-surface p-7 md:p-8">
+            <span class="font-mono text-label-md text-clearix-cyan-bright">Fase {String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-3 mb-2 font-display text-xl font-semibold text-clarity-off">{f.t}</h3>
+            <p class="text-body-md text-clarity-muted">{f.d}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-14">
+        <h3 class="h-sub mb-6">Preço público.</h3>
+        <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-4">
+          {planos.map((p) => (
+            <li class="bg-ink-surface p-5">
+              <span class="block font-display font-semibold text-clarity-off">{p.nome}</span>
+              <span class="mt-1 block whitespace-nowrap"><span class="font-mono tabular-nums text-base text-clarity-off md:text-xl">{p.preco}</span><span class="text-[13px] text-clarity-muted md:text-body-md">{p.precoNota ?? ''}</span></span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <a href="/contato" class="btn-primary" data-cta="oferta">{CTA}</a>
+          <a href="/planos" class="font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver o que cada plano inclui →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <RiscoZero />
+  <!-- S9 · Perguntas (mesma lista do JSON-LD FAQPage) -->
+  <section class="py-20 md:py-28 border-b border-clarity-off/10">
+    <div class="container-grid grid gap-8 md:grid-cols-12 md:gap-16">
+      <div class="md:col-span-4">
+        <p class="label mb-4">Dúvidas</p>
+        <h2 class="h-sub">Perguntas de quem está pensando em trocar de sistema</h2>
+      </div>
+      <div class="md:col-span-8">
+        <div class="border-t border-clarity-off/10">
+          {faq.map((f) => (
+            <details class="group border-b border-clarity-off/10">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright">
+                <span class="font-display text-lg font-semibold md:text-xl">{f.q}</span>
+                <span class="font-mono text-2xl leading-none text-clearix-cyan transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="unfold3d max-w-2xl pb-6 text-body-md text-clarity-muted">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <a href="/contato" class="mt-8 inline-block font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft" data-cta="faq">{CTA} →</a>
+      </div>
+    </div>
+  </section>
 
-  <CtaFinal />
+  <!-- S10 · CTA final -->
+  <CtaFinal prova />
 </BaseLayout>

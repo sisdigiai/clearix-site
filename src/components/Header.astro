@@ -1,7 +1,8 @@
 ---
 import Logo from './Logo.astro';
+import { CTA } from '../data/landing';
+import { HUB } from '../data/contato';
 
-const HUB = 'https://clearixhub.netlify.app';
 const nav = [
   { label: 'Ecossistema', href: '/ecossistema' },
   { label: 'Planos', href: '/planos' },
@@ -14,16 +15,16 @@ const isActive = (href: string) => path === href;
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50">
-  <!-- Faixa de posicionamento: autoridade primeiro, oferta como gancho discreto -->
-  <a href="/planos" class="group block bg-ink-deep/95 backdrop-blur-sm border-b border-clarity-off/10 text-center py-2 px-4 hover:bg-ink-surface/70 transition-colors">
+  {/* Faixa de posicionamento: sem número e sem oferta com prazo; só quem somos e o CTA único */}
+  <a href="/contato" data-cta="faixa_topo" class="group block bg-ink-deep/95 backdrop-blur-sm border-b border-clarity-off/10 text-center py-2 px-4 hover:bg-ink-surface/70 transition-colors">
     <span class="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-      <span class="inline-flex items-center gap-2 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/90">
+      <span class="hidden sm:inline-flex items-center gap-2 font-mono text-label-sm uppercase tracking-widest text-clarity-muted/90">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-clearix-cyan-bright"></span>
-        <span class="text-clarity-off">10 lojas</span> · <span class="text-clarity-off">+20 mil vendas</span> · <span class="text-clarity-off">5+ anos</span> em produção
+        Sistema para óticas · feito dentro de uma ótica
       </span>
       <span class="hidden sm:inline text-clarity-muted/25" aria-hidden="true">|</span>
       <span class="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-clearix-cyan-bright group-hover:text-clearix-cyan-soft transition-colors">
-        Preço de lançamento para as primeiras óticas
+        {CTA}
         <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
       </span>
     </span>
@@ -42,7 +43,7 @@ const isActive = (href: string) => path === href;
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href={HUB} target="_blank" rel="noopener" class="btn-primary text-label-sm py-2 px-4" aria-label="Entrar no Clearix Hub">Entrar →</a>
+      <a href={HUB} target="_blank" rel="noopener" class="btn-outline text-label-sm py-2 px-4" aria-label="Entrar no Clearix Hub">Entrar →</a>
 
       <details class="md:hidden relative">
         <summary class="list-none cursor-pointer font-mono text-label-sm uppercase tracking-wider text-clarity-muted px-2 py-2 select-none">Menu</summary>

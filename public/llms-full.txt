@@ -1,135 +1,119 @@
 # Clearix — conteúdo completo
 
-> Ecossistema operacional para óticas brasileiras: 16 apps integrados num só login.
-> Produto-âncora da DIGIAI (DIGIAI ÓTICA E TECNOLOGIA LTDA), Suzano-SP, Brasil.
+> Sistema para óticas brasileiras: venda, carnê, laboratório, WhatsApp da loja e financeiro no mesmo sistema, com um login só.
+> Produto da DIGIAI (DIGIAI ÓTICA E TECNOLOGIA LTDA), Suzano-SP, Brasil.
 > Site: https://clearix.app.br · Empresa: https://digiai.app.br
 
 ---
 
 ## O que é o Clearix
 
-Clearix integra a operação inteira de uma ótica num único ecossistema, onde o dado entra
-uma vez e flui entre todos os apps: a venda alimenta o laboratório, que avisa o paciente,
-que conta no financeiro, que aparece no BI — sem ninguém digitar duas vezes.
+O Clearix é o sistema de uma ótica de verdade, construído dentro dela. Cada tela nasceu de um problema real de balcão:
+OS atrasada, carnê perdido, caixa que não fecha. Primeiro foi resolvido na operação da casa; depois oferecido a outras óticas.
 
-Foi construído por quem vive o setor óptico e roda em operação real há mais de 5 anos.
+## A vida de uma OS no Clearix
 
-## Para quem é
+1. **Receita** — a venda começa pelo grau; o sistema filtra as lentes que servem e barra combinação impossível.
+2. **Venda** — à vista ou no carnê, no mesmo fluxo, com contrato e promissória gerados na hora.
+3. **Laboratório** — preço e prazo lado a lado entre os laboratórios com acordo; a escolha é da loja. A OS segue para o
+   laboratório pelo WhatsApp. (Compara preço e prazo; não avalia qualidade de laboratório.)
+4. **Acompanhamento** — kanban por etapa, linha do tempo de cada pedido e alerta de atraso.
+5. **Entrega** — só sai quitada ou com carnê; garantia e segundo par ligados à OS original.
+6. **Fechamento** — parcela baixada, caixa conferido e comissão calculada da venda entregue.
 
-Donos e gerentes de óticas brasileiras, da ótica solo independente à rede e franquia
-(1 a 20+ lojas). Cinco perfis:
-
-1. **Ótica solo** — 1 loja: tira venda, paciente e financeiro do improviso.
-2. **2 a 4 lojas** — recupera a visão consolidada entre filiais.
-3. **Rede média** — padroniza sem engessar, com BI multi-loja.
-4. **Franquia / cadeia** — governança C-level, SLA e segurança para 20+ lojas.
-5. **Ótica + clínica** — unifica a jornada do paciente e a do cliente.
-
-## Os 16 apps (voltados ao cliente)
+## Módulos em uso
 
 ### Vender
-- **Vendas** — PDV, orçamento, caixa, carnês e entregas.
-- **Express** — checkout rápido para leads de campanha.
-- **Loyalty** — fidelidade, carteiras e cupons.
+- **Vendas** — orçamento, venda, carnê, caixa, entrega e garantia.
+- **Pacientes e receitas** — ficha do paciente e receita que não se perde.
 
-### Atender
-- **Clinics** — anamnese, prescrições e prontuário clínico.
-- **Paciente** — portal do paciente por WhatsApp (pedidos, receitas, fidelidade).
-- **Client** — portal B2B do cliente para acompanhar pedidos.
-- **DCL** — laboratório em kanban; a produção fala com a loja em tempo real.
+### Laboratório
+- **Laboratório** — kanban da OS, montagem, retrabalho e alerta de atraso.
+- **Lentes** — catálogo por fornecedor, a mesma lente em vários laboratórios, preço por acordo.
 
 ### Gerir
-- **Finance** — DRE, fluxo de caixa, contas a pagar e a receber.
-- **Estoque** — inventários, movimentações e código de barras.
-- **Lens** — catálogo de lentes, pricing e motor óptico.
-- **RH** — ponto, escalas, férias e comissões.
+- **Financeiro** — contas a pagar e receber, extrato conciliado, plano de contas, DRE.
+- **Estoque** — armações e acessórios, movimentação, transferência e etiqueta com código de barras.
+- **Equipe** — ponto com localização, escalas e comissão calculada da venda entregue.
+- **Painel do dono** — vendas, entregas, recebimentos e metas por vendedor.
 
-### Crescer
-- **Marketing** — campanhas no WhatsApp e automações com IA.
-- **BI** — dashboards cross-app: a operação inteira numa visão só.
-- **AR Vision** — prova virtual de armações pelo celular.
-- **Import** — importação do sistema antigo com datas originais preservadas.
+### Relacionar
+- **WhatsApp da loja** — várias pessoas atendendo o mesmo número, com o histórico na ficha do cliente.
+- **Portal do paciente** — link sem senha para o cliente ver pedido, receita e parcelas.
+- **Quem chamar hoje** — lista diária de clientes para retomar contato, sem repetir quem já foi chamado.
 
-(O ecossistema também tem **Hub** — login único e visão geral — além de camadas internas
-de governança e segurança não comercializadas separadamente.)
+Um login por pessoa, com acesso por loja e por papel.
 
 ## Planos
 
-| Plano | Preço/mês | Apps | Lojas | Para quem |
-|---|---|---|---|---|
-| Essencial | R$ 349 | 7 | 1 | Ótica solo independente |
-| Controle | R$ 899 | 11 | até 5 | Ótica em crescimento, 2 a 4 lojas |
-| Crescimento | R$ 1.499 | 16 | até 8 | Rede média e franquias |
-| Completo | sob consulta | todo o ecossistema + SLA | ilimitadas | Rede, cadeia, franqueadora |
+| Plano | Preço/mês |
+|---|---|
+| Essencial | R$ 349 |
+| Controle | R$ 899 |
+| Crescimento | R$ 1.499 |
+| Completo | sob consulta |
 
-- **Demonstração assistida antes de contratar.** A entrada é por piloto pago e assistido — não há teste gratuito self-service.
-- Sobe de plano sem migração e sem perder histórico — os mesmos dados, mais apps liberados.
-
-### Add-ons (sob consulta)
-- Migração de base legada (Acert, CODEC e outros).
-- Inclusão de laboratório parceiro.
-- Site institucional em domínio próprio.
-- E-commerce integrado ao Clearix.
+- Sem período grátis. Começa por uma demonstração assistida de 20 minutos; a entrada é por piloto pago e assistido.
+- A migração de dados do sistema antigo é serviço assistido e orçado à parte, com conferência dos dados antes de subir.
 
 ## Prova de operação real
 
-Em uso real no Grupo Mello Óticas há mais de 5 anos (desde out/2020), migrado para o Clearix:
+Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele todos os dias e o histórico de outras cinco
+lojas da mesma rede está preservado no mesmo banco.
 
-- 20.915 vendas
-- 21.280 ordens de serviço
-- 15.788 pacientes
-- 64.215 lançamentos financeiros
-- 6 lojas em operação
-- R$ 12,4 milhões em vendas; R$ 19,5 milhões de movimentação financeira registrada
+Medido no banco de produção em 14/09/2026, sem dado pessoal:
 
-(Auditado em 2026-08-05 direto no banco, contando apenas registros ativos —
-a extração anterior somava registros já apagados.)
+- 1.694 OS em 2026 (1.685 criadas no balcão, no dia da venda)
+- 1.477 parcelas de carnê recebidas em 2026
+- 746 caixas fechados em 2026
+- 1.955 entregas registradas em 2026
+- mediana de 7 a 10 dias do pedido à entrega (abril a agosto de 2026)
+- 341 OS enviadas ao laboratório por WhatsApp
+- 3.401 mensagens de WhatsApp trocadas em 30 dias
+- 1.630 avisos por WhatsApp enviados pelo sistema desde abril (link do portal, laboratório, entrega)
+- 1.562 links do portal do paciente emitidos
+- 2.410 linhas de extrato bancário conciliadas em 2026
+- 5.366 linhas de comissão calculadas
+- 20.375 OS no histórico preservado
 
-Recall de cliente com IA: de ~3% manual para ~33% automatizado (cerca de 10× mais retorno).
+OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
 
 ## Perguntas frequentes
 
-**Preciso trocar meu sistema inteiro de uma vez?**
-Não. A migração é guiada e pode ser por etapa.
+**E se a minha equipe não se adaptar?**
+A implantação começa por uma parte da operação, com a gente acompanhando a equipe no começo.
 
-**Vocês migram meus dados antigos?**
-Sim — pacientes, vendas e histórico com as datas originais preservadas.
+**O processo da minha loja é diferente.**
+A demonstração vem antes da proposta: olhamos como a loja trabalha e mostramos onde o Clearix encaixa, e onde não encaixa.
 
-**Funciona com mais de uma loja?**
-Sim. É multi-loja: cada unidade com seus dados e o dono enxerga tudo numa visão só.
+**Vocês trazem os dados do meu sistema antigo?**
+Sim, como serviço assistido e orçado à parte. Os dados são conferidos antes de subir.
 
-**Meus dados de paciente ficam seguros?**
-Sim. Isolamento por loja, acesso por papel e portal do paciente só por link — conforme a LGPD.
+**Funciona para mais de uma loja?**
+Sim. Cada pessoa vê o que pode, por loja e por papel.
 
-**Como começo?**
-Pelo agendamento de uma demonstração em https://clearix.app.br/contato.
+**Quem me atende?**
+Uma pessoa da DIGIAI, em horário comercial.
 
-## Diferenciais
+**O Clearix emite nota fiscal?**
+Não nesta fase.
 
-- Feito especificamente para o setor óptico — não é um ERP genérico adaptado.
-- IA na operação (recall de clientes, marketing) + camada Aura em construção.
-- Prova virtual de armações (AR Vision) pelo celular.
-- Multi-loja real: dados por unidade + visão consolidada para o dono.
-- Segurança por padrão: isolamento por loja, acesso por papel, portal do paciente por link — conforme LGPD.
-- Implantação guiada, sem parar a loja: no ar em semanas, não meses.
+**Quanto custa?**
+Os planos começam em R$ 349 por mês, sem período grátis. O piloto é pago e combinado depois da demonstração.
 
 ## Empresa
 
 - Razão social: DIGIAI ÓTICA E TECNOLOGIA LTDA
 - CNPJ: 12.549.582/0001-49
 - Sede: Suzano-SP, Brasil (fundada em 2026)
-- Sócio-administrador: Gilberto Mello
 - Site institucional da empresa-mãe: https://digiai.app.br
-- O Clearix é o produto-âncora da DIGIAI.
 
 ## Contato
 
 - Site: https://clearix.app.br
 - Demonstração: https://clearix.app.br/contato
-- WhatsApp: +55 11 98602-7415
 - E-mail: sisdigiai@gmail.com
 - Clientes (login): https://clearixhub.netlify.app
-- Empresa-mãe (DIGIAI): https://digiai.app.br
 
 ## Atribuição
 

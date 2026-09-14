@@ -4,6 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import StructuredData from '../components/StructuredData.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { linkWhatsapp } from '../data/contato';
 
 interface Props {
   title?: string;
@@ -12,8 +13,8 @@ interface Props {
 }
 
 const SITE = 'https://clearix.app.br';
-const DEFAULT_TITLE = 'Clearix — o ecossistema completo para a sua ótica';
-const DEFAULT_DESC = 'Clearix: 16 apps integrados para óticas — vendas, clínica, laboratório, financeiro, estoque, fidelidade, marketing com IA e prova virtual de armações. Um só login. Por DIGIAI.';
+const DEFAULT_TITLE = 'Clearix — sistema para óticas, de orçamento a entrega';
+const DEFAULT_DESC = 'Clearix: venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema, com um login só. Feito dentro de uma ótica. Por DIGIAI.';
 const DEFAULT_OG = `${SITE}/og-default.png`;
 
 const {
@@ -23,6 +24,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, SITE).href;
+const whats = linkWhatsapp('site');
 ---
 
 <!DOCTYPE html>
@@ -82,11 +84,13 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
     </main>
     <Footer />
 
-    <!-- WhatsApp — micro-conversão para quem ainda está pesquisando -->
+    {/* WhatsApp — micro-conversão para quem ainda está pesquisando. Some enquanto o número (D2) não for definido. */}
+    {whats && (
     <a
-      href="https://wa.me/5511986027415?text=Quero%20conhecer%20o%20Clearix"
+      href={whats}
       target="_blank"
       rel="noopener"
+      data-cta="flutuante_whatsapp"
       class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full glass px-4 py-3 text-clarity-off font-semibold text-[14px] hover:text-clearix-cyan-bright transition-colors"
       aria-label="Falar no WhatsApp"
     >
@@ -95,6 +99,7 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
       </svg>
       <span class="hidden sm:inline">Falar no WhatsApp</span>
     </a>
+    )}
 
     <!-- Luz interativa: glow cyan segue o cursor nos elementos [data-lux] -->
     <script is:inline>
@@ -112,9 +117,6 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
       document.addEventListener('astro:page-load', initLux);
       initLux();
     </script>
-
-    <!-- Hero-lente cinematográfico (scroll-scrub) — idempotente / View Transitions -->
-    <script is:inline src="/clearix-lens-hero.js"></script>
 
     <!--
       Atribuição first-party: captura UTM na 1ª visita e persiste, registra

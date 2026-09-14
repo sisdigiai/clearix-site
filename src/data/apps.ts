@@ -1,52 +1,39 @@
-// Catálogo dos apps do ecossistema Clearix voltados ao CLIENTE.
-// Fonte de verdade: iam.clearix_apps (banco mhgbuplnxtfgipbemchb) +
-// clearix_docs/plataforma/design_system_completo.md (cores, rev. 2026-05-17).
-// Apps INTERNOS (atlas, designer, docs) NÃO entram na vitrine de venda.
+// Módulos do Clearix mostrados na vitrine. Só entra módulo com uso medido na operação real.
+// Fonte: Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md (INV) + decisão do eco de 14/09.
 //
-// A CONTA DOS 16 (conferida contra iam.clearix_apps em 2026-08-05):
-//   20 ativos no banco − atlas/designer/docs (internos) − hub (é o login, não
-//   um app de valor) = 16. É o número que a copy afirma em 6 lugares.
-// Este arquivo tinha 15 — faltava o Fone — então a vitrine mostrava 15 cards
-// sob um título que prometia 16, e o visitante consegue contar.
+// Fora da home e do /ecossistema, sem selo "em piloto" (eco, 14/09): Loyalty, AR Vision, Express, Fone e Import.
+// Construídos, sem uso medido (INV §13, §14.6). Voltam quando o INV medir uso. Import nunca aparece: é ferramenta
+// interna e a migração é serviço assistido. Apps internos (atlas, designer, docs) nunca entram.
+// Sem contagem de módulos na copy (D3).
 
 export interface ClearixApp {
   slug: string;
   nome: string;
   tagline: string;
-  cor: string;        // accent canônico (hex)
-  jornada: 'vender' | 'atender' | 'gerir' | 'crescer';
-  destaque?: boolean; // aparece com maior peso no bento
+  cor: string;        // accent canônico (hex), clearix_docs/plataforma/design_system_completo.md
+  jornada: 'vender' | 'laboratorio' | 'gerir' | 'relacionar';
 }
 
 export const apps: ClearixApp[] = [
-  // ── VENDER ──────────────────────────────────────────────
-  { slug: 'vendas',    nome: 'Vendas',    tagline: 'PDV, orçamento, caixa, carnês e entregas — atendimento que não esquece o cliente.', cor: '#3B82F6', jornada: 'vender', destaque: true },
-  { slug: 'express',   nome: 'Express',   tagline: 'Checkout rápido para leads de campanha fecharem na hora.', cor: '#EF4444', jornada: 'vender' },
-  { slug: 'loyalty',   nome: 'Loyalty',   tagline: 'Fidelidade, carteiras e cupons que trazem o cliente de volta.', cor: '#F59E0B', jornada: 'vender' },
-  { slug: 'fone',      nome: 'Fone',      tagline: 'Ligações, campanhas telefônicas e follow-up sem cair no esquecimento.', cor: '#14B8A6', jornada: 'vender' },
+  { slug: 'vendas',    nome: 'Vendas',               tagline: 'Orçamento, venda, carnê, caixa, entrega e garantia.', cor: '#3B82F6', jornada: 'vender' },
+  { slug: 'clinics',   nome: 'Pacientes e receitas', tagline: 'Ficha do paciente e receita que não se perde.', cor: '#F43F5E', jornada: 'vender' },
 
-  // ── ATENDER ─────────────────────────────────────────────
-  { slug: 'clinics',   nome: 'Clinics',   tagline: 'Anamnese, prescrições e prontuário clínico num só lugar.', cor: '#F43F5E', jornada: 'atender', destaque: true },
-  { slug: 'paciente',  nome: 'Paciente',  tagline: 'Portal do paciente por WhatsApp: pedidos, receitas e fidelidade.', cor: '#38BDF8', jornada: 'atender' },
-  { slug: 'client',    nome: 'Client',    tagline: 'Portal B2B do cliente para acompanhar pedidos em tempo real.', cor: '#10B981', jornada: 'atender' },
-  { slug: 'dcl',       nome: 'DCL',       tagline: 'Laboratório em kanban — a produção fala com a loja em tempo real.', cor: '#06B6D4', jornada: 'atender' },
+  { slug: 'dcl',       nome: 'Laboratório',          tagline: 'Kanban da OS, montagem, retrabalho e alerta de atraso.', cor: '#06B6D4', jornada: 'laboratorio' },
+  { slug: 'lens',      nome: 'Lentes',               tagline: 'Catálogo por fornecedor, a mesma lente em vários laboratórios, preço por acordo.', cor: '#8B5CF6', jornada: 'laboratorio' },
 
-  // ── GERIR ───────────────────────────────────────────────
-  { slug: 'finance',   nome: 'Finance',   tagline: 'DRE, fluxo de caixa, contas a pagar e a receber.', cor: '#F59E0B', jornada: 'gerir', destaque: true },
-  { slug: 'estoque',   nome: 'Estoque',   tagline: 'Inventários, movimentações e código de barras.', cor: '#F97316', jornada: 'gerir' },
-  { slug: 'lens',      nome: 'Lens',      tagline: 'Catálogo de lentes, pricing e motor óptico.', cor: '#8B5CF6', jornada: 'gerir' },
-  { slug: 'rh',        nome: 'RH',        tagline: 'Ponto, escalas, férias e comissões da equipe.', cor: '#4F46E5', jornada: 'gerir' },
+  { slug: 'finance',   nome: 'Financeiro',           tagline: 'Contas a pagar e receber, extrato conciliado, plano de contas, DRE.', cor: '#F59E0B', jornada: 'gerir' },
+  { slug: 'estoque',   nome: 'Estoque',              tagline: 'Armações e acessórios, movimentação, transferência e etiqueta com código de barras.', cor: '#F97316', jornada: 'gerir' },
+  { slug: 'rh',        nome: 'Equipe',               tagline: 'Ponto com localização, escalas e comissão calculada da venda entregue.', cor: '#4F46E5', jornada: 'gerir' },
+  { slug: 'bi',        nome: 'Painel do dono',       tagline: 'Vendas, entregas, recebimentos e metas por vendedor.', cor: '#A855F7', jornada: 'gerir' },
 
-  // ── CRESCER ─────────────────────────────────────────────
-  { slug: 'marketing', nome: 'Marketing', tagline: 'Campanhas no WhatsApp e automações com IA.', cor: '#EC4899', jornada: 'crescer', destaque: true },
-  { slug: 'bi',        nome: 'BI',        tagline: 'Dashboards cross-app: a operação inteira numa visão só.', cor: '#A855F7', jornada: 'crescer' },
-  { slug: 'ar_vision', nome: 'AR Vision', tagline: 'Prova virtual de armações — o cliente experimenta pelo celular.', cor: '#D946EF', jornada: 'crescer' },
-  { slug: 'import',    nome: 'Import',    tagline: 'Importação do sistema antigo com as datas originais preservadas.', cor: '#84CC16', jornada: 'crescer' },
+  { slug: 'client',    nome: 'WhatsApp da loja',     tagline: 'Várias pessoas atendendo o mesmo número, com o histórico na ficha do cliente.', cor: '#10B981', jornada: 'relacionar' },
+  { slug: 'paciente',  nome: 'Portal do paciente',   tagline: 'Link sem senha para o cliente ver pedido, receita e parcelas.', cor: '#38BDF8', jornada: 'relacionar' },
+  { slug: 'marketing', nome: 'Quem chamar hoje',     tagline: 'Lista diária de clientes para retomar contato, sem repetir quem já foi chamado.', cor: '#EC4899', jornada: 'relacionar' },
 ];
 
 export const jornadas = [
-  { key: 'vender',  titulo: 'Vender',  desc: 'Do balcão ao checkout, sem perder ninguém no caminho.' },
-  { key: 'atender', titulo: 'Atender', desc: 'Clínica, paciente e laboratório conectados na mesma jornada.' },
-  { key: 'gerir',   titulo: 'Gerir',   desc: 'Financeiro, estoque e equipe sob controle e sem retrabalho.' },
-  { key: 'crescer', titulo: 'Crescer', desc: 'Marketing, dados e prova virtual para escalar com método.' },
+  { key: 'vender',      titulo: 'Vender',      desc: 'Do orçamento à entrega, com a receita ligada à venda.' },
+  { key: 'laboratorio', titulo: 'Laboratório', desc: 'A OS acompanhada do pedido ao óculos pronto.' },
+  { key: 'gerir',       titulo: 'Gerir',       desc: 'Caixa, estoque e equipe no mesmo lugar da venda.' },
+  { key: 'relacionar',  titulo: 'Relacionar',  desc: 'O cliente atendido, informado e chamado de volta.' },
 ] as const;

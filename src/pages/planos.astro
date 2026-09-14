@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import { planos, demo, addons } from '../data/planos';
+import { CTA } from '../data/landing';
 ---
 
 <BaseLayout
@@ -15,8 +16,8 @@ import { planos, demo, addons } from '../data/planos';
       <p class="label mb-6">Planos</p>
       <h1 class="h-display mb-6">Comece pequeno.<br/><span class="text-clearix-cyan italic">Cresça sem trocar de sistema.</span></h1>
       <p class="body-lg max-w-2xl">
-        Você sobe de plano conforme a ótica cresce — sem migração, sem retrabalho, sem perder histórico.
-        Os mesmos dados, mais apps liberados.
+        Os planos usam o mesmo sistema e os mesmos dados; muda o que fica liberado para a sua operação. Na demonstração,
+        a gente indica por onde começar.
       </p>
     </div>
   </section>
@@ -24,42 +25,31 @@ import { planos, demo, addons } from '../data/planos';
   <!-- Tiers -->
   <section class="py-16 md:py-24 border-b border-clarity-off/10">
     <div class="container-grid">
-      <div class="glass rounded-xl px-5 py-4 mb-8 flex flex-wrap items-center gap-3 focus3d">
-        <span class="font-mono text-label-sm uppercase tracking-widest text-ink-deep bg-clearix-cyan-bright rounded px-2.5 py-1">Preço de lançamento</span>
-        <span class="text-clarity-dim text-body-md">Condição das primeiras óticas — garanta agora e mantenha o valor enquanto for cliente.</span>
-      </div>
+      {/* Saíram (14/09): faixa "preço de lançamento / garanta agora" (urgência sem decisão do dono), "5 sistemas
+          separados" (sem fonte) e o selo "mais escolhido" (zero clientes pagantes). Composição dos planos espera a D5. */}
       <p class="text-clarity-dim text-body-lg mb-8 max-w-3xl">
-        Um só Clearix no lugar de <span class="text-clarity-off font-semibold">5 sistemas separados</span> — caixa, estoque, laboratório, CRM e financeiro. A partir de <span class="text-clearix-cyan-bright font-semibold">R$ 349/mês</span>.
+        Preço público, a partir de <span class="text-clearix-cyan-bright font-semibold tabular-nums">{planos[0].preco}/mês</span>, sem período grátis. O piloto é pago e combinado depois da demonstração.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
         {planos.map((p) => (
-          <div class={`relative p-7 flex flex-col ${p.destaque ? 'bg-clearix-navy/20 ring-2 ring-inset ring-clearix-cyan-bright' : 'bg-ink-surface'}`}>
-            {p.destaque && <span class="prism-edge absolute top-0 inset-x-0 h-[3px]"></span>}
-            {p.destaque && <span class="font-mono text-label-sm uppercase tracking-widest text-ink-deep bg-clearix-cyan-bright rounded px-2 py-0.5 self-start mb-3">★ Mais escolhido</span>}
-            {!p.destaque && <span class="h-[26px] mb-3"></span>}
+          <div class="relative p-7 flex flex-col bg-ink-surface">
             <h2 class="font-display font-bold text-2xl text-clarity-off">{p.nome}</h2>
             <p class="mt-3 mb-1">
               <span class="font-mono tabular-nums text-3xl text-clarity-off">{p.preco}</span>
               {p.precoNota && <span class="text-clarity-muted text-body-md">{p.precoNota}</span>}
             </p>
-            <p class="font-mono text-label-sm uppercase tracking-wider text-clearix-cyan mb-1">{p.apps} apps</p>
             <p class="text-clarity-muted text-[13px] mb-5">{p.lojas} · {p.publico}</p>
             <ul class="space-y-2 mb-6">
               {p.inclui.map((i) => (
                 <li class="flex gap-2 text-clarity-dim text-body-md"><span class="text-clearix-cyan shrink-0">→</span>{i}</li>
               ))}
             </ul>
-            <a href="/contato" class={`mt-auto text-center ${p.destaque ? 'btn-primary' : 'btn-outline'} text-label-sm py-2.5`}>
-              {p.preco === 'Sob consulta' ? 'Falar com a gente' : 'Começar'}
+            <a href="/contato" data-cta="planos" class="mt-auto text-center btn-outline text-label-sm py-2.5">
+              {p.preco === 'Sob consulta' ? 'Falar com a gente' : 'Agendar demonstração'}
             </a>
           </div>
         ))}
       </div>
-      <p class="text-clarity-muted text-body-md mt-6">
-        <span class="text-clearix-cyan-bright">✓</span> Demonstração assistida
-        <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Migração guiada
-        <span class="text-clarity-muted/40 mx-2">·</span><span class="text-clearix-cyan-bright">✓</span> Sobe de plano sem perder histórico
-      </p>
       <p class="label-sm normal-case tracking-wide text-clarity-muted/60 mt-3">
         Preços de referência. Valores e composição confirmados na proposta. Tributos conforme legislação.
       </p>
@@ -75,7 +65,7 @@ import { planos, demo, addons } from '../data/planos';
           <h2 class="h-sub mb-2">{demo.nome}</h2>
           <p class="text-clarity-muted text-body-md max-w-xl">{demo.desc}</p>
         </div>
-        <a href="/contato" class="btn-primary shrink-0">Agendar demonstração</a>
+        <a href="/contato" class="btn-primary shrink-0" data-cta="planos_demo">{CTA}</a>
       </div>
     </div>
   </section>

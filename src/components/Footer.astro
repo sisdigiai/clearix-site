@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import { empresa, endereco, HUB } from '../data/contato';
 const ano = 2026;
 
 const navegar = [
@@ -14,6 +15,11 @@ const navegar = [
 // colegas — é ela que gira o boca-a-boca. A UTM aqui é explícita porque o
 // clearix-attrib.js respeita link que já traz origem própria.
 const CALC = 'https://clearixcalc.netlify.app/?utm_source=clearix&utm_medium=landing';
+
+// D3b: endereço completo só depois de o dono conferir o cartão CNPJ (ver src/data/contato.ts).
+const local = endereco.confirmado
+  ? `${endereco.logradouro} · ${endereco.bairro} · ${endereco.cidade}/${endereco.uf} · CEP ${endereco.cep}`
+  : empresa.cidade;
 ---
 
 <footer class="bg-ink-deep py-16 md:py-20 border-t border-clarity-off/10">
@@ -22,7 +28,7 @@ const CALC = 'https://clearixcalc.netlify.app/?utm_source=clearix&utm_medium=lan
       <div class="md:col-span-5">
         <Logo class="mb-5" />
         <p class="text-clarity-muted text-body-md max-w-md">
-          O ecossistema operacional para óticas que querem crescer com método, tecnologia e inteligência. Um produto DIGIAI.
+          Sistema para óticas: de orçamento a entrega, no mesmo lugar. Um produto DIGIAI.
         </p>
       </div>
 
@@ -34,7 +40,7 @@ const CALC = 'https://clearixcalc.netlify.app/?utm_source=clearix&utm_medium=lan
           ))}
           <li>
             <a href={CALC} target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">
-              Calculadora de grau <span class="text-clearix-cyan">grátis</span> →
+              Calculadora de grau →
             </a>
           </li>
         </ul>
@@ -44,22 +50,22 @@ const CALC = 'https://clearixcalc.netlify.app/?utm_source=clearix&utm_medium=lan
         <p class="font-mono text-label-md uppercase text-clearix-cyan mb-4 tracking-wider">Empresa</p>
         <ul class="space-y-2 text-clarity-muted text-body-md">
           <li><a href="https://digiai.app.br" target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">DIGIAI →</a></li>
-          <li><a href="https://clearixhub.netlify.app" target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">Já sou cliente →</a></li>
+          <li><a href={HUB} target="_blank" rel="noopener" class="hover:text-clarity-off transition-colors">Já sou cliente →</a></li>
         </ul>
       </div>
 
       <div class="md:col-span-2">
         <p class="font-mono text-label-md uppercase text-clearix-cyan mb-4 tracking-wider">Legal</p>
         <ul class="space-y-2 text-clarity-muted text-body-md">
-          <li>DIGIAI ÓTICA E TECNOLOGIA LTDA</li>
-          <li class="font-mono text-label-md">CNPJ 12.549.582/0001-49</li>
+          <li>{empresa.razaoSocial}</li>
+          <li class="font-mono text-label-md tabular-nums">CNPJ {empresa.cnpj}</li>
         </ul>
       </div>
     </div>
 
     <div class="divider pt-8 flex flex-col md:flex-row justify-between gap-4 text-clarity-muted text-body-md">
       <p class="font-mono text-label-sm uppercase tracking-widest">
-        © {ano} Clearix · DIGIAI · Suzano-SP · Brasil
+        © {ano} {empresa.razaoSocial} · CNPJ <span class="tabular-nums">{empresa.cnpj}</span> · {local}
       </p>
       <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted/60">
         Clareza com profundidade.

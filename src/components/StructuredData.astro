@@ -1,13 +1,18 @@
 ---
 // JSON-LD para SEO + GEO/AEO (buscadores e crawlers de IA).
-// Schemas: SoftwareApplication (Clearix) + Organization (DIGIAI) + WebSite + ItemList (apps) + FAQPage.
-// Dados canônicos — não inventar. Apps importados de src/data/apps.
+// Schemas: SoftwareApplication (Clearix) + Organization (DIGIAI) + WebSite + ItemList (módulos) + FAQPage.
+// Dados canônicos — não inventar. Módulos, FAQ, planos e contato vêm de src/data.
 import { apps } from '../data/apps';
+import { planos } from '../data/planos';
+import { faq } from '../data/landing';
+import { whatsapp, email, empresa, endereco } from '../data/contato';
 
 const SITE = 'https://clearix.app.br';
 const DIGIAI_LOGO = 'https://hswyopqvnolqpmprqvzh.supabase.co/storage/v1/object/public/digiai-brand/logo/horizontal_dark.png';
 
-// 1) Clearix como software
+const precoNumerico = (preco: string) => preco.replace(/[^\d,]/g, '').replace(',', '.');
+
+// 1) Clearix como software. Composição dos planos (lojas, módulos) fica fora até a D5.
 const softwareSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -15,59 +20,55 @@ const softwareSchema = {
   name: 'Clearix',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
-  description: 'Ecossistema operacional para óticas: vendas, clínica, laboratório, financeiro, estoque, fidelidade, marketing com IA, BI e prova virtual de armações — integrados num só login.',
+  description: 'Sistema para óticas: venda, carnê, laboratório, WhatsApp da loja, estoque, financeiro e painel do dono no mesmo sistema, com um login só.',
   url: SITE,
   image: `${SITE}/og-default.png`,
   inLanguage: 'pt-BR',
   publisher: { '@id': `${SITE}/#organization` },
-  offers: [
-    { '@type': 'Offer', name: 'Essencial', price: '349.00', priceCurrency: 'BRL', description: '7 apps, 1 loja', availability: 'https://schema.org/InStock' },
-    { '@type': 'Offer', name: 'Controle', price: '899.00', priceCurrency: 'BRL', description: '11 apps, até 5 lojas', availability: 'https://schema.org/InStock' },
-    { '@type': 'Offer', name: 'Crescimento', price: '1499.00', priceCurrency: 'BRL', description: '16 apps, até 8 lojas', availability: 'https://schema.org/InStock' },
-  ],
+  offers: planos
+    .filter((p) => /\d/.test(p.preco))
+    .map((p) => ({ '@type': 'Offer', name: p.nome, price: precoNumerico(p.preco), priceCurrency: 'BRL', availability: 'https://schema.org/InStock' })),
 };
 
-// 2) DIGIAI — empresa-mãe (publisher)
+// 2) DIGIAI — empresa-mãe (publisher). Telefone só com D2; endereço completo só com D3b.
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': `${SITE}/#organization`,
   name: 'DIGIAI',
-  alternateName: 'DIGIAI ÓTICA E TECNOLOGIA LTDA',
-  legalName: 'DIGIAI ÓTICA E TECNOLOGIA LTDA',
+  alternateName: empresa.razaoSocial,
+  legalName: empresa.razaoSocial,
   url: 'https://digiai.app.br',
   logo: { '@type': 'ImageObject', url: DIGIAI_LOGO, width: 1200, height: 400 },
   image: DIGIAI_LOGO,
-  email: 'sisdigiai@gmail.com',
-  telephone: '+5511986027415',
-  description: 'Empresa de tecnologia operada por IA, criadora do Clearix — o ecossistema operacional para óticas.',
+  email,
+  ...(whatsapp ? { telephone: `+${whatsapp.numero}` } : {}),
+  description: 'Empresa de tecnologia criadora do Clearix, o sistema para óticas feito dentro de uma ótica.',
   foundingDate: '2026-05-21',
-  taxID: '12.549.582/0001-49',
-  vatID: '12.549.582/0001-49',
+  taxID: empresa.cnpj,
+  vatID: empresa.cnpj,
   numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5 },
   knowsAbout: [
     'Gestão de óticas',
     'Software para óticas',
-    'CRM óptico',
-    'Prontuário eletrônico oftálmico',
-    'Laboratório óptico (DCL)',
-    'Prova virtual de armações (AR)',
-    'IA para varejo óptico',
+    'Laboratório óptico',
+    'Carnê e crediário de ótica',
     'Brasil',
   ],
-  founder: { '@type': 'Person', name: 'Gilberto Mello', jobTitle: 'Sócio-administrador' },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Rua General Francisco Glicério, 940, Térreo - Sala 02, Jardim Guaio',
-    addressLocality: 'Suzano',
-    addressRegion: 'SP',
-    postalCode: '08674-000',
-    addressCountry: 'BR',
-  },
+  address: endereco.confirmado
+    ? {
+        '@type': 'PostalAddress',
+        streetAddress: `${endereco.logradouro}, ${endereco.bairro}`,
+        addressLocality: endereco.cidade,
+        addressRegion: endereco.uf,
+        postalCode: endereco.cep,
+        addressCountry: 'BR',
+      }
+    : { '@type': 'PostalAddress', addressLocality: endereco.cidade, addressRegion: endereco.uf, addressCountry: 'BR' },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+5511986027415',
-    email: 'sisdigiai@gmail.com',
+    ...(whatsapp ? { telephone: `+${whatsapp.numero}` } : {}),
+    email,
     contactType: 'customer service',
     areaServed: 'BR',
     availableLanguage: ['Portuguese', 'pt-BR'],
@@ -89,17 +90,17 @@ const websiteSchema = {
   '@id': `${SITE}/#website`,
   url: SITE,
   name: 'Clearix',
-  description: 'O ecossistema completo para a ótica que quer crescer com método, tecnologia e inteligência.',
+  description: 'Sistema para óticas, de orçamento a entrega, feito dentro de uma ótica.',
   inLanguage: 'pt-BR',
   publisher: { '@id': `${SITE}/#organization` },
 };
 
-// 4) ItemList dos apps do ecossistema (bom para GEO — descreve o ecossistema aos LLMs)
+// 4) ItemList dos módulos em uso (bom para GEO — descreve o sistema aos LLMs)
 const appsSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  '@id': `${SITE}/#apps`,
-  name: 'Apps do ecossistema Clearix',
+  '@id': `${SITE}/#modulos`,
+  name: 'Módulos do Clearix',
   numberOfItems: apps.length,
   itemListElement: apps.map((a, i) => ({
     '@type': 'ListItem',
@@ -116,18 +117,12 @@ const appsSchema = {
   })),
 };
 
-// 5) FAQ
+// 5) FAQ — exatamente a lista da home
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   '@id': `${SITE}/#faq`,
-  mainEntity: [
-    { '@type': 'Question', name: 'Preciso trocar meu sistema inteiro de uma vez?', acceptedAnswer: { '@type': 'Answer', text: 'Não. A migração é guiada e pode ser por etapa — começamos pelo que dói mais e o resto entra no ritmo da loja.' } },
-    { '@type': 'Question', name: 'Vocês migram meus dados antigos?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. Pacientes, vendas e histórico são importados com as datas originais preservadas — sua operação não começa do zero.' } },
-    { '@type': 'Question', name: 'Funciona com mais de uma loja?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. O Clearix é multi-loja: cada unidade com seus dados, e o dono enxerga tudo numa visão só.' } },
-    { '@type': 'Question', name: 'Meus dados de paciente ficam seguros?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. Isolamento de dados por loja, acesso por papel e portal do paciente só por link — em conformidade com a LGPD.' } },
-    { '@type': 'Question', name: 'Quanto custa?', acceptedAnswer: { '@type': 'Answer', text: 'Os planos vão de R$ 349/mês (Essencial) a R$ 1.499/mês (Crescimento), além do plano Completo sob consulta. A entrada é por piloto pago e assistido, com demonstração antes — não há teste gratuito self-service.' } },
-  ],
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 ---
 <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
