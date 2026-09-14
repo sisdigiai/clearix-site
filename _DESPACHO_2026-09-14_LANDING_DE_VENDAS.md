@@ -63,3 +63,16 @@ agente não autoriza: publicação, preço e promessa são do dono.
 - **Aguardo:** OK do eco e do orquestrador (§8 do desenho) e as 7 decisões do dono (§7: autoridade, WhatsApp, CNPJ, como
   dizer o tamanho da rede, conteúdo dos planos, afirmação de isolamento, termo de piloto).
 - Skills `copywriting`/`cro`/`marketing-psychology` não estão disponíveis nesta sessão.
+
+### Fechamento da etapa de build (14/09)
+- Copy aprovada (eco) e revisada (Geral); OK de tela do eco em desktop e 375 px.
+- **Commit `2e1be09`** na branch `landing-vendas-2026-09` (confirmado pelo dono nesta sessão). Sem merge em main, sem push.
+- **Publicação travada** até D5 (planos), D8 (R$ do carnê), D2 (WhatsApp + e-mail oficial), D3b (cartão CNPJ) e D7 (termo
+  de piloto assinado). Detalhe em `docs/changelog.md` v0.3.0.
+- Ícones: a home fica sem ícone de módulo; se entrarem, vêm de `Cockpit/clearix_design/assets/icons/apps/` (R-014), não
+  da v2.
+
+**v2 esgotada — pode apagar.** Tudo o que se aproveitou da `D:\projetos\clearix-site-v2` está no commit `2e1be09` (lista
+em `_DESENHO_2026-09-14_LANDING.md` §6). A pasta não tem git: apagar não tem volta. Quem apaga é o dono.
+**Apagada em 14/09** por ordem expressa do dono nesta sessão ("pode apagar a pasta v2"). Antes de apagar: 9.285 arquivos,
+175,6 MB (quase tudo `node_modules`), último arquivo alterado em 30/08, sem `.git`. Fica uma pasta de site só: `clearix-site`.
