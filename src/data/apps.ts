@@ -1,5 +1,6 @@
 // Módulos do Clearix mostrados na vitrine. Só entra módulo com uso medido na operação real.
-// Fonte: Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md (INV) + decisão do eco de 14/09.
+// Fonte que manda desde 14/09: Cockpit/comercial/verdade-landing-vs-app-2026-09-14.md (dona: Orquestrador Geral).
+// Texto novo aqui só depois de estar na folha. Base de medição: inventário de 14/09 (INV).
 //
 // Fora da home e do /ecossistema, sem selo "em piloto" (eco, 14/09): Loyalty, AR Vision, Express, Fone e Import.
 // Construídos, sem uso medido (INV §13, §14.6). Voltam quando o INV medir uso. Import nunca aparece: é ferramenta
@@ -26,7 +27,7 @@ export const apps: ClearixApp[] = [
   { slug: 'rh',        nome: 'Equipe',               tagline: 'Ponto com localização, escalas e comissão calculada da venda entregue.', cor: '#4F46E5', jornada: 'gerir' },
   { slug: 'bi',        nome: 'Painel do dono',       tagline: 'Vendas, entregas, recebimentos e metas por vendedor.', cor: '#A855F7', jornada: 'gerir' },
 
-  { slug: 'client',    nome: 'WhatsApp da loja',     tagline: 'Várias pessoas atendendo o mesmo número, com o histórico na ficha do cliente.', cor: '#10B981', jornada: 'relacionar' },
+  { slug: 'client',    nome: 'WhatsApp da loja',     tagline: 'Várias pessoas atendendo o mesmo número; o que passa pelo sistema fica na ficha do cliente.', cor: '#10B981', jornada: 'relacionar' },
   { slug: 'paciente',  nome: 'Portal do paciente',   tagline: 'Link sem senha para o cliente ver pedido, receita e parcelas.', cor: '#38BDF8', jornada: 'relacionar' },
   { slug: 'marketing', nome: 'Quem chamar hoje',     tagline: 'Lista diária de clientes para retomar contato, sem repetir quem já foi chamado.', cor: '#EC4899', jornada: 'relacionar' },
 ];

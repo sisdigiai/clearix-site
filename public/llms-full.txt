@@ -38,7 +38,7 @@ OS atrasada, carnê perdido, caixa que não fecha. Primeiro foi resolvido na ope
 - **Painel do dono** — vendas, entregas, recebimentos e metas por vendedor.
 
 ### Relacionar
-- **WhatsApp da loja** — várias pessoas atendendo o mesmo número, com o histórico na ficha do cliente.
+- **WhatsApp da loja** — várias pessoas atendendo o mesmo número; o que passa pelo sistema fica na ficha do cliente.
 - **Portal do paciente** — link sem senha para o cliente ver pedido, receita e parcelas.
 - **Quem chamar hoje** — lista diária de clientes para retomar contato, sem repetir quem já foi chamado.
 

@@ -163,3 +163,8 @@ resposta do MKT.
 tela antes de virar ligação do cliente"; migração → "orçada à parte, depois de examinarmos uma amostra do seu banco; os
 dados são conferidos antes de a loja operar" (home, `/planos`, `llms-full.txt`); "Implantamos junto, do seu lado" →
 "Implantamos com a gente acompanhando"; demonstração "com dados parecidos com os da sua ótica" → "com dados de demonstração".
+
+**Conferência contra a folha única (`Cockpit/comercial/verdade-landing-vs-app-2026-09-14.md`, dona: Orquestrador
+Geral):** "WhatsApp da loja… com o histórico na ficha do cliente" → "o que passa pelo sistema fica na ficha do cliente"
+(folha §2: o que a equipe responde pelo celular não entra na ficha), na home, em `/ecossistema` e no `llms-full.txt`.
+Daqui em diante, número ou promessa só entra no site depois de entrar na folha.

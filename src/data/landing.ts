@@ -1,4 +1,6 @@
 // Números da landing de vendas (desenho aprovado pelo eco em 14/09/2026, S1–S10).
+// FONTE QUE MANDA desde 14/09: Cockpit/comercial/verdade-landing-vs-app-2026-09-14.md (dona: Orquestrador Geral).
+// Número ou promessa novos só entram aqui depois de entrarem na folha (eco mede, Geral aprova).
 // Tenant Grupo Mello (6292c9f0…), banco mhgbuplnxtfgipbemchb, `deleted_at is null`, datas em America/Sao_Paulo.
 // INV = Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md
 // ECO = rodapé do orquestrador do eco em clearix-site/_DESENHO_2026-09-14_LANDING.md (correções medidas em 14/09)
