@@ -31,12 +31,38 @@
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
   /**
-   * event_code precisa existir em analytics.events_catalog (FK) E na allowlist
-   * da edge. `landing_visit` e `click_checkout` já estão nos dois — por isso
-   * ligar a landing não exige nenhuma mudança no lado digiai.
+   * event_code precisa existir em analytics.events_catalog (FK) E na allowlist da edge, senão o endpoint recusa.
+   * Códigos combinados com o app digiai em 15/09 (via eco), para o funil do MKT ler:
+   *   clearix_site_visit       — visita, com utm_*; a chegada pelo link da prospecção é esta visita
+   *   clearix_demo_solicitada  — só depois do ok do lead-capture
+   *   clearix_whatsapp_click   — clique no WhatsApp da landing (quando o botão voltar com a D2)
+   *   clearix_cta_click        — clique de CTA para /contato, Hub e calculadora, com metadata.cta_id
+   * `landing_visit`/`click_checkout` saem quando estes entram no catálogo: esta versão só vai ao ar depois disso.
+   *
+   * Interessado vindo da prospecção do MKT (despacho 15/09 "receber interessados"):
+   *   ?utm_source=whatsapp&utm_medium=prospeccao&utm_campaign=<variante>&utm_content=<ops.commercial_leads.id>
    */
-  var EV_VISIT = 'landing_visit';
-  var EV_CTA = 'click_checkout';
+  var EV_VISIT = 'clearix_site_visit';
+  var EV_DEMO_SUBMIT = 'clearix_demo_solicitada';
+  var EV_WHATSAPP = 'clearix_whatsapp_click';
+  var EV_CTA = 'clearix_cta_click';
+  var MEDIUM_PROSPECCAO = 'prospeccao';
+  var UTM_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+  var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+  /**
+   * Preview local não fala com produção: `npm run dev` mandava visita, clique e lead de teste para o banco do digiai
+   * (recado do Geral, 15/09). Em localhost nada sai, a não ser que a página seja aberta com ?attrib=on — liga só
+   * naquela aba, para uma prova deliberada e combinada.
+   */
+  var EM_PREVIEW = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  function envioLigado() {
+    if (!EM_PREVIEW) return true;
+    try {
+      if (/[?&]attrib=on\b/.test(location.search)) sessionStorage.setItem('clearix_site_attrib_on', '1');
+      return sessionStorage.getItem('clearix_site_attrib_on') === '1';
+    } catch (_) { return false; }
+  }
 
   function safeGet(k) {
     try { return localStorage.getItem(k); } catch (_) { return null; }
@@ -60,6 +86,9 @@
    * UTM da URL vence e é gravada; sem UTM na URL, devolve a da primeira visita.
    * Primeiro toque ganha: quem chegou pela calc continua sendo da calc mesmo
    * depois de navegar pelo site.
+   *
+   * Validade de 30 dias: sem isso, uma visita orgânica meses depois ainda
+   * carregaria o lead_id da prospecção e contaria como venda do braço do A/B.
    */
   function utms() {
     var out = {};
@@ -70,15 +99,42 @@
         var val = p.get(UTM_KEYS[i]);
         if (val) { out[UTM_KEYS[i]] = val.slice(0, 120); achou = true; }
       }
-      if (achou) { safeSet(UTM_KEY, JSON.stringify(out)); return out; }
+      if (achou) { safeSet(UTM_KEY, JSON.stringify({ u: out, t: Date.now() })); return out; }
       var stored = safeGet(UTM_KEY);
-      return stored ? JSON.parse(stored) : {};
+      if (!stored) return {};
+      var parsed = JSON.parse(stored);
+      if (!parsed || !parsed.u || !parsed.t) return {};   // formato antigo, sem data: não confia
+      if (Date.now() - parsed.t > UTM_TTL_MS) return {};
+      return parsed.u;
     } catch (_) {
       return {};
     }
   }
 
+  /** lead_id de ops.commercial_leads, só quando o link é da prospecção e o valor tem forma de uuid. */
+  function commercialLeadId() {
+    var u = utms();
+    if (u.utm_medium !== MEDIUM_PROSPECCAO) return null;
+    return UUID_RE.test(u.utm_content || '') ? u.utm_content.toLowerCase() : null;
+  }
+
+  /**
+   * Tira os utm_* da barra de endereço depois de guardá-los. O link da prospecção é pessoal (leva o lead_id): se o
+   * dono da ótica copia a URL e manda a um colega, a visita do colega não pode entrar na conta do lead errado.
+   */
+  function limparUtmDaBarra() {
+    try {
+      var url = new URL(location.href);
+      var mudou = false;
+      for (var i = 0; i < UTM_KEYS.length; i++) {
+        if (url.searchParams.has(UTM_KEYS[i])) { url.searchParams.delete(UTM_KEYS[i]); mudou = true; }
+      }
+      if (mudou) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+    } catch (_) { /* navegador antigo: fica como está */ }
+  }
+
   function enviar(eventCode, metadata) {
+    if (!envioLigado()) return;
     try {
       var ev = { event_code: eventCode, product: PRODUCT, session_id: sessionId(),
                  url: location.href.slice(0, 500), metadata: metadata || {} };
@@ -126,7 +182,10 @@
         // escreveu a marcação, não sobrescrever.
         if (!url.searchParams.get('utm_source')) {
           for (var k in u) {
-            if (Object.prototype.hasOwnProperty.call(u, k)) url.searchParams.set(k, u[k]);
+            if (!Object.prototype.hasOwnProperty.call(u, k)) continue;
+            // O lead_id da prospecção não sai do site: do outro lado vai só a sessão anônima.
+            if (k === 'utm_content' && u.utm_medium === MEDIUM_PROSPECCAO) continue;
+            url.searchParams.set(k, u[k]);
           }
           if (!url.searchParams.get('utm_source')) {
             url.searchParams.set('utm_source', 'clearix');
@@ -169,7 +228,7 @@
       a.addEventListener('click', function (e) {
         var el = e.currentTarget;
         // cta_id diz QUAL botão converteu (hero, oferta, faq, final…); código aprovado pelo Geral em 14/09.
-        enviar(EV_CTA, {
+        enviar(destinoDoLink(el) === 'whatsapp' ? EV_WHATSAPP : EV_CTA, {
           destino: destinoDoLink(el),
           cta_id: el.getAttribute('data-cta') || '',
           texto: (el.textContent || '').trim().slice(0, 80)
@@ -180,19 +239,28 @@
 
   var ultimaVisita = '';
   function aoCarregarPagina() {
+    var chegouComUtm = /[?&]utm_/.test(location.search);
     utms();       // captura na 1a visita, antes de qualquer navegação apagar a query
-    carimbarLinks();
-    ligarCliques();
     // ClientRouter dispara astro:page-load em toda navegação: uma visita por
     // caminho, não uma por evento de router.
     if (ultimaVisita !== location.pathname) {
       ultimaVisita = location.pathname;
       enviar(EV_VISIT, { path: location.pathname, referrer: (document.referrer || '').slice(0, 200) });
     }
+    if (chegouComUtm) limparUtmDaBarra();
+    carimbarLinks();
+    ligarCliques();
   }
 
   /** Exposto para o form de /contato usar a MESMA atribuição persistida. */
-  window.clearixAttrib = { sessionId: sessionId, utms: utms, track: enviar };
+  window.clearixAttrib = {
+    sessionId: sessionId,
+    utms: utms,
+    track: enviar,
+    commercialLeadId: commercialLeadId,
+    eventoPedido: function () { return EV_DEMO_SUBMIT; },
+    envioLigado: envioLigado,
+  };
 
   document.addEventListener('astro:page-load', aoCarregarPagina);
   if (document.readyState === 'loading') {

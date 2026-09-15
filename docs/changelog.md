@@ -168,3 +168,29 @@ dados são conferidos antes de a loja operar" (home, `/planos`, `llms-full.txt`)
 Geral):** "WhatsApp da loja… com o histórico na ficha do cliente" → "o que passa pelo sistema fica na ficha do cliente"
 (folha §2: o que a equipe responde pelo celular não entra na ficha), na home, em `/ecossistema` e no `llms-full.txt`.
 Daqui em diante, número ou promessa só entra no site depois de entrar na folha.
+
+## 2026-09-15 — v0.4.0 · receber interessados da prospecção (branch `receber-interessados-2026-09`, NÃO publicada)
+
+Despacho `Cockpit/comercial/_DESPACHO_2026-09-15_RECEBER_INTERESSADOS.md` §1 e §3.1. Link do MKT:
+`?utm_source=whatsapp&utm_medium=prospeccao&utm_campaign=<variante>&utm_content=<ops.commercial_leads.id>`.
+
+- `clearix-attrib.js`: `utm_*` guardados com validade de 30 dias (formato antigo sem data é ignorado); `utm_*` removidos
+  da barra depois de guardados; `lead_id` da prospecção não é carimbado nos links para Hub e calculadora;
+  `commercialLeadId()` e `eventoPedido()` expostos; códigos de evento combinados com o app (via eco, 15/09):
+  `clearix_site_visit` (visita com `utm_*`, que é o "link clicado"), `clearix_demo_solicitada` (após o ok do
+  lead-capture), `clearix_whatsapp_click` e `clearix_cta_click` (cliques de CTA com `metadata.cta_id`). **Esta versão só vai ao ar depois de o app aplicar o catálogo**, senão o
+  endpoint recusa os códigos.
+- `/contato`: campos ocultos `utm_*`; POST ao `lead-capture` com `commercial_lead_id` quando o link é da prospecção (a
+  edge atual ignora o campo); evento do pedido só depois do `ok`, com `lojas`, `funcao` e `prospeccao` na metadata.
+- Lead_id que não existe em `ops.commercial_leads`: quando a edge nova responder `commercial_lead_id: null`, o evento do
+  pedido leva `lead_id_desconhecido='1'` (orientação do eco, para o MKT ver link errado). Com a edge de hoje, sem a chave,
+  nada é marcado.
+- **Preview local não fala com produção** (recado do Geral, 15/09): em `localhost`/`127.0.0.1` o `clearix-attrib.js`
+  não envia evento e o `/contato` não envia lead (mostra aviso "preview local"); liga só na aba aberta com `?attrib=on`,
+  para prova combinada. Conferido: nenhuma chamada ao supabase.co no preview.
+- Prova no preview local com fetch/sendBeacon interceptados (payload no rodapé do despacho), inclusive chegada direta em
+  `/contato` com o link e resposta simulada de lead desconhecido. Nenhum lead nem evento de teste em produção.
+
+### Pendências desta versão
+- [ ] App (Agent Projetos): aplicar no catálogo `clearix_site_visit`, `clearix_demo_solicitada`, `clearix_whatsapp_click` e `clearix_cta_click` (hash da migration) e upsert por `commercial_lead_id` no `lead-capture`.
+- [ ] Envio real de teste marcado como teste, com "pode" do dono.

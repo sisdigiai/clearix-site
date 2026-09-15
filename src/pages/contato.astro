@@ -36,6 +36,14 @@ const proximos = [
       <div class="md:col-span-7">
         <form id="form-demo" method="POST" class="grid gap-5">
           <p class="hidden" aria-hidden="true"><label>Não preencha: <input name="website" tabindex="-1" autocomplete="off" /></label></p>
+          {/* Origem do interessado (despacho 15/09): preenchidos na carga pelo clearix-attrib.js, que guardou os utm_* da
+              chegada. utm_content é o lead_id de ops.commercial_leads quando utm_medium=prospeccao; utm_campaign é a
+              variante do A/B. Nenhum dado pessoal vai na URL: o envio é POST em JSON. */}
+          <input type="hidden" name="utm_source" data-utm />
+          <input type="hidden" name="utm_medium" data-utm />
+          <input type="hidden" name="utm_campaign" data-utm />
+          <input type="hidden" name="utm_content" data-utm />
+          <input type="hidden" name="utm_term" data-utm />
 
           <label class="grid gap-2">
             <span class={rotulo}>Seu nome</span>
@@ -92,6 +100,9 @@ const proximos = [
           <p data-form-ok hidden role="status" class="rounded-lg border border-clearix-cyan/30 bg-clearix-navy/20 px-4 py-3 text-body-md text-clarity-off">
             <span class="text-clearix-cyan-bright">Recebido.</span> A gente entra em contato em horário comercial, pelo WhatsApp ou e-mail que você deixou.
           </p>
+          <p data-form-local hidden role="status" class="rounded-lg border border-clarity-off/20 px-4 py-3 text-body-md text-clarity-muted">
+            Preview local: o pedido não foi enviado. Para uma prova combinada, abra a página com <code>?attrib=on</code>.
+          </p>
           <p data-form-erro hidden role="alert" class="rounded-lg border border-amber-400/30 bg-amber-400/5 px-4 py-3 text-body-md text-clarity-off">
             Sua conexão está fora de foco. Tente de novo{WHATS ? ' ou ' : '.'}
             {WHATS && <a href={WHATS} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline">fale pelo WhatsApp</a>}{WHATS && '.'}
@@ -105,9 +116,22 @@ const proximos = [
             var btn = form.querySelector('[data-submit]');
             var ok = form.querySelector('[data-form-ok]');
             var erro = form.querySelector('[data-form-erro]');
+            var local = form.querySelector('[data-form-local]');
+
+            function preencherOrigem() {
+              var attrib = window.clearixAttrib;
+              var params = new URLSearchParams(location.search);
+              var u = attrib ? attrib.utms() : {};
+              form.querySelectorAll('[data-utm]').forEach(function (el) {
+                el.value = u[el.name] || params.get(el.name) || '';
+              });
+            }
+            preencherOrigem();
+            document.addEventListener('astro:page-load', preencherOrigem, { once: true });
+
             form.addEventListener('submit', async function (e) {
               e.preventDefault();
-              ok.hidden = true; erro.hidden = true;
+              ok.hidden = true; erro.hidden = true; local.hidden = true;
               btn.disabled = true; var label = btn.textContent; btn.textContent = 'Enviando…';
               var fd = new FormData(form);
               try {
@@ -118,15 +142,24 @@ const proximos = [
                  * fallback existe só para o caso do script não ter carregado.
                  */
                 var attrib = window.clearixAttrib;
-                var params = new URLSearchParams(location.search);
-                var u = attrib ? attrib.utms() : {};
-                function utm(k) { return u[k] || params.get(k) || ''; }
+                preencherOrigem();
+                function utm(k) { return fd.get(k) || (form.querySelector('[name="' + k + '"]') || {}).value || ''; }
+                var commercialLeadId = attrib && attrib.commercialLeadId ? attrib.commercialLeadId() : null;
 
                 // lead-capture não tem coluna para função/sistema/problema: vão em notes, legíveis por gente.
                 var notes = 'Lojas: ' + (fd.get('lojas') || '?') +
                   ' | Função: ' + (fd.get('funcao') || '?') +
                   ' | Sistema atual: ' + (fd.get('sistema') || '?') +
                   (fd.get('problema') ? ' | Principal problema: ' + fd.get('problema') : '');
+
+                // Preview local não grava lead em produção (ver clearix-attrib.js; liga só com ?attrib=on).
+                var emPreview = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+                if (emPreview && !(attrib && attrib.envioLigado())) {
+                  console.info('[clearix-site] preview local: pedido NÃO enviado à produção', { notes: notes, commercial_lead_id: commercialLeadId });
+                  local.hidden = false;
+                  btn.disabled = false; btn.textContent = label;
+                  return;
+                }
 
                 var res = await fetch('https://hswyopqvnolqpmprqvzh.supabase.co/functions/v1/lead-capture', {
                   method: 'POST',
@@ -147,6 +180,9 @@ const proximos = [
                     utm_campaign: utm('utm_campaign'),
                     utm_content: utm('utm_content'),
                     utm_term: utm('utm_term'),
+                    // Criar/atualizar o lead pelo MESMO id da prospecção é obra do app (lead-capture + função).
+                    // Enquanto a edge não ler o campo, ele é ignorado e o pedido segue gravando como hoje.
+                    commercial_lead_id: commercialLeadId,
                     consent_text: (form.querySelector('[data-consent-text]') || {}).textContent?.trim() || '',
                     website: fd.get('website') || '',
                   }),
@@ -154,7 +190,17 @@ const proximos = [
                 var body = await res.json().catch(function () { return {}; });
                 if (res.ok && body.ok) {
                   ok.hidden = false; form.reset();
-                  if (attrib) attrib.track('click_checkout', { destino: 'contato', cta_id: 'contato_submit', texto: 'lead enviado' });
+                  // A edge nova responde `commercial_lead_id` (o id se casou, null se não existe em ops.commercial_leads).
+                  // Só com a chave presente dá para dizer que o link veio errado; a edge de hoje não manda a chave.
+                  var meta = {
+                    destino: 'contato', cta_id: 'contato_submit', texto: 'lead enviado',
+                    lojas: String(fd.get('lojas') || ''), funcao: String(fd.get('funcao') || ''),
+                    prospeccao: commercialLeadId ? '1' : '0',
+                  };
+                  if (commercialLeadId && Object.prototype.hasOwnProperty.call(body, 'commercial_lead_id')) {
+                    meta.lead_id_desconhecido = body.commercial_lead_id ? '0' : '1';
+                  }
+                  if (attrib) attrib.track(attrib.eventoPedido(), meta);
                 }
                 else { erro.hidden = false; }
               } catch (_) { erro.hidden = false; }
