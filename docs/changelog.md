@@ -206,6 +206,13 @@ ADR-0022; `_headers` do script com `must-revalidate`.
 **WhatsApp (D2, dono, 15/09):** botão e links com +55 11 99154-7229 (Z-API "DIGIAI Completo"), textos com a origem
 "(site)" e "(site-contato)" já reconhecidos pelo webhook do MKT; telefone no JSON-LD e nos `llms*.txt`. MKT avisado antes.
 
+**Pacotes pela verdade do banco (ordem do dono aos orquestradores, decisões do Geral, 15/09):** medição em
+`_PACOTES_BANCO_VS_SITE_2026-09-15.md`. `/planos`: "Lentes" saiu do Essencial (o banco só libera `lens` no Completo) e
+entrou no Completo, com a comparação de preço e prazo entre laboratórios e a nota de que ela hoje é do Completo; limites
+do banco em cada card (Essencial 3 usuários · 500 pacientes · 50 OS/mês; Controle 15 · 10.000; Crescimento 40) com a data
+do cadastro. `planos.ts` agora diz que o site deriva do banco. Loyalty/AR Vision/Express/Fone seguem fora do Crescimento
+(a correção é no banco, com a D5).
+
 ### Pendências desta versão
 - [x] ~~App (Agent Projetos): aplicar no catálogo~~ — feito às 15:33 UTC (commit 5c64ad7 do app). Resto da linha abaixo mantido como registro:
 - App (Agent Projetos): aplicar no catálogo `clearix_site_visit`, `clearix_demo_solicitada`, `clearix_whatsapp_click` e `clearix_cta_click` (hash da migration) e upsert por `commercial_lead_id` no `lead-capture`.

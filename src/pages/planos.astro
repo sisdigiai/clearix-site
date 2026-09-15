@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaFinal from '../components/CtaFinal.astro';
-import { planos, demo, addons } from '../data/planos';
+import { planos, demo, addons, conferidoEm } from '../data/planos';
 import { CTA } from '../data/landing';
 ---
 
@@ -38,7 +38,8 @@ import { CTA } from '../data/landing';
               <span class="font-mono tabular-nums text-3xl text-clarity-off">{p.preco}</span>
               {p.precoNota && <span class="text-clarity-muted text-body-md">{p.precoNota}</span>}
             </p>
-            <p class="text-clarity-muted text-[13px] mb-5">{p.lojas} · {p.publico}</p>
+            <p class="text-clarity-muted text-[13px]">{p.lojas} · {p.publico}</p>
+            <p class="mb-5 mt-1 font-mono text-[12px] tabular-nums text-clarity-dim">{p.limites ?? 'limites sob consulta'}</p>
             <ul class="space-y-2 mb-6">
               {p.inclui.map((i) => (
                 <li class="flex gap-2 text-clarity-dim text-body-md"><span class="text-clearix-cyan shrink-0">→</span>{i}</li>
@@ -50,8 +51,12 @@ import { CTA } from '../data/landing';
           </div>
         ))}
       </div>
+      <p class="text-clarity-muted text-body-md mt-6 max-w-3xl">
+        A comparação de preço e prazo entre laboratórios usa o catálogo de lentes, que hoje faz parte do plano Completo.
+      </p>
       <p class="label-sm normal-case tracking-wide text-clarity-muted/60 mt-3">
-        Preços de referência. Valores e composição confirmados na proposta. Tributos conforme legislação.
+        Módulos e limites conforme o cadastro dos planos em {conferidoEm}. Preços de referência. Valores e composição
+        confirmados na proposta. Tributos conforme legislação.
       </p>
     </div>
   </section>
