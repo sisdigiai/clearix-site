@@ -203,6 +203,9 @@ sempre do dono.
 **Ajuste de 15/09 (Geral):** plano Controle "até 5 lojas" → "até 4 lojas", igual a `iam.clearix_packages.max_stores` e ao
 ADR-0022; `_headers` do script com `must-revalidate`.
 
+**WhatsApp (D2, dono, 15/09):** botão e links com +55 11 99154-7229 (Z-API "DIGIAI Completo"), textos com a origem
+"(site)" e "(site-contato)" já reconhecidos pelo webhook do MKT; telefone no JSON-LD e nos `llms*.txt`. MKT avisado antes.
+
 ### Pendências desta versão
 - [x] ~~App (Agent Projetos): aplicar no catálogo~~ — feito às 15:33 UTC (commit 5c64ad7 do app). Resto da linha abaixo mantido como registro:
 - App (Agent Projetos): aplicar no catálogo `clearix_site_visit`, `clearix_demo_solicitada`, `clearix_whatsapp_click` e `clearix_cta_click` (hash da migration) e upsert por `commercial_lead_id` no `lead-capture`.

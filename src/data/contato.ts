@@ -1,10 +1,10 @@
 // Canais e identificação de quem vende. As lacunas ficam `null` até a decisão chegar; a página esconde o que é null
 // em vez de publicar um palpite. Decisões registradas em _COPY_2026-09-14_LANDING.md.
 
-// D2 — número de WhatsApp da landing. Decisão do dono, entregue pelo MKT (14/09: nenhum canal definido nem ligado).
-// Enquanto null, nenhum botão ou link de WhatsApp aparece. O texto termina com o código de origem que o webhook do MKT
-// reconhece — código novo precisa ser avisado ao MKT antes de publicar.
-export const whatsapp: { numero: string; exibicao: string } | null = null;
+// D2 — número de WhatsApp da landing. Decisão do dono (15/09, nesta sessão): +55 11 99154-7229, o número da DIGIAI na
+// Z-API "DIGIAI Completo" (MKT), usado para atendimento e prospecção no início. Com null, nenhum botão aparece.
+// O texto termina com o código de origem que o webhook do MKT reconhece — código novo precisa ser avisado ao MKT antes.
+export const whatsapp: { numero: string; exibicao: string } | null = { numero: '5511991547229', exibicao: '+55 11 99154-7229' };
 
 export const textoWhatsapp = {
   site: 'Quero conhecer o Clearix (site)',
