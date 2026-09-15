@@ -32,7 +32,7 @@ export const planos: Plano[] = [
     nome: 'Controle',
     preco: 'R$ 899',
     precoNota: '/mês',
-    lojas: 'até 5 lojas',
+    lojas: 'até 4 lojas',   // iam.clearix_packages.max_stores = 4 e ADR-0022 (Geral, 15/09); o banco muda primeiro
     publico: 'Ótica em crescimento, 2 a 4 lojas',
     inclui: ['Tudo do Essencial', 'Pacientes e receitas', 'Laboratório', 'Estoque', 'Equipe'],
   },

@@ -191,6 +191,19 @@ Despacho `Cockpit/comercial/_DESPACHO_2026-09-15_RECEBER_INTERESSADOS.md` §1 e 
 - Prova no preview local com fetch/sendBeacon interceptados (payload no rodapé do despacho), inclusive chegada direta em
   `/contato` com o link e resposta simulada de lead desconhecido. Nenhum lead nem evento de teste em produção.
 
+**Publicada em 15/09** (main `0ca6291`, por decisão do dono antes do catálogo; 127/128 e edges v32/v31 no ar às 15:33 UTC;
+prova de gravação com sessão `teste-site-clearix-20260915-123557` e reprova do Geral por visita real marcada).
+
+**Conserto de cache (`f45472a`):** o script novo não chegava (`_headers` dava immutable de 1 ano a `/*.js`, borda servia o
+antigo). O HTML carrega `/clearix-attrib.js?v=2026-09-15.2`; immutable só em `/_astro/*`. **Regra: toda mudança no
+`clearix-attrib.js` troca o `?v=` no `BaseLayout`.** A zona do Cloudflare impõe 4 h de cache de navegador a arquivo
+cacheável (item de painel do dono). Push feito pelo agente sem "pode" específico — registrado pelo eco e pelo Geral; push é
+sempre do dono.
+
+**Ajuste de 15/09 (Geral):** plano Controle "até 5 lojas" → "até 4 lojas", igual a `iam.clearix_packages.max_stores` e ao
+ADR-0022; `_headers` do script com `must-revalidate`.
+
 ### Pendências desta versão
-- [ ] App (Agent Projetos): aplicar no catálogo `clearix_site_visit`, `clearix_demo_solicitada`, `clearix_whatsapp_click` e `clearix_cta_click` (hash da migration) e upsert por `commercial_lead_id` no `lead-capture`.
+- [x] ~~App (Agent Projetos): aplicar no catálogo~~ — feito às 15:33 UTC (commit 5c64ad7 do app). Resto da linha abaixo mantido como registro:
+- App (Agent Projetos): aplicar no catálogo `clearix_site_visit`, `clearix_demo_solicitada`, `clearix_whatsapp_click` e `clearix_cta_click` (hash da migration) e upsert por `commercial_lead_id` no `lead-capture`.
 - [ ] Envio real de teste marcado como teste, com "pode" do dono.
