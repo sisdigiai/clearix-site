@@ -7,11 +7,10 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
-/*.css
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.js
-  Cache-Control: public, max-age=31536000, immutable
+# "immutable" só onde o nome do arquivo tem hash (/_astro/*). Arquivo de public/ sem hash (clearix-attrib.js) com
+# cache curto: com 1 ano de immutable, o script novo de 15/09 não chegava a quem já tinha o antigo, nem na borda.
+/clearix-attrib.js
+  Cache-Control: public, max-age=300
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

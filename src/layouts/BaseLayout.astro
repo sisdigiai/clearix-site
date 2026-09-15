@@ -124,6 +124,8 @@ const whats = linkWhatsapp('site');
       Precisa carregar em TODA página: o tráfego da isca chega em "/" e só
       converte lá no /contato, e sem isto a origem se perde no caminho.
     -->
-    <script is:inline src="/clearix-attrib.js"></script>
+    {/* A versão na URL força navegador e borda do Cloudflare a buscar o script novo: o arquivo não tem hash no nome
+        e já foi servido como "immutable" por 1 ano. Mudou o clearix-attrib.js, muda o ?v=. */}
+    <script is:inline src="/clearix-attrib.js?v=2026-09-15.2"></script>
   </body>
 </html>
