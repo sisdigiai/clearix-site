@@ -62,12 +62,12 @@ Um login por pessoa, com acesso por loja e por papel.
 Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele todos os dias e o histórico de outras cinco
 lojas da mesma rede está preservado no mesmo banco.
 
-Medido no banco de produção em 14/09/2026, sem dado pessoal:
+Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
 
 - 1.694 OS em 2026 (1.685 criadas no balcão, no dia da venda)
 - 1.477 parcelas de carnê recebidas em 2026
-- 746 caixas fechados em 2026
-- 1.955 entregas registradas em 2026
+- 132 caixas abertos e fechados pela equipe em 2026
+- 1.588 OS de 2026 entregues em 2026
 - mediana de 7 a 10 dias do pedido à entrega (abril a agosto de 2026)
 - 341 OS enviadas ao laboratório por WhatsApp
 - 3.401 mensagens de WhatsApp trocadas em 30 dias

@@ -13,7 +13,8 @@
 
 import { planos } from './planos';
 
-export const medidoEm = '14/09/2026';
+// Duas datas porque a folha corrigiu dois números em 15/09 (caixas e entregas); os demais são da medição de 14/09.
+export const medidoEm = '14 e 15/09/2026';
 
 // CTA único da página (revisão do Geral, ajuste 2). Mesmo texto em todos os botões.
 export const CTA = 'Agendar 20 minutos de demonstração';
@@ -28,7 +29,7 @@ export interface Numero {
 export const heroProva: Numero[] = [
   { valor: '1.694', label: 'OS em 2026', fonte: 'INV §0: orders com sale_date em 2026 (1.685 criadas no dia da venda)' },
   { valor: '1.477', label: 'parcelas de carnê recebidas em 2026', fonte: 'ECO: installments pagas em 2026 com order_id de OS viva' },
-  { valor: '746', label: 'caixas fechados em 2026', fonte: 'ECO / INV §1d: cash_sessions com closed_at, opened_at >= 2026-01-01' },
+  { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', fonte: 'folha única §1 (eco, 15/09/2026): a contagem antiga (746) somava 372 sessões apagadas, backfill e lojas fechadas' },
 ];
 
 // S3 — a vida de uma OS (um número por passo)
@@ -49,12 +50,12 @@ export const jornadaOS = [
     { valor: '7 a 10 dias', label: 'mediana do pedido à entrega (abr→ago/2026)', fonte: 'INV §2d; jan–mar fora (datas do legado, INV §14.4)' },
   ] },
   { passo: 'Entrega', numeros: [
-    { valor: '1.955', label: 'entregas registradas em 2026', fonte: 'ECO: inclui OS de anos anteriores entregues em 2026' },
+    { valor: '1.588', label: 'OS de 2026 entregues em 2026', fonte: 'folha única §1 (eco, 15/09/2026): sem os dias de carga 20/03 e 25/04; a contagem antiga (1.955) incluía OS de anos anteriores' },
     { valor: '76', label: 'garantias abertas a partir da OS', fonte: 'INV §1d' },
   ] },
   { passo: 'Fechamento', numeros: [
     { valor: '1.477', label: 'parcelas de carnê recebidas', fonte: 'ECO' },
-    { valor: '746', label: 'caixas fechados', fonte: 'ECO' },
+    { valor: '132', label: 'caixas abertos e fechados pela equipe', fonte: 'folha única §1 (eco, 15/09/2026)' },
     { valor: '5.366', label: 'linhas de comissão calculadas', fonte: 'INV §8d: hr_commission_lines abr→set, 9 vendedores' },
   ] },
 ] as const;

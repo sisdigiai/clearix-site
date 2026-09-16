@@ -134,6 +134,15 @@ do hero + grades medidas 3/5/4/3 colunas; a captura do meio da página falhou no
 sem erro; formulário **não** foi enviado (grava lead real); varredura do `dist/` sem os termos proibidos (restam só SLA/enterprise e
 Loyalty/AR Vision/Express na composição de `/planos`, que esperam a D5). OK de tela do eco em desktop e 375 px.
 
+**Correção de dois números (folha única, eco/Geral, 15/09):** "746 caixas fechados em 2026" → **"132 caixas abertos e
+fechados pela equipe em 2026"** (a contagem antiga somava 372 sessões apagadas, backfill e lojas fechadas) e "1.955
+entregas registradas em 2026" → **"1.588 OS de 2026 entregues em 2026"** (sem os dias de carga 20/03 e 25/04; cai a
+ressalva "inclui OS de anos anteriores"). Aplicado no hero, em S3 (passos 5 e 6) e nos `llms*.txt`; o rodapé de medição
+passa a dizer "14 e 15/09/2026".
+
+**Documentação (15/09):** `AGENTS.md` reescrito para a fase v0.4 (folha única e banco como fontes, códigos de evento,
+filtro de preview, regra do `?v=`, push do dono); `Cockpit/Spec/clearix-site.md` e `Cockpit/Apps/clearix-site/` revisados.
+
 ### Pendências desta versão
 - [x] ~~Contadores "7 / 11 / 16 apps" em `/planos`~~ — saíram (D3); nomes dos módulos no vocabulário da vitrine (eco, 14/09).
 - [ ] D5 (dono): composição dos planos em `planos.ts` e `/planos` (4 × 5 lojas, Loyalty/AR Vision/Express, SLA/enterprise).

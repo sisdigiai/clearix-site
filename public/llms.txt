@@ -30,8 +30,8 @@ Donos e gerentes de óticas brasileiras, da ótica solo à rede com várias loja
 ## Prova de operação real
 
 Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele todos os dias e o histórico de outras cinco
-lojas da mesma rede está preservado no mesmo banco. Medido no banco de produção em 14/09/2026, sem dado pessoal:
-1.694 OS em 2026, 1.477 parcelas de carnê recebidas em 2026, 746 caixas fechados em 2026, 3.401 mensagens de WhatsApp
+lojas da mesma rede está preservado no mesmo banco. Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
+1.694 OS em 2026, 1.477 parcelas de carnê recebidas em 2026, 132 caixas abertos e fechados pela equipe em 2026, 3.401 mensagens de WhatsApp
 trocadas em 30 dias, 2.410 linhas de extrato bancário conciliadas em 2026 e 20.375 OS no histórico preservado.
 OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
 
