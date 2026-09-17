@@ -241,3 +241,8 @@ correções do eco; conferido pelo Geral (`_ROTULO_2026-09-16_TEXTO.md`).
 - **Pré-requisito para publicar:** migration D5 aplicada no banco (tira fidelidade, prova virtual, checkout rápido e
   telefonia do Crescimento), senão rótulo ≠ banco.
 
+**Publicada em 16/09** (main `1c61ea8`), depois da migration D5 do eco (Crescimento sem loyalty, ar_vision, express e fone
+no banco) e com o "pode" do dono. **Ajuste do Geral no mesmo dia:** "um número, um lugar" também na vida de uma OS (1.588
+entregues e 132 caixas saem dos passos 5 e 6 e ficam só no rótulo); Completo = banco, sem enumerar: "todos os módulos do
+Clearix, inclusive lentes (Lens) e comparação de preço e prazo entre laboratórios" (rótulo e `/planos`).
+

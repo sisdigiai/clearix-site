@@ -31,7 +31,7 @@ export const heroProva: Numero[] = [
   { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', fonte: 'folha única §1 (eco, 15/09/2026): a contagem antiga (746) somava 372 sessões apagadas, backfill e lojas fechadas' },
 ];
 
-// S3 — a vida de uma OS (um número por passo)
+// S3 — a vida de uma OS. Um número, um lugar (Geral, 16/09): 1.588 entregues e 132 caixas ficam só no rótulo.
 export const jornadaOS = [
   { passo: 'Receita', numeros: [
     { valor: '5.569', label: 'lentes oftálmicas ativas', fonte: 'INV §10d' },
@@ -49,12 +49,10 @@ export const jornadaOS = [
     { valor: '7 a 10 dias', label: 'mediana do pedido à entrega (abr→ago/2026)', fonte: 'INV §2d; jan–mar fora (datas do legado, INV §14.4)' },
   ] },
   { passo: 'Entrega', numeros: [
-    { valor: '1.588', label: 'OS de 2026 entregues em 2026', fonte: 'folha única §1 (eco, 15/09/2026): sem os dias de carga 20/03 e 25/04; a contagem antiga (1.955) incluía OS de anos anteriores' },
     { valor: '76', label: 'garantias abertas a partir da OS', fonte: 'INV §1d' },
   ] },
   { passo: 'Fechamento', numeros: [
     { valor: '1.477', label: 'parcelas de carnê recebidas', fonte: 'ECO' },
-    { valor: '132', label: 'caixas abertos e fechados pela equipe', fonte: 'folha única §1 (eco, 15/09/2026)' },
     { valor: '5.366', label: 'linhas de comissão calculadas', fonte: 'INV §8d: hr_commission_lines abr→set, 9 vendedores' },
   ] },
 ] as const;
@@ -143,10 +141,10 @@ export const rotuloPacotes = [
   },
   {
     plano: plano('enterprise'),
-    base: 'tudo do Crescimento',
+    // banco: os 17 módulos. Sem contar nem enumerar os que a casa não vende como argumento (Geral, 16/09).
+    base: null,
     ingredientes: [
-      'lentes (Lens)',
-      'comparação de preço e prazo entre laboratórios',
+      'todos os módulos do Clearix, inclusive lentes (Lens) e comparação de preço e prazo entre laboratórios',
     ],
     limites: 'lojas e usuários sob consulta',
   },

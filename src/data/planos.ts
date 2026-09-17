@@ -57,13 +57,13 @@ export const planos: Plano[] = [
     inclui: ['Tudo do Controle', 'Quem chamar hoje', 'Painel do dono'],
   },
   {
-    // banco: tudo, inclusive lens e import. A comparação de preço e prazo entre laboratórios usa lens + dcl: só aqui (P2)
+    // banco: todos os 17 módulos, inclusive lens. A comparação de preço e prazo entre laboratórios usa lens + dcl: só aqui (P2)
     slug: 'enterprise',
     nome: 'Completo',
     preco: 'Sob consulta',
     lojas: 'lojas ilimitadas',
     publico: 'Rede, cadeia e franqueadora',
-    inclui: ['Tudo do Crescimento', 'Lentes', 'Comparação de preço e prazo entre laboratórios'],
+    inclui: ['Todos os módulos do Clearix', 'Lentes (Lens)', 'Comparação de preço e prazo entre laboratórios'],
   },
 ];
 

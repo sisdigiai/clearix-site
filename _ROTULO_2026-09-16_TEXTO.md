@@ -78,3 +78,8 @@ fonte do caixa aceita. Decisões aplicadas na branch:
    375 px sem rolagem lateral, rótulo com ~1.980 px (era ~2.300); 1280 px com os 4 abertos e o rótulo começando a 627 px.
 
 Falta: "pode" do dono para a migration D5 e para commit/merge/push.
+
+## No ar (16/09) e ajuste final do Geral
+Publicado em `1c61ea8`. Ajuste: 1.588 e 132 saem da "vida de uma OS" (ficam só no rótulo); Completo passa a
+"todos os módulos do Clearix, inclusive lentes (Lens) e comparação de preço e prazo entre laboratórios" (rótulo = banco).
+
