@@ -23,3 +23,7 @@ export/
 Thumbs.db
 .vscode/
 .idea/
+
+# capturas de tela recebidas dos sub-apps, ANTES da conferência de desfoque (folha única §7).
+# Nunca em public/: tudo em public/ vai ao ar sem precisar de link. Só a versão conferida é copiada para public/capturas/.
+_capturas_em_conferencia/
