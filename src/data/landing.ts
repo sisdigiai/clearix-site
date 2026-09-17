@@ -101,8 +101,8 @@ export const fichasHistorico: Numero = {
 // Cockpit/comercial/rotulo-na-cara-2026-09-16.md. Ingredientes = o que o banco libera por pacote
 // (iam.clearix_package_apps, conferido pelo eco em 16/09), com o nome do Hub entre parênteses onde difere.
 // Quantidades = folha única §1, cada uma com a data. Preço e limites = planos.ts (banco). Em substantivos, sem adjetivo.
-// Crescimento: o banco ainda libera 4 módulos sem uso (fidelidade, prova virtual, checkout rápido, telefonia) — NÃO
-// aparecem; o rótulo só vai ao ar depois de o dono aplicar a migration da D5 que os tira do banco.
+// Crescimento: a migration D5 do eco (orq_d5_clearix_packages_texto_e_composicao, 16/09) tirou do banco os 4 módulos
+// sem uso (loyalty, ar_vision, express, fone com is_included=false). Rótulo = banco.
 
 export const rotuloMedidoEm = '16/09/2026';
 

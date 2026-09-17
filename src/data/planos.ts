@@ -46,8 +46,7 @@ export const planos: Plano[] = [
     inclui: ['Tudo do Essencial', 'Pacientes e receitas', 'Laboratório', 'Estoque', 'Equipe'],
   },
   {
-    // banco: + bi, marketing, e ainda fone, loyalty, ar_vision, express — esses 4 NÃO aparecem (sem uso; termo §2(d));
-    // a correção é no banco, com a D5 (P3)
+    // banco: + bi, marketing. D5 (16/09) tirou fone, loyalty, ar_vision e express do pacote (is_included=false)
     slug: 'crescimento',
     nome: 'Crescimento',
     preco: 'R$ 1.499',
