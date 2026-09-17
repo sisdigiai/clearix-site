@@ -226,3 +226,18 @@ do cadastro. `planos.ts` agora diz que o site deriva do banco. Loyalty/AR Vision
 - [x] ~~App (Agent Projetos): aplicar no catálogo~~ — feito às 15:33 UTC (commit 5c64ad7 do app). Resto da linha abaixo mantido como registro:
 - App (Agent Projetos): aplicar no catálogo `clearix_site_visit`, `clearix_demo_solicitada`, `clearix_whatsapp_click` e `clearix_cta_click` (hash da migration) e upsert por `commercial_lead_id` no `lead-capture`.
 - [ ] Envio real de teste marcado como teste, com "pode" do dono.
+
+## 2026-09-16 — v0.5.0 · rótulo na cara (branch `rotulo-2026-09`, NÃO publicada)
+
+Ordem do dono (16/09): "tudo na cara, igual aos rótulos das barras". Padrão `Cockpit/comercial/rotulo-na-cara-2026-09-16.md`;
+correções do eco; conferido pelo Geral (`_ROTULO_2026-09-16_TEXTO.md`).
+
+- `src/components/Rotulo.astro`, logo abaixo do hero e antes das dores, com os 6 blocos: ingredientes por pacote (o que o
+  banco libera, nome do Hub entre parênteses, preço e limites de `planos.ts`), quantidades da folha com data, o que não
+  tem, preço, depois de pedir, "Rótulo medido em 16/09/2026". Dados em `src/data/landing.ts`.
+- Celular: pacotes em sanfona (Essencial aberto, cabeçalho com preço e limites); a partir de 640 px, grade aberta.
+- Saíram por duplicar o rótulo: a linha de números do hero, a lista de preços do "Como começar" e, de S5, 3.401 mensagens
+  e 2.410 linhas conciliadas (um número, um lugar).
+- **Pré-requisito para publicar:** migration D5 aplicada no banco (tira fidelidade, prova virtual, checkout rápido e
+  telefonia do Crescimento), senão rótulo ≠ banco.
+

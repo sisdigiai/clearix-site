@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaFinal from '../components/CtaFinal.astro';
+import Rotulo from '../components/Rotulo.astro';
 import { apps, jornadas } from '../data/apps';
-import { planos } from '../data/planos';
-import { CTA, medidoEm, heroProva, jornadaOS, provaBanco, pacientesReceitas, faq } from '../data/landing';
+import { CTA, medidoEm, jornadaOS, provaBanco, pacientesReceitas, faq } from '../data/landing';
 import { linkWhatsapp } from '../data/contato';
 
 // Copy aprovada: _COPY_2026-09-14_LANDING.md (eco + revisão do Geral). Todo número vem de src/data/landing.ts.
@@ -41,7 +41,7 @@ const fases = [
   description="Venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema, o mesmo que roda hoje no balcão de uma ótica de verdade. Agende 20 minutos de demonstração."
 >
   <!-- S1 · Hero -->
-  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-36 pb-20 md:pt-44 md:pb-28 border-b border-clarity-off/10">
+  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-32 pb-10 md:pt-36 md:pb-12">
     <div class="lux-glow"></div>
     <div class="pointer-events-none absolute -right-40 top-10 hidden h-[560px] w-[560px] text-clearix-cyan-bright opacity-40 lg:block" aria-hidden="true">
       <svg viewBox="0 0 200 200" fill="none" class="h-full w-full">
@@ -68,15 +68,12 @@ const fases = [
             ou <a href={whats} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale com a gente no WhatsApp →</a>
           </p>
         )}
-        <div class="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3 font-mono text-label-sm uppercase tracking-widest text-clarity-muted">
-          {heroProva.map((n) => (
-            <span><span class="tabular-nums text-body-lg normal-case tracking-normal text-clarity-off">{n.valor}</span> {n.label}</span>
-          ))}
-          <span class="normal-case tracking-wide text-clarity-muted/70">números do banco, {medidoEm}</span>
-        </div>
       </div>
     </div>
   </section>
+
+  {/* Rótulo — acima da dobra, antes de qualquer benefício (ordem do dono, 16/09) */}
+  <Rotulo />
 
   <!-- S2 · Espelho da dor -->
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
@@ -164,7 +161,7 @@ const fases = [
         <h2 class="h-section mb-5">Números do banco, não de pesquisa.</h2>
         <p class="body-lg">Em vez de logotipos, mostramos o que o sistema registrou numa ótica real, com data.</p>
       </div>
-      <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-5">
+      <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-3">
         {provaBanco.map((n, i) => (
           <li class={`bg-ink-surface p-6 ${i === provaBanco.length - 1 ? 'col-span-2 md:col-span-1' : ''}`}>
             <span class="block font-mono tabular-nums text-[clamp(1.6rem,3vw,2.4rem)] leading-none text-clarity-off">{n.valor}</span>
@@ -250,19 +247,10 @@ const fases = [
         ))}
       </ol>
 
-      <div class="mt-14">
-        <h3 class="h-sub mb-6">Preço público.</h3>
-        <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 md:grid-cols-4">
-          {planos.map((p) => (
-            <li class="bg-ink-surface p-5">
-              <span class="block font-display font-semibold text-clarity-off">{p.nome}</span>
-              <span class="mt-1 block whitespace-nowrap"><span class="font-mono tabular-nums text-base text-clarity-off md:text-xl">{p.preco}</span><span class="text-[13px] text-clarity-muted md:text-body-md">{p.precoNota ?? ''}</span></span>
-            </li>
-          ))}
-        </ul>
-        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <div class="mt-10">
+        <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
           <a href="/contato" class="btn-primary" data-cta="oferta">{CTA}</a>
-          <a href="/planos" class="font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver o que cada plano inclui →</a>
+          <a href="/planos" class="font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver os planos em detalhe →</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,122 @@
+---
+/**
+ * Rótulo — "tudo na cara, igual aos rótulos das barras" (ordem do dono, 16/09/2026).
+ * Padrão: Cockpit/comercial/rotulo-na-cara-2026-09-16.md. Seis blocos, em substantivos:
+ * ingredientes por pacote · quantidades com data · o que não tem · preço · depois de pedir · data do rótulo.
+ * Tudo vem de src/data/landing.ts (folha única) e src/data/planos.ts (banco). Nenhum texto de venda aqui.
+ */
+import {
+  rotuloMedidoEm, rotuloPacotes, rotuloQuantidades, rotuloOrigem, rotuloNaoTem, rotuloPreco, rotuloDepois,
+} from '../data/landing';
+
+const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-off';
+---
+
+<section id="rotulo" aria-labelledby="rotulo-titulo" class="border-b border-clarity-off/10 pb-16 md:pb-20">
+  <div class="container-grid">
+    <div class="rounded-md border-2 border-clarity-off/70 bg-ink-deep">
+      <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b-8 border-clarity-off/70 px-5 py-4 md:px-7">
+        <h2 id="rotulo-titulo" class="font-display text-[26px] font-extrabold uppercase leading-none tracking-tight text-clarity-off md:text-[34px]">
+          Rótulo do Clearix
+        </h2>
+        <p class="font-mono text-label-sm uppercase tracking-widest text-clarity-muted">
+          Rótulo medido em <span class="tabular-nums text-clarity-off">{rotuloMedidoEm}</span>
+        </p>
+      </div>
+
+      <!-- 1. Ingredientes por pacote -->
+      <div class="border-b-4 border-clarity-off/40 px-5 py-5 md:px-7">
+        <p class={`${titulo} mb-4`}>Ingredientes por pacote</p>
+        {/* Celular: pacotes em sanfona, Essencial aberto; o cabeçalho fechado já mostra preço e limites (Geral, 16/09).
+            A partir de 640 px todos abrem e viram grade. Conteúdo inteiro sempre no HTML. */}
+        <div class="grid gap-px overflow-hidden rounded border border-clarity-off/15 bg-clarity-off/15 sm:grid-cols-2 lg:grid-cols-4">
+          {rotuloPacotes.map((p, i) => (
+            <details class="rotulo-pacote group bg-ink-surface" data-rotulo-pacote open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-3 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright sm:cursor-default">
+                <span class="flex flex-col">
+                  <span class="font-display text-lg font-bold text-clarity-off">{p.plano.nome}</span>
+                  <span class="mt-0.5 whitespace-nowrap">
+                    <span class="font-mono text-lg tabular-nums text-clarity-off">{p.plano.preco}</span><span class="text-[13px] text-clarity-muted">{p.plano.precoNota ?? ''}</span>
+                  </span>
+                  <span class="mt-1 font-mono text-[12px] tabular-nums text-clarity-dim">{p.limites}</span>
+                </span>
+                <span class="mt-1 font-mono text-xl leading-none text-clearix-cyan transition-transform group-open:rotate-45 sm:hidden" aria-hidden="true">+</span>
+              </summary>
+              <ul class="mx-4 mb-4 space-y-1 border-t border-clarity-off/10 pt-3 text-[14px] leading-snug text-clarity-off">
+                {p.base && <li class="text-clarity-muted">{p.base} +</li>}
+                {p.ingredientes.map((item) => <li>{item}</li>)}
+              </ul>
+            </details>
+          ))}
+        </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="grid lg:grid-cols-3">
+        <!-- 2. Quantidades -->
+        <div class="border-b-4 border-clarity-off/40 px-5 py-5 md:px-7 lg:border-b-0 lg:border-r-4">
+          <p class={`${titulo} mb-3`}>Quantidades</p>
+          <ul class="divide-y divide-clarity-off/10">
+            {rotuloQuantidades.map((q) => (
+              <li class="flex items-baseline justify-between gap-3 py-2">
+                <span class="text-[14px] leading-snug text-clarity-dim">
+                  <span class="font-mono tabular-nums text-clarity-off">{q.valor}</span> {q.label}
+                </span>
+                <span class="shrink-0 font-mono text-[11px] tabular-nums text-clarity-muted">{q.data}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-3 text-[13px] leading-snug text-clarity-muted">{rotuloOrigem}</p>
+        </div>
+
+        <!-- 3. O que não tem -->
+        <div class="border-b-4 border-clarity-off/40 px-5 py-5 md:px-7 lg:border-b-0 lg:border-r-4">
+          <p class={`${titulo} mb-3`}>O que não tem</p>
+          <ul class="space-y-2">
+            {rotuloNaoTem.map((n) => (
+              <li class="flex gap-2 text-[14px] leading-snug text-clarity-dim">
+                <span class="shrink-0 font-mono text-amber-400/80" aria-hidden="true">✕</span>{n}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- 4. Preço · 5. Depois de pedir -->
+        <div class="px-5 py-5 md:px-7">
+          <p class={`${titulo} mb-3`}>Preço</p>
+          <p class="text-[14px] leading-snug text-clarity-dim">{rotuloPreco}</p>
+
+          <p class={`${titulo} mb-3 mt-6`}>Depois de pedir</p>
+          <ol class="space-y-2">
+            {rotuloDepois.map((d, i) => (
+              <li class="flex gap-3 text-[14px] leading-snug text-clarity-dim">
+                <span class="shrink-0 font-mono tabular-nums text-clearix-cyan-bright">{String(i + 1).padStart(2, '0')}</span>{d}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rotulo-pacote > summary::-webkit-details-marker { display: none; }
+</style>
+
+<script is:inline>
+  (function () {
+    function abrirNaGrade() {
+      if (!window.matchMedia('(min-width: 640px)').matches) return;
+      document.querySelectorAll('[data-rotulo-pacote]').forEach(function (d) { d.open = true; });
+    }
+    function travarNaGrade(e) {
+      if (window.matchMedia('(min-width: 640px)').matches && e.target.closest('[data-rotulo-pacote] > summary')) e.preventDefault();
+    }
+    abrirNaGrade();
+    document.addEventListener('astro:page-load', abrirNaGrade);
+    if (!window.__rotuloTrava) { window.__rotuloTrava = true; document.addEventListener('click', travarNaGrade); window.addEventListener('resize', abrirNaGrade); }
+  })();
+</script>

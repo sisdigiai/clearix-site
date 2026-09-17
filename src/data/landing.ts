@@ -5,7 +5,6 @@
 // INV = Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md
 // ECO = rodapé do orquestrador do eco em clearix-site/_DESENHO_2026-09-14_LANDING.md (correções medidas em 14/09)
 //
-// Ainda NÃO é importado por nenhuma página: o build está travado até o portão 135.
 // Regras que valem para cada linha:
 // - OS de 2020→2025 vieram do sistema anterior: "histórico preservado", nunca "processado pelo Clearix" (INV §14.2).
 // - Nada de R$ de faturamento da rede enquanto o dono não responder a D8 (ECO).
@@ -60,12 +59,11 @@ export const jornadaOS = [
   ] },
 ] as const;
 
-// S5 — "números do banco": 5 cartões, nenhum repete o hero (revisão do Geral, ajuste 1).
+// S5 — "números do banco": só o que o rótulo não tem (Geral, 16/09: um número, um lugar). 3.401 mensagens e 2.410
+// linhas conciliadas foram para o rótulo, no topo.
 export const provaBanco: Numero[] = [
-  { valor: '3.401', label: 'mensagens de WhatsApp trocadas em 30 dias', fonte: 'INV §0/§4d: 2.562 recebidas + 839 enviadas' },
   { valor: '1.630', label: 'avisos por WhatsApp enviados pelo sistema desde abril', fonte: 'INV §4d: communication_dispatches whatsapp sent (portal, laboratório, entrega) — fato medido, não promessa (ECO item 5)' },
   { valor: '1.562', label: 'links do portal do paciente emitidos', fonte: 'INV §5d, abr→set' },
-  { valor: '2.410', label: 'linhas de extrato bancário conciliadas em 2026', fonte: 'ECO / INV §3d (6.471 importadas; não usar como "conferidas")' },
   { valor: '20.375', label: 'OS no histórico preservado', fonte: 'INV §0 (2020→hoje; 2020–2025 migrado — rodapé obrigatório)' },
 ];
 
@@ -97,3 +95,93 @@ export const faq = [
 export const fichasHistorico: Numero = {
   valor: '15.870', label: 'fichas no histórico preservado', fonte: 'INV §0, 14/09/2026',
 };
+
+// ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RÓTULO (ordem do dono, 16/09: "tudo na cara, igual aos rótulos das barras"). Padrão:
+// Cockpit/comercial/rotulo-na-cara-2026-09-16.md. Ingredientes = o que o banco libera por pacote
+// (iam.clearix_package_apps, conferido pelo eco em 16/09), com o nome do Hub entre parênteses onde difere.
+// Quantidades = folha única §1, cada uma com a data. Preço e limites = planos.ts (banco). Em substantivos, sem adjetivo.
+// Crescimento: o banco ainda libera 4 módulos sem uso (fidelidade, prova virtual, checkout rápido, telefonia) — NÃO
+// aparecem; o rótulo só vai ao ar depois de o dono aplicar a migration da D5 que os tira do banco.
+
+export const rotuloMedidoEm = '16/09/2026';
+
+const plano = (slug: string) => planos.find((p) => p.slug === slug)!;
+
+export const rotuloPacotes = [
+  {
+    plano: plano('starter'),
+    base: null as string | null,
+    ingredientes: [
+      'vendas, carnê e caixa (Vendas)',
+      'financeiro (Finance)',
+      'WhatsApp da loja (Client)',
+      'portal do paciente (Paciente)',
+      'login único (Hub)',
+    ],
+    limites: '1 loja · 3 usuários · 500 pacientes · 50 OS por mês',
+  },
+  {
+    plano: plano('pro'),
+    base: 'tudo do Essencial',
+    ingredientes: [
+      'pacientes e receitas (Clinics)',
+      'estoque',
+      'laboratório (DCL)',
+      'equipe: ponto, escalas, comissão (RH)',
+    ],
+    limites: '4 lojas · 15 usuários · 10.000 pacientes',
+  },
+  {
+    plano: plano('crescimento'),
+    base: 'tudo do Controle',
+    ingredientes: [
+      'quem chamar hoje (Marketing)',
+      'painel do dono (BI)',
+    ],
+    limites: '8 lojas · 40 usuários',
+  },
+  {
+    plano: plano('enterprise'),
+    base: 'tudo do Crescimento',
+    ingredientes: [
+      'lentes (Lens)',
+      'comparação de preço e prazo entre laboratórios',
+    ],
+    limites: 'lojas e usuários sob consulta',
+  },
+];
+
+// Folha única §1. Só estes seis, cada um com a data da medição.
+export const rotuloQuantidades = [
+  { valor: '1.694', label: 'OS em 2026', data: '14/09' },
+  { valor: '1.588', label: 'OS de 2026 entregues em 2026', data: '15/09' },
+  { valor: '7 a 10 dias', label: 'do pedido à entrega (mediana, abr→ago/2026)', data: '14/09' },
+  { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', data: '15/09' },
+  { valor: '2.410', label: 'linhas de extrato bancário conciliadas em 2026', data: '14/09' },
+  { valor: '3.401', label: 'mensagens de WhatsApp em 30 dias', data: '14/09' },
+];
+
+export const rotuloOrigem = 'Medido numa rede de óticas da casa, com 1 loja vendendo todo dia.';
+
+// "No B.S.": o que não tem e o que não está incluído (folha §2–§3, termo de piloto §2).
+export const rotuloNaoTem = [
+  'emissão de nota fiscal (NF-e)',
+  'conciliação sozinha: o sistema sugere, a loja confirma',
+  'trava dos limites: são declarados no pacote, o sistema não bloqueia',
+  'implantação e migração na mensalidade: orçadas à parte, depois de examinarmos uma amostra do seu banco',
+  'período grátis',
+  'mais de um piloto por vez',
+  'cliente externo pagante ainda: a prova é a operação da casa',
+];
+
+export const rotuloPreco = 'Mensal. Cobrança combinada na proposta. Completo sob consulta.';
+
+// Escrito como combinado, não como provado (eco, 16/09).
+export const rotuloDepois = [
+  'pedido gravado',
+  'a gente responde em horário comercial',
+  'demonstração de 20 minutos',
+  'olhamos o seu processo',
+  'piloto pago e assistido, um por vez',
+];
