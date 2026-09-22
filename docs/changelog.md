@@ -271,3 +271,18 @@ e a régua `analytics.fn_origem_real` (migration 146 do app) já não os conta; 
   amount_total))`, medido 21/09/2026 13:48 BRT). Na "vida de uma OS" (passo 6) e nos `llms*.txt`; substitui 1.477.
 - **D7:** sem mudança (termo fora até assinar). **D2 e-mail:** resolvido pelo Geral: `contato@digiai.app.br` no lugar do Gmail (`/contato`, JSON-LD e `llms*.txt`); encaminha para o Gmail pelo Email Routing do Cloudflare.
 
+## 2026-09-21 — v0.5.3 · preço sai do Rótulo, entra em S8 (dor/prova antes do preço) — publicada
+
+Dúvida do dono (21/09): preço logo na abertura ancora em custo, não em valor; repassada ao eco, que confirmou e mandou
+mover — sem mexer na ordem "tudo na cara" do Rótulo em si, só tirar o preço de dentro dele.
+
+- `src/components/Rotulo.astro`: bloco "4. Preço" saiu; os cards de "Ingredientes por pacote" não mostram mais preço
+  (só nome e limites). O card termina com âncora "Preço claro, sem letra miúda ↓" apontando para `#como-comecar`.
+- `src/pages/index.astro`: seção "Como começar" (S8) — que já vem depois de dor, mecanismo e prova — ganhou a grade
+  dos 4 planos (`planos.ts`, mesma fonte do banco) com preço, mais a nota "sem período grátis / piloto pago e combinado
+  depois da demonstração", antes dos botões de CTA.
+- **De passagem, corrigido bug em produção:** código morto de uma edição anterior (`</li>`, `))}`, `</ul>` órfãos)
+  fazia o texto literal `))}` aparecer visível na página pública logo depois da grade de Ingredientes por pacote.
+- Conferido no navegador (1280 px e 375 px): sem `))}`, cards de pacote sem preço, grade de S8 correta nos dois
+  tamanhos. Publicada em 22/09/2026 (main `36c7d13`), com o "pode" do dono.
+
