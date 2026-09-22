@@ -1,12 +1,16 @@
 ---
 /**
  * Rótulo — "tudo na cara, igual aos rótulos das barras" (ordem do dono, 16/09/2026).
- * Padrão: Cockpit/comercial/rotulo-na-cara-2026-09-16.md. Seis blocos, em substantivos:
- * ingredientes por pacote · quantidades com data · o que não tem · preço · depois de pedir · data do rótulo.
- * Tudo vem de src/data/landing.ts (folha única) e src/data/planos.ts (banco). Nenhum texto de venda aqui.
+ * Padrão: Cockpit/comercial/rotulo-na-cara-2026-09-16.md. Ingredientes por pacote · quantidades com data ·
+ * o que não tem · depois de pedir · data do rótulo. Tudo vem de src/data/landing.ts (folha única) e
+ * src/data/planos.ts (banco). Nenhum texto de venda aqui.
+ *
+ * PREÇO (decisão do dono, 21/09): saiu do Rótulo e foi para a seção de oferta (S8, depois de dor/mecanismo/prova) —
+ * preço mostrado antes de dor e prova ancora em "custo", não em "valor". Aqui fica só a âncora "Preço claro,
+ * sem letra miúda ↓", com link para #como-comecar.
  */
 import {
-  rotuloMedidoEm, rotuloPacotes, rotuloQuantidades, rotuloOrigem, rotuloNaoTem, rotuloPreco, rotuloDepois,
+  rotuloMedidoEm, rotuloPacotes, rotuloQuantidades, rotuloOrigem, rotuloNaoTem, rotuloDepois,
 } from '../data/landing';
 
 const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-off';
@@ -35,9 +39,6 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
               <summary class="flex cursor-pointer list-none items-start justify-between gap-3 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright sm:cursor-default">
                 <span class="flex flex-col">
                   <span class="font-display text-lg font-bold text-clarity-off">{p.plano.nome}</span>
-                  <span class="mt-0.5 whitespace-nowrap">
-                    <span class="font-mono text-lg tabular-nums text-clarity-off">{p.plano.preco}</span><span class="text-[13px] text-clarity-muted">{p.plano.precoNota ?? ''}</span>
-                  </span>
                   <span class="mt-1 font-mono text-[12px] tabular-nums text-clarity-dim">{p.limites}</span>
                 </span>
                 <span class="mt-1 font-mono text-xl leading-none text-clearix-cyan transition-transform group-open:rotate-45 sm:hidden" aria-hidden="true">+</span>
@@ -49,9 +50,6 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
             </details>
           ))}
         </div>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <div class="grid lg:grid-cols-3">
@@ -83,12 +81,9 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
           </ul>
         </div>
 
-        <!-- 4. Preço · 5. Depois de pedir -->
+        <!-- 4. Depois de pedir -->
         <div class="px-5 py-5 md:px-7">
-          <p class={`${titulo} mb-3`}>Preço</p>
-          <p class="text-[14px] leading-snug text-clarity-dim">{rotuloPreco}</p>
-
-          <p class={`${titulo} mb-3 mt-6`}>Depois de pedir</p>
+          <p class={`${titulo} mb-3`}>Depois de pedir</p>
           <ol class="space-y-2">
             {rotuloDepois.map((d, i) => (
               <li class="flex gap-3 text-[14px] leading-snug text-clarity-dim">
@@ -98,6 +93,11 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
           </ol>
         </div>
       </div>
+
+      <a href="#como-comecar" class="flex items-center justify-between gap-3 border-t-4 border-clarity-off/40 px-5 py-4 font-mono text-label-sm uppercase tracking-widest text-clearix-cyan-bright transition-colors hover:text-clearix-cyan-soft md:px-7">
+        Preço claro, sem letra miúda
+        <span aria-hidden="true">↓</span>
+      </a>
     </div>
   </div>
 </section>

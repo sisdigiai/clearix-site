@@ -4,6 +4,7 @@ import CtaFinal from '../components/CtaFinal.astro';
 import Rotulo from '../components/Rotulo.astro';
 import { apps, jornadas } from '../data/apps';
 import { CTA, medidoEm, jornadaOS, provaBanco, pacientesReceitas, faq } from '../data/landing';
+import { planos } from '../data/planos';
 import { linkWhatsapp } from '../data/contato';
 
 // Copy aprovada: _COPY_2026-09-14_LANDING.md (eco + revisão do Geral). Todo número vem de src/data/landing.ts.
@@ -247,7 +248,19 @@ const fases = [
         ))}
       </ol>
 
-      <div class="mt-10">
+      {/* Preço aqui, não no Rótulo (decisão do dono, 21/09): depois de dor (S2) e prova (S5), o preço ancora em
+          valor, não em custo. Âncora do Rótulo ("Preço claro, sem letra miúda ↓") aponta para este bloco. */}
+      <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 sm:grid-cols-4">
+        {planos.map((p) => (
+          <div class="bg-ink-surface p-5">
+            <span class="block font-display font-semibold text-clarity-off">{p.nome}</span>
+            <span class="mt-1 block whitespace-nowrap"><span class="font-mono tabular-nums text-xl text-clarity-off">{p.preco}</span><span class="text-body-md text-clarity-muted">{p.precoNota ?? ''}</span></span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-3 text-[13px] leading-snug text-clarity-muted">Preço público, sem letra miúda. Sem período grátis. O piloto é pago e combinado depois da demonstração.</p>
+
+      <div class="mt-8">
         <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
           <a href="/contato" class="btn-primary" data-cta="oferta">{CTA}</a>
           <a href="/planos" class="font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver os planos em detalhe →</a>
