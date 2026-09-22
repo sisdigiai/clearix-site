@@ -246,3 +246,28 @@ no banco) e com o "pode" do dono. **Ajuste do Geral no mesmo dia:** "um número,
 entregues e 132 caixas saem dos passos 5 e 6 e ficam só no rótulo); Completo = banco, sem enumerar: "todos os módulos do
 Clearix, inclusive lentes (Lens) e comparação de preço e prazo entre laboratórios" (rótulo e `/planos`).
 
+## 2026-09-17 14:04 BRT — v0.5.1 · só a produção envia evento e lead
+
+Decisão do Geral (régua da verdade comercial), via eco: o site só envia evento (`events-ingest`) e lead (`lead-capture`)
+quando `location.hostname` está na lista de produção — hoje só `clearix.app.br` (`www.` não existe no DNS, conferido).
+Fail-closed na origem: preview local, `*.pages.dev`, `*.workers.dev` e qualquer outro host não enviam nada; `?attrib=on`
+continua ligando só na aba, para prova combinada. É a terceira camada: a edge events-ingest (v36+) já recusa esses hosts
+e a régua `analytics.fn_origem_real` (migration 146 do app) já não os conta; aqui só se evita gerar o tráfego de recusa.
+
+- `public/clearix-attrib.js`: `HOSTS_PRODUCAO = ['clearix.app.br']` no lugar do teste de localhost.
+- `src/pages/contato.astro`: mesmo critério antes do POST do lead; aviso passa a "Fora de clearix.app.br o pedido não é enviado".
+- `src/layouts/BaseLayout.astro`: `/clearix-attrib.js?v=2026-09-17.1` (script sem hash no nome: muda o `?v=`).
+- Conferido no preview local: script v=2026-09-17.1 carregado, `envioLigado() = false`, nenhuma chamada a supabase.co.
+
+## 2026-09-21 — v0.5.2 · portão 135 (respostas do dono via Geral) — NÃO publicada
+
+- **D3b:** endereço completo no rodapé e no JSON-LD (`endereco.confirmado=true`). Prova: consulta pública do CNPJ
+  12.549.582/0001-49 (BrasilAPI/RFB), 21/09/2026: DIGIAI OTICA E TECNOLOGIA LTDA, situação ATIVA desde 08/05/2026,
+  Sociedade Empresária Limitada, Rua General Francisco Glicério, 940, Terreo/Sala 02, Jardim Guaio, Suzano/SP, CEP 08674-000.
+- **D5:** limites de usuários, pacientes e OS/mês saem dos cards de `/planos` e do rótulo; ficam as lojas. Sai do "não tem"
+  a linha "trava dos limites" (não há mais limite declarado).
+- **D8:** R$ do carnê publicado com data e fonte: **1.528 parcelas · R$ 394.734** recebidos em 2026, até 21/09/2026 (SELECT
+  em `crm_erp`, `sales_finance.installments` pagas com `order_id` de OS viva, `paid_at` em 2026, `sum(coalesce(paid_amount,
+  amount_total))`, medido 21/09/2026 13:48 BRT). Na "vida de uma OS" (passo 6) e nos `llms*.txt`; substitui 1.477.
+- **D7:** sem mudança (termo fora até assinar). **D2 e-mail:** resolvido pelo Geral: `contato@digiai.app.br` no lugar do Gmail (`/contato`, JSON-LD e `llms*.txt`); encaminha para o Gmail pelo Email Routing do Cloudflare.
+

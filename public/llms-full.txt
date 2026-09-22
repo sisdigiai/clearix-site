@@ -65,7 +65,7 @@ lojas da mesma rede está preservado no mesmo banco.
 Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
 
 - 1.694 OS em 2026 (1.685 criadas no balcão, no dia da venda)
-- 1.477 parcelas de carnê recebidas em 2026
+- 1.528 parcelas de carnê recebidas em 2026 (R$ 394.734, até 21/09/2026)
 - 132 caixas abertos e fechados pela equipe em 2026
 - 1.588 OS de 2026 entregues em 2026
 - mediana de 7 a 10 dias do pedido à entrega (abril a agosto de 2026)
@@ -114,7 +114,7 @@ Os planos começam em R$ 349 por mês, sem período grátis. O piloto é pago e 
 - Site: https://clearix.app.br
 - Demonstração: https://clearix.app.br/contato
 - WhatsApp: +55 11 99154-7229
-- E-mail: sisdigiai@gmail.com
+- E-mail: contato@digiai.app.br
 - Clientes (login): https://clearixhub.netlify.app
 
 ## Atribuição

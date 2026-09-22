@@ -16,7 +16,8 @@ export function linkWhatsapp(origem: keyof typeof textoWhatsapp): string | null 
   return `https://wa.me/${whatsapp.numero}?text=${encodeURIComponent(textoWhatsapp[origem])}`;
 }
 
-export const email = 'sisdigiai@gmail.com';
+// E-mail institucional canônico (Cockpit/mapa-dominios-hosting.md: Email Routing do digiai.app.br, ativo desde 05/06/2026).
+export const email = 'contato@digiai.app.br';
 
 export const empresa = {
   razaoSocial: 'DIGIAI ÓTICA E TECNOLOGIA LTDA',
@@ -25,9 +26,9 @@ export const empresa = {
 };
 
 // D3b — endereço completo (fonte: company.identity do digiai, via eco, 14/09). O cadastro diz "CNPJ em transição na
-// RFB": só vai ao ar depois que o dono conferir o cartão CNPJ atual. Para ligar, trocar `confirmado` para true.
+// RFB": só vai ao ar depois que o dono conferir o cartão CNPJ atual. Ligado em 21/09/2026.
 export const endereco = {
-  confirmado: false,
+  confirmado: true,   // conferido em 21/09/2026 na consulta pública do CNPJ (BrasilAPI/RFB): DIGIAI OTICA E TECNOLOGIA LTDA, ATIVA, mesmo endereço
   logradouro: 'Rua General Francisco Glicério, 940, Térreo, Sala 02',
   bairro: 'Jardim Guaio',
   cidade: 'Suzano',

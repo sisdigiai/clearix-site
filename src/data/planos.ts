@@ -17,7 +17,6 @@ export interface Plano {
   preco: string;
   precoNota?: string;
   lojas: string;
-  limites?: string;     // max_users / max_patients / max_orders_per_month do banco, como estão
   publico: string;
   inclui: string[];     // módulos liberados no banco, no vocabulário da vitrine
 }
@@ -30,7 +29,6 @@ export const planos: Plano[] = [
     preco: 'R$ 349',
     precoNota: '/mês',
     lojas: '1 loja',
-    limites: 'até 3 usuários · 500 pacientes · 50 OS por mês',
     publico: 'Ótica solo independente',
     inclui: ['Login único', 'Vendas', 'Portal do paciente', 'WhatsApp da loja', 'Financeiro'],
   },
@@ -41,7 +39,6 @@ export const planos: Plano[] = [
     preco: 'R$ 899',
     precoNota: '/mês',
     lojas: 'até 4 lojas',
-    limites: 'até 15 usuários · 10.000 pacientes',
     publico: 'Ótica em crescimento, 2 a 4 lojas',
     inclui: ['Tudo do Essencial', 'Pacientes e receitas', 'Laboratório', 'Estoque', 'Equipe'],
   },
@@ -52,7 +49,6 @@ export const planos: Plano[] = [
     preco: 'R$ 1.499',
     precoNota: '/mês',
     lojas: 'até 8 lojas',
-    limites: 'até 40 usuários',
     publico: 'Rede média e franquias',
     inclui: ['Tudo do Controle', 'Quem chamar hoje', 'Painel do dono'],
   },

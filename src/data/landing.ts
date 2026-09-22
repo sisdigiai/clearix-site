@@ -27,7 +27,7 @@ export interface Numero {
 // S1 — linha de prova do hero
 export const heroProva: Numero[] = [
   { valor: '1.694', label: 'OS em 2026', fonte: 'INV §0: orders com sale_date em 2026 (1.685 criadas no dia da venda)' },
-  { valor: '1.477', label: 'parcelas de carnê recebidas em 2026', fonte: 'ECO: installments pagas em 2026 com order_id de OS viva' },
+  { valor: '1.528', label: 'parcelas de carnê recebidas em 2026', fonte: 'crm_erp sales_finance.installments, status paid, com order_id, paid_at em 2026, medido 21/09/2026 13:48 BRT' },
   { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', fonte: 'folha única §1 (eco, 15/09/2026): a contagem antiga (746) somava 372 sessões apagadas, backfill e lojas fechadas' },
 ];
 
@@ -52,7 +52,8 @@ export const jornadaOS = [
     { valor: '76', label: 'garantias abertas a partir da OS', fonte: 'INV §1d' },
   ] },
   { passo: 'Fechamento', numeros: [
-    { valor: '1.477', label: 'parcelas de carnê recebidas', fonte: 'ECO' },
+    { valor: '1.528', label: 'parcelas de carnê recebidas em 2026, até 21/09', fonte: 'idem heroProva (21/09/2026)' },
+    { valor: 'R$ 394.734', label: 'recebidos no carnê em 2026, até 21/09', fonte: 'D8 (dono, 21/09): sum(coalesce(paid_amount, amount_total)) das mesmas parcelas; SELECT em crm_erp 21/09/2026 13:48 BRT' },
     { valor: '5.366', label: 'linhas de comissão calculadas', fonte: 'INV §8d: hr_commission_lines abr→set, 9 vendedores' },
   ] },
 ] as const;
@@ -117,7 +118,7 @@ export const rotuloPacotes = [
       'portal do paciente (Paciente)',
       'login único (Hub)',
     ],
-    limites: '1 loja · 3 usuários · 500 pacientes · 50 OS por mês',
+    limites: '1 loja',
   },
   {
     plano: plano('pro'),
@@ -128,7 +129,7 @@ export const rotuloPacotes = [
       'laboratório (DCL)',
       'equipe: ponto, escalas, comissão (RH)',
     ],
-    limites: '4 lojas · 15 usuários · 10.000 pacientes',
+    limites: 'até 4 lojas',
   },
   {
     plano: plano('crescimento'),
@@ -137,7 +138,7 @@ export const rotuloPacotes = [
       'quem chamar hoje (Marketing)',
       'painel do dono (BI)',
     ],
-    limites: '8 lojas · 40 usuários',
+    limites: 'até 8 lojas',
   },
   {
     plano: plano('enterprise'),
@@ -146,7 +147,7 @@ export const rotuloPacotes = [
     ingredientes: [
       'todos os módulos do Clearix, inclusive lentes (Lens) e comparação de preço e prazo entre laboratórios',
     ],
-    limites: 'lojas e usuários sob consulta',
+    limites: 'lojas sob consulta',
   },
 ];
 
@@ -166,7 +167,6 @@ export const rotuloOrigem = 'Medido numa rede de óticas da casa, com 1 loja ven
 export const rotuloNaoTem = [
   'emissão de nota fiscal (NF-e)',
   'conciliação sozinha: o sistema sugere, a loja confirma',
-  'trava dos limites: são declarados no pacote, o sistema não bloqueia',
   'implantação e migração na mensalidade: orçadas à parte, depois de examinarmos uma amostra do seu banco',
   'período grátis',
   'mais de um piloto por vez',
@@ -183,3 +183,9 @@ export const rotuloDepois = [
   'olhamos o seu processo',
   'piloto pago e assistido, um por vez',
 ];
+
+// Legendas das capturas (folha única §7; tela real desfocada; arquivo só depois de passar em 06-prints/aprovadas).
+// Comparador: frase pública autorizada na folha §2 (versão final de 17/09, copiada textual da folha), sempre que a ORDEM aparecer. A ordem
+// medida pesa preço×7, prazo×2, certeza do catálogo×1 e preferência da loja×10 — não é qualidade de laboratório.
+export const legendaComparacao =
+  'Mostra preço e prazo da mesma lente em cada laboratório; a ordem pesa preço, prazo e a preferência que a própria loja dá a cada fornecedor. Não avalia qualidade nem histórico do laboratório.';

@@ -101,7 +101,7 @@ const proximos = [
             <span class="text-clearix-cyan-bright">Recebido.</span> A gente entra em contato em horário comercial, pelo WhatsApp ou e-mail que você deixou.
           </p>
           <p data-form-local hidden role="status" class="rounded-lg border border-clarity-off/20 px-4 py-3 text-body-md text-clarity-muted">
-            Preview local: o pedido não foi enviado. Para uma prova combinada, abra a página com <code>?attrib=on</code>.
+            Fora de clearix.app.br o pedido não é enviado. Para uma prova combinada, abra a página com <code>?attrib=on</code>.
           </p>
           <p data-form-erro hidden role="alert" class="rounded-lg border border-amber-400/30 bg-amber-400/5 px-4 py-3 text-body-md text-clarity-off">
             Sua conexão está fora de foco. Tente de novo{WHATS ? ' ou ' : '.'}
@@ -152,10 +152,11 @@ const proximos = [
                   ' | Sistema atual: ' + (fd.get('sistema') || '?') +
                   (fd.get('problema') ? ' | Principal problema: ' + fd.get('problema') : '');
 
-                // Preview local não grava lead em produção (ver clearix-attrib.js; liga só com ?attrib=on).
-                var emPreview = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
-                if (emPreview && !(attrib && attrib.envioLigado())) {
-                  console.info('[clearix-site] preview local: pedido NÃO enviado à produção', { notes: notes, commercial_lead_id: commercialLeadId });
+                // Só a produção grava lead (mesma lista do clearix-attrib.js; fora dela, só com ?attrib=on). Fail-closed:
+                // sem o script de atribuição carregado, fora de clearix.app.br nada é enviado.
+                var emProducao = ['clearix.app.br'].indexOf(location.hostname) !== -1;
+                if (!emProducao && !(attrib && attrib.envioLigado())) {
+                  console.info('[clearix-site] fora da produção: pedido NÃO enviado', { host: location.hostname, notes: notes, commercial_lead_id: commercialLeadId });
                   local.hidden = false;
                   btn.disabled = false; btn.textContent = label;
                   return;

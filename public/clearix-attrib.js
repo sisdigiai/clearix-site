@@ -51,13 +51,16 @@
   var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
   /**
-   * Preview local não fala com produção: `npm run dev` mandava visita, clique e lead de teste para o banco do digiai
-   * (recado do Geral, 15/09). Em localhost nada sai, a não ser que a página seja aberta com ?attrib=on — liga só
-   * naquela aba, para uma prova deliberada e combinada.
+   * Só a produção fala com produção (decisão do Geral, 17/09, régua da verdade comercial): evento e lead só saem quando
+   * o hostname está na lista abaixo. Fail-closed: preview local, *.pages.dev, *.workers.dev ou qualquer outro host não
+   * envia nada. A edge events-ingest (v36+) também recusa esses hosts; isto evita gerar o tráfego de recusa.
+   * `www.clearix.app.br` não existe no DNS (conferido em 17/09); se passar a existir, entra na lista.
+   * Prova combinada fora da produção: abrir a página com ?attrib=on liga só naquela aba.
    */
-  var EM_PREVIEW = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  var HOSTS_PRODUCAO = ['clearix.app.br'];
+  var EM_PRODUCAO = HOSTS_PRODUCAO.indexOf(location.hostname) !== -1;
   function envioLigado() {
-    if (!EM_PREVIEW) return true;
+    if (EM_PRODUCAO) return true;
     try {
       if (/[?&]attrib=on\b/.test(location.search)) sessionStorage.setItem('clearix_site_attrib_on', '1');
       return sessionStorage.getItem('clearix_site_attrib_on') === '1';

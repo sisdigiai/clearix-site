@@ -39,7 +39,7 @@ import { CTA } from '../data/landing';
               {p.precoNota && <span class="text-clarity-muted text-body-md">{p.precoNota}</span>}
             </p>
             <p class="text-clarity-muted text-[13px]">{p.lojas} · {p.publico}</p>
-            <p class="mb-5 mt-1 font-mono text-[12px] tabular-nums text-clarity-dim">{p.limites ?? 'limites sob consulta'}</p>
+            <div class="mb-5"></div>
             <ul class="space-y-2 mb-6">
               {p.inclui.map((i) => (
                 <li class="flex gap-2 text-clarity-dim text-body-md"><span class="text-clearix-cyan shrink-0">→</span>{i}</li>
@@ -55,7 +55,7 @@ import { CTA } from '../data/landing';
         A comparação de preço e prazo entre laboratórios usa o catálogo de lentes, que hoje faz parte do plano Completo.
       </p>
       <p class="label-sm normal-case tracking-wide text-clarity-muted/60 mt-3">
-        Módulos e limites conforme o cadastro dos planos em {conferidoEm}. Preços de referência. Valores e composição
+        Módulos conforme o cadastro dos planos em {conferidoEm}. Preços de referência. Valores e composição
         confirmados na proposta. Tributos conforme legislação.
       </p>
     </div>
