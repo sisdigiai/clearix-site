@@ -167,7 +167,7 @@
    * no Hub" ou na própria calculadora chega do outro lado como tráfego direto,
    * e o loop de indicação não fecha.
    */
-  var DESTINOS_RASTREADOS = /^https?:\/\/(clearixhub\.netlify\.app|clearixcalc\.netlify\.app|calc\.clearix\.app\.br|hub\.clearix\.app\.br)/i;
+  var DESTINOS_RASTREADOS = /^https?:\/\/(app\.clearix\.app\.br|calc\.clearix\.app\.br|hub\.clearix\.app\.br|clearixhub\.netlify\.app|clearixcalc\.netlify\.app)/i;
 
   function carimbarLinks() {
     var u = utms();
@@ -214,7 +214,7 @@
     var host;
     try { host = new URL(el.href).hostname.toLowerCase(); } catch (_) { return null; }
     if (host === 'wa.me') return 'whatsapp';
-    if (host.indexOf('clearixhub') === 0 || host.indexOf('hub.clearix') === 0) return 'hub';
+    if (host === 'app.clearix.app.br' || host.indexOf('clearixhub') === 0 || host.indexOf('hub.clearix') === 0) return 'hub';
     if (host.indexOf('clearixcalc') === 0 || host.indexOf('calc.clearix') === 0) return 'calc';
     if (host === location.hostname && el.pathname.indexOf('/contato') === 0) return 'contato';
     return null;

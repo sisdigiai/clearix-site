@@ -282,6 +282,23 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.7 · passo 8: rastro do funil com o Hub novo (`clearix-attrib.js?v=2026-09-23.1`)
+
+- **Defeito achado no passo 7:** `clearix-attrib.js` só reconhecia `clearixhub.netlify.app`, `clearixcalc.netlify.app`,
+  `calc.clearix.app.br` e `hub.clearix.app.br`. Depois da virada do Hub para `app.clearix.app.br` (644453e), os links "Entrar" e
+  "Já sou cliente" não contavam como clique nem levavam UTM/sessão. Agora `DESTINOS_RASTREADOS` e `destinoDoLink` incluem
+  `app.clearix.app.br` (destino `hub`).
+- **`data-cta` em todo botão que faltava:** `header_entrar`, `rodape_hub`, `rodape_calc`, `final_hub`, `contato_hub`,
+  `ecossistema_calc` (os de `/contato`, hero, oferta, FAQ, final e WhatsApp já tinham).
+- `?v=` do script no `BaseLayout` passa a `2026-09-23.1` (script sem hash no nome).
+- **Prova local sem enviar nada** (envio ligado só depois do load, `sendBeacon`/`fetch` trocados por capturadores): 8 cliques
+  na home geraram `clearix_cta_click` (header_entrar, hero, oferta, rodape_hub, rodape_calc, final_hub, faq) e
+  `clearix_whatsapp_click` (hero_whatsapp), cada um com `cta_id` e `destino`; links do Hub e da calculadora saem com
+  `utm_source/medium/content`.
+- **Ainda sem prova em produção:** `clearix_demo_solicitada`. Leitura do código: o evento sai depois do `ok` do `lead-capture`
+  (`contato.astro`), sem defeito visível; em 24 h o site teve 42 visitas e 1 clique de CTA, então é provável que ninguém tenha
+  pedido demonstração. Provar exige enviar o formulário em produção com dado de teste, que precisa do "pode" do dono.
+
 ## 2026-09-23 — v0.6.6 · URLs sem barra final (decisão do eco)
 
 Antes `/planos`, `/contato`, `/ecossistema` e `/para-quem` davam 308 para a versão com barra, enquanto canonical e sitemap
