@@ -173,19 +173,30 @@ const fases = [
     </div>
   </section>
 
-  {/* S4 · O momento de valor (sem imagem até chegarem as capturas do tenant real, desfocadas — folha §7; fonte: OneDrive 06-prints/aprovadas → public/capturas/) */}
+  {/* S4 · O momento de valor. Captura real aprovada em 23/09 (06-prints/aprovadas → public/capturas/): custos e fundo desfocados.
+      Legenda = frase autorizada da folha única §2; nunca "qualidade". */}
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
-    <div class="container-grid max-w-4xl">
-      <div class="card">
+    <div class="container-grid">
+      <div class="card max-w-4xl">
         <div class="prism-edge mb-6 h-[2px] w-20 rounded-full"></div>
         <p class="label mb-4">O que a gente mostra primeiro na demonstração</p>
-        <h2 class="h-section mb-5">A mesma lente, em laboratórios diferentes. Veja onde sai melhor antes de comprar.</h2>
+        <h2 class="h-section mb-5">A mesma lente, em laboratórios diferentes. Veja preço e prazo lado a lado antes de comprar.</h2>
         <p class="body-lg mb-4">
           Para a lente vendida, o Clearix lista as equivalentes nos laboratórios com que você tem acordo, com o custo e o
           prazo de cada um. <strong class="text-clarity-off">Compara preço e prazo. Quem decide é você.</strong>
         </p>
         <p class="text-body-md text-clarity-muted">Não avaliamos qualidade de laboratório; esse julgamento continua sendo seu.</p>
       </div>
+
+      <figure class="shot reveal mt-10 max-w-5xl">
+        <picture class="block">
+          <source srcset="/capturas/dcl-comparacao-labs_desfocado-800.avif 800w, /capturas/dcl-comparacao-labs_desfocado.avif 1440w" sizes="(min-width: 1024px) 1024px, 100vw" type="image/avif" />
+          <source srcset="/capturas/dcl-comparacao-labs_desfocado-800.webp 800w, /capturas/dcl-comparacao-labs_desfocado.webp 1440w" sizes="(min-width: 1024px) 1024px, 100vw" type="image/webp" />
+          <img src="/capturas/dcl-comparacao-labs_desfocado.png" width="1440" height="850" loading="lazy" decoding="async"
+            alt="Janela com as 5 melhores opções da mesma lente em três laboratórios, ordenadas por preço e prazo, com o custo de cada uma desfocado" class="block h-auto w-full" />
+        </picture>
+        <figcaption class="p-5 text-body-md text-clarity-muted">Mostra preço e prazo da mesma lente em cada laboratório; a ordem pesa preço, prazo e a preferência que a própria loja dá a cada fornecedor. Não avalia qualidade nem histórico do laboratório. Tela real de uma rede de óticas da Grande São Paulo, com os custos do acordo desfocados.</figcaption>
+      </figure>
     </div>
   </section>
 

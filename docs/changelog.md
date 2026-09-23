@@ -282,6 +282,23 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.8 · passo 4: captura da comparação de laboratórios no bloco "A mesma lente…"
+
+- **Captura v2 do DCL** (23/09 16:26, `lab.clearix.app.br`, janela "Top 5 opções por preço e prazo"), aprovada na conferência:
+  os 5 custos e o preço riscado da promoção ilegíveis (ampliei 2,4x a 5x), fundo do kanban inteiro borrado, sem nome de
+  cliente, OS, receita, nome da rede ou logotipo; fornecedor, lente, SKU e prazo legíveis (permitido). Nota de conferência
+  no `.txt`, arquivos movidos para `06-prints/aprovadas/`. A v1 de 17/09 (Netlify, rótulo antigo, custo legível) sai de cena.
+- `src/pages/index.astro` (S4): figura em largura cheia abaixo do texto, `<picture>` AVIF/WebP (800 e 1440) + PNG original,
+  `width`/`height`, `loading="lazy"`; legenda = frase autorizada da folha única §2 ("Mostra preço e prazo da mesma lente em cada
+  laboratório; a ordem pesa preço, prazo e a preferência que a própria loja dá a cada fornecedor. Não avalia qualidade nem
+  histórico do laboratório.") mais o aviso de tela real com custos desfocados.
+- **Copy ajustada por pedido do DCL (nunca "melhor"/"qualidade"):** título passa de "Veja onde sai melhor antes de comprar" para
+  "Veja preço e prazo lado a lado antes de comprar".
+- Ao lado do texto a tela ficava pequena (janela em ~45% da largura); empilhada, a janela chega a ~71% e as linhas se leem.
+  Não recortei a captura (trava do eco: capturas reais só com desfoque).
+- No celular a tela vira prévia (341 px); o original de 1440 px fica no `<picture>` para telas de alta densidade.
+- Conferido em 1440 (Chrome) e 375 px (layout: 341×201 reservado, sem rolagem horizontal); build ok.
+
 ## 2026-09-23 — v0.6.7 · passo 8: rastro do funil com o Hub novo (`clearix-attrib.js?v=2026-09-23.1`)
 
 - **Defeito achado no passo 7:** `clearix-attrib.js` só reconhecia `clearixhub.netlify.app`, `clearixcalc.netlify.app`,
