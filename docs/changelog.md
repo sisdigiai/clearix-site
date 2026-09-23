@@ -282,6 +282,13 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.1 · passo 2 da home premium: nova ordem das seções
+
+Ordem: topo (frase + uma tela real) → dor → como funciona com as telas → laboratórios → prova (números do banco) →
+assinatura → módulos → **Rótulo** → oferta com preço (S8) → FAQ → chamada final. O Rótulo saiu de logo abaixo do topo
+e fica colado no preço; o kanban de atraso passou do meio da página para o topo (`fetchpriority="high"`, sem lazy).
+Em "Na tela" ficam entrega bloqueada e recibo. Conferido em 1440 e 375 px, sem rolagem horizontal, build ok.
+
 ## 2026-09-21 — v0.5.3 · preço sai do Rótulo, entra em S8 (dor/prova antes do preço) — publicada
 
 Dúvida do dono (21/09): preço logo na abertura ancora em custo, não em valor; repassada ao eco, que confirmou e mandou

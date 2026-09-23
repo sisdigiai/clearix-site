@@ -70,11 +70,14 @@ const fases = [
           </p>
         )}
       </div>
+
+      <figure class="mt-12 max-w-5xl overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+        <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" decoding="async" fetchpriority="high"
+          alt="Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso" class="block h-auto w-full" />
+        <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente, OS, valores e usuário desfocados. O pedido atrasado aparece na etapa, com os dias de atraso no cartão.</figcaption>
+      </figure>
     </div>
   </section>
-
-  {/* Rótulo — acima da dobra, antes de qualquer benefício (ordem do dono, 16/09) */}
-  <Rotulo />
 
   <!-- S2 · Espelho da dor -->
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
@@ -139,12 +142,6 @@ const fases = [
       <div class="mt-14">
         <p class="label mb-2">Na tela, da operação real</p>
         <p class="mb-8 max-w-2xl text-body-md text-clarity-muted">Telas de uma rede de óticas da Grande São Paulo. Dados de cliente, OS, valores e usuário estão desfocados.</p>
-
-        <figure class="mb-6 overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
-          <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" loading="lazy" decoding="async"
-            alt="Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso" class="block h-auto w-full" />
-          <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">04</span> Acompanhamento: o atraso aparece na etapa, com os dias de atraso no cartão.</figcaption>
-        </figure>
 
         <div class="grid gap-6 md:grid-cols-2">
           <figure class="overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
@@ -256,6 +253,9 @@ const fases = [
       <a href="/ecossistema" class="mt-8 inline-block font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver cada módulo →</a>
     </div>
   </section>
+
+  {/* Rótulo — depois de dor, produto na tela e prova; logo acima do preço de S8 (Geral, 23/09; o preço não abre a página, 21/09) */}
+  <Rotulo />
 
   <!-- S8 · Oferta: como começa -->
   <section id="como-comecar" class="py-20 md:py-28 border-b border-clarity-off/10">
