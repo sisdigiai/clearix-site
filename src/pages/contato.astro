@@ -4,7 +4,7 @@ import { linkWhatsapp, whatsapp, email, empresa, HUB } from '../data/contato';
 
 const WHATS = linkWhatsapp('contato');
 
-const campo = 'bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off placeholder:text-clarity-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan';
+const campo = 'bg-ink-surface border border-clarity-off/15 rounded px-4 py-3 text-clarity-off placeholder:text-clarity-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan';
 const rotulo = 'font-mono text-label-sm uppercase tracking-wider text-clarity-muted';
 
 const proximos = [
@@ -56,7 +56,7 @@ const proximos = [
               <input type="tel" name="whatsapp" required autocomplete="tel" class={campo} placeholder="(11) 90000-0000" />
             </label>
             <label class="grid gap-2">
-              <span class={rotulo}>E-mail <span class="normal-case tracking-normal text-clarity-muted/60">(opcional)</span></span>
+              <span class={rotulo}>E-mail <span class="normal-case tracking-normal text-clarity-muted">(opcional)</span></span>
               <input type="email" name="email" autocomplete="email" class={campo} placeholder="voce@suaotica.com.br" />
             </label>
           </div>
@@ -88,12 +88,12 @@ const proximos = [
           </label>
 
           <label class="grid gap-2">
-            <span class={rotulo}>O que mais atrapalha hoje <span class="normal-case tracking-normal text-clarity-muted/60">(opcional)</span></span>
+            <span class={rotulo}>O que mais atrapalha hoje <span class="normal-case tracking-normal text-clarity-muted">(opcional)</span></span>
             <textarea name="problema" rows="3" class={campo} placeholder="Ex.: OS atrasada, carnê no caderno, caixa que não bate…"></textarea>
           </label>
 
           <button type="submit" class="btn-primary justify-self-start" data-submit data-cta="contato_submit">Solicitar demonstração</button>
-          <p class="label-sm normal-case tracking-wide text-clarity-muted/60" data-consent-text>
+          <p class="label-sm normal-case tracking-wide text-clarity-muted" data-consent-text>
             Seus dados são usados só para o contato comercial, conforme a LGPD.
           </p>
 

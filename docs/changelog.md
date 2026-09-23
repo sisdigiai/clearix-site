@@ -282,6 +282,35 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.5 · passo 7: desempenho e acessibilidade (Lighthouse mobile, produção)
+
+Trava do eco: medir home, preços (`/planos`) e `/contato` em mobile na produção, antes e depois; não mexer em número público
+nem nas capturas; login/Hub em `https://app.clearix.app.br`. Lighthouse 13.5 (mobile, throttling padrão).
+
+| Página | Antes (perf / a11y / LCP) | Depois (perf / a11y / LCP) |
+|---|---|---|
+| home | 85 / 95 / 3,4 s | 92 / 95 / 2,8 s |
+| /planos | 83 / 95 / 3,5 s | 95 / 95 / 2,6 s |
+| /contato | 87 / 96 / 3,2 s | 95 / 96 / 2,5 s |
+| /ecossistema | 86 / 95 / 3,3 s | 94 / 95 / 2,8 s |
+| /para-quem | 86 / 95 / 3,3 s | 95 / 95 / 2,7 s |
+
+Boas práticas 100 e SEO 100 nas cinco; CLS 0 a 0,005 antes e 0 a 0,002 depois. Medição "depois" da home e de `/planos` feita
+com o deploy novo confirmado (a primeira rodada pegou o deploy antigo e foi descartada).
+- **Fontes hospedadas no site** (`@fontsource-variable/inter`, `@fontsource/jetbrains-mono`): sai o `@import` do Google Fonts
+  (bloqueava a renderização por ~0,9 s e vazava IP do visitante); preload do Inter latino.
+- **CSS embutido no HTML** (`inlineStylesheets: 'always'`, ~8 KB): sai a requisição que bloqueava por ~0,2 s.
+- **Imagens responsivas:** capturas ganharam `-800` (AVIF/WebP) com `srcset` e `sizes`; no celular o topo baixa ~10 KB em vez de 26 KB.
+- **Contraste AA:** saíram as opacidades `/60` e `/70` dos textos de 11 px (rodapé, notas de `/planos`, `/contato`, home) e do
+  placeholder do formulário; a entrada `.reveal` agora só desloca (sem opacidade), porque o axe media o contraste com o cartão
+  ainda translúcido (falsos 1,97:1 em `/planos`). Separadores `|` e `·` decorativos (`aria-hidden`) ficam como estão.
+- **Ordem de foco:** sem `tabindex` positivo; ordem do DOM segue a visual (rodapé e formulário/canais em colunas).
+- **Não mexi:** `ClientRouter` do Astro (forced reflow de ~120 ms; remover muda as transições entre páginas), o beacon do
+  Cloudflare Web Analytics (injetado pelo Cloudflare) e o `clearix-attrib.js` (passo 8).
+- **Achados para o passo 8 e para o dono:** (1) `clearix-attrib.js` só rastreia `clearixhub.netlify.app`, `clearixcalc.netlify.app`,
+  `calc.clearix.app.br` e `hub.clearix.app.br`, sem `app.clearix.app.br`, o Hub novo; (2) `/planos` e `/contato` respondem 308
+  para a versão com barra final enquanto o canonical e o sitemap usam a versão sem barra.
+
 ## 2026-09-23 — v0.6.4 · passo 6: OG image nova com a tela real e capturas em AVIF/WebP
 
 - **OG nova (`public/og-clearix.png`, 1200×630):** frase do topo da home + recorte do kanban desfocado. A antiga
