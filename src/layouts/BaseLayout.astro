@@ -25,7 +25,7 @@ const {
   ogImage = DEFAULT_OG,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, SITE).href;
+const canonical = new URL(Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/'), SITE).href;
 const whats = linkWhatsapp('site');
 ---
 

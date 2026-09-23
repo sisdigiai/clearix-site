@@ -10,7 +10,7 @@ const nav = [
   { label: 'Contato', href: '/contato' },
 ];
 
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const isActive = (href: string) => path === href;
 ---
 
