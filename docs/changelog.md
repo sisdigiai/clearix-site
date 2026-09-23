@@ -282,6 +282,18 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.4 · passo 6: OG image nova com a tela real e capturas em AVIF/WebP
+
+- **OG nova (`public/og-clearix.png`, 1200×630):** frase do topo da home + recorte do kanban desfocado. A antiga
+  (`og-default.png`) dizia "16 apps integrados" e "operação real há mais de 5 anos", duas frases que a folha única já
+  proibiu; o arquivo antigo continua em `public/`, sem referência, esperando o OK do dono para apagar. `BaseLayout` e o
+  JSON-LD (`StructuredData`) apontam para o novo; `og:image:width/height/type/alt` e `twitter:image:alt` incluídos.
+- **Capturas:** cada PNG aprovado ganhou versão AVIF e WebP (24 a 40 KB contra 272 a 455 KB do PNG; desfoque e rótulos
+  conferidos lado a lado). Na home viraram `<picture>` AVIF → WebP → PNG, com `width`/`height` (sem CLS); a do topo
+  carrega com prioridade, as duas de baixo com `loading="lazy"`.
+- `scripts/gerar-imagens.mjs` regera AVIF/WebP e a OG a partir dos PNG aprovados (`node scripts/gerar-imagens.mjs`).
+- Conferido no navegador: as três imagens chegam em AVIF, sem rolagem horizontal; build ok.
+
 ## 2026-09-23 — v0.6.3 · passo 5: páginas internas no padrão da home (/planos, /ecossistema, /para-quem)
 
 Despacho do Geral (passos 4 a 8 da home; o 4, captura de comparação de labs, espera o DCL).

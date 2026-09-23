@@ -72,8 +72,12 @@ const fases = [
       </div>
 
       <figure class="shot mt-12 max-w-5xl">
-        <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" decoding="async" fetchpriority="high"
+        <picture class="block">
+          <source srcset="/capturas/dcl-kanban-atraso_desfocado.avif" type="image/avif" />
+          <source srcset="/capturas/dcl-kanban-atraso_desfocado.webp" type="image/webp" />
+          <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" decoding="async" fetchpriority="high"
           alt="Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso" class="block h-auto w-full" />
+        </picture>
         <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente, OS, valores e usuário desfocados. O pedido atrasado aparece na etapa, com os dias de atraso no cartão.</figcaption>
       </figure>
     </div>
@@ -145,13 +149,21 @@ const fases = [
 
         <div class="grid gap-6 md:grid-cols-2">
           <figure class="shot reveal">
-            <img src="/capturas/vendas-entrega-bloqueada_desfocado.png" width="1600" height="746" loading="lazy" decoding="async"
+            <picture class="block">
+          <source srcset="/capturas/vendas-entrega-bloqueada_desfocado.avif" type="image/avif" />
+          <source srcset="/capturas/vendas-entrega-bloqueada_desfocado.webp" type="image/webp" />
+          <img src="/capturas/vendas-entrega-bloqueada_desfocado.png" width="1600" height="746" loading="lazy" decoding="async"
               alt="Lista de entregas pendentes em que os pedidos com saldo em aberto e sem carnê mostram o selo Pagamento Pendente no lugar do botão de entregar" class="block h-auto w-full" />
+        </picture>
             <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">05</span> Entrega: com saldo em aberto e sem carnê, o pedido não sai.</figcaption>
           </figure>
           <figure class="shot reveal">
-            <img src="/capturas/vendas-baixa-carne-recibo_desfocado-v2.png" width="1600" height="692" loading="lazy" decoding="async"
+            <picture class="block">
+          <source srcset="/capturas/vendas-baixa-carne-recibo_desfocado-v2.avif" type="image/avif" />
+          <source srcset="/capturas/vendas-baixa-carne-recibo_desfocado-v2.webp" type="image/webp" />
+          <img src="/capturas/vendas-baixa-carne-recibo_desfocado-v2.png" width="1600" height="692" loading="lazy" decoding="async"
               alt="Lista de parcelas do carnê pagas e pendentes ao lado da segunda via do recibo de parcela paga" class="block h-auto w-full" />
+        </picture>
             <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">06</span> Fechamento: parcela baixada e recibo na hora. É a 2ª via exibida na tela; no uso real vai à impressora.</figcaption>
           </figure>
         </div>

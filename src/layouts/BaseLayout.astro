@@ -15,7 +15,8 @@ interface Props {
 const SITE = 'https://clearix.app.br';
 const DEFAULT_TITLE = 'Clearix — sistema para óticas, de orçamento a entrega';
 const DEFAULT_DESC = 'Clearix: venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema, com um login só. Feito dentro de uma ótica. Por DIGIAI.';
-const DEFAULT_OG = `${SITE}/og-default.png`;
+const DEFAULT_OG = `${SITE}/og-clearix.png`;
+const OG_ALT = 'Clearix: de orçamento a entrega, sem perder ninguém no caminho. Tela do kanban de laboratório com pedido atrasado.';
 
 const {
   title = DEFAULT_TITLE,
@@ -58,6 +59,10 @@ const whats = linkWhatsapp('site');
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={OG_ALT} />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Clearix" />
 
@@ -66,6 +71,7 @@ const whats = linkWhatsapp('site');
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={OG_ALT} />
 
     <StructuredData />
 
