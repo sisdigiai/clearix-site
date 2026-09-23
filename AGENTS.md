@@ -99,7 +99,7 @@ Tema da **família de marcas Clearix** (dark editorial, acento cyan `#06B6D4` + 
 
 ## 10. Pendências conhecidas
 
-- [x] ~~Gerar `public/og-default.png`~~ — existe.
+- [x] ~~Gerar `public/og-default.png`~~ — substituída em 23/09 por `public/og-clearix.png` (1200×630, tela real; `node scripts/gerar-imagens.mjs`); a antiga saiu por citar claims proibidos.
 - [x] ~~Definir endpoint real do formulário de contato~~ — edge `lead-capture` do digiai.
 - [x] ~~Confirmar domínio `clearix.app.br`~~ — no ar via Cloudflare.
 - [ ] Apontar `/clearix` do `digiai-site` para este site.
