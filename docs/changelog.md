@@ -284,10 +284,18 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
 
 ## 2026-09-23 — v0.6.6 · URLs sem barra final (decisão do eco)
 
-`wrangler.jsonc`: `html_handling` de `auto-trailing-slash` para `drop-trailing-slash`. Antes `/planos`, `/contato`,
-`/ecossistema` e `/para-quem` davam 308 para a versão com barra, enquanto canonical e sitemap usam a sem barra (Google via
-canonical e redirect apontando para lados opostos). Agora a sem barra responde 200 e a com barra redireciona para ela.
-Prova em produção (curl) no commit seguinte a este registro.
+Antes `/planos`, `/contato`, `/ecossistema` e `/para-quem` davam 308 para a versão com barra, enquanto canonical e sitemap
+usam a sem barra (redirect e canonical apontando para lados opostos).
+- **Causa:** o site roda como projeto **Cloudflare Pages** (não Worker), e o Astro gerava `planos/index.html`, que o Pages
+  serve em `/planos/`. O `html_handling` do `wrangler.jsonc` (feito primeiro, `ebce9ff`) não vale para Pages: fica no
+  arquivo mas não tem efeito. A saída sugerida com `_redirects` (`/planos/ /planos`) criaria laço com o redirect automático
+  do Pages, então não foi usada.
+- **Correção:** `build.format: 'file'` (gera `planos.html`, que o Pages serve em `/planos` e cuja versão com barra redireciona
+  para ela). Como o Astro passa a ver o caminho `/planos.html`, o canonical (`BaseLayout`) e o link ativo do menu (`Header`)
+  tiram o `.html`.
+- **Prova** (pré-visualização da branch `teste-sem-barra` antes de ir para a `main`; produção conferida após o deploy): sem
+  barra 200 e com barra 308 para a sem barra, nas quatro páginas; `/` 200; rota inexistente 404; canonical de `/planos` sem
+  barra; OG e capturas 200.
 
 ## 2026-09-23 — v0.6.5 · passo 7: desempenho e acessibilidade (Lighthouse mobile, produção)
 
