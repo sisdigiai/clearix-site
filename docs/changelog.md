@@ -282,6 +282,21 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.2 · passo 3 da home premium: acabamento pelo checklist §8 (AGENT_GUIDE)
+
+Só tokens (R-014), nada de cor nova. `src/styles/global.css`: variáveis `--shadow-lens`, `--dur-fast`, `--dur-base`,
+`--ease-out`; `.glass` passa a usar `--shadow-lens`; nova `.shot` (raio xl, borda, sombra) para todas as telas reais.
+- Botões: altura mínima 44 px, `cursor-pointer`, `touch-action: manipulation`, hover sobe 1 px, press escala 0,98, transição só
+  de cor e `transform` (antes `transition-all`).
+- Foco visível em todo link e `summary` (contorno 2 px cyan, deslocado 3 px); botões seguem com o anel existente.
+- Entrada discreta: `.reveal` mais suave (16 px, termina em 70% da entrada) só nas duas telas de "Na tela" e na grade de
+  preços; o topo continua só com o fade do texto (a imagem do topo fica sem animação para não atrasar o LCP);
+  `prefers-reduced-motion` desliga.
+- Celular: texto do Rótulo em 16 px (era 14); link "Ver os planos em detalhe" e o do WhatsApp com alvo de 44 px.
+- Não mexi: escala de espaçamento (já em múltiplos de 4/8), dois temas (o site é só escuro), conversão das capturas para
+  WebP (fica como sugestão: hoje 270 a 455 KB cada, abaixo da dobra com `loading="lazy"`).
+- Conferido em 1440 e 375 px (computados: botão 45,7 px, sombra/raio das variáveis, sem rolagem horizontal).
+
 ## 2026-09-23 — v0.6.1 · passo 2 da home premium: nova ordem das seções
 
 Ordem: topo (frase + uma tela real) → dor → como funciona com as telas → laboratórios → prova (números do banco) →

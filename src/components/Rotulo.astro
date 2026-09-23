@@ -43,7 +43,7 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
                 </span>
                 <span class="mt-1 font-mono text-xl leading-none text-clearix-cyan transition-transform group-open:rotate-45 sm:hidden" aria-hidden="true">+</span>
               </summary>
-              <ul class="mx-4 mb-4 space-y-1 border-t border-clarity-off/10 pt-3 text-[14px] leading-snug text-clarity-off">
+              <ul class="mx-4 mb-4 space-y-1 border-t border-clarity-off/10 pt-3 text-body-md leading-snug md:text-[14px] text-clarity-off">
                 {p.base && <li class="text-clarity-muted">{p.base} +</li>}
                 {p.ingredientes.map((item) => <li>{item}</li>)}
               </ul>
@@ -59,7 +59,7 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
           <ul class="divide-y divide-clarity-off/10">
             {rotuloQuantidades.map((q) => (
               <li class="flex items-baseline justify-between gap-3 py-2">
-                <span class="text-[14px] leading-snug text-clarity-dim">
+                <span class="text-body-md leading-snug md:text-[14px] text-clarity-dim">
                   <span class="font-mono tabular-nums text-clarity-off">{q.valor}</span> {q.label}
                 </span>
                 <span class="shrink-0 font-mono text-[11px] tabular-nums text-clarity-muted">{q.data}</span>
@@ -74,7 +74,7 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
           <p class={`${titulo} mb-3`}>O que não tem</p>
           <ul class="space-y-2">
             {rotuloNaoTem.map((n) => (
-              <li class="flex gap-2 text-[14px] leading-snug text-clarity-dim">
+              <li class="flex gap-2 text-body-md leading-snug md:text-[14px] text-clarity-dim">
                 <span class="shrink-0 font-mono text-amber-400/80" aria-hidden="true">✕</span>{n}
               </li>
             ))}
@@ -86,7 +86,7 @@ const titulo = 'font-mono text-label-md uppercase tracking-widest text-clarity-o
           <p class={`${titulo} mb-3`}>Depois de pedir</p>
           <ol class="space-y-2">
             {rotuloDepois.map((d, i) => (
-              <li class="flex gap-3 text-[14px] leading-snug text-clarity-dim">
+              <li class="flex gap-3 text-body-md leading-snug md:text-[14px] text-clarity-dim">
                 <span class="shrink-0 font-mono tabular-nums text-clearix-cyan-bright">{String(i + 1).padStart(2, '0')}</span>{d}
               </li>
             ))}

@@ -15,9 +15,20 @@
     --color-off: #EAF3FF;
     --color-line: rgba(147, 197, 253, 0.12);
     --color-line-soft: rgba(147, 197, 253, 0.06);
+    --shadow-lens: 0 30px 70px -34px rgba(6, 182, 212, 0.40);
+    --dur-fast: 150ms;
+    --dur-base: 250ms;
+    --ease-out: cubic-bezier(.2, .7, .2, 1);
   }
 
   * { border-color: var(--color-line); }
+
+  a, button, summary { touch-action: manipulation; }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 
   html {
     scroll-behavior: smooth;
@@ -56,13 +67,15 @@
 
   /* CTA primário = luz refratada (cyan-bright sólido, texto escuro) */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-clearix-cyan-bright text-ink-deep px-6 py-3 font-semibold text-[14px] tracking-tight
-           shadow-[0_8px_30px_-8px_rgba(34,211,238,0.55)] hover:bg-clearix-cyan-soft transition-all
+    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-lg bg-clearix-cyan-bright text-ink-deep px-6 py-3 font-semibold text-[14px] tracking-tight
+           shadow-[0_8px_30px_-8px_rgba(34,211,238,0.55)] hover:-translate-y-px hover:bg-clearix-cyan-soft active:translate-y-0 active:scale-[0.98]
+           transition-[background-color,transform] duration-200
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-lg border border-clearix-navy-soft/30 text-clarity-off px-6 py-3 font-semibold text-[14px] tracking-tight
-           hover:border-clearix-cyan-bright hover:text-clearix-cyan-bright transition-colors
+    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-lg border border-clearix-navy-soft/30 text-clarity-off px-6 py-3 font-semibold text-[14px] tracking-tight
+           hover:-translate-y-px hover:border-clearix-cyan-bright hover:text-clearix-cyan-bright active:translate-y-0 active:scale-[0.98]
+           transition-[border-color,color,transform] duration-200
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
   }
 
@@ -72,9 +85,12 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(147, 197, 253, 0.14);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 30px 70px -34px rgba(6, 182, 212, 0.40);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow-lens);
   }
   .card { @apply glass p-8 rounded-2xl; }
+
+  /* Tela real do produto: mesmo raio, borda e sombra em todas as capturas */
+  .shot { @apply overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface; box-shadow: var(--shadow-lens); }
 
   .divider { @apply border-t border-clarity-off/10; }
 
@@ -97,9 +113,10 @@
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .anim-fade-in { animation: fadeUp 0.7s ease-out both; }
 
+@keyframes revealUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 .reveal { opacity: 1; }
 @supports (animation-timeline: view()) {
-  .reveal { animation: fadeUp linear both; animation-timeline: view(); animation-range: entry 0% cover 22%; }
+  .reveal { animation: revealUp linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
 }
 
 @keyframes gridBreath { 0%,100% { background-position: 0 0; } 50% { background-position: 44px 44px; } }

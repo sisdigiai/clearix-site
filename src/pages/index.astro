@@ -66,12 +66,12 @@ const fases = [
         <a href="/contato" class="btn-primary cta-pulse" data-cta="hero">{CTA}</a>
         {whats && (
           <p class="mt-4 text-body-md text-clarity-muted">
-            ou <a href={whats} target="_blank" rel="noopener" class="text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale com a gente no WhatsApp →</a>
+            ou <a href={whats} target="_blank" rel="noopener" class="inline-block py-2 text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale com a gente no WhatsApp →</a>
           </p>
         )}
       </div>
 
-      <figure class="mt-12 max-w-5xl overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+      <figure class="shot mt-12 max-w-5xl">
         <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" decoding="async" fetchpriority="high"
           alt="Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso" class="block h-auto w-full" />
         <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente, OS, valores e usuário desfocados. O pedido atrasado aparece na etapa, com os dias de atraso no cartão.</figcaption>
@@ -144,12 +144,12 @@ const fases = [
         <p class="mb-8 max-w-2xl text-body-md text-clarity-muted">Telas de uma rede de óticas da Grande São Paulo. Dados de cliente, OS, valores e usuário estão desfocados.</p>
 
         <div class="grid gap-6 md:grid-cols-2">
-          <figure class="overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+          <figure class="shot reveal">
             <img src="/capturas/vendas-entrega-bloqueada_desfocado.png" width="1600" height="746" loading="lazy" decoding="async"
               alt="Lista de entregas pendentes em que os pedidos com saldo em aberto e sem carnê mostram o selo Pagamento Pendente no lugar do botão de entregar" class="block h-auto w-full" />
             <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">05</span> Entrega: com saldo em aberto e sem carnê, o pedido não sai.</figcaption>
           </figure>
-          <figure class="overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+          <figure class="shot reveal">
             <img src="/capturas/vendas-baixa-carne-recibo_desfocado-v2.png" width="1600" height="692" loading="lazy" decoding="async"
               alt="Lista de parcelas do carnê pagas e pendentes ao lado da segunda via do recibo de parcela paga" class="block h-auto w-full" />
             <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">06</span> Fechamento: parcela baixada e recibo na hora. É a 2ª via exibida na tela; no uso real vai à impressora.</figcaption>
@@ -276,7 +276,7 @@ const fases = [
 
       {/* Preço aqui, não no Rótulo (decisão do dono, 21/09): depois de dor (S2) e prova (S5), o preço ancora em
           valor, não em custo. Âncora do Rótulo ("Preço claro, sem letra miúda ↓") aponta para este bloco. */}
-      <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 sm:grid-cols-4">
+      <div class="reveal mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-clarity-off/10 bg-clarity-off/10 sm:grid-cols-4">
         {planos.map((p) => (
           <div class="bg-ink-surface p-5">
             <span class="block font-display font-semibold text-clarity-off">{p.nome}</span>
@@ -289,7 +289,7 @@ const fases = [
       <div class="mt-8">
         <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
           <a href="/contato" class="btn-primary" data-cta="oferta">{CTA}</a>
-          <a href="/planos" class="font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver os planos em detalhe →</a>
+          <a href="/planos" class="inline-flex min-h-[44px] items-center font-mono text-label-md uppercase tracking-wider text-clearix-cyan transition-colors hover:text-clearix-cyan-soft">Ver os planos em detalhe →</a>
         </div>
       </div>
     </div>
