@@ -289,13 +289,14 @@ nem nas capturas; login/Hub em `https://app.clearix.app.br`. Lighthouse 13.5 (mo
 
 | Página | Antes (perf / a11y / LCP) | Depois (perf / a11y / LCP) |
 |---|---|---|
-| home | 85 / 95 / 3,4 s | 92 / 95 / 2,8 s |
-| /planos | 83 / 95 / 3,5 s | 95 / 95 / 2,6 s |
-| /contato | 87 / 96 / 3,2 s | 95 / 96 / 2,5 s |
-| /ecossistema | 86 / 95 / 3,3 s | 94 / 95 / 2,8 s |
-| /para-quem | 86 / 95 / 3,3 s | 95 / 95 / 2,7 s |
+| home | 85 / 95 / 3,4 s | 92 / 100 / 2,8 s |
+| /planos | 83 / 95 / 3,5 s | 90 / 100 / 3,0 s |
+| /contato | 87 / 96 / 3,2 s | 97 / 100 / 2,2 s |
+| /ecossistema | 86 / 95 / 3,3 s | 94 / 100 / 2,8 s |
+| /para-quem | 86 / 95 / 3,3 s | 94 / 100 / 2,7 s |
 
-Boas práticas 100 e SEO 100 nas cinco; CLS 0 a 0,005 antes e 0 a 0,002 depois. Medição "depois" da home e de `/planos` feita
+Boas práticas 100 e SEO 100 nas cinco; contraste AA sem falhas (acessibilidade 100); CLS 0 a 0,005 antes e 0 depois. O desempenho
+oscila cerca de 5 pontos entre rodadas (`/planos` deu 95 e depois 90). Medição "depois" da home e de `/planos` feita
 com o deploy novo confirmado (a primeira rodada pegou o deploy antigo e foi descartada).
 - **Fontes hospedadas no site** (`@fontsource-variable/inter`, `@fontsource/jetbrains-mono`): sai o `@import` do Google Fonts
   (bloqueava a renderização por ~0,9 s e vazava IP do visitante); preload do Inter latino.
