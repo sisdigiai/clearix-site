@@ -282,6 +282,13 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.6 · URLs sem barra final (decisão do eco)
+
+`wrangler.jsonc`: `html_handling` de `auto-trailing-slash` para `drop-trailing-slash`. Antes `/planos`, `/contato`,
+`/ecossistema` e `/para-quem` davam 308 para a versão com barra, enquanto canonical e sitemap usam a sem barra (Google via
+canonical e redirect apontando para lados opostos). Agora a sem barra responde 200 e a com barra redireciona para ela.
+Prova em produção (curl) no commit seguinte a este registro.
+
 ## 2026-09-23 — v0.6.5 · passo 7: desempenho e acessibilidade (Lighthouse mobile, produção)
 
 Trava do eco: medir home, preços (`/planos`) e `/contato` em mobile na produção, antes e depois; não mexer em número público
