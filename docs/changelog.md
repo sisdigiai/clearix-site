@@ -271,6 +271,17 @@ e a régua `analytics.fn_origem_real` (migration 146 do app) já não os conta; 
   amount_total))`, medido 21/09/2026 13:48 BRT). Na "vida de uma OS" (passo 6) e nos `llms*.txt`; substitui 1.477.
 - **D7:** sem mudança (termo fora até assinar). **D2 e-mail:** resolvido pelo Geral: `contato@digiai.app.br` no lugar do Gmail (`/contato`, JSON-LD e `llms*.txt`); encaminha para o Gmail pelo Email Routing do Cloudflare.
 
+## 2026-09-23 — v0.6.0 · passo 1 da home premium: telas reais na home — NÃO publicada
+
+Despacho do Geral (23/09, "home nível premium"). Passo 1 de N: as 3 capturas aprovadas em `public/capturas/` entram em S3
+("Como funciona"), bloco "Na tela, da operação real", logo depois dos 6 passos: kanban de atraso (passo 04), entrega
+bloqueada por saldo (05) e recibo do carnê (06), cada uma com `alt`, largura/altura e `loading="lazy"`.
+Aviso do bloco: "telas de uma rede de óticas da Grande São Paulo, dados de cliente, OS, valores e usuário desfocados" (folha §7,
+sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibida na tela, no uso real vai à impressora.
+- **Pendente:** a 4ª captura (comparação de laboratórios, S4) segue em `em_conferencia\`; pedido de refazer com a fórmula
+  real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
+- Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
+
 ## 2026-09-21 — v0.5.3 · preço sai do Rótulo, entra em S8 (dor/prova antes do preço) — publicada
 
 Dúvida do dono (21/09): preço logo na abertura ancora em custo, não em valor; repassada ao eco, que confirmou e mandou

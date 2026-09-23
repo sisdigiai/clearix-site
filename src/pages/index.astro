@@ -134,7 +134,33 @@ const fases = [
           </li>
         ))}
       </ol>
-      <p class="label-sm mt-6 normal-case tracking-wide text-clarity-muted/70">Números da operação real, medidos em {medidoEm}.</p>
+
+      {/* Telas reais aprovadas (folha §7): public/capturas/, dados de cliente, OS, valor, usuário e logotipo desfocados. */}
+      <div class="mt-14">
+        <p class="label mb-2">Na tela, da operação real</p>
+        <p class="mb-8 max-w-2xl text-body-md text-clarity-muted">Telas de uma rede de óticas da Grande São Paulo. Dados de cliente, OS, valores e usuário estão desfocados.</p>
+
+        <figure class="mb-6 overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+          <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" loading="lazy" decoding="async"
+            alt="Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso" class="block h-auto w-full" />
+          <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">04</span> Acompanhamento: o atraso aparece na etapa, com os dias de atraso no cartão.</figcaption>
+        </figure>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <figure class="overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+            <img src="/capturas/vendas-entrega-bloqueada_desfocado.png" width="1600" height="746" loading="lazy" decoding="async"
+              alt="Lista de entregas pendentes em que os pedidos com saldo em aberto e sem carnê mostram o selo Pagamento Pendente no lugar do botão de entregar" class="block h-auto w-full" />
+            <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">05</span> Entrega: com saldo em aberto e sem carnê, o pedido não sai.</figcaption>
+          </figure>
+          <figure class="overflow-hidden rounded-xl border border-clarity-off/10 bg-ink-surface">
+            <img src="/capturas/vendas-baixa-carne-recibo_desfocado-v2.png" width="1600" height="692" loading="lazy" decoding="async"
+              alt="Lista de parcelas do carnê pagas e pendentes ao lado da segunda via do recibo de parcela paga" class="block h-auto w-full" />
+            <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">06</span> Fechamento: parcela baixada e recibo na hora. É a 2ª via exibida na tela; no uso real vai à impressora.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <p class="label-sm mt-10 normal-case tracking-wide text-clarity-muted/70">Números da operação real, medidos em {medidoEm}.</p>
     </div>
   </section>
 
