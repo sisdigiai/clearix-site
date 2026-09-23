@@ -282,6 +282,18 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-23 — v0.6.3 · passo 5: páginas internas no padrão da home (/planos, /ecossistema, /para-quem)
+
+Despacho do Geral (passos 4 a 8 da home; o 4, captura de comparação de labs, espera o DCL).
+- Entrada: `focus3d` (inclinação 3D + desfoque) saiu das três páginas; grades e cartão da demonstração usam o `.reveal`
+  suave da home.
+- `/planos`: botões dos 4 pacotes voltam ao tamanho padrão (14 px, 48 px de altura; tinham 11 px), "lojas · público" com
+  16 px no celular, destaque do título em `cyan-bright` como na home.
+- `/ecossistema`: saiu o hover com cor fixa (`#06B6D4`) dos cartões de módulo, que nem são clicáveis (R-014); destaque
+  do título em `cyan-bright`. `/para-quem`: destaque do título em `cyan-bright`.
+- Não mexi: as cores das bolinhas dos módulos vêm de `src/data/apps.ts` (dado de marca por módulo).
+- Conferido em 1440 e 375 px (sem rolagem horizontal nas três), build ok.
+
 ## 2026-09-23 — v0.6.2 · passo 3 da home premium: acabamento pelo checklist §8 (AGENT_GUIDE)
 
 Só tokens (R-014), nada de cor nova. `src/styles/global.css`: variáveis `--shadow-lens`, `--dur-fast`, `--dur-base`,

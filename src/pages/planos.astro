@@ -14,7 +14,7 @@ import { CTA } from '../data/landing';
     <div class="lux-glow"></div>
     <div class="container-grid max-w-3xl anim-fade-in relative z-10">
       <p class="label mb-6">Planos</p>
-      <h1 class="h-display mb-6">Comece pequeno.<br/><span class="text-clearix-cyan italic">Cresça sem trocar de sistema.</span></h1>
+      <h1 class="h-display mb-6">Comece pequeno.<br/><span class="text-clearix-cyan-bright italic">Cresça sem trocar de sistema.</span></h1>
       <p class="body-lg max-w-2xl">
         Os planos usam o mesmo sistema e os mesmos dados; muda o que fica liberado para a sua operação. Na demonstração,
         a gente indica por onde começar.
@@ -30,7 +30,7 @@ import { CTA } from '../data/landing';
       <p class="text-clarity-dim text-body-lg mb-8 max-w-3xl">
         Preço público, a partir de <span class="text-clearix-cyan-bright font-semibold tabular-nums">{planos[0].preco}/mês</span>, sem período grátis. O piloto é pago e combinado depois da demonstração.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
         {planos.map((p) => (
           <div class="relative p-7 flex flex-col bg-ink-surface">
             <h2 class="font-display font-bold text-2xl text-clarity-off">{p.nome}</h2>
@@ -38,14 +38,14 @@ import { CTA } from '../data/landing';
               <span class="font-mono tabular-nums text-3xl text-clarity-off">{p.preco}</span>
               {p.precoNota && <span class="text-clarity-muted text-body-md">{p.precoNota}</span>}
             </p>
-            <p class="text-clarity-muted text-[13px]">{p.lojas} · {p.publico}</p>
+            <p class="text-clarity-muted text-body-md md:text-[13px]">{p.lojas} · {p.publico}</p>
             <div class="mb-5"></div>
             <ul class="space-y-2 mb-6">
               {p.inclui.map((i) => (
                 <li class="flex gap-2 text-clarity-dim text-body-md"><span class="text-clearix-cyan shrink-0">→</span>{i}</li>
               ))}
             </ul>
-            <a href="/contato" data-cta="planos" class="mt-auto text-center btn-outline text-label-sm py-2.5">
+            <a href="/contato" data-cta="planos" class="mt-auto btn-outline">
               {p.preco === 'Sob consulta' ? 'Falar com a gente' : 'Agendar demonstração'}
             </a>
           </div>
@@ -64,7 +64,7 @@ import { CTA } from '../data/landing';
   <!-- Demo -->
   <section class="py-16 md:py-20 bg-ink-deep border-b border-clarity-off/10">
     <div class="container-grid">
-      <div class="card flex flex-col md:flex-row items-start md:items-center justify-between gap-6 focus3d">
+      <div class="card flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal">
         <div>
           <p class="label mb-2">{demo.preco}</p>
           <h2 class="h-sub mb-2">{demo.nome}</h2>
@@ -83,7 +83,7 @@ import { CTA } from '../data/landing';
         <h2 class="h-sub">Serviço à parte</h2>
         <p class="body-lg mt-4">Sob consulta, combinado com você.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden focus3d">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
         {addons.map((a) => (
           <div class="bg-ink-surface p-6">
             <h3 class="font-display font-semibold text-lg text-clarity-off mb-1">{a.nome}</h3>
