@@ -9,6 +9,8 @@ for (const f of (await readdir(dir)).filter((n) => n.endsWith('.png'))) {
   const base = join(dir, f.replace(/\.png$/, ''));
   await sharp(join(dir, f)).webp({ quality: 88 }).toFile(`${base}.webp`);
   await sharp(join(dir, f)).avif({ quality: 60 }).toFile(`${base}.avif`);
+  await sharp(join(dir, f)).resize({ width: 800 }).webp({ quality: 88 }).toFile(`${base}-800.webp`);
+  await sharp(join(dir, f)).resize({ width: 800 }).avif({ quality: 60 }).toFile(`${base}-800.avif`);
 }
 
 const W = 1200, H = 630;

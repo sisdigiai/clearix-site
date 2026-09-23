@@ -30,8 +30,8 @@ export default {
       },
       fontFamily: {
         // Clearix usa Inter (sem serif — serif é assinatura DIGIAI). Linear/Stripe/Vercel.
-        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Inter Variable"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"Inter Variable"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
