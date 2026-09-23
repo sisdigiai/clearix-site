@@ -95,7 +95,7 @@ Home reencenada como experiência cinematográfica da marca (a lente Clearix foc
 - [ ] Confirmar domínio `clearix.app.br` no DNS (Registro.br) e conectar no Cloudflare Pages.
 - [x] ~~Criar repo GitHub `mellooticas/clearix_site` e fazer o push inicial~~ — produção mudou: o Cloudflare observa **`sisdigiai/clearix-site`** (verificado 2026-07-11); `mellooticas/clearix_site` é só espelho.
 - [ ] Apontar o `/clearix` do `digiai-site` para este novo site (teaser → site dedicado).
-- [ ] Verificação Bing/Google (meta tags) quando os tokens existirem.
+- [x] ~~Verificação Bing/Google (meta tags)~~ — feita por outros caminhos: Google Search Console como propriedade de domínio (DNS) e Bing Webmaster com sitemap e IndexNow, ambos na conta `sisdigiai@gmail.com` (conferido em 23/09/2026); não há meta tag no `<head>` e não precisa.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).
 - [x] ~~Depoimento da home ainda é MOCK~~ — reescrito como case factual (2026-07-11): sem citação inventada, só fatos verificáveis + números de `prova.ts`. Depoimento com nome/cargo pode substituir no futuro.
 - [x] ~~"Garantia Clearix de migração sem trauma" (RiscoZero): validar com o comercial~~ — não se pratica; saiu da home em 2026-09-14 (ver abaixo).
