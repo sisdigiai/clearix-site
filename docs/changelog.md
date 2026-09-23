@@ -295,9 +295,11 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   na home geraram `clearix_cta_click` (header_entrar, hero, oferta, rodape_hub, rodape_calc, final_hub, faq) e
   `clearix_whatsapp_click` (hero_whatsapp), cada um com `cta_id` e `destino`; links do Hub e da calculadora saem com
   `utm_source/medium/content`.
-- **Ainda sem prova em produção:** `clearix_demo_solicitada`. Leitura do código: o evento sai depois do `ok` do `lead-capture`
-  (`contato.astro`), sem defeito visível; em 24 h o site teve 42 visitas e 1 clique de CTA, então é provável que ninguém tenha
-  pedido demonstração. Provar exige enviar o formulário em produção com dado de teste, que precisa do "pode" do dono.
+- **`clearix_demo_solicitada` provado em produção (23/09, com "pode" do dono):** formulário de `/contato` enviado com dado de
+  teste (nome "TESTE Agent do Site Clearix (apagar)", `sisdigiai@gmail.com`, telefone de formato inválido): `lead-capture` 200 e,
+  no banco do digiai (`analytics.events_log`, lido pelo Geral), sessão `3a20c244` com `clearix_site_visit` às 16:20:40 e
+  `clearix_demo_solicitada` às 16:22:06 BRT. O código não tinha defeito; o zero das 24 h anteriores era falta de pedidos
+  (42 visitas, 1 clique de CTA). O app apaga o lead de teste. **Passo 8 fechado.**
 
 ## 2026-09-23 — v0.6.6 · URLs sem barra final (decisão do eco)
 
