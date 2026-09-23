@@ -52,7 +52,7 @@ OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não pro
 - Demonstração: https://clearix.app.br/contato
 - WhatsApp: +55 11 99154-7229
 - E-mail: contato@digiai.app.br
-- Clientes (login): https://clearixhub.netlify.app
+- Clientes (login): https://app.clearix.app.br
 
 ## Atribuição
 

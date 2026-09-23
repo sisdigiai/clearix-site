@@ -36,4 +36,4 @@ export const endereco = {
   cep: '08674-000',
 };
 
-export const HUB = 'https://clearixhub.netlify.app';
+export const HUB = 'https://app.clearix.app.br';

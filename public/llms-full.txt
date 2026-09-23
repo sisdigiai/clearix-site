@@ -115,7 +115,7 @@ Os planos começam em R$ 349 por mês, sem período grátis. O piloto é pago e 
 - Demonstração: https://clearix.app.br/contato
 - WhatsApp: +55 11 99154-7229
 - E-mail: contato@digiai.app.br
-- Clientes (login): https://clearixhub.netlify.app
+- Clientes (login): https://app.clearix.app.br
 
 ## Atribuição
 
