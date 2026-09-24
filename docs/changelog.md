@@ -282,6 +282,14 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-24 — mocks da home (docs/mocks, NÃO publicados)
+
+Pedido do dono após a análise de CRMBonus, ssOtica e Dataweb (`Cockpit/comercial/inteligencia-crmbonus-2026-09-24.md`): três direções completas de home em HTML,
+geradas por `node docs/mocks/gerar.mjs` (saída em `docs/mocks/`, abrir `index.html`). **A** painel de prova primeiro (4 números medidos, entrada por porte e
+tour de 3 telas reais); **B** "o cliente que não volta" (número a medir + Quem chamar hoje); **C** antes e depois do balcão (depoimento e guias de isca a coletar/produzir).
+Só números da folha única; o que falta fica marcado (`número a medir`, `depoimento a coletar`, `conteúdo a produzir`, `ilustração, não é captura`). Tokens em `mock.css`.
+Nada disso vai a `src/` nem ao ar. Demo pública autoguiada fica para a fase 2 (eco: 19 RPCs e 5 views ainda vazam entre tenants; ~2 semanas).
+
 ## 2026-09-23 — v0.6.8 · passo 4: captura da comparação de laboratórios no bloco "A mesma lente…"
 
 - **Captura v2 do DCL** (23/09 16:26, `lab.clearix.app.br`, janela "Top 5 opções por preço e prazo"), aprovada na conferência:
