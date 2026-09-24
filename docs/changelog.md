@@ -282,6 +282,16 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-24 — v0.8.0 · home B "o cliente que não volta" na produção, cor Lens
+
+Escolha do dono (24/09): trocar a `main` pela home B com a paleta **Lens** (a de sempre). Junta v0.7.0 (topo com a pergunta e os números da folha, seção "Quem chamar hoje"),
+v0.7.1 (cores viraram variáveis `--t-*`) e v0.7.2 (captura real da Lista de Hoje, aprovada na v2 com as contagens desfocadas).
+- Saíram o seletor "Prévia de cores", o script de tema e as paletas Índigo, Esmeralda e Claro. Ficam no histórico do git (commit `7c1063a`, branch `home-b-cores`) para o caso de
+  o dono querer voltar a elas. Os tokens seguem como variáveis, só com o Lens.
+- Números no ar (folha de mesa, medido em 24/09/2026 numa rede de óticas da casa): "926 clientes com a receita vencida no último ano; 912 deles sem nenhum contato da loja em 90 dias" e
+  "70 clientes vencem a receita nos próximos 30 dias; 66 ainda sem contato", com a nota de método (vencida = receita + 12 meses; sem contato = nenhuma ligação registrada nem WhatsApp da loja em 90 dias).
+- Lighthouse mobile (build final, local): desempenho 99, acessibilidade 100, boas práticas 100, SEO 100. Medir de novo na produção depois do deploy.
+
 ## 2026-09-24 — v0.7.2 · captura real da Lista de Hoje na seção "Quem chamar hoje" (branch `home-b-cores`)
 
 - **Captura do Marketing aprovada na v2** (24/09, `Cockpit/comercial/06-prints/aprovadas/`; a v1 foi devolvida porque o "120" do título e o "120 na lista" estavam legíveis: contagem da loja

@@ -9,8 +9,8 @@
 
 /* Clearix Lens — vidro escuro refrativo. Ótica de precisão: foco + luz. */
 @layer base {
-  /* Paletas (R-014: tokens, nunca cor solta). Cada tema e um conjunto de triplas RGB; o padrao e o Lens de hoje.
-     Trocar de tema = trocar `data-tema` no <html>. Temas: lens (padrao), indigo, esmeralda, claro. */
+  /* Paleta Lens (R-014: tokens, nunca cor solta). Triplas RGB em variaveis --t-*; o tailwind.config.mjs le rgb(var(--t-...) / <alpha-value>).
+     Escolha do dono em 24/09/2026. As paletas indigo, esmeralda e claro (com o seletor) ficam no historico do git: commit 7c1063a, branch home-b-cores. */
   :root {
     color-scheme: dark;
     --t-ink-base: 6 14 28; --t-ink-surface: 11 27 51; --t-ink-deep: 4 10 21; --t-ink-high: 19 41 74;
@@ -21,38 +21,6 @@
     --t-glass-a: 30 58 95; --t-glass-b: 11 27 51; --t-tint: 147 197 253; --t-accent3: 167 139 250;
     --t-on-accent: 4 10 21; --t-glint: 255 255 255; --t-glow: 6 182 212;
   }
-  html[data-tema='indigo'] {
-    --t-ink-base: 10 10 31; --t-ink-surface: 20 20 58; --t-ink-deep: 6 6 26; --t-ink-high: 35 35 92;
-    --t-blue: 99 102 241; --t-blue-bright: 129 140 248;
-    --t-cyan: 129 140 248; --t-cyan-bright: 165 180 252; --t-cyan-soft: 199 210 254;
-    --t-navy: 42 42 107; --t-navy-soft: 196 181 253;
-    --t-off: 238 240 255; --t-dim: 201 204 235; --t-muted: 143 148 199; --t-line: 46 46 110;
-    --t-glass-a: 42 42 107; --t-glass-b: 20 20 58; --t-tint: 165 180 252; --t-accent3: 244 114 182;
-    --t-on-accent: 6 6 26; --t-glow: 129 140 248;
-  }
-  html[data-tema='esmeralda'] {
-    --t-ink-base: 4 20 15; --t-ink-surface: 10 42 33; --t-ink-deep: 3 14 11; --t-ink-high: 18 64 47;
-    --t-blue: 16 185 129; --t-blue-bright: 52 211 153;
-    --t-cyan: 16 185 129; --t-cyan-bright: 52 211 153; --t-cyan-soft: 110 231 183;
-    --t-navy: 20 83 45; --t-navy-soft: 167 243 208;
-    --t-off: 236 253 245; --t-dim: 193 232 216; --t-muted: 127 181 160; --t-line: 30 77 59;
-    --t-glass-a: 18 80 58; --t-glass-b: 10 42 33; --t-tint: 167 243 208; --t-accent3: 56 189 248;
-    --t-on-accent: 3 14 11; --t-glow: 16 185 129;
-  }
-  html[data-tema='claro'] {
-    color-scheme: light;
-    --t-ink-base: 243 247 252; --t-ink-surface: 255 255 255; --t-ink-deep: 233 240 248; --t-ink-high: 220 231 245;
-    --t-blue: 37 99 235; --t-blue-bright: 59 130 246;
-    --t-cyan: 21 94 117; --t-cyan-bright: 14 116 144; --t-cyan-soft: 8 145 178;
-    --t-navy: 191 219 254; --t-navy-soft: 30 58 95;
-    --t-off: 11 27 51; --t-dim: 51 78 110; --t-muted: 70 94 125; --t-line: 203 213 225;
-    --t-glass-a: 255 255 255; --t-glass-b: 240 246 252; --t-tint: 30 58 95; --t-accent3: 124 58 237;
-    --t-on-accent: 255 255 255; --t-glint: 255 255 255; --t-glow: 14 116 144;
-  }
-  html[data-tema='claro'] .text-amber-400\/80 { color: rgb(180 83 9); }
-  html[data-tema='claro'] .border-amber-400\/30 { border-color: rgb(180 83 9 / .4); }
-  html[data-tema='claro'] .bg-amber-400\/5 { background-color: rgb(180 83 9 / .06); }
-
   :root {
     --color-base: rgb(var(--t-ink-base));
     --color-surface: rgb(var(--t-ink-surface));
