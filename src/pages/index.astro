@@ -36,6 +36,11 @@ const fases = [
   { t: 'Olhar o seu processo', d: 'Antes de propor qualquer coisa, entendemos como a sua loja trabalha hoje.' },
   { t: 'Piloto pago e assistido', d: 'Implantamos com a gente acompanhando. O que você usar define o que fica.' },
 ];
+const tour = [
+  { n: '01', titulo: 'Acompanhar', legenda: 'o atraso aparece na etapa, antes de virar ligação do cliente.', cta: 'tour_passo_1', arquivo: 'dcl-kanban-atraso_desfocado', w: 1600, h: 553, alt: 'Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso' },
+  { n: '02', titulo: 'Entregar', legenda: 'com saldo em aberto e sem carnê, o pedido não sai.', cta: 'tour_passo_2', arquivo: 'vendas-entrega-bloqueada_desfocado', w: 1600, h: 746, alt: 'Lista de entregas pendentes em que os pedidos com saldo em aberto e sem carnê mostram o selo Pagamento Pendente no lugar do botão de entregar' },
+  { n: '03', titulo: 'Fechar', legenda: 'parcela baixada e recibo na hora (2ª via exibida na tela; no uso real vai à impressora).', cta: 'tour_passo_3', arquivo: 'vendas-baixa-carne-recibo_desfocado-v2', w: 1600, h: 692, alt: 'Lista de parcelas do carnê pagas e pendentes ao lado da segunda via do recibo de parcela paga' },
+];
 ---
 
 <BaseLayout
@@ -135,6 +140,32 @@ const fases = [
     </div>
   </section>
 
+  {/* Tour de 3 telas reais (decisão do Geral 25/09; do mock A). Folha §7: dados de cliente, OS, valor e usuário desfocados. Sem demo automática. */}
+  <section id="tour" class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid">
+      <div class="max-w-3xl mb-10">
+        <p class="label mb-4">Tour guiado · sem cadastro</p>
+        <h2 class="h-section mb-5">Veja o sistema em 3 telas reais antes de agendar.</h2>
+        <p class="body-lg">Capturas de uma rede de óticas da Grande São Paulo que usa o Clearix todos os dias, com dados de cliente, OS, valores e usuário desfocados.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {tour.map((t) => (
+          <figure class="shot reveal flex flex-col">
+            <picture class="block">
+              <source srcset={`/capturas/${t.arquivo}-800.avif 800w, /capturas/${t.arquivo}.avif ${t.w}w`} sizes="(min-width: 768px) 33vw, 100vw" type="image/avif" />
+              <source srcset={`/capturas/${t.arquivo}-800.webp 800w, /capturas/${t.arquivo}.webp ${t.w}w`} sizes="(min-width: 768px) 33vw, 100vw" type="image/webp" />
+              <img src={`/capturas/${t.arquivo}.png`} width={t.w} height={t.h} loading="lazy" decoding="async" alt={t.alt} class="block h-auto w-full" />
+            </picture>
+            <figcaption class="p-5 text-body-md text-clarity-muted">
+              <span class="font-mono tabular-nums text-clearix-cyan-bright">{t.n}</span> <b class="text-clarity-off">{t.titulo}</b>: {t.legenda}
+              <a href="/contato" class="mt-3 block text-clearix-cyan-bright underline" data-cta={t.cta}>Ver esta tela ao vivo na demonstração →</a>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- S2 · Espelho da dor -->
   <section class="py-20 md:py-28 border-b border-clarity-off/10">
     <div class="container-grid">
@@ -193,33 +224,6 @@ const fases = [
           </li>
         ))}
       </ol>
-
-      {/* Telas reais aprovadas (folha §7): public/capturas/, dados de cliente, OS, valor, usuário e logotipo desfocados. */}
-      <div class="mt-14">
-        <p class="label mb-2">Na tela, da operação real</p>
-        <p class="mb-8 max-w-2xl text-body-md text-clarity-muted">Telas de uma rede de óticas da Grande São Paulo. Dados de cliente, OS, valores e usuário estão desfocados.</p>
-
-        <div class="grid gap-6 md:grid-cols-2">
-          <figure class="shot reveal">
-            <picture class="block">
-          <source srcset="/capturas/vendas-entrega-bloqueada_desfocado-800.avif 800w, /capturas/vendas-entrega-bloqueada_desfocado.avif 1600w" sizes="(min-width: 768px) 50vw, 100vw" type="image/avif" />
-          <source srcset="/capturas/vendas-entrega-bloqueada_desfocado-800.webp 800w, /capturas/vendas-entrega-bloqueada_desfocado.webp 1600w" sizes="(min-width: 768px) 50vw, 100vw" type="image/webp" />
-          <img src="/capturas/vendas-entrega-bloqueada_desfocado.png" width="1600" height="746" loading="lazy" decoding="async"
-              alt="Lista de entregas pendentes em que os pedidos com saldo em aberto e sem carnê mostram o selo Pagamento Pendente no lugar do botão de entregar" class="block h-auto w-full" />
-        </picture>
-            <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">05</span> Entrega: com saldo em aberto e sem carnê, o pedido não sai.</figcaption>
-          </figure>
-          <figure class="shot reveal">
-            <picture class="block">
-          <source srcset="/capturas/vendas-baixa-carne-recibo_desfocado-v2-800.avif 800w, /capturas/vendas-baixa-carne-recibo_desfocado-v2.avif 1600w" sizes="(min-width: 768px) 50vw, 100vw" type="image/avif" />
-          <source srcset="/capturas/vendas-baixa-carne-recibo_desfocado-v2-800.webp 800w, /capturas/vendas-baixa-carne-recibo_desfocado-v2.webp 1600w" sizes="(min-width: 768px) 50vw, 100vw" type="image/webp" />
-          <img src="/capturas/vendas-baixa-carne-recibo_desfocado-v2.png" width="1600" height="692" loading="lazy" decoding="async"
-              alt="Lista de parcelas do carnê pagas e pendentes ao lado da segunda via do recibo de parcela paga" class="block h-auto w-full" />
-        </picture>
-            <figcaption class="p-5 text-body-md text-clarity-muted"><span class="font-mono tabular-nums text-clearix-cyan-bright">06</span> Fechamento: parcela baixada e recibo na hora. É a 2ª via exibida na tela; no uso real vai à impressora.</figcaption>
-          </figure>
-        </div>
-      </div>
 
       <p class="label-sm mt-10 normal-case tracking-wide text-clarity-muted">Números da operação real, medidos em {medidoEm}.</p>
     </div>

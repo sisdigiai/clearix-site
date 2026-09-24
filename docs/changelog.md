@@ -475,3 +475,7 @@ mover — sem mexer na ordem "tudo na cara" do Rótulo em si, só tirar o preço
 - Conferido no navegador (1280 px e 375 px): sem `))}`, cards de pacote sem preço, grade de S8 correta nos dois
   tamanhos. Publicada em 22/09/2026 (main `36c7d13`), com o "pode" do dono.
 
+
+## 2026-09-25 — v0.9.0 · tour de 3 telas na home
+
+Decisão do Geral: a home B fica (escuro, Lens). Entra a seção "Veja o sistema em 3 telas reais antes de agendar" (do mock A) antes de "O problema não é a equipe": kanban, entrega bloqueada e recibo do carnê, com legenda e link "Ver esta tela ao vivo na demonstração" para `/contato` (`cta_id` `tour_passo_1..3`). As duas capturas que já ficavam em "Como funciona" migraram para o tour (sem repetição). Mocks claros, mock D e autônomos ficam em `docs/mocks/` como reserva.
