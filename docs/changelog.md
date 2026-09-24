@@ -479,3 +479,7 @@ mover — sem mexer na ordem "tudo na cara" do Rótulo em si, só tirar o preço
 ## 2026-09-25 — v0.9.0 · tour de 3 telas na home
 
 Decisão do Geral: a home B fica (escuro, Lens). Entra a seção "Veja o sistema em 3 telas reais antes de agendar" (do mock A) antes de "O problema não é a equipe": kanban, entrega bloqueada e recibo do carnê, com legenda e link "Ver esta tela ao vivo na demonstração" para `/contato` (`cta_id` `tour_passo_1..3`). As duas capturas que já ficavam em "Como funciona" migraram para o tour (sem repetição). Mocks claros, mock D e autônomos ficam em `docs/mocks/` como reserva.
+
+## 2026-09-25 — v0.9.1 · botão primário azul
+
+Escolha do dono (prévia 2): botão primário em azul (`--t-btn` 37 99 235, texto branco, contraste 5,2:1; hover 59 130 246); ciano continua nos destaques, links e brilho. Tokens novos `--t-btn`, `--t-btn-hover`, `--t-on-btn` em `global.css`; pulso do CTA acompanha a cor. Prévia comparativa em `docs/mocks/previa-botao-azul.html`.

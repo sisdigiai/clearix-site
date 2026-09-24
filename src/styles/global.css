@@ -20,6 +20,7 @@
     --t-off: 234 243 255; --t-dim: 194 212 234; --t-muted: 126 151 184; --t-line: 33 56 90;
     --t-glass-a: 30 58 95; --t-glass-b: 11 27 51; --t-tint: 147 197 253; --t-accent3: 167 139 250;
     --t-on-accent: 4 10 21; --t-glint: 255 255 255; --t-glow: 6 182 212;
+    --t-btn: 37 99 235; --t-btn-hover: 59 130 246; --t-on-btn: 255 255 255;
   }
   :root {
     --color-base: rgb(var(--t-ink-base));
@@ -79,10 +80,10 @@
 
   .body-lg { @apply font-sans text-body-lg text-clarity-dim; }
 
-  /* CTA primário = luz refratada (cyan-bright sólido, texto escuro) */
+  /* CTA primário = azul (escolha do dono, 25/09/2026: prévia 2, botão azul; ciano segue como destaque). Texto branco sobre 37 99 235 = contraste 5,2:1. */
   .btn-primary {
-    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-lg bg-clearix-cyan-bright text-[rgb(var(--t-on-accent))] px-6 py-3 font-semibold text-[14px] tracking-tight
-           shadow-[0_8px_30px_-8px_rgb(var(--t-cyan-bright)/0.55)] hover:-translate-y-px hover:bg-clearix-cyan-soft active:translate-y-0 active:scale-[0.98]
+    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-lg bg-[rgb(var(--t-btn))] text-[rgb(var(--t-on-btn))] px-6 py-3 font-semibold text-[14px] tracking-tight
+           shadow-[0_8px_30px_-8px_rgb(var(--t-btn)/0.6)] hover:-translate-y-px hover:bg-[rgb(var(--t-btn-hover))] active:translate-y-0 active:scale-[0.98]
            transition-[background-color,transform] duration-200
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
   }
@@ -139,9 +140,9 @@
 
 /* pulso de atenção no CTA primário (pista visual sutil — von Restorff) */
 @keyframes ctaPulse {
-  0% { box-shadow: 0 8px 30px -8px rgb(var(--t-cyan-bright) / 0.55), 0 0 0 0 rgb(var(--t-cyan-bright) / 0.45); }
-  70% { box-shadow: 0 8px 30px -8px rgb(var(--t-cyan-bright) / 0.55), 0 0 0 12px rgb(var(--t-cyan-bright) / 0); }
-  100% { box-shadow: 0 8px 30px -8px rgb(var(--t-cyan-bright) / 0.55), 0 0 0 0 rgb(var(--t-cyan-bright) / 0); }
+  0% { box-shadow: 0 8px 30px -8px rgb(var(--t-btn) / 0.6), 0 0 0 0 rgb(var(--t-btn) / 0.45); }
+  70% { box-shadow: 0 8px 30px -8px rgb(var(--t-btn) / 0.6), 0 0 0 12px rgb(var(--t-btn) / 0); }
+  100% { box-shadow: 0 8px 30px -8px rgb(var(--t-btn) / 0.6), 0 0 0 0 rgb(var(--t-btn) / 0); }
 }
 .cta-pulse { animation: ctaPulse 2.6s ease-out infinite; }
 @media (prefers-reduced-motion: reduce) { .cta-pulse { animation: none; } }
