@@ -1,0 +1,52 @@
+---
+// Seletor de paleta para a pré-visualização (24/09). Aparece fora de clearix.app.br ou com ?cores=1; some do site quando o dono escolher a cor.
+// As amostras mostram as cores de cada tema, por isso são valores fixos (conteúdo, não estilo da página).
+const temas = [
+  { id: 'lens', nome: 'Lens', desc: 'Ciano sobre azul-vidro (o atual)', amostra: ['#060E1C', '#0B1B33', '#22D3EE'] },
+  { id: 'indigo', nome: 'Índigo', desc: 'Azul-violeta sobre noite', amostra: ['#0A0A1F', '#14143A', '#A5B4FC'] },
+  { id: 'esmeralda', nome: 'Esmeralda', desc: 'Verde-saúde sobre floresta', amostra: ['#04140F', '#0A2A21', '#34D399'] },
+  { id: 'claro', nome: 'Claro', desc: 'Papel frio e azul-petróleo', amostra: ['#F3F7FC', '#FFFFFF', '#0E7490'] },
+];
+---
+<aside id="tema-cores" hidden aria-label="Escolher a paleta de cores (pré-visualização)"
+  class="fixed bottom-4 left-4 z-[60] w-[min(92vw,300px)] rounded-xl border border-clarity-off/20 bg-ink-surface p-4 shadow-[0_20px_60px_-20px_rgb(0_0_0/0.6)]">
+  <p class="mb-1 font-mono text-label-sm uppercase tracking-widest text-clearix-cyan-bright">Prévia de cores</p>
+  <p class="mb-3 text-[13px] leading-snug text-clarity-muted">Escolha uma e diga o nome. Só existe nesta prévia.</p>
+  <div class="grid gap-2">
+    {temas.map((t) => (
+      <button type="button" data-t={t.id} aria-pressed="false"
+        class="flex min-h-[44px] w-full cursor-pointer items-center gap-3 rounded-lg border border-clarity-off/15 px-3 py-2 text-left transition-colors hover:border-clearix-cyan-bright aria-pressed:border-clearix-cyan-bright aria-pressed:bg-clarity-off/10">
+        <span class="flex shrink-0 overflow-hidden rounded-md border border-clarity-off/20" aria-hidden="true">
+          {t.amostra.map((c) => <span class="block h-7 w-4" style={`background:${c}`}></span>)}
+        </span>
+        <span class="flex flex-col">
+          <span class="text-[14px] font-semibold text-clarity-off">{t.nome}</span>
+          <span class="text-[12px] leading-tight text-clarity-dim">{t.desc}</span>
+        </span>
+      </button>
+    ))}
+  </div>
+</aside>
+
+<script is:inline>
+  (function () {
+    function iniciar() {
+      var box = document.getElementById('tema-cores');
+      if (!box || box.dataset.init) return;
+      var prod = location.hostname === 'clearix.app.br';
+      if (prod && !/[?&]cores=1/.test(location.search)) return;
+      box.dataset.init = '1';
+      box.hidden = false;
+      function marcar() {
+        var atual = window.clearixTema ? window.clearixTema.atual() : 'lens';
+        box.querySelectorAll('[data-t]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.t === atual ? 'true' : 'false'); });
+      }
+      box.querySelectorAll('[data-t]').forEach(function (b) {
+        b.addEventListener('click', function () { if (window.clearixTema) window.clearixTema.aplicar(b.dataset.t); marcar(); });
+      });
+      marcar();
+    }
+    iniciar();
+    document.addEventListener('astro:page-load', iniciar);
+  })();
+</script>

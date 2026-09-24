@@ -9,16 +9,59 @@
 
 /* Clearix Lens — vidro escuro refrativo. Ótica de precisão: foco + luz. */
 @layer base {
+  /* Paletas (R-014: tokens, nunca cor solta). Cada tema e um conjunto de triplas RGB; o padrao e o Lens de hoje.
+     Trocar de tema = trocar `data-tema` no <html>. Temas: lens (padrao), indigo, esmeralda, claro. */
   :root {
     color-scheme: dark;
-    --color-base: #060E1C;
-    --color-surface: #0B1B33;
-    --color-cyan: #22D3EE;
-    --color-blue: #3B82F6;
-    --color-off: #EAF3FF;
-    --color-line: rgba(147, 197, 253, 0.12);
-    --color-line-soft: rgba(147, 197, 253, 0.06);
-    --shadow-lens: 0 30px 70px -34px rgba(6, 182, 212, 0.40);
+    --t-ink-base: 6 14 28; --t-ink-surface: 11 27 51; --t-ink-deep: 4 10 21; --t-ink-high: 19 41 74;
+    --t-blue: 59 130 246; --t-blue-bright: 96 165 250;
+    --t-cyan: 6 182 212; --t-cyan-bright: 34 211 238; --t-cyan-soft: 103 232 249;
+    --t-navy: 26 58 92; --t-navy-soft: 147 197 253;
+    --t-off: 234 243 255; --t-dim: 194 212 234; --t-muted: 126 151 184; --t-line: 33 56 90;
+    --t-glass-a: 30 58 95; --t-glass-b: 11 27 51; --t-tint: 147 197 253; --t-accent3: 167 139 250;
+    --t-on-accent: 4 10 21; --t-glint: 255 255 255; --t-glow: 6 182 212;
+  }
+  html[data-tema='indigo'] {
+    --t-ink-base: 10 10 31; --t-ink-surface: 20 20 58; --t-ink-deep: 6 6 26; --t-ink-high: 35 35 92;
+    --t-blue: 99 102 241; --t-blue-bright: 129 140 248;
+    --t-cyan: 129 140 248; --t-cyan-bright: 165 180 252; --t-cyan-soft: 199 210 254;
+    --t-navy: 42 42 107; --t-navy-soft: 196 181 253;
+    --t-off: 238 240 255; --t-dim: 201 204 235; --t-muted: 143 148 199; --t-line: 46 46 110;
+    --t-glass-a: 42 42 107; --t-glass-b: 20 20 58; --t-tint: 165 180 252; --t-accent3: 244 114 182;
+    --t-on-accent: 6 6 26; --t-glow: 129 140 248;
+  }
+  html[data-tema='esmeralda'] {
+    --t-ink-base: 4 20 15; --t-ink-surface: 10 42 33; --t-ink-deep: 3 14 11; --t-ink-high: 18 64 47;
+    --t-blue: 16 185 129; --t-blue-bright: 52 211 153;
+    --t-cyan: 16 185 129; --t-cyan-bright: 52 211 153; --t-cyan-soft: 110 231 183;
+    --t-navy: 20 83 45; --t-navy-soft: 167 243 208;
+    --t-off: 236 253 245; --t-dim: 193 232 216; --t-muted: 127 181 160; --t-line: 30 77 59;
+    --t-glass-a: 18 80 58; --t-glass-b: 10 42 33; --t-tint: 167 243 208; --t-accent3: 56 189 248;
+    --t-on-accent: 3 14 11; --t-glow: 16 185 129;
+  }
+  html[data-tema='claro'] {
+    color-scheme: light;
+    --t-ink-base: 243 247 252; --t-ink-surface: 255 255 255; --t-ink-deep: 233 240 248; --t-ink-high: 220 231 245;
+    --t-blue: 37 99 235; --t-blue-bright: 59 130 246;
+    --t-cyan: 21 94 117; --t-cyan-bright: 14 116 144; --t-cyan-soft: 8 145 178;
+    --t-navy: 191 219 254; --t-navy-soft: 30 58 95;
+    --t-off: 11 27 51; --t-dim: 51 78 110; --t-muted: 70 94 125; --t-line: 203 213 225;
+    --t-glass-a: 255 255 255; --t-glass-b: 240 246 252; --t-tint: 30 58 95; --t-accent3: 124 58 237;
+    --t-on-accent: 255 255 255; --t-glint: 255 255 255; --t-glow: 14 116 144;
+  }
+  html[data-tema='claro'] .text-amber-400\/80 { color: rgb(180 83 9); }
+  html[data-tema='claro'] .border-amber-400\/30 { border-color: rgb(180 83 9 / .4); }
+  html[data-tema='claro'] .bg-amber-400\/5 { background-color: rgb(180 83 9 / .06); }
+
+  :root {
+    --color-base: rgb(var(--t-ink-base));
+    --color-surface: rgb(var(--t-ink-surface));
+    --color-cyan: rgb(var(--t-cyan-bright));
+    --color-blue: rgb(var(--t-blue));
+    --color-off: rgb(var(--t-off));
+    --color-line: rgb(var(--t-tint) / 0.12);
+    --color-line-soft: rgb(var(--t-tint) / 0.06);
+    --shadow-lens: 0 30px 70px -34px rgb(var(--t-glow) / 0.40);
     --dur-fast: 150ms;
     --dur-base: 250ms;
     --ease-out: cubic-bezier(.2, .7, .2, 1);
@@ -52,7 +95,7 @@
     overflow-x: hidden;
   }
 
-  ::selection { background-color: var(--color-cyan); color: #04121b; }
+  ::selection { background-color: var(--color-cyan); color: rgb(var(--t-on-accent)); }
 }
 
 @layer components {
@@ -70,8 +113,8 @@
 
   /* CTA primário = luz refratada (cyan-bright sólido, texto escuro) */
   .btn-primary {
-    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-lg bg-clearix-cyan-bright text-ink-deep px-6 py-3 font-semibold text-[14px] tracking-tight
-           shadow-[0_8px_30px_-8px_rgba(34,211,238,0.55)] hover:-translate-y-px hover:bg-clearix-cyan-soft active:translate-y-0 active:scale-[0.98]
+    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-lg bg-clearix-cyan-bright text-[rgb(var(--t-on-accent))] px-6 py-3 font-semibold text-[14px] tracking-tight
+           shadow-[0_8px_30px_-8px_rgb(var(--t-cyan-bright)/0.55)] hover:-translate-y-px hover:bg-clearix-cyan-soft active:translate-y-0 active:scale-[0.98]
            transition-[background-color,transform] duration-200
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clearix-cyan-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink-base;
   }
@@ -84,11 +127,11 @@
 
   /* Vidro (glassmorphism) — superfície ótica */
   .glass {
-    background: linear-gradient(180deg, rgba(30, 58, 95, 0.42), rgba(11, 27, 51, 0.55));
+    background: linear-gradient(180deg, rgb(var(--t-glass-a) / 0.42), rgb(var(--t-glass-b) / 0.55));
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(147, 197, 253, 0.14);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow-lens);
+    border: 1px solid rgb(var(--t-tint) / 0.14);
+    box-shadow: inset 0 1px 0 rgb(var(--t-glint) / 0.06), var(--shadow-lens);
   }
   .card { @apply glass p-8 rounded-2xl; }
 
@@ -107,7 +150,7 @@
 
   /* aresta de prisma — luz dispersa (assinatura Clearix) */
   .prism-edge {
-    background: linear-gradient(90deg, transparent, #3B82F6, #22D3EE, #a78bfa, transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--t-blue)), rgb(var(--t-cyan-bright)), rgb(var(--t-accent3)), transparent);
     background-size: 100% 100%;
   }
 }
@@ -128,9 +171,9 @@
 
 /* pulso de atenção no CTA primário (pista visual sutil — von Restorff) */
 @keyframes ctaPulse {
-  0% { box-shadow: 0 8px 30px -8px rgba(34,211,238,0.55), 0 0 0 0 rgba(34,211,238,0.45); }
-  70% { box-shadow: 0 8px 30px -8px rgba(34,211,238,0.55), 0 0 0 12px rgba(34,211,238,0); }
-  100% { box-shadow: 0 8px 30px -8px rgba(34,211,238,0.55), 0 0 0 0 rgba(34,211,238,0); }
+  0% { box-shadow: 0 8px 30px -8px rgb(var(--t-cyan-bright) / 0.55), 0 0 0 0 rgb(var(--t-cyan-bright) / 0.45); }
+  70% { box-shadow: 0 8px 30px -8px rgb(var(--t-cyan-bright) / 0.55), 0 0 0 12px rgb(var(--t-cyan-bright) / 0); }
+  100% { box-shadow: 0 8px 30px -8px rgb(var(--t-cyan-bright) / 0.55), 0 0 0 0 rgb(var(--t-cyan-bright) / 0); }
 }
 .cta-pulse { animation: ctaPulse 2.6s ease-out infinite; }
 @media (prefers-reduced-motion: reduce) { .cta-pulse { animation: none; } }
@@ -196,7 +239,7 @@
 details[open] > .unfold3d { animation: lensUnfold 0.5s cubic-bezier(.2,.7,.2,1) both; }
 @media (prefers-reduced-motion: reduce) { details[open] > .unfold3d { animation: none; } }
 
-.lens-card { border: 1px solid var(--color-line); border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, rgba(30,58,95,0.22), rgba(11,27,51,0.30)); }
+.lens-card { border: 1px solid var(--color-line); border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, rgb(var(--t-glass-a) / 0.22), rgb(var(--t-glass-b) / 0.30)); }
 .lens-card + .lens-card { margin-top: 0.75rem; }
 .lens-summary { list-style: none; cursor: pointer; }
 .lens-summary::-webkit-details-marker { display: none; }
@@ -221,7 +264,7 @@ details[open] > .unfold3d { animation: lensUnfold 0.5s cubic-bezier(.2,.7,.2,1) 
 
 .lux-glow {
   position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background: radial-gradient(circle var(--lux-size, 380px) at var(--mx, 50%) var(--my, 50%), var(--lux-color, rgba(34, 211, 238, 0.20)), transparent 62%);
+  background: radial-gradient(circle var(--lux-size, 380px) at var(--mx, 50%) var(--my, 50%), var(--lux-color, rgb(var(--t-cyan-bright) / 0.20)), transparent 62%);
   transition: background 0.12s ease-out;
 }
 
@@ -229,14 +272,14 @@ details[open] > .unfold3d { animation: lensUnfold 0.5s cubic-bezier(.2,.7,.2,1) 
 .lux-beams { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
 .lux-beams::before, .lux-beams::after {
   content: ''; position: absolute; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.75), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--t-cyan-soft) / 0.75), transparent);
   background-size: 30% 100%; background-repeat: no-repeat;
   animation: beamMove 6s linear infinite;
 }
 .lux-beams::before { top: 32%; }
 .lux-beams::after { top: 68%; animation-delay: 3s; animation-duration: 7.5s; }
 
-.lux-cyan { --lux-color: rgba(34, 211, 238, 0.22); --lux-size: 420px; }
+.lux-cyan { --lux-color: rgb(var(--t-cyan-bright) / 0.22); --lux-size: 420px; }
 
 @media (prefers-reduced-motion: reduce) {
   .lux-beams::before, .lux-beams::after { animation: none; opacity: 0.2; }
@@ -251,12 +294,12 @@ details[open] > .unfold3d { animation: lensUnfold 0.5s cubic-bezier(.2,.7,.2,1) 
 
 /* ── caustics / mesh refrativo (luz através do vidro) ── */
 .mesh {
-  background-color: #060E1C;
+  background-color: rgb(var(--t-ink-base));
   background-image:
-    radial-gradient(at 16% 24%, rgba(59, 130, 246, 0.40) 0px, transparent 50%),
-    radial-gradient(at 84% 16%, rgba(34, 211, 238, 0.34) 0px, transparent 48%),
-    radial-gradient(at 64% 74%, rgba(103, 232, 249, 0.22) 0px, transparent 50%),
-    radial-gradient(at 26% 82%, rgba(26, 58, 92, 0.50) 0px, transparent 52%);
+    radial-gradient(at 16% 24%, rgb(var(--t-blue) / 0.40) 0px, transparent 50%),
+    radial-gradient(at 84% 16%, rgb(var(--t-cyan-bright) / 0.34) 0px, transparent 48%),
+    radial-gradient(at 64% 74%, rgb(var(--t-cyan-soft) / 0.22) 0px, transparent 50%),
+    radial-gradient(at 26% 82%, rgb(var(--t-navy) / 0.50) 0px, transparent 52%);
   background-size: 180% 180%;
   animation: meshMove 22s ease-in-out infinite;
 }

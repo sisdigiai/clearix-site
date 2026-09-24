@@ -4,6 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import StructuredData from '../components/StructuredData.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import TemaCores from '../components/TemaCores.astro';
 import { linkWhatsapp } from '../data/contato';
 import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 
@@ -43,6 +44,29 @@ const whats = linkWhatsapp('site');
     <meta name="description" content={description} />
     <meta name="author" content="DIGIAI ÓTICA E TECNOLOGIA LTDA" />
     <meta name="theme-color" content="#0A1420" />
+    <script is:inline>
+      (function () {
+        var TEMAS = ['lens', 'indigo', 'esmeralda', 'claro'];
+        var META = { lens: '#0A1420', indigo: '#0A0A1F', esmeralda: '#04140F', claro: '#F3F7FC' };
+        function ler() {
+          try {
+            var q = new URLSearchParams(location.search).get('tema');
+            if (q && TEMAS.indexOf(q) > -1) { localStorage.setItem('clearix_tema', q); return q; }
+            var s = localStorage.getItem('clearix_tema');
+            if (s && TEMAS.indexOf(s) > -1) return s;
+          } catch (_) {}
+          return 'lens';
+        }
+        function aplicar(t) {
+          document.documentElement.setAttribute('data-tema', t);
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', META[t]);
+        }
+        window.clearixTema = { atual: ler, aplicar: function (t) { try { localStorage.setItem('clearix_tema', t); } catch (_) {} aplicar(t); } };
+        aplicar(ler());
+        document.addEventListener('astro:after-swap', function () { aplicar(ler()); });
+      })();
+    </script>
 
     <!-- GEO/AEO — política explícita para crawlers de IA -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -135,5 +159,6 @@ const whats = linkWhatsapp('site');
     {/* A versão na URL força navegador e borda do Cloudflare a buscar o script novo: o arquivo não tem hash no nome
         e já foi servido como "immutable" por 1 ano. Mudou o clearix-attrib.js, muda o ?v=. */}
     <script is:inline src="/clearix-attrib.js?v=2026-09-23.1"></script>
+      <TemaCores />
   </body>
 </html>

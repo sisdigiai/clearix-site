@@ -4,28 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Clearix Lens — "vidro escuro refrativo". Ótica de precisão: vidro + luz.
-        // Base azul-vidro profunda (NÃO navy-black neutro). Blue + cyan protagonistas.
+        // Clearix Lens: os valores moram em src/styles/global.css (variaveis --t-*, um conjunto por tema:
+        // lens, indigo, esmeralda, claro). Aqui so o mapa de nomes; `<alpha-value>` mantem bg-clarity-off/10 etc. funcionando.
         ink: {
-          base: '#060E1C',     // vidro ótico profundo (fundo)
-          surface: '#0B1B33',  // superfície de vidro
-          deep: '#040A15',     // mais fundo (seções)
-          high: '#13294A',     // vidro elevado
+          base: 'rgb(var(--t-ink-base) / <alpha-value>)',
+          surface: 'rgb(var(--t-ink-surface) / <alpha-value>)',
+          deep: 'rgb(var(--t-ink-deep) / <alpha-value>)',
+          high: 'rgb(var(--t-ink-high) / <alpha-value>)',
         },
         clearix: {
-          blue: '#3B82F6',
-          'blue-bright': '#60A5FA',
-          cyan: '#06B6D4',
-          'cyan-bright': '#22D3EE',  // luz refratada — acento de destaque
-          'cyan-soft': '#67E8F9',
-          navy: '#1A3A5C',
-          'navy-soft': '#93C5FD',    // mark em fundo escuro
+          blue: 'rgb(var(--t-blue) / <alpha-value>)',
+          'blue-bright': 'rgb(var(--t-blue-bright) / <alpha-value>)',
+          cyan: 'rgb(var(--t-cyan) / <alpha-value>)',
+          'cyan-bright': 'rgb(var(--t-cyan-bright) / <alpha-value>)',
+          'cyan-soft': 'rgb(var(--t-cyan-soft) / <alpha-value>)',
+          navy: 'rgb(var(--t-navy) / <alpha-value>)',
+          'navy-soft': 'rgb(var(--t-navy-soft) / <alpha-value>)',
         },
         clarity: {
-          off: '#EAF3FF',      // texto principal (branco-frio)
-          dim: '#C2D4EA',      // texto secundário
-          muted: '#7E97B8',    // texto terciário (azul-acinzentado)
-          line: '#21385A',     // linhas/contornos (azul)
+          off: 'rgb(var(--t-off) / <alpha-value>)',
+          dim: 'rgb(var(--t-dim) / <alpha-value>)',
+          muted: 'rgb(var(--t-muted) / <alpha-value>)',
+          line: 'rgb(var(--t-line) / <alpha-value>)',
         },
       },
       fontFamily: {

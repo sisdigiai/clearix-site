@@ -282,6 +282,17 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-24 — v0.7.1 · quatro paletas para a home B (branch `home-b-cores`, NÃO está na produção)
+
+Pedido do dono: escolher a cor antes de trocar a `main` pela home B. As cores do site viraram **variáveis** (`--t-*`, triplas RGB em `src/styles/global.css`; o `tailwind.config.mjs`
+lê `rgb(var(--t-…) / <alpha-value>)`, então `bg-clarity-off/10` etc. continuam valendo) e cada paleta é um `data-tema` no `<html>`. O tema padrão (`lens`) é idêntico ao de hoje.
+- **Lens** (o atual): ciano sobre azul-vidro. **Índigo:** azul-violeta sobre noite. **Esmeralda:** verde-saúde sobre floresta. **Claro:** papel frio, texto azul-marinho e azul-petróleo.
+- **Seletor "Prévia de cores"** (`src/components/TemaCores.astro`): só aparece fora de `clearix.app.br` ou com `?cores=1`; a escolha vale para a aba (localStorage) e `?tema=indigo|esmeralda|claro|lens` abre direto.
+  Some do site quando o dono escolher.
+- Botão primário usa `--t-on-accent` (texto escuro nos temas escuros, branco no Claro); `Logo`, 404 e `theme-color` seguem o tema; no Claro os avisos âmbar ficam mais escuros.
+- Lighthouse acessibilidade (mobile, local) nas quatro: 100, contraste sem falhas (o cinza de apoio do Claro foi escurecido de 86 112 143 para 70 94 125 depois de medir 4,2 a 4,4:1).
+- Antes de ir para a `main`: o dono escolhe; o padrão vira a cor escolhida e o seletor sai.
+
 ## 2026-09-24 — v0.7.0 · home B "o cliente que não volta" (branch `home-b`, NÃO está na produção)
 
 Escolha do dono (24/09): montar o mock B. Topo novo: "Quantos clientes compraram de você e nunca mais voltaram?" + cartão com o número + tela do kanban; nova seção
