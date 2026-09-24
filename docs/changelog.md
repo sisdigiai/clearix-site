@@ -282,6 +282,20 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-24 — v0.7.0 · home B "o cliente que não volta" (branch `home-b`, NÃO está na produção)
+
+Escolha do dono (24/09): montar o mock B. Topo novo: "Quantos clientes compraram de você e nunca mais voltaram?" + cartão com o número + tela do kanban; nova seção
+**"Quem chamar hoje"** logo depois do topo; o resto da página não mudou.
+- **Números só da folha de mesa** (`Cockpit/comercial/folha-de-mesa-clearix-2026-09-14.md`, §O cliente que não volta, medido pelo eco em 24/09/2026 01h55; Geral aprovou):
+  "926 clientes com a receita vencida no último ano; 912 deles sem nenhum contato da loja em 90 dias" (topo) e "70 clientes vencem a receita nos próximos 30 dias; 66 ainda sem
+  contato" (seção). O total histórico (3.401) fica fora do público. Fonte no site: "numa rede de óticas da casa" (nunca o nome da rede). Nota de método no cartão:
+  vencida = data da receita + 12 meses; sem contato = nenhuma ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias; ligação sem registro não entra.
+- **"Quem chamar hoje" só com o que a folha permite:** lista diária sem repetir quem já foi chamado, módulo do plano Crescimento (R$ 1.499/mês, do banco); diz o que **não** é
+  (sem disparo em massa, sem recall por IA). Sem captura real ainda: a seção mostra um cartão de texto; `capturaQuemChamar` em `src/data/landing.ts` liga a tela real
+  desfocada quando o Marketing entregar e eu aprovar (folha §7).
+- `retornoReceita`, `retornoProximos` e `retornoNota` em `src/data/landing.ts` (com a origem no comentário). Mesmos `cta_id` do topo; novo `quem_chamar` na seção.
+- Conferido em 1440 e 500 px; build ok. **Falta:** captura da Lista de Hoje e o "pode" do dono para trocar a `main`.
+
 ## 2026-09-24 — mocks da home (docs/mocks, NÃO publicados)
 
 Pedido do dono após a análise de CRMBonus, ssOtica e Dataweb (`Cockpit/comercial/inteligencia-crmbonus-2026-09-24.md`): três direções completas de home em HTML,

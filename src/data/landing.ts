@@ -184,6 +184,28 @@ export const rotuloDepois = [
   'piloto pago e assistido, um por vez',
 ];
 
+// "O cliente que não volta" (Geral, 24/09): frases prontas da folha de mesa (Cockpit/comercial/folha-de-mesa-clearix-2026-09-14.md,
+// §O cliente que não volta), medidas pelo eco em 24/09/2026 01h55 na base da casa. O site usa SÓ estas duas frases (o total histórico
+// de 3.401 fica fora do público: inclui 2022–2025 do sistema anterior). Fonte pública: "uma rede de óticas da casa", nunca o nome da rede.
+export const retornoReceita: { valor: string; label: string; data: string } | null = {
+  valor: '926',
+  label: 'clientes com a receita vencida no último ano; 912 deles sem nenhum contato da loja em 90 dias.',
+  data: '24/09/2026',
+};
+export const retornoProximos: { valor: string; label: string; data: string } | null = {
+  valor: '70',
+  label: 'clientes vencem a receita nos próximos 30 dias; 66 ainda sem contato.',
+  data: '24/09/2026',
+};
+// Método e ressalva da folha: "vencida" = data da receita + 12 meses (só 17 de 5.932 têm validade preenchida); "sem contato" = nenhuma
+// ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias. Ligação sem registro e WhatsApp fora das linhas integradas não entram.
+export const retornoNota =
+  'Vencida = data da receita + 12 meses. Sem contato = nenhuma ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias; ligação sem registro não entra.';
+
+// Captura real desfocada do módulo "Quem chamar hoje" (06-prints/aprovadas → public/capturas/, com AVIF/WebP via scripts/gerar-imagens.mjs).
+// Null até passar na conferência (folha §7). Sem captura, a seção mostra o cartão de texto do módulo.
+export const capturaQuemChamar: { arquivo: string; alt: string; w: number; h: number } | null = null;
+
 // Legendas das capturas (folha única §7; tela real desfocada; arquivo só depois de passar em 06-prints/aprovadas).
 // Comparador: frase pública autorizada na folha §2 (versão final de 17/09, copiada textual da folha), sempre que a ORDEM aparecer. A ordem
 // medida pesa preço×7, prazo×2, certeza do catálogo×1 e preferência da loja×10 — não é qualidade de laboratório.

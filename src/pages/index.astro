@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaFinal from '../components/CtaFinal.astro';
 import Rotulo from '../components/Rotulo.astro';
 import { apps, jornadas } from '../data/apps';
-import { CTA, medidoEm, jornadaOS, provaBanco, pacientesReceitas, faq } from '../data/landing';
+import { CTA, medidoEm, jornadaOS, provaBanco, pacientesReceitas, faq, retornoReceita, retornoProximos, retornoNota, capturaQuemChamar } from '../data/landing';
 import { planos } from '../data/planos';
 import { linkWhatsapp } from '../data/contato';
 
@@ -29,6 +29,7 @@ const textosPasso: Record<string, string> = {
 };
 
 const receitas = pacientesReceitas[0];
+const crescimento = planos.find((p) => p.slug === 'crescimento')!;
 
 const fases = [
   { t: 'Demonstração assistida', d: 'Vinte minutos, com a gente na tela: da receita à entrega, no fluxo que a sua loja já tem.' },
@@ -56,12 +57,14 @@ const fases = [
     </div>
 
     <div class="container-grid relative z-10 max-w-4xl lg:max-w-container">
+      <div class={retornoReceita ? 'grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr] lg:gap-14' : ''}>
       <div class="max-w-3xl anim-fade-in">
         <p class="label mb-6">Sistema para óticas · feito dentro de uma ótica</p>
-        <h1 class="h-display mb-6">De orçamento a entrega, <span class="text-clearix-cyan-bright italic">sem perder ninguém no caminho</span>.</h1>
+        <h1 class="h-display mb-6">Quantos clientes compraram de você e <span class="text-clearix-cyan-bright italic">nunca mais voltaram</span>?</h1>
         <p class="body-lg mb-9 max-w-2xl">
-          Venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema. O mesmo que roda hoje no balcão de
-          uma ótica de verdade.
+          Receita vencida, cliente que sumiu, orçamento que ninguém retomou. O Clearix mostra, todo dia, quem chamar de
+          volta, sem repetir quem já foi chamado. E é o mesmo sistema que cuida da venda, do carnê, do laboratório e do
+          WhatsApp da loja.
         </p>
         <a href="/contato" class="btn-primary cta-pulse" data-cta="hero">{CTA}</a>
         {whats && (
@@ -69,6 +72,16 @@ const fases = [
             ou <a href={whats} target="_blank" rel="noopener" class="inline-block py-2 text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale com a gente no WhatsApp →</a>
           </p>
         )}
+      </div>
+
+      {retornoReceita && (
+        <div class="card">
+          <p class="label-sm mb-4">Na base de uma ótica real</p>
+          <p class="font-mono text-[44px] leading-none tabular-nums text-clarity-off">{retornoReceita.valor}</p>
+          <p class="mt-4 text-body-md text-clarity-dim">{retornoReceita.label}</p>
+          <p class="mt-4 text-[13px] text-clarity-muted">Medido em {retornoReceita.data}, numa rede de óticas da casa. Sem dado pessoal. {retornoNota}</p>
+        </div>
+      )}
       </div>
 
       <figure class="shot mt-12 max-w-5xl">
@@ -80,6 +93,45 @@ const fases = [
         </picture>
         <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente, OS, valores e usuário desfocados. O pedido atrasado aparece na etapa, com os dias de atraso no cartão.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  {/* Quem chamar hoje — mock B (24/09). Folha §2: lista diária sem repetir quem já foi chamado; NÃO: campanha com IA, disparo em massa, recall por IA. Módulo do plano Crescimento (banco). */}
+  <section id="quem-chamar" class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
+    <div class="container-grid grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div>
+        <p class="label mb-4">Quem chamar hoje</p>
+        <h2 class="h-section mb-5">Uma lista por dia, sem repetir quem já foi chamado.</h2>
+        <p class="body-lg mb-4">Lista diária de clientes para retomar contato, sem repetir quem já foi chamado. É uma lista para a sua equipe agir: sem disparo em massa e sem recall por IA.</p>
+        {retornoProximos && (
+          <p class="mb-4 border-l-2 border-clearix-cyan-bright pl-4 text-body-lg text-clarity-off">
+            <span class="font-mono tabular-nums">{retornoProximos.valor}</span> {retornoProximos.label}
+            <span class="mt-1 block text-[13px] text-clarity-muted">Medido em {retornoProximos.data}, numa rede de óticas da casa.</span>
+          </p>
+        )}
+        <p class="mb-8 text-body-md text-clarity-muted">Módulo do plano {crescimento.nome} ({crescimento.preco}{crescimento.precoNota}), junto do painel do dono.</p>
+        <a href="/contato" class="btn-primary" data-cta="quem_chamar">{CTA}</a>
+      </div>
+
+      {capturaQuemChamar ? (
+        <figure class="shot reveal">
+          <picture class="block">
+            <source srcset={`/capturas/${capturaQuemChamar.arquivo}-800.avif 800w, /capturas/${capturaQuemChamar.arquivo}.avif ${capturaQuemChamar.w}w`} sizes="(min-width: 1024px) 50vw, 100vw" type="image/avif" />
+            <source srcset={`/capturas/${capturaQuemChamar.arquivo}-800.webp 800w, /capturas/${capturaQuemChamar.arquivo}.webp ${capturaQuemChamar.w}w`} sizes="(min-width: 1024px) 50vw, 100vw" type="image/webp" />
+            <img src={`/capturas/${capturaQuemChamar.arquivo}.png`} width={capturaQuemChamar.w} height={capturaQuemChamar.h} loading="lazy" decoding="async" alt={capturaQuemChamar.alt} class="block h-auto w-full" />
+          </picture>
+          <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente desfocados.</figcaption>
+        </figure>
+      ) : (
+        <div class="card">
+          <p class="label-sm mb-4">O que a lista faz</p>
+          <ul class="space-y-3 text-body-md text-clarity-off">
+            <li class="flex gap-3"><span class="shrink-0 text-clearix-cyan-bright" aria-hidden="true">→</span>Uma lista por dia para a equipe retomar contato.</li>
+            <li class="flex gap-3"><span class="shrink-0 text-clearix-cyan-bright" aria-hidden="true">→</span>Não repete quem já foi chamado.</li>
+            <li class="flex gap-3"><span class="shrink-0 text-amber-400/80" aria-hidden="true">✕</span><span class="text-clarity-dim">Sem disparo em massa e sem recall por IA.</span></li>
+          </ul>
+        </div>
+      )}
     </div>
   </section>
 
