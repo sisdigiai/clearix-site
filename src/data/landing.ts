@@ -204,7 +204,13 @@ export const retornoNota =
 
 // Captura real desfocada do módulo "Quem chamar hoje" (06-prints/aprovadas → public/capturas/, com AVIF/WebP via scripts/gerar-imagens.mjs).
 // Null até passar na conferência (folha §7). Sem captura, a seção mostra o cartão de texto do módulo.
-export const capturaQuemChamar: { arquivo: string; alt: string; w: number; h: number } | null = null;
+export const capturaQuemChamar: { arquivo: string; alt: string; w: number; h: number } | null = {
+  // Aprovada em 24/09/2026 (Cockpit/comercial/06-prints/aprovadas/, v2 com as contagens desfocadas); cópia reduzida para 1600 px.
+  arquivo: 'marketing-lista-de-hoje_desfocado',
+  alt: 'Lista Quem chamar hoje: clientes com a faixa esfriando e o botão Registrar; nomes, contatos e contagens desfocados',
+  w: 1600,
+  h: 620,
+};
 
 // Legendas das capturas (folha única §7; tela real desfocada; arquivo só depois de passar em 06-prints/aprovadas).
 // Comparador: frase pública autorizada na folha §2 (versão final de 17/09, copiada textual da folha), sempre que a ORDEM aparecer. A ordem

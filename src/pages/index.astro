@@ -98,8 +98,8 @@ const fases = [
 
   {/* Quem chamar hoje — mock B (24/09). Folha §2: lista diária sem repetir quem já foi chamado; NÃO: campanha com IA, disparo em massa, recall por IA. Módulo do plano Crescimento (banco). */}
   <section id="quem-chamar" class="py-20 md:py-28 bg-ink-deep border-b border-clarity-off/10">
-    <div class="container-grid grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-      <div>
+    <div class={capturaQuemChamar ? 'container-grid' : 'container-grid grid items-center gap-10 lg:grid-cols-2 lg:gap-14'}>
+      <div class={capturaQuemChamar ? 'max-w-3xl' : ''}>
         <p class="label mb-4">Quem chamar hoje</p>
         <h2 class="h-section mb-5">Uma lista por dia, sem repetir quem já foi chamado.</h2>
         <p class="body-lg mb-4">Lista diária de clientes para retomar contato, sem repetir quem já foi chamado. É uma lista para a sua equipe agir: sem disparo em massa e sem recall por IA.</p>
@@ -114,13 +114,13 @@ const fases = [
       </div>
 
       {capturaQuemChamar ? (
-        <figure class="shot reveal">
+        <figure class="shot reveal mt-10 max-w-5xl">
           <picture class="block">
-            <source srcset={`/capturas/${capturaQuemChamar.arquivo}-800.avif 800w, /capturas/${capturaQuemChamar.arquivo}.avif ${capturaQuemChamar.w}w`} sizes="(min-width: 1024px) 50vw, 100vw" type="image/avif" />
-            <source srcset={`/capturas/${capturaQuemChamar.arquivo}-800.webp 800w, /capturas/${capturaQuemChamar.arquivo}.webp ${capturaQuemChamar.w}w`} sizes="(min-width: 1024px) 50vw, 100vw" type="image/webp" />
+            <source srcset={`/capturas/${capturaQuemChamar.arquivo}-800.avif 800w, /capturas/${capturaQuemChamar.arquivo}.avif ${capturaQuemChamar.w}w`} sizes="(min-width: 1024px) 1024px, 100vw" type="image/avif" />
+            <source srcset={`/capturas/${capturaQuemChamar.arquivo}-800.webp 800w, /capturas/${capturaQuemChamar.arquivo}.webp ${capturaQuemChamar.w}w`} sizes="(min-width: 1024px) 1024px, 100vw" type="image/webp" />
             <img src={`/capturas/${capturaQuemChamar.arquivo}.png`} width={capturaQuemChamar.w} height={capturaQuemChamar.h} loading="lazy" decoding="async" alt={capturaQuemChamar.alt} class="block h-auto w-full" />
           </picture>
-          <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente desfocados.</figcaption>
+          <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com nome, contato e contagens desfocados.</figcaption>
         </figure>
       ) : (
         <div class="card">

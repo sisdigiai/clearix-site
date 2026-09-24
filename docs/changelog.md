@@ -282,6 +282,14 @@ sem nome da rede). Legenda do recibo leva a ressalva obrigatória: 2ª via exibi
   real do ranking e custo por fornecedor desfocado ficou na fila do eco para o DCL.
 - Conferido no navegador em 1440 e 375 px: imagens carregam, sem rolagem horizontal, `npm run build` ok.
 
+## 2026-09-24 — v0.7.2 · captura real da Lista de Hoje na seção "Quem chamar hoje" (branch `home-b-cores`)
+
+- **Captura do Marketing aprovada na v2** (24/09, `Cockpit/comercial/06-prints/aprovadas/`; a v1 foi devolvida porque o "120" do título e o "120 na lista" estavam legíveis: contagem da loja
+  fica desfocada pela folha §7 e o 120 não está na folha). Na v2 os dois números viraram mancha; nomes e 2ª linha (contato, meses sem comprar, valor) ilegíveis; sem funcionário, rede ou logotipo.
+- Site: cópia reduzida para 1600 px (`public/capturas/marketing-lista-de-hoje_desfocado.*`, com AVIF/WebP e -800); `capturaQuemChamar` em `src/data/landing.ts` liga a imagem, que entra
+  em largura cheia abaixo do texto (o cartão de texto sai). Legenda: "com nome, contato e contagens desfocados". A copy da landing não repete "os melhores primeiro".
+- Conferido em 1440 e 500 px; build ok.
+
 ## 2026-09-24 — v0.7.1 · quatro paletas para a home B (branch `home-b-cores`, NÃO está na produção)
 
 Pedido do dono: escolher a cor antes de trocar a `main` pela home B. As cores do site viraram **variáveis** (`--t-*`, triplas RGB em `src/styles/global.css`; o `tailwind.config.mjs`
