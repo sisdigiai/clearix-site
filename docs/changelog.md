@@ -483,3 +483,7 @@ Decisão do Geral: a home B fica (escuro, Lens). Entra a seção "Veja o sistema
 ## 2026-09-25 — v0.9.1 · botão primário azul
 
 Escolha do dono (prévia 2): botão primário em azul (`--t-btn` 37 99 235, texto branco, contraste 5,2:1; hover 59 130 246); ciano continua nos destaques, links e brilho. Tokens novos `--t-btn`, `--t-btn-hover`, `--t-on-btn` em `global.css`; pulso do CTA acompanha a cor. Prévia comparativa em `docs/mocks/previa-botao-azul.html`.
+
+## 2026-09-25 — v0.10.0 (branch `home-b-branca`, não publicado) · tema branco com botão petróleo
+
+Escolha do dono (versão 7 da prévia): fundo branco/azul-gelo, botão primário petróleo (14 116 144, a cor do logo), texto branco (5,4:1; botão x fundo 5,0:1). Bloco `html[data-tema='claro']` em `global.css` e `data-tema="claro"` no `<html>`. O tema escuro Lens segue como padrão na `main` até o dono aprovar a troca. As capturas do app continuam escuras, o que as destaca na página branca.

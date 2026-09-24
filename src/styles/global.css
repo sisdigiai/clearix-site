@@ -22,6 +22,22 @@
     --t-on-accent: 4 10 21; --t-glint: 255 255 255; --t-glow: 6 182 212;
     --t-btn: 37 99 235; --t-btn-hover: 59 130 246; --t-on-btn: 255 255 255;
   }
+  /* Tema claro (escolha do dono em 25/09/2026: versão 7, fundo branco + botão petróleo, a cor do logo). Botão x texto 5,4:1; botão x fundo 5,0:1. */
+  html[data-tema='claro'] {
+    color-scheme: light;
+    --t-ink-base: 243 247 252; --t-ink-surface: 255 255 255; --t-ink-deep: 233 240 248; --t-ink-high: 220 231 245;
+    --t-blue: 37 99 235; --t-blue-bright: 59 130 246;
+    --t-cyan: 21 94 117; --t-cyan-bright: 14 116 144; --t-cyan-soft: 8 145 178;
+    --t-navy: 191 219 254; --t-navy-soft: 30 58 95;
+    --t-off: 11 27 51; --t-dim: 51 78 110; --t-muted: 70 94 125; --t-line: 203 213 225;
+    --t-glass-a: 255 255 255; --t-glass-b: 240 246 252; --t-tint: 30 58 95; --t-accent3: 124 58 237;
+    --t-on-accent: 255 255 255; --t-glint: 255 255 255; --t-glow: 14 116 144;
+    --t-btn: 14 116 144; --t-btn-hover: 21 94 117; --t-on-btn: 255 255 255;
+  }
+  html[data-tema='claro'] .text-amber-400\/80 { color: rgb(180 83 9); }
+  html[data-tema='claro'] .border-amber-400\/30 { border-color: rgb(180 83 9 / .4); }
+  html[data-tema='claro'] .bg-amber-400\/5 { background-color: rgb(180 83 9 / .06); }
+
   :root {
     --color-base: rgb(var(--t-ink-base));
     --color-surface: rgb(var(--t-ink-surface));
