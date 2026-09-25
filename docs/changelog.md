@@ -495,3 +495,7 @@ Escolha do dono: opção B (foto larga com o texto por cima). Imagem gerada por 
 ## 2026-09-25 — v0.11.1 (branch `home-b-branca`) · hero B com a tela real do Hub no monitor
 
 Ideia do dono: a tela do Clearix Hub dentro da foto. Duas opções geradas no ChatGPT com a tela real do Hub (`hero-b-claro-*` no ar, `hero-b-escuro-*` de reserva), convertidas por `scripts/hero-b.mjs <png> <nome>`; nome do usuário do rodapé da barra lateral coberto na versão clara. Layout: a foto ocupa 60% da largura à direita e o texto fica no lado esquerdo, sem sobrepor as pessoas (em 1280 px o texto invadia o rosto). Legenda: "Foto ilustrativa gerada por IA; a tela é a do Clearix Hub, com dados parcialmente cobertos." Lighthouse mobile local 89/88/90, LCP 2,3 s, CLS 0.
+
+## 2026-09-25 — v0.12.0 · desempenho (passo 7 ≥ 90)
+
+Produção estava em 76/88/81 no mobile (TBT alto). Mudanças: (1) saiu o `ClientRouter` do Astro (tarefa longa de ~570 ms; navegação nativa; o rastreio `clearix-attrib.js`, o Rótulo e o formulário de contato já tinham fallback para `DOMContentLoaded`, o menu do celular é `<details>` nativo); (2) `preload` da imagem do hero (AVIF, `imagesrcset` 800/1600, `fetchpriority="high"`) via `<slot name="head">` do BaseLayout; (3) `content-visibility: auto` nas seções abaixo da dobra (menos estilo/layout inicial). Local: 99/99/99/99, TBT 0–5 ms, LCP 2,1 s, CLS 0. Verificado: sem erros no console, rastreio e formulário carregam, `/contato`, `/planos` e menu do celular ok. Medição em produção fica para depois do deploy.

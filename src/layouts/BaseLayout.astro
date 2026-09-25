@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
 import StructuredData from '../components/StructuredData.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -83,7 +82,7 @@ const whats = linkWhatsapp('site');
     <link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumo para LLMs" />
     <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Conteúdo completo para LLMs" />
 
-    <ClientRouter />
+    <slot name="head" />
   </head>
   <body class="min-h-screen bg-ink-base text-clarity-off antialiased">
     <Header />

@@ -293,3 +293,6 @@ details[open] > .unfold3d { animation: lensUnfold 0.5s cubic-bezier(.2,.7,.2,1) 
   50%     { background-position: 100% 60%, 0% 40%, 30% 50%, 70% 30%; }
 }
 @media (prefers-reduced-motion: reduce) { .mesh { animation: none; } }
+
+/* Seções abaixo da dobra só calculam estilo e layout ao chegar perto da tela (reduz o trabalho inicial da thread principal). */
+main > section:not(:first-of-type) { content-visibility: auto; contain-intrinsic-size: auto 720px; }
