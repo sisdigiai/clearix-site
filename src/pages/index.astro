@@ -51,17 +51,17 @@ const tour = [
       Fotos ficam à direita; o texto ocupa o lado calmo. Sem lazy (imagem do topo). */}
   <section class="relative overflow-hidden bg-ink-base pt-24 lg:pt-0">
     <div class="relative lg:min-h-[680px]">
-      <picture class="block lg:absolute lg:inset-0">
-        <source srcset="/hero/hero-b-hub-800.avif 800w, /hero/hero-b-hub-1600.avif 1600w" sizes="100vw" type="image/avif" />
-        <source srcset="/hero/hero-b-hub-800.webp 800w, /hero/hero-b-hub-1600.webp 1600w" sizes="100vw" type="image/webp" />
-        <img src="/hero/hero-b-hub-1600.webp" width="1600" height="900" decoding="async" fetchpriority="high"
+      <picture class="block lg:absolute lg:inset-y-0 lg:right-0 lg:w-[60%]">
+        <source srcset="/hero/hero-b-claro-800.avif 800w, /hero/hero-b-claro-1600.avif 1600w" sizes="100vw" type="image/avif" />
+        <source srcset="/hero/hero-b-claro-800.webp 800w, /hero/hero-b-claro-1600.webp 1600w" sizes="100vw" type="image/webp" />
+        <img src="/hero/hero-b-claro-1600.webp" width="1600" height="900" decoding="async" fetchpriority="high"
           alt="Duas pessoas da equipe de uma ótica sorrindo e apontando para o monitor de um PC que mostra o painel do Clearix Hub"
           class="block h-auto w-full lg:h-full lg:object-cover lg:object-right" />
       </picture>
-      <div class="pointer-events-none absolute inset-y-0 left-0 hidden w-[62%] bg-gradient-to-r from-ink-base via-ink-base/90 to-transparent lg:block" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-y-0 left-[38%] hidden w-[16%] bg-gradient-to-r from-ink-base to-transparent lg:block" aria-hidden="true"></div>
 
       <div class="container-grid relative z-10 py-10 lg:flex lg:min-h-[680px] lg:items-center lg:py-32">
-        <div class="max-w-xl anim-fade-in">
+        <div class="max-w-[30rem] xl:max-w-[32rem] anim-fade-in">
           <p class="label mb-5">Sistema para óticas · feito dentro de uma ótica</p>
           <h1 class="h-display mb-5">Quantos clientes compraram de você e <span class="text-clearix-cyan-bright italic">nunca mais voltaram</span>?</h1>
           <p class="body-lg mb-7">
