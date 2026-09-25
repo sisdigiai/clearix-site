@@ -491,3 +491,7 @@ Escolha do dono (versão 7 da prévia): fundo branco/azul-gelo, botão primário
 ## 2026-09-25 — v0.11.0 (branch `home-b-branca`, não publicado) · hero B com pessoas + faixa de confiança
 
 Escolha do dono: opção B (foto larga com o texto por cima). Imagem gerada por IA (ChatGPT, cena da equipe sem marca no monitor) em `public/hero/hero-b-{800,1600}.{avif,webp}`, convertida por `scripts/hero-b.mjs`; legenda "Imagem ilustrativa gerada por IA; tela ilustrativa, não é o sistema real" (a confirmar com o Geral: muda a legenda antiga, que dizia "tela real com dados desfocados"). Topo: WhatsApp com "uma pessoa da DIGIAI", linha de transparência (demonstração de 20 min, preço desde R$ 349/mês, sem período grátis). Faixa de confiança nova: 926 (24/09/2026), 1.694 OS (14/09/2026), "feito dentro de uma ótica", "um piloto por vez"; a nota de definição de "vencida/sem contato" continua. A captura do kanban saiu do topo (segue no tour). Lighthouse mobile local 92/89/91; LCP 2,3 s; CLS 0.
+
+## 2026-09-25 — v0.11.1 (branch `home-b-branca`) · tela real do Hub no monitor do hero
+
+Ideia do dono: a tela do Clearix Hub dentro da foto. Composição em perspectiva sobre o monitor (o dedo da pessoa fica à frente da tela); rodapé da barra lateral com nome do usuário coberto. Arquivos `public/hero/hero-b-hub-{800,1600}.{avif,webp}`. Legenda: "Foto ilustrativa gerada por IA; a tela é a do Clearix Hub, com dados parcialmente cobertos." (o painel colorido gerado por IA fica no commit anterior, `43266f3`).
