@@ -487,3 +487,7 @@ Escolha do dono (prévia 2): botão primário em azul (`--t-btn` 37 99 235, text
 ## 2026-09-25 — v0.10.0 (branch `home-b-branca`, não publicado) · tema branco com botão petróleo
 
 Escolha do dono (versão 7 da prévia): fundo branco/azul-gelo, botão primário petróleo (14 116 144, a cor do logo), texto branco (5,4:1; botão x fundo 5,0:1). Bloco `html[data-tema='claro']` em `global.css` e `data-tema="claro"` no `<html>`. O tema escuro Lens segue como padrão na `main` até o dono aprovar a troca. As capturas do app continuam escuras, o que as destaca na página branca.
+
+## 2026-09-25 — v0.11.0 (branch `home-b-branca`, não publicado) · hero B com pessoas + faixa de confiança
+
+Escolha do dono: opção B (foto larga com o texto por cima). Imagem gerada por IA (ChatGPT, cena da equipe sem marca no monitor) em `public/hero/hero-b-{800,1600}.{avif,webp}`, convertida por `scripts/hero-b.mjs`; legenda "Imagem ilustrativa gerada por IA; tela ilustrativa, não é o sistema real" (a confirmar com o Geral: muda a legenda antiga, que dizia "tela real com dados desfocados"). Topo: WhatsApp com "uma pessoa da DIGIAI", linha de transparência (demonstração de 20 min, preço desde R$ 349/mês, sem período grátis). Faixa de confiança nova: 926 (24/09/2026), 1.694 OS (14/09/2026), "feito dentro de uma ótica", "um piloto por vez"; a nota de definição de "vencida/sem contato" continua. A captura do kanban saiu do topo (segue no tour). Lighthouse mobile local 92/89/91; LCP 2,3 s; CLS 0.

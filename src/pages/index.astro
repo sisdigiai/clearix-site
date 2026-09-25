@@ -47,57 +47,65 @@ const tour = [
   title="Clearix — sistema para óticas, de orçamento a entrega"
   description="Venda, carnê, laboratório, WhatsApp e financeiro da ótica no mesmo sistema, o mesmo que roda hoje no balcão de uma ótica de verdade. Agende 20 minutos de demonstração."
 >
-  <!-- S1 · Hero -->
-  <section data-lux class="lux-cyan relative overflow-hidden grid-bg pt-32 pb-10 md:pt-36 md:pb-12">
-    <div class="lux-glow"></div>
-    <div class="pointer-events-none absolute -right-40 top-10 hidden h-[560px] w-[560px] text-clearix-cyan-bright opacity-40 lg:block" aria-hidden="true">
-      <svg viewBox="0 0 200 200" fill="none" class="h-full w-full">
-        <g class="lens-ccw" style="transform-origin:100px 100px">
-          <circle cx="100" cy="100" r="82" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.5" stroke-dasharray="3 7" />
-          <circle cx="100" cy="100" r="66" stroke="currentColor" stroke-width="1.4" stroke-dasharray="48 170" stroke-opacity="0.8" />
-        </g>
-        <circle cx="100" cy="100" r="48" stroke="currentColor" stroke-width="0.6" stroke-opacity="0.35" />
-        <circle cx="100" cy="100" r="3" fill="currentColor" />
-      </svg>
-    </div>
+  {/* S1 · Hero B "pessoas" (dono escolheu a opção B em 25/09). Imagem gerada por IA: legenda obrigatória; nunca como cliente nem depoimento.
+      Fotos ficam à direita; o texto ocupa o lado calmo. Sem lazy (imagem do topo). */}
+  <section class="relative overflow-hidden bg-ink-base pt-24 lg:pt-0">
+    <div class="relative lg:min-h-[680px]">
+      <picture class="block lg:absolute lg:inset-0">
+        <source srcset="/hero/hero-b-800.avif 800w, /hero/hero-b-1600.avif 1600w" sizes="100vw" type="image/avif" />
+        <source srcset="/hero/hero-b-800.webp 800w, /hero/hero-b-1600.webp 1600w" sizes="100vw" type="image/webp" />
+        <img src="/hero/hero-b-1600.webp" width="1600" height="900" decoding="async" fetchpriority="high"
+          alt="Duas pessoas da equipe de uma ótica sorrindo e apontando para o monitor de um PC com um painel de gestão"
+          class="block h-auto w-full lg:h-full lg:object-cover lg:object-right" />
+      </picture>
+      <div class="pointer-events-none absolute inset-y-0 left-0 hidden w-[62%] bg-gradient-to-r from-ink-base via-ink-base/90 to-transparent lg:block" aria-hidden="true"></div>
 
-    <div class="container-grid relative z-10 max-w-4xl lg:max-w-container">
-      <div class={retornoReceita ? 'grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr] lg:gap-14' : ''}>
-      <div class="max-w-3xl anim-fade-in">
-        <p class="label mb-6">Sistema para óticas · feito dentro de uma ótica</p>
-        <h1 class="h-display mb-6">Quantos clientes compraram de você e <span class="text-clearix-cyan-bright italic">nunca mais voltaram</span>?</h1>
-        <p class="body-lg mb-9 max-w-2xl">
-          Receita vencida, cliente que sumiu, orçamento que ninguém retomou. O Clearix mostra, todo dia, quem chamar de
-          volta, sem repetir quem já foi chamado. E é o mesmo sistema que cuida da venda, do carnê, do laboratório e do
-          WhatsApp da loja.
-        </p>
-        <a href="/contato" class="btn-primary cta-pulse" data-cta="hero">{CTA}</a>
-        {whats && (
-          <p class="mt-4 text-body-md text-clarity-muted">
-            ou <a href={whats} target="_blank" rel="noopener" class="inline-block py-2 text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale com a gente no WhatsApp →</a>
+      <div class="container-grid relative z-10 py-10 lg:flex lg:min-h-[680px] lg:items-center lg:py-32">
+        <div class="max-w-xl anim-fade-in">
+          <p class="label mb-5">Sistema para óticas · feito dentro de uma ótica</p>
+          <h1 class="h-display mb-5">Quantos clientes compraram de você e <span class="text-clearix-cyan-bright italic">nunca mais voltaram</span>?</h1>
+          <p class="body-lg mb-7">
+            Receita vencida, cliente que sumiu, orçamento que ninguém retomou. O Clearix mostra, todo dia, quem chamar de
+            volta, sem repetir quem já foi chamado. E é o mesmo sistema que cuida da venda, do carnê, do laboratório e do
+            WhatsApp da loja.
           </p>
-        )}
-      </div>
-
-      {retornoReceita && (
-        <div class="card">
-          <p class="label-sm mb-4">Na base de uma ótica real</p>
-          <p class="font-mono text-[44px] leading-none tabular-nums text-clarity-off">{retornoReceita.valor}</p>
-          <p class="mt-4 text-body-md text-clarity-dim">{retornoReceita.label}</p>
-          <p class="mt-4 text-[13px] text-clarity-muted">Medido em {retornoReceita.data}, numa rede de óticas da casa. Sem dado pessoal. {retornoNota}</p>
+          <a href="/contato" class="btn-primary cta-pulse" data-cta="hero">{CTA}</a>
+          {whats && (
+            <p class="mt-4 text-body-md text-clarity-dim">
+              ou <a href={whats} target="_blank" rel="noopener" class="inline-block py-2 text-clearix-cyan-bright underline underline-offset-4" data-cta="hero_whatsapp">fale agora com uma pessoa da DIGIAI no WhatsApp →</a>
+            </p>
+          )}
+          <p class="mt-3 text-[13px] text-clarity-muted">Demonstração ao vivo de 20 minutos, com os números de uma ótica de verdade. Preço público desde R$ 349/mês, sem período grátis.</p>
         </div>
-      )}
       </div>
+    </div>
+    <p class="container-grid pb-4 pt-3 text-[12px] text-clarity-muted">Imagem ilustrativa gerada por IA; tela ilustrativa, não é o sistema real.</p>
 
-      <figure class="shot mt-12 max-w-5xl">
-        <picture class="block">
-          <source srcset="/capturas/dcl-kanban-atraso_desfocado-800.avif 800w, /capturas/dcl-kanban-atraso_desfocado.avif 1600w" sizes="(min-width: 1024px) 1024px, 100vw" type="image/avif" />
-          <source srcset="/capturas/dcl-kanban-atraso_desfocado-800.webp 800w, /capturas/dcl-kanban-atraso_desfocado.webp 1600w" sizes="(min-width: 1024px) 1024px, 100vw" type="image/webp" />
-          <img src="/capturas/dcl-kanban-atraso_desfocado.png" width="1600" height="553" decoding="async" fetchpriority="high"
-          alt="Kanban de laboratório com colunas por etapa e um pedido marcado como vencido com 16 dias de atraso" class="block h-auto w-full" />
-        </picture>
-        <figcaption class="p-5 text-body-md text-clarity-muted">Tela real de uma rede de óticas da Grande São Paulo, com dados de cliente, OS, valores e usuário desfocados. O pedido atrasado aparece na etapa, com os dias de atraso no cartão.</figcaption>
-      </figure>
+    {/* Faixa de confiança: prova com data, autoria, preço aberto e escassez honesta (folha única; nada de número fora de landing.ts). */}
+    <div class="border-y border-clarity-off/10 bg-ink-surface">
+      <ul class="container-grid grid gap-px py-0 sm:grid-cols-2 lg:grid-cols-4">
+        {retornoReceita && (
+          <li class="py-5 pr-6">
+            <p class="font-mono text-[30px] leading-none tabular-nums text-clarity-off">{retornoReceita.valor}</p>
+            <p class="mt-2 text-[13px] text-clarity-dim">clientes com a receita vencida no último ano numa ótica real; {retornoReceita.label.match(/912 deles[^.]*/)?.[0]}.</p>
+            <p class="mt-1 text-[12px] text-clarity-muted">Medido em {retornoReceita.data}. Sem dado pessoal.</p>
+          </li>
+        )}
+        <li class="py-5 pr-6">
+          <p class="font-mono text-[30px] leading-none tabular-nums text-clarity-off">1.694</p>
+          <p class="mt-2 text-[13px] text-clarity-dim">OS em 2026 no mesmo sistema que você vai usar.</p>
+          <p class="mt-1 text-[12px] text-clarity-muted">Medido em 14/09/2026, numa rede de óticas da casa.</p>
+        </li>
+        <li class="py-5 pr-6">
+          <p class="text-[17px] font-semibold text-clarity-off">Feito dentro de uma ótica</p>
+          <p class="mt-2 text-[13px] text-clarity-dim">Cada tela nasceu de um problema real de balcão, resolvido primeiro na nossa operação.</p>
+        </li>
+        <li class="py-5">
+          <p class="text-[17px] font-semibold text-clarity-off">Um piloto por vez</p>
+          <p class="mt-2 text-[13px] text-clarity-dim">Piloto pago e assistido, com uma pessoa nossa do seu lado. Sem letra miúda.</p>
+        </li>
+      </ul>
+      <p class="container-grid pb-4 text-[12px] text-clarity-muted">{retornoNota}</p>
     </div>
   </section>
 
