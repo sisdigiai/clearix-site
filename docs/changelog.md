@@ -503,3 +503,7 @@ Produção estava em 76/88/81 no mobile (TBT alto). Mudanças: (1) saiu o `Clien
 ## 2026-09-25 — v0.12.1 · llms.txt e llms-full.txt com os números de retorno
 
 `llms.txt` e `llms-full.txt` passam a citar 926/912 e 70/66 (24/09/2026) com as definições de "vencida" e "sem contato", como já estão na home. Auditoria de SEO/GEO da home em produção: title, description, canonical, robots (index, follow), 1 h1, Open Graph e Twitter, JSON-LD (SoftwareApplication, Organization, WebSite, ItemList, FAQPage), 6 imagens com alt, sitemap com 5 URLs, robots.txt liberando GPTBot/ClaudeBot/etc. Desempenho em produção após v0.12.0: 92/91/97, TBT 0.
+
+## 2026-09-25 — v0.12.2 · hero: lado a lado só a partir de 1280 px
+
+Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o layout foto+texto lado a lado começa em 1280 px (foto 56% à direita, texto até 28 rem); abaixo disso a foto vem em cima, com altura máxima de 380 px, e o texto embaixo.
