@@ -34,6 +34,7 @@ lojas da mesma rede está preservado no mesmo banco. Medido no banco de produç�
 1.694 OS em 2026, 1.528 parcelas de carnê recebidas em 2026 (R$ 394.734, até 21/09), 132 caixas abertos e fechados pela equipe em 2026, 3.401 mensagens de WhatsApp
 trocadas em 30 dias, 2.410 linhas de extrato bancário conciliadas em 2026 e 20.375 OS no histórico preservado.
 OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
+Retorno de clientes (medido em 24/09/2026, mesma rede, sem dado pessoal): 926 clientes com a receita vencida no último ano, 912 deles sem nenhum contato da loja em 90 dias; 70 vencem a receita nos próximos 30 dias, 66 ainda sem contato. "Vencida" = data da receita + 12 meses; "sem contato" = nenhuma ligação registrada nem WhatsApp enviado pelo sistema em 90 dias.
 
 ## O que o Clearix não faz nesta fase
 

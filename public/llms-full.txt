@@ -79,6 +79,13 @@ Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
 
 OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
 
+Retorno de clientes, medido em 24/09/2026 numa rede de óticas da casa, sem dado pessoal:
+
+- 926 clientes com a receita vencida no último ano; 912 deles sem nenhum contato da loja em 90 dias
+- 70 clientes vencem a receita nos próximos 30 dias; 66 ainda sem contato
+
+Definições: "vencida" = data da receita + 12 meses; "sem contato" = nenhuma ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias (ligação sem registro não entra). O módulo "Quem chamar hoje" (lista diária, sem repetir quem já foi chamado; sem disparo em massa e sem recall por IA) faz parte do plano Crescimento (R$ 1.499/mês).
+
 ## Perguntas frequentes
 
 **E se a minha equipe não se adaptar?**

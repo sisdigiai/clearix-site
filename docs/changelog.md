@@ -499,3 +499,7 @@ Ideia do dono: a tela do Clearix Hub dentro da foto. Duas opções geradas no Ch
 ## 2026-09-25 — v0.12.0 · desempenho (passo 7 ≥ 90)
 
 Produção estava em 76/88/81 no mobile (TBT alto). Mudanças: (1) saiu o `ClientRouter` do Astro (tarefa longa de ~570 ms; navegação nativa; o rastreio `clearix-attrib.js`, o Rótulo e o formulário de contato já tinham fallback para `DOMContentLoaded`, o menu do celular é `<details>` nativo); (2) `preload` da imagem do hero (AVIF, `imagesrcset` 800/1600, `fetchpriority="high"`) via `<slot name="head">` do BaseLayout; (3) `content-visibility: auto` nas seções abaixo da dobra (menos estilo/layout inicial). Local: 99/99/99/99, TBT 0–5 ms, LCP 2,1 s, CLS 0. Verificado: sem erros no console, rastreio e formulário carregam, `/contato`, `/planos` e menu do celular ok. Medição em produção fica para depois do deploy.
+
+## 2026-09-25 — v0.12.1 · llms.txt e llms-full.txt com os números de retorno
+
+`llms.txt` e `llms-full.txt` passam a citar 926/912 e 70/66 (24/09/2026) com as definições de "vencida" e "sem contato", como já estão na home. Auditoria de SEO/GEO da home em produção: title, description, canonical, robots (index, follow), 1 h1, Open Graph e Twitter, JSON-LD (SoftwareApplication, Organization, WebSite, ItemList, FAQPage), 6 imagens com alt, sitemap com 5 URLs, robots.txt liberando GPTBot/ClaudeBot/etc. Desempenho em produção após v0.12.0: 92/91/97, TBT 0.
