@@ -134,5 +134,12 @@ const whats = linkWhatsapp('site');
     {/* A versão na URL força navegador e borda do Cloudflare a buscar o script novo: o arquivo não tem hash no nome
         e já foi servido como "immutable" por 1 ano. Mudou o clearix-attrib.js, muda o ?v=. */}
     <script is:inline src="/clearix-attrib.js?v=2026-09-23.1"></script>
+    {/* Pixel da Meta: rastreamento de terceiro, logo atrás de consentimento (LGPD) e só com ID no build.
+        Sem PUBLIC_META_PIXEL_ID nada carrega e nem o banner aparece — a medição própria acima é anônima
+        e independe disso. O ID vive no inventário do app DIGIAI (ops.contas_servicos). */}
+    <script is:inline define:vars={{ id: import.meta.env.PUBLIC_META_PIXEL_ID ?? '' }}>
+      window.CLEARIX_META_PIXEL_ID = id;
+    </script>
+    <script is:inline src="/clearix-pixel.js?v=2026-09-28.1"></script>
     </body>
 </html>
