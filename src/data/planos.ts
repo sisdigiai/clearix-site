@@ -69,6 +69,15 @@ export const demo = {
   desc: 'Mostramos o Clearix rodando com dados de demonstração, sem compromisso.',
 };
 
+// Diagnóstico pago: dono, 01/10/2026, folha única § "Diagnóstico pago". Termo: termo-de-diagnostico-clearix-v1.md.
+// Preço e frase são literais da folha — não reformular sem passar por ela de novo.
+export const diagnostico = {
+  preco: 'R$ 349',
+  prazo: 'Até 5 dias úteis',
+  desc: 'A ótica exporta arquivos do próprio sistema. A DIGIAI devolve uma página, em reais: carnê vencido por faixa de atraso; contagem de clientes sem compra há mais de 12 meses. E uma pista de onde olhar: a diferença de preço pago pela mesma descrição de lente, como teto estimado. Pago antes, por Pix. Sem desconto.',
+  frase: 'Antes de falar de sistema, eu olho os seus números: em 5 dias úteis você recebe uma página dizendo quanto tem de carnê vencido e quantos clientes não voltaram. Custa R$ 349, o mesmo que um mês do Clearix; se depois quiser o piloto, esse valor vira a sua primeira mensalidade.',
+};
+
 // Add-ons mostrados na página (origem: iam.clearix_addons, migration 20260421004618 — a tabela não se toca).
 // Preço sempre sob consulta. Fora da página (eco, 14/09): "Inclusão de laboratório parceiro" e "E-commerce" (sem lastro
 // no inventário) e "Site institucional" (termo de piloto §2(h); sem caso entregue a ótica cliente).

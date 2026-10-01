@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaFinal from '../components/CtaFinal.astro';
-import { planos, demo, addons, conferidoEm } from '../data/planos';
+import { planos, demo, addons, diagnostico, conferidoEm } from '../data/planos';
 import { CTA } from '../data/landing';
 ---
 
@@ -61,17 +61,38 @@ import { CTA } from '../data/landing';
     </div>
   </section>
 
-  <!-- Demo -->
+  <!-- Como começar: diagnóstico pago + piloto (dono, 01/10; folha única § "Diagnóstico pago") -->
   <section class="py-16 md:py-20 bg-ink-deep border-b border-clarity-off/10">
     <div class="container-grid">
-      <div class="card flex flex-col md:flex-row items-start md:items-center justify-between gap-6 reveal">
-        <div>
-          <p class="label mb-2">{demo.preco}</p>
-          <h2 class="h-sub mb-2">{demo.nome}</h2>
-          <p class="text-clarity-muted text-body-md max-w-xl">{demo.desc}</p>
+      <p class="label mb-3">Como começar</p>
+      <h2 class="h-sub mb-8 max-w-2xl">Antes de falar de sistema, a gente olha os seus números.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-clarity-off/10 border border-clarity-off/10 rounded-lg overflow-hidden reveal">
+        <div class="bg-ink-surface p-7 flex flex-col">
+          <h3 class="font-display font-semibold text-lg text-clarity-off mb-1">Diagnóstico pago</h3>
+          <p class="font-mono tabular-nums text-2xl text-clarity-off mb-3">{diagnostico.preco}</p>
+          <p class="text-clarity-muted text-body-md mb-4">{diagnostico.desc}</p>
+          <p class="text-clarity-muted text-body-md mt-auto">{diagnostico.prazo}.</p>
         </div>
-        <a href="/contato" class="btn-primary shrink-0" data-cta="planos_demo">{CTA}</a>
+        <div class="bg-ink-surface p-7 flex flex-col">
+          <h3 class="font-display font-semibold text-lg text-clarity-off mb-1">{demo.nome} e piloto pago e assistido</h3>
+          <p class="font-mono tabular-nums text-2xl text-clarity-off mb-3">{planos[0].preco}{planos[0].precoNota}</p>
+          <p class="text-clarity-muted text-body-md">
+            Demonstração ao vivo de 20 minutos, com os números de uma ótica de verdade (dados desfocados). Se a ótica
+            assinar o piloto em até 30 dias depois do diagnóstico, os {diagnostico.preco} pagos nele viram a primeira
+            mensalidade. Sem período grátis. Um piloto por vez.
+          </p>
+        </div>
       </div>
+      <div class="card mt-8 max-w-2xl reveal">
+        <p class="label-sm mb-2">Frase autorizada</p>
+        <p class="text-clarity-dim text-body-md italic">"{diagnostico.frase}"</p>
+      </div>
+      <div class="mt-8">
+        <a href="/contato" class="btn-primary" data-cta="planos_demo">{CTA}</a>
+      </div>
+      <p class="label-sm normal-case tracking-wide text-clarity-muted mt-6 max-w-2xl">
+        A implantação continua sem preço fixo: cotada à parte, só depois do diagnóstico.
+      </p>
     </div>
   </section>
 
