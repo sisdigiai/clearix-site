@@ -56,14 +56,20 @@
     el.id = 'clearix-consent';
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-label', 'Escolha sobre medição de audiência');
-    el.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:620px;margin:0 auto;' +
-      'background:var(--color-surface,#101418);color:var(--color-on-surface,#F5F7FA);border:1px solid var(--color-outline,rgba(245,247,250,.12));' +
-      'padding:16px 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:14px;line-height:1.5';
+    // Cores pelos tokens do site (--t-*, triplas RGB): o fallback antigo (--color-on-surface) não existe no Clearix e deixava
+    // texto branco sobre fundo branco no tema claro. Em tela larga fica à direita, acima do botão do WhatsApp (cobre a foto, não o texto nem o CTA); no celular, embaixo.
+    var T = function (n, f) { return 'rgb(var(--' + n + ',' + f + '))'; };
+    var largo = window.innerWidth >= 900;
+    el.style.cssText = 'position:fixed;' + (largo ? 'right:16px;bottom:84px;' : 'left:16px;bottom:16px;') + 'z-index:9999;width:min(380px,calc(100vw - 32px));' +
+      'background:' + T('t-ink-surface', '255 255 255') + ';color:' + T('t-off', '11 27 51') + ';border:1px solid ' + T('t-line', '203 213 225') + ';border-radius:12px;' +
+      'box-shadow:0 12px 32px -12px rgb(0 0 0 / .35);padding:14px 16px;font-size:13px;line-height:1.45';
     el.innerHTML =
-      '<span style="flex:1 1 260px">Usamos medição da Meta para entender de onde vêm as visitas. ' +
-      'A contagem própria do site é anônima e acontece de qualquer forma.</span>' +
-      '<button type="button" data-v="denied" style="background:transparent;color:inherit;border:1px solid var(--color-outline,rgba(245,247,250,.24));padding:8px 14px;cursor:pointer;font:inherit">Agora não</button>' +
-      '<button type="button" data-v="granted" style="background:var(--color-action,#2F6BFF);color:var(--color-on-action,#FFFFFF);border:0;padding:8px 14px;cursor:pointer;font:inherit;font-weight:600">Pode medir</button>';
+      '<p style="margin:0 0 12px">Usamos medição da Meta para entender de onde vêm as visitas. ' +
+      'A contagem própria do site é anônima e acontece de qualquer forma.</p>' +
+      '<div style="display:flex;gap:8px;justify-content:flex-end">' +
+      '<button type="button" data-v="denied" style="background:transparent;color:inherit;border:1px solid ' + T('t-line', '203 213 225') + ';border-radius:8px;padding:8px 14px;cursor:pointer;font:inherit">Agora não</button>' +
+      '<button type="button" data-v="granted" style="background:' + T('t-btn', '14 116 144') + ';color:' + T('t-on-btn', '255 255 255') + ';border:0;border-radius:8px;padding:8px 14px;cursor:pointer;font:inherit;font-weight:600">Pode medir</button>' +
+      '</div>';
     el.addEventListener('click', function (e) {
       var b = e.target && e.target.closest ? e.target.closest('button[data-v]') : null;
       if (!b) return;

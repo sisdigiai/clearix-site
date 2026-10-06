@@ -507,3 +507,11 @@ Produção estava em 76/88/81 no mobile (TBT alto). Mudanças: (1) saiu o `Clien
 ## 2026-09-25 — v0.12.2 · hero: lado a lado só a partir de 1280 px
 
 Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o layout foto+texto lado a lado começa em 1280 px (foto 56% à direita, texto até 28 rem); abaixo disso a foto vem em cima, com altura máxima de 380 px, e o texto embaixo.
+
+## 2026-10-06 — v0.13.0 · revisão visual do topo, banner de consentimento e /planos no ar
+
+- **Banner do pixel**: estava branco sobre branco no tema claro (usava `--color-on-surface`, que o site não define). Agora usa os tokens `--t-*` do site, é compacto e, em tela larga, fica à direita acima do botão do WhatsApp (não cobre texto nem CTA); no celular, embaixo. `clearix-pixel.js?v=2026-10-06.2`.
+- **Hero da home**: a foto agora começa depois do cabeçalho (antes aparecia através da barra translúcida) e a borda esquerda dela é `max(44%, início do conteúdo + coluna de texto)`: em tela de 2560 px o texto não encosta mais na imagem. Saiu o eyebrow que repetia a faixa do topo; mais respiro sob o cabeçalho.
+- **Páginas internas** (`/planos`, `/para-quem`, `/ecossistema`, `/contato`): o bloco do hero estava centralizado e o resto alinhado à esquerda; agora tudo à esquerda.
+- **/planos** com o diagnóstico pago (R$ 349, folha única 01/10).
+- Lighthouse mobile local 96 / 100 / 100 / 100.
