@@ -1,0 +1,72 @@
+---
+// Política de privacidade (eco, 28/10/2026): exigida pela revisão de apps da Meta e do Google para o Tráfego pago do
+// Clearix Marketing, além da LGPD. Texto em linguagem de balcão; o que não está decidido não entra.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { empresa, endereco, email } from '../data/contato';
+const atualizado = '28 de outubro de 2026';
+---
+
+<BaseLayout
+  title="Política de privacidade — Clearix"
+  description="Como o Clearix e a DIGIAI tratam os dados das óticas e dos seus clientes: o que coletamos, para quê, com quem compartilhamos e como pedir exclusão."
+>
+  <section data-lux class="lux-cyan relative overflow-hidden pt-32 pb-16">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl relative z-10 anim-fade-in">
+      <p class="label mb-6">Legal</p>
+      <h1 class="h-display mb-6">Política de <span class="text-clearix-cyan-bright italic">privacidade</span></h1>
+      <p class="body-lg max-w-2xl">Atualizada em {atualizado}. Vale para o site clearix.app.br, para o sistema Clearix e para os aplicativos que a DIGIAI publica nas plataformas da Meta e do Google.</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-grid max-w-3xl space-y-10 text-clarity-muted text-body-md leading-relaxed">
+      <div>
+        <h2 class="h-section mb-3">1. Quem é o responsável</h2>
+        <p>{empresa.razaoSocial}, CNPJ {empresa.cnpj}, com sede em {endereco.logradouro}, {endereco.bairro}, {endereco.cidade}/{endereco.uf}, CEP {endereco.cep} ("DIGIAI"), é a controladora dos dados do site e da conta da ótica no Clearix. Os dados dos clientes finais de cada ótica (pacientes, compradores, contatos) pertencem à ótica, que é a controladora deles; a DIGIAI atua como operadora, por conta e ordem da ótica. Encarregado (DPO): <a href={`mailto:${email}`} class="text-clearix-cyan hover:underline">{email}</a>.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">2. O que coletamos</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong class="text-clarity-off">No site:</strong> nome, e-mail, telefone e nome da ótica quando você pede contato ou demonstração; dados de navegação (páginas vistas, origem do acesso, dispositivo) por cookies e ferramentas de medição, com o seu consentimento no aviso de cookies.</li>
+          <li><strong class="text-clarity-off">No sistema Clearix:</strong> os cadastros que a ótica registra para operar (clientes, receitas de óculos, pedidos, pagamentos, estoque, mensagens enviadas) e os dados dos usuários da ótica (nome, e-mail, papel, registros de acesso).</li>
+          <li><strong class="text-clarity-off">Nas integrações com Meta e Google:</strong> quando a ótica conecta a própria conta, guardamos o token de acesso autorizado, a lista de páginas e de contas de anúncio e os números de desempenho das campanhas (impressões, cliques, gasto, contatos). Não lemos mensagens privadas nem amigos. O uso das informações recebidas das APIs do Google segue a Política de Dados do Usuário dos Serviços de API do Google, incluindo os requisitos de uso limitado.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">3. Para que usamos</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Prestar o serviço contratado pela ótica: venda, carnê, laboratório, WhatsApp, financeiro, marketing e anúncios.</li>
+          <li>Responder pedidos de contato e demonstração.</li>
+          <li>Medir e melhorar o site e o sistema.</li>
+          <li>Cumprir obrigações legais, fiscais e de segurança.</li>
+        </ul>
+        <p class="mt-3">Mensagens a clientes da ótica saem só com base legal da própria ótica (consentimento ou relação de consumo) e nunca aos domingos, por regra do sistema. Toda mensagem traz um jeito de pedir para não receber mais.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">4. Com quem compartilhamos</h2>
+        <p>Com fornecedores que operam o serviço sob contrato: hospedagem e banco de dados (Supabase, Cloudflare), envio de mensagens e e-mail (provedores de WhatsApp e e-mail), plataformas de anúncio (Meta, Google) quando a ótica conecta a conta, e processamento de pagamento da loja online. Não vendemos dados. Autoridades recebem dados só por obrigação legal.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">5. Por quanto tempo</h2>
+        <p>Enquanto a conta da ótica estiver ativa e pelo prazo legal depois (obrigações fiscais e de defesa de direitos). Tokens de Meta e Google são apagados quando a ótica desconecta a integração ou encerra a conta. Dados de navegação do site ficam no máximo 26 meses.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">6. Seus direitos</h2>
+        <p>Confirmação de tratamento, acesso, correção, anonimização, portabilidade, informação sobre compartilhamento, revogação de consentimento e exclusão, conforme a Lei 13.709/2018 (LGPD). Peça pelo e-mail <a href={`mailto:${email}`} class="text-clearix-cyan hover:underline">{email}</a> ou pela página <a href="/exclusao-de-dados" class="text-clearix-cyan hover:underline">exclusão de dados</a>. Respondemos em até 15 dias. Cliente final de uma ótica deve pedir à ótica; se preferir, nos escreva e encaminhamos.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">7. Segurança</h2>
+        <p>Dados separados por ótica no banco, acesso por papel, criptografia em trânsito, segredos guardados fora do código e registro de acessos. Incidentes que gerem risco são comunicados à ótica e, quando a lei exige, à ANPD.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">8. Mudanças</h2>
+        <p>Esta página é a versão vigente. Mudanças relevantes são avisadas no sistema e aqui, com a data no topo.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a href="/termos" class="btn-outline">Termos de uso →</a>
+        <a href="/exclusao-de-dados" class="btn-outline">Exclusão de dados →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

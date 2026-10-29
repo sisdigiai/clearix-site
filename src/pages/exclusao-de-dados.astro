@@ -1,0 +1,50 @@
+---
+// Instruções de exclusão de dados (eco, 28/10/2026): URL obrigatória no app da Meta (Data Deletion Instructions) e no
+// Google (OAuth). Sem formulário: o pedido chega por e-mail e é confirmado por escrito.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { email } from '../data/contato';
+const assunto = encodeURIComponent('Exclusão de dados — Clearix');
+---
+
+<BaseLayout
+  title="Exclusão de dados — Clearix"
+  description="Como pedir a exclusão dos seus dados do Clearix e dos aplicativos da DIGIAI conectados à Meta e ao Google."
+>
+  <section data-lux class="lux-cyan relative overflow-hidden pt-32 pb-16">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl relative z-10 anim-fade-in">
+      <p class="label mb-6">Legal</p>
+      <h1 class="h-display mb-6">Exclusão de <span class="text-clearix-cyan-bright italic">dados</span></h1>
+      <p class="body-lg max-w-2xl">Você pode pedir que apaguemos o que guardamos sobre você ou sobre a sua ótica. Explicamos aqui como fazer e o que acontece depois.</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-grid max-w-3xl space-y-10 text-clarity-muted text-body-md leading-relaxed">
+      <div>
+        <h2 class="h-section mb-3">Se você conectou o Facebook, o Instagram ou o Google ao Clearix</h2>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li>Entre no Clearix Marketing, abra <strong class="text-clarity-off">Configurações</strong> e clique em <strong class="text-clarity-off">Desconectar</strong> na Meta ou no Google. O token de acesso é apagado na hora e o sistema para de ler as suas contas.</li>
+          <li>Se preferir, remova o aplicativo "Clearix" nas configurações de aplicativos do Facebook ou na página de permissões da sua Conta Google. Recebemos o aviso e apagamos o token em até 48 horas.</li>
+          <li>Para apagar também os números de desempenho de campanhas que ficaram guardados, escreva para <a href={`mailto:${email}?subject=${assunto}`} class="text-clearix-cyan hover:underline">{email}</a> com o nome da ótica e a plataforma. Confirmamos por e-mail em até 15 dias.</li>
+        </ol>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">Se você é cliente de uma ótica que usa o Clearix</h2>
+        <p>Os seus dados (cadastro, receita, pedidos, mensagens) são da ótica onde você comprou; ela é quem decide sobre eles. Peça a exclusão diretamente à ótica. Se não conseguir, escreva para <a href={`mailto:${email}?subject=${assunto}`} class="text-clearix-cyan hover:underline">{email}</a> informando o nome da ótica: encaminhamos o pedido e acompanhamos a resposta. Para parar de receber mensagens, responda "SAIR" a qualquer mensagem da ótica.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">Se você pediu contato pelo site</h2>
+        <p>Escreva para <a href={`mailto:${email}?subject=${assunto}`} class="text-clearix-cyan hover:underline">{email}</a> do mesmo e-mail que usou no pedido. Apagamos o cadastro em até 15 dias e confirmamos por escrito.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">O que não apagamos de imediato</h2>
+        <p>Registros que a lei manda guardar (notas fiscais, contratos, comprovantes de pagamento) ficam pelo prazo legal, separados do uso diário e com acesso restrito. Tudo o mais é excluído ou anonimizado.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a href="/privacidade" class="btn-outline">Política de privacidade →</a>
+        <a href="/termos" class="btn-outline">Termos de uso →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,69 @@
+---
+// Termos de uso (eco, 28/10/2026): pedidos pela revisão de apps da Meta/Google e pelo contrato com a ótica.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { empresa, endereco, email, HUB } from '../data/contato';
+const atualizado = '28 de outubro de 2026';
+---
+
+<BaseLayout
+  title="Termos de uso — Clearix"
+  description="As regras de uso do Clearix: quem pode usar, o que a ótica se compromete, o que a DIGIAI entrega, pagamento, cancelamento e responsabilidades."
+>
+  <section data-lux class="lux-cyan relative overflow-hidden pt-32 pb-16">
+    <div class="lux-glow"></div>
+    <div class="container-grid max-w-3xl relative z-10 anim-fade-in">
+      <p class="label mb-6">Legal</p>
+      <h1 class="h-display mb-6">Termos de <span class="text-clearix-cyan-bright italic">uso</span></h1>
+      <p class="body-lg max-w-2xl">Atualizados em {atualizado}. Ao criar uma conta no Clearix ou usar o site, a ótica aceita estes termos.</p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20">
+    <div class="container-grid max-w-3xl space-y-10 text-clarity-muted text-body-md leading-relaxed">
+      <div>
+        <h2 class="h-section mb-3">1. Quem oferece</h2>
+        <p>{empresa.razaoSocial}, CNPJ {empresa.cnpj}, {endereco.logradouro}, {endereco.bairro}, {endereco.cidade}/{endereco.uf} ("DIGIAI"). Contato: <a href={`mailto:${email}`} class="text-clearix-cyan hover:underline">{email}</a>.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">2. O que é o Clearix</h2>
+        <p>Sistema de gestão para óticas, usado pela internet em <a href={HUB} class="text-clearix-cyan hover:underline" target="_blank" rel="noopener">app.clearix.app.br</a>: vendas, carnê, laboratório, WhatsApp, financeiro, estoque, marketing e anúncios. Os módulos disponíveis dependem do plano contratado.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">3. Conta e acesso</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>A conta é da ótica (pessoa jurídica). Cada pessoa da equipe tem o próprio usuário e é responsável pelo que faz com ele.</li>
+          <li>A ótica mantém os dados de cadastro corretos e as senhas em sigilo. Acesso por terceiros sem autorização deve ser comunicado na hora.</li>
+          <li>Integrações com Meta, Google, WhatsApp e meios de pagamento usam contas da própria ótica, conectadas por ela, e seguem os termos dessas plataformas.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">4. Uso permitido</h2>
+        <p>Usar o Clearix para operar a ótica, dentro da lei. É proibido enviar mensagens sem base legal, usar dados de clientes para fins alheios à ótica, tentar acessar dados de outra ótica, sobrecarregar ou atacar o sistema, ou revender o acesso. Anúncios criados pelo sistema seguem as políticas de publicidade da Meta e do Google; a ótica responde pelo conteúdo que aprova.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">5. Dados</h2>
+        <p>Os dados da ótica e dos seus clientes são da ótica. A DIGIAI os trata como operadora, conforme a <a href="/privacidade" class="text-clearix-cyan hover:underline">política de privacidade</a>. Ao encerrar a conta, a ótica pode exportar os dados em até 30 dias; depois, são excluídos, salvo retenção legal.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">6. Pagamento e cancelamento</h2>
+        <p>Valores, periodicidade e módulos estão no plano contratado (página <a href="/planos" class="text-clearix-cyan hover:underline">Planos</a> ou proposta assinada). Gasto com anúncios é cobrado pela Meta e pelo Google diretamente da ótica, dentro do teto diário que a ótica define no sistema; não faz parte da mensalidade. A ótica pode cancelar a qualquer momento, valendo até o fim do período pago. Atraso superior a 30 dias pode suspender o acesso, sem apagar dados no prazo do item 5.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">7. Disponibilidade e responsabilidade</h2>
+        <p>A DIGIAI trabalha para manter o sistema no ar e com backup diário, mas não garante disponibilidade ininterrupta. Não responde por falhas de terceiros (internet, plataformas de anúncio, WhatsApp, meios de pagamento) nem por decisões comerciais da ótica tomadas com base nos relatórios. A responsabilidade total da DIGIAI limita-se ao valor pago pela ótica nos 12 meses anteriores ao fato.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">8. Propriedade</h2>
+        <p>O software, as marcas Clearix e DIGIAI e os materiais do sistema são da DIGIAI. A ótica recebe uma licença de uso, não exclusiva e intransferível, enquanto a conta estiver ativa.</p>
+      </div>
+      <div>
+        <h2 class="h-section mb-3">9. Mudanças e foro</h2>
+        <p>Mudanças nestes termos são avisadas com 15 dias de antecedência no sistema. Vale a lei brasileira; fica eleito o foro da comarca de Suzano/SP.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a href="/privacidade" class="btn-outline">Política de privacidade →</a>
+        <a href="/exclusao-de-dados" class="btn-outline">Exclusão de dados →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
