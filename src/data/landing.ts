@@ -27,7 +27,7 @@ export interface Numero {
 // S1 — linha de prova do hero
 export const heroProva: Numero[] = [
   { valor: '1.694', label: 'OS em 2026', fonte: 'INV §0: orders com sale_date em 2026 (1.685 criadas no dia da venda)' },
-  { valor: '1.528', label: 'parcelas de carnê recebidas em 2026', fonte: 'crm_erp sales_finance.installments, status paid, com order_id, paid_at em 2026, medido 21/09/2026 13:48 BRT' },
+  { valor: '926', label: 'parcelas de carnê recebidas em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): crm_erp installments, modalidade CARNE, medido pelo eco em 11/11/2026' },
   { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', fonte: 'folha única §1 (eco, 15/09/2026): a contagem antiga (746) somava 372 sessões apagadas, backfill e lojas fechadas' },
 ];
 
@@ -52,8 +52,8 @@ export const jornadaOS = [
     { valor: '76', label: 'garantias abertas a partir da OS', fonte: 'INV §1d' },
   ] },
   { passo: 'Fechamento', numeros: [
-    { valor: '1.528', label: 'parcelas de carnê recebidas em 2026, até 21/09', fonte: 'idem heroProva (21/09/2026)' },
-    { valor: 'R$ 394.734', label: 'recebidos no carnê em 2026, até 21/09', fonte: 'D8 (dono, 21/09): sum(coalesce(paid_amount, amount_total)) das mesmas parcelas; SELECT em crm_erp 21/09/2026 13:48 BRT' },
+    { valor: '926', label: 'parcelas de carnê recebidas em 2026, até 11/11', fonte: 'idem heroProva (11/11/2026)' },
+    { valor: 'R$ 108.871', label: 'recebidos no carnê em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): modalidade CARNE, medido pelo eco em 11/11/2026' },
     { valor: '5.366', label: 'linhas de comissão calculadas', fonte: 'INV §8d: hr_commission_lines abr→set, 9 vendedores' },
   ] },
 ] as const;

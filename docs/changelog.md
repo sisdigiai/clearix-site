@@ -515,3 +515,10 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 - **Páginas internas** (`/planos`, `/para-quem`, `/ecossistema`, `/contato`): o bloco do hero estava centralizado e o resto alinhado à esquerda; agora tudo à esquerda.
 - **/planos** com o diagnóstico pago (R$ 349, folha única 01/10).
 - Lighthouse mobile local 96 / 100 / 100 / 100.
+
+## 2026-11-11 — v0.13.1 · correção do número do carnê (aviso do eco, folha única corrigida pelo Geral)
+
+- **Erro no ar desde 21/09:** a landing chamava de "carnê" o número de todas as formas de pagamento (1.528 · R$ 394.734).
+- **Agora:** 926 parcelas de carnê recebidas em 2026, até 11/11, e R$ 108.871 recebidos no carnê (folha única, linha do carnê; modalidade CARNE, medido pelo eco em 11/11/2026). Em `src/data/landing.ts` (`heroProva`, `jornadaOS` Fechamento), `public/llms.txt` e `public/llms-full.txt`.
+- Mesmo número procurado no restante de `src/` e `public/`: não há outro ponto.
+- Fica só em commit local: publicar espera o "pode" do dono.
