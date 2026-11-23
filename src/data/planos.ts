@@ -1,7 +1,7 @@
-// Pacotes comerciais Clearix. FONTE: o banco crm_erp (mhgbuplnxtfgipbemchb) — iam.clearix_packages (preço, limites),
+// Pacotes comerciais Clearix. FONTE: o banco crm_erp — iam.clearix_packages (preço, limites),
 // iam.clearix_package_apps (módulos liberados) e iam.clearix_addons. O site DERIVA do banco: se a casa quiser vender
 // diferente, muda o banco primeiro (regra do Geral, 15/09). Cópia conferida por SELECT em 15/09/2026 (`conferidoEm`);
-// medição em clearix-site/_PACOTES_BANCO_VS_SITE_2026-09-15.md.
+// medição em Cockpit/Apps/clearix-site/arquivo-landing-2026-09/_PACOTES_BANCO_VS_SITE_2026-09-15.md.
 //
 // Sem contagem de apps (D3, 08/09: falar em módulos, sem contar aplicativo) e sem campo "destaque" (o selo "mais
 // escolhido" saiu em 14/09: zero clientes pagantes). Os nomes em `inclui` usam o vocabulário da vitrine (apps.ts).
@@ -9,7 +9,7 @@
 // "SLA 99,9%", "Suporte dedicado" e "Integrações enterprise" do Completo — o termo de piloto (§2, §6, §10) nega todos.
 // Preço, `lojas` e o que mais entra em cada plano esperam a D5 do dono: não mexer sem ela.
 
-export const conferidoEm = '15/09/2026';
+export const conferidoEm = '23/11/2026';
 
 export interface Plano {
   slug: string;
@@ -66,7 +66,7 @@ export const planos: Plano[] = [
 export const demo = {
   nome: 'Demonstração',
   preco: 'Sob agendamento',
-  desc: 'Mostramos o Clearix rodando com dados de demonstração, sem compromisso.',
+  desc: 'Demonstração ao vivo de 20 minutos, com os números de uma ótica de verdade (dados desfocados).',
 };
 
 // Diagnóstico pago: dono, 01/10/2026, folha única § "Diagnóstico pago". Termo: termo-de-diagnostico-clearix-v1.md.

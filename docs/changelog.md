@@ -93,7 +93,7 @@ Home reencenada como experiência cinematográfica da marca (a lente Clearix foc
 ### Pendências conhecidas
 - [ ] Endpoint real do formulário de contato (hoje usa atributo Netlify Forms; no Cloudflare Pages usar Pages Functions ou webhook).
 - [ ] Confirmar domínio `clearix.app.br` no DNS (Registro.br) e conectar no Cloudflare Pages.
-- [x] ~~Criar repo GitHub `mellooticas/clearix_site` e fazer o push inicial~~ — produção mudou: o Cloudflare observa **`sisdigiai/clearix-site`** (verificado 2026-07-11); `mellooticas/clearix_site` é só espelho.
+- [x] Repo de produção: **`sisdigiai/clearix-site`** (verificado 2026-07-11).
 - [ ] Apontar o `/clearix` do `digiai-site` para este novo site (teaser → site dedicado).
 - [x] ~~Verificação Bing/Google (meta tags)~~ — feita por outros caminhos: Google Search Console como propriedade de domínio (DNS) e Bing Webmaster com sitemap e IndexNow, ambos na conta `sisdigiai@gmail.com` (conferido em 23/09/2026); não há meta tag no `<head>` e não precisa.
 - [ ] `docs/migrations/` não se aplica (app sem banco próprio).
@@ -104,7 +104,7 @@ Home reencenada como experiência cinematográfica da marca (a lente Clearix foc
 
 Despacho `_DESPACHO_2026-09-14_LANDING_DE_VENDAS.md`. Desenho (`_DESENHO_2026-09-14_LANDING.md`) e copy
 (`_COPY_2026-09-14_LANDING.md`) aprovados pelo orquestrador do eco Clearix e revisados pelo Orquestrador Geral
-(`_REVISAO_GERAL_2026-09-14_COPY.md`). Fonte única de números: `Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md`
+(revisão do Geral de 14/09 (arquivada no Cockpit)). Fonte única de números: o inventário de 14/09 (Cockpit/comercial)
 + correções medidas pelo eco. **Build travado** até o portão 135 (D5, D8) e as lacunas D2 (WhatsApp), D3b (endereço) e D7 (termo de piloto).
 
 **Home (`/`) reescrita em S1–S10:** hero de 1 tela (sai o scroll-scrub de 300vh) → espelho da dor → a vida de uma OS em 6
@@ -522,3 +522,9 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 - **Agora:** 926 parcelas de carnê recebidas em 2026, até 11/11, e R$ 108.871 recebidos no carnê (folha única, linha do carnê; modalidade CARNE, medido pelo eco em 11/11/2026). Em `src/data/landing.ts` (`heroProva`, `jornadaOS` Fechamento), `public/llms.txt` e `public/llms-full.txt`.
 - Mesmo número procurado no restante de `src/` e `public/`: não há outro ponto.
 - Fica só em commit local: publicar espera o "pode" do dono.
+
+## 2026-11-23 — v0.13.2 · repositório público limpo e landing alinhada à folha
+
+- **Repositório público (desde 21/11):** os 7 documentos de trabalho de 14–16/09 saíram da raiz para `Cockpit/Apps/clearix-site/arquivo-landing-2026-09/`; tirados "Mello", o tenant e a referência do banco de comentários, README, AGENTS e changelog. O histórico anterior segue legível: reescrevê-lo é decisão do dono.
+- **Home:** a faixa de prova mostra o carnê em reais (R$ 108.871 até 11/11) e não mais 926 parcelas, que repetia o 926 de "clientes com receita vencida"; a jornada da OS perde a linha de 926 parcelas pelo mesmo motivo.
+- **/planos:** data de conferência 23/11/2026 (preços e limites conferidos no banco `crm_erp`: iguais desde 17/09); texto da demonstração alinhado à folha (ao vivo, 20 minutos, dados desfocados).

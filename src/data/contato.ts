@@ -1,5 +1,5 @@
 // Canais e identificação de quem vende. As lacunas ficam `null` até a decisão chegar; a página esconde o que é null
-// em vez de publicar um palpite. Decisões registradas em _COPY_2026-09-14_LANDING.md.
+// em vez de publicar um palpite. Decisões registradas em Cockpit/Apps/clearix-site/arquivo-landing-2026-09/_COPY_2026-09-14_LANDING.md.
 
 // D2 — número de WhatsApp da landing. Decisão do dono (15/09, nesta sessão): +55 11 99154-7229, o número da DIGIAI na
 // Z-API "DIGIAI Completo" (MKT), usado para atendimento e prospecção no início. Com null, nenhum botão aparece.

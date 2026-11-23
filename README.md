@@ -27,7 +27,7 @@ npm run preview  # serve ./dist
 
 Repo de produção: **`sisdigiai/clearix-site`** (o `origin`; push na `main` dispara o build no Cloudflare — verificado em 2026-07-11).
 
-> `mellooticas/clearix_site` é espelho histórico — push lá NÃO publica nada. Este repo local usa `credential.username=sisdigiai` (config local) para o push.
+> Produção observa `sisdigiai/clearix-site`. O push usa `credential.username=sisdigiai` (config local).
 
 ### 2. Conectar no Cloudflare Pages
 
@@ -72,4 +72,4 @@ Ver [`docs/README.md`](docs/README.md) e [`AGENTS.md`](AGENTS.md). Spec em `Cock
 
 ---
 
-**Mantenedor:** Gilberto Mello — `sisdigiai@gmail.com`
+**Mantenedor:** DIGIAI

@@ -1,9 +1,9 @@
 // Números da landing de vendas (desenho aprovado pelo eco em 14/09/2026, S1–S10).
 // FONTE QUE MANDA desde 14/09: Cockpit/comercial/verdade-landing-vs-app-2026-09-14.md (dona: Orquestrador Geral).
 // Número ou promessa novos só entram aqui depois de entrarem na folha (eco mede, Geral aprova).
-// Tenant Grupo Mello (6292c9f0…), banco mhgbuplnxtfgipbemchb, `deleted_at is null`, datas em America/Sao_Paulo.
-// INV = Cockpit/comercial/inventario-clearix-em-uso-na-mello-2026-09-14.md
-// ECO = rodapé do orquestrador do eco em clearix-site/_DESENHO_2026-09-14_LANDING.md (correções medidas em 14/09)
+// Banco de produção do Clearix, `deleted_at is null`, datas em America/Sao_Paulo.
+// INV = inventário de 14/09 (Cockpit/comercial)
+// ECO = rodapé do orquestrador do eco no desenho de 14/09 (correções medidas em 14/09)
 //
 // Regras que valem para cada linha:
 // - OS de 2020→2025 vieram do sistema anterior: "histórico preservado", nunca "processado pelo Clearix" (INV §14.2).
@@ -27,7 +27,7 @@ export interface Numero {
 // S1 — linha de prova do hero
 export const heroProva: Numero[] = [
   { valor: '1.694', label: 'OS em 2026', fonte: 'INV §0: orders com sale_date em 2026 (1.685 criadas no dia da venda)' },
-  { valor: '926', label: 'parcelas de carnê recebidas em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): crm_erp installments, modalidade CARNE, medido pelo eco em 11/11/2026' },
+  { valor: 'R$ 108.871', label: 'recebidos no carnê em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): modalidade CARNE, medido pelo eco em 11/11/2026' },
   { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', fonte: 'folha única §1 (eco, 15/09/2026): a contagem antiga (746) somava 372 sessões apagadas, backfill e lojas fechadas' },
 ];
 
@@ -52,7 +52,6 @@ export const jornadaOS = [
     { valor: '76', label: 'garantias abertas a partir da OS', fonte: 'INV §1d' },
   ] },
   { passo: 'Fechamento', numeros: [
-    { valor: '926', label: 'parcelas de carnê recebidas em 2026, até 11/11', fonte: 'idem heroProva (11/11/2026)' },
     { valor: 'R$ 108.871', label: 'recebidos no carnê em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): modalidade CARNE, medido pelo eco em 11/11/2026' },
     { valor: '5.366', label: 'linhas de comissão calculadas', fonte: 'INV §8d: hr_commission_lines abr→set, 9 vendedores' },
   ] },

@@ -30,9 +30,9 @@ Landing de vendas do Clearix (`https://clearix.app.br`) — site estático Astro
 
 - **Spec:** [`../Cockpit/Spec/clearix-site.md`](../Cockpit/Spec/clearix-site.md)
 - **Folha única da venda (manda em número e promessa):** [`../Cockpit/comercial/verdade-landing-vs-app-2026-09-14.md`](../Cockpit/comercial/verdade-landing-vs-app-2026-09-14.md) — dona: Orquestrador Geral. Número ou promessa novos só entram no site depois de entrarem nela.
-- **Planos:** o banco `mhgbuplnxtfgipbemchb` (`iam.clearix_packages`, `clearix_package_apps`, `clearix_addons`) é a fonte; o site deriva, com data. Mudança de plano vai ao banco primeiro.
+- **Planos:** o banco `crm_erp` (`iam.clearix_packages`, `clearix_package_apps`, `clearix_addons`) é a fonte; o site deriva, com data. Mudança de plano vai ao banco primeiro.
 - **Copy/voz:** [`../Cockpit/clearix_design/assets/marketing-kit/COPY_BRIEFING.md`](../Cockpit/clearix_design/assets/marketing-kit/COPY_BRIEFING.md) — headlines aprovadas e o que NÃO usar
-- **Histórico da obra de 14–15/09:** `_DESPACHO_*`, `_DESENHO_*`, `_COPY_*`, `_REVISAO_GERAL_*`, `_VERIFICACAO_PROMESSAS_*`, `_PACOTES_BANCO_VS_SITE_*` na raiz do repo
+- **Histórico da obra de 14–15/09:** `_DESPACHO_*`, `_DESENHO_*`, `_COPY_*`, `_REVISAO_GERAL_*`, `_VERIFICACAO_PROMESSAS_*`, `_PACOTES_BANCO_VS_SITE_*` em `Cockpit/Apps/clearix-site/arquivo-landing-2026-09/` (saíram do repo em 23/11/2026, repo público)
 - **Regras Harness críticas:** R-003 (não commit sem pedido), R-005 (UI verificada no navegador), R-010 (Pergunta de Ouro), R-014 (design system)
 - **Referência de stack:** app irmão `digiai-site` (mesma stack Astro/Tailwind)
 
