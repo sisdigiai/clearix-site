@@ -53,7 +53,7 @@ export const jornadaOS = [
   ] },
   { passo: 'Fechamento', numeros: [
     { valor: 'R$ 108.871', label: 'recebidos no carnê em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): modalidade CARNE, medido pelo eco em 11/11/2026' },
-    { valor: '5.366', label: 'linhas de comissão calculadas', fonte: 'INV §8d: hr_commission_lines abr→set, 9 vendedores' },
+    { valor: '1.206', label: 'linhas de comissão de OS entregues em 2026, até 16/09', fonte: 'folha única (16/09/2026); a errata de 16/09 já tirava o 5.366 (carga retroativa de abril); remedição de 24/11 aguarda a folha' },
   ] },
 ] as const;
 

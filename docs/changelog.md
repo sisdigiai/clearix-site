@@ -528,3 +528,8 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 - **Repositório público (desde 21/11):** os 7 documentos de trabalho de 14–16/09 saíram da raiz para `Cockpit/Apps/clearix-site/arquivo-landing-2026-09/`; tirados o nome da rede, o tenant e a referência do banco de comentários, README, AGENTS e changelog. O histórico anterior segue legível: reescrevê-lo é decisão do dono.
 - **Home:** a faixa de prova mostra o carnê em reais (R$ 108.871 até 11/11) e não mais 926 parcelas, que repetia o 926 de "clientes com receita vencida"; a jornada da OS perde a linha de 926 parcelas pelo mesmo motivo.
 - **/planos:** data de conferência 23/11/2026 (preços e limites conferidos no banco `crm_erp`: iguais desde 17/09); texto da demonstração alinhado à folha (ao vivo, 20 minutos, dados desfocados).
+
+## 2026-11-24 — v0.13.3 · comissão: 1.206 (folha, 16/09) no lugar de 5.366
+
+- A home e o `llms-full.txt` ainda diziam 5.366 linhas de comissão (carga retroativa de abril incluída); a folha única registra 1.206 desde 16/09. Trocado para o número da folha, com a data.
+- Os outros cinco números da home (OS, caixas, mensagens, receita vencida e a janela de 30 dias) ficam como estão, com a data ao lado, até a folha trazer a remedição de 24/11 (`Cockpit/controle/remedicao-landing-2026-11-24.md`).

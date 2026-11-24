@@ -74,7 +74,7 @@ Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
 - 1.630 avisos por WhatsApp enviados pelo sistema desde abril (link do portal, laboratório, entrega)
 - 1.562 links do portal do paciente emitidos
 - 2.410 linhas de extrato bancário conciliadas em 2026
-- 5.366 linhas de comissão calculadas
+- 1.206 linhas de comissão de OS entregues em 2026 (até 16/09/2026)
 - 20.375 OS no histórico preservado
 
 OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
