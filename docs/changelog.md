@@ -525,6 +525,6 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 
 ## 2026-11-23 — v0.13.2 · repositório público limpo e landing alinhada à folha
 
-- **Repositório público (desde 21/11):** os 7 documentos de trabalho de 14–16/09 saíram da raiz para `Cockpit/Apps/clearix-site/arquivo-landing-2026-09/`; tirados "Mello", o tenant e a referência do banco de comentários, README, AGENTS e changelog. O histórico anterior segue legível: reescrevê-lo é decisão do dono.
+- **Repositório público (desde 21/11):** os 7 documentos de trabalho de 14–16/09 saíram da raiz para `Cockpit/Apps/clearix-site/arquivo-landing-2026-09/`; tirados o nome da rede, o tenant e a referência do banco de comentários, README, AGENTS e changelog. O histórico anterior segue legível: reescrevê-lo é decisão do dono.
 - **Home:** a faixa de prova mostra o carnê em reais (R$ 108.871 até 11/11) e não mais 926 parcelas, que repetia o 926 de "clientes com receita vencida"; a jornada da OS perde a linha de 926 parcelas pelo mesmo motivo.
 - **/planos:** data de conferência 23/11/2026 (preços e limites conferidos no banco `crm_erp`: iguais desde 17/09); texto da demonstração alinhado à folha (ao vivo, 20 minutos, dados desfocados).
