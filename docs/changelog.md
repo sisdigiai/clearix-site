@@ -533,3 +533,9 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 
 - A home e o `llms-full.txt` ainda diziam 5.366 linhas de comissão (carga retroativa de abril incluída); a folha única registra 1.206 desde 16/09. Trocado para o número da folha, com a data.
 - Os outros cinco números da home (OS, caixas, mensagens, receita vencida e a janela de 30 dias) ficam como estão, com a data ao lado, até a folha trazer a remedição de 24/11 (`Cockpit/controle/remedicao-landing-2026-11-24.md`).
+
+## 2026-11-25 — v0.13.4 · número de comissão sai da home
+
+- O Geral suspendeu na folha única (25/11, 18h07) qualquer número de linhas de comissão: a comissão é teste no app e ninguém recebeu. Saiu a linha da jornada da OS (`landing.ts`) e do `llms-full.txt`; não foi trocada por outro número.
+- Não mudei o texto qualitativo ("comissão calculada da venda entregue"): decisão do Geral se continua valendo.
+- OS em 2026 fica em 1.694 (14/09) até a folha dizer qual valor vale (2.004 foi medido com venda cancelada; sem canceladas, 1.999 até 24/11).
