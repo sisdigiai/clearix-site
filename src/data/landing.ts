@@ -26,9 +26,9 @@ export interface Numero {
 
 // S1 — linha de prova do hero
 export const heroProva: Numero[] = [
-  { valor: '1.694', label: 'OS em 2026', fonte: 'INV §0: orders com sale_date em 2026 (1.685 criadas no dia da venda)' },
+  { valor: 'Mais de 1.990', label: 'OS em 2026, até 24/11', fonte: 'folha única, remedição de 24/11/2026 (eco, 16h38; régua do Vendas 25/11); frase permitida enquanto o dono não decide as 2 OS só com status cancelled (2.001 ou 1.999)' },
   { valor: 'R$ 108.871', label: 'recebidos no carnê em 2026, até 11/11', fonte: 'folha única (linha do carnê, 11/11/2026): modalidade CARNE, medido pelo eco em 11/11/2026' },
-  { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', fonte: 'folha única §1 (eco, 15/09/2026): a contagem antiga (746) somava 372 sessões apagadas, backfill e lojas fechadas' },
+  { valor: '165', label: 'caixas abertos e fechados pela equipe em 2026, até 24/11', fonte: 'folha única, remedição de 24/11/2026 (eco, 16h38; régua do Vendas 25/11)' },
 ];
 
 // S3 — a vida de uma OS. Um número, um lugar (Geral, 16/09): 1.588 entregues e 132 caixas ficam só no rótulo.
@@ -38,7 +38,7 @@ export const jornadaOS = [
     { valor: '274', label: 'lentes de contato', fonte: 'INV §10d' },
   ] },
   { passo: 'Venda', numeros: [
-    { valor: '1.694', label: 'OS em 2026', fonte: 'INV §0' },
+    { valor: 'Mais de 1.990', label: 'OS em 2026, até 24/11', fonte: 'folha única, remedição de 24/11/2026 (eco, 16h38; régua do Vendas 25/11)' },
     { valor: '399', label: 'promissórias emitidas', fonte: 'INV §1d' },
   ] },
   { passo: 'Laboratório', numeros: [
@@ -66,7 +66,7 @@ export const provaBanco: Numero[] = [
 
 // S10 — linha de prova sob o botão final (Geral, ajuste 7)
 export const provaCtaFinal: Numero = {
-  valor: '1.694', label: 'OS em 2026 numa ótica real', fonte: 'INV §0',
+  valor: 'Mais de 1.990', label: 'OS em 2026 numa ótica real, até 24/11', fonte: 'folha única, remedição de 24/11/2026 (eco, 16h38; régua do Vendas 25/11)',
 };
 
 // S7 — "Pacientes e receitas" (Clinics fica, ECO item 1). Só as receitas entram na linha do módulo.
@@ -151,12 +151,12 @@ export const rotuloPacotes = [
 
 // Folha única §1. Só estes seis, cada um com a data da medição.
 export const rotuloQuantidades = [
-  { valor: '1.694', label: 'OS em 2026', data: '14/09' },
+  { valor: 'mais de 1.990', label: 'OS em 2026', data: '24/11' },
   { valor: '1.588', label: 'OS de 2026 entregues em 2026', data: '15/09' },
   { valor: '7 a 10 dias', label: 'do pedido à entrega (mediana, abr→ago/2026)', data: '14/09' },
-  { valor: '132', label: 'caixas abertos e fechados pela equipe em 2026', data: '15/09' },
+  { valor: '165', label: 'caixas abertos e fechados pela equipe em 2026', data: '24/11' },
   { valor: '2.410', label: 'linhas de extrato bancário conciliadas em 2026', data: '14/09' },
-  { valor: '3.401', label: 'mensagens de WhatsApp em 30 dias', data: '14/09' },
+  { valor: '6.298', label: 'mensagens de WhatsApp registradas em 30 dias', data: '24/11' },
 ];
 
 export const rotuloOrigem = 'Medido numa rede de óticas da casa, com 1 loja vendendo todo dia.';
@@ -186,19 +186,19 @@ export const rotuloDepois = [
 // §O cliente que não volta), medidas pelo eco em 24/09/2026 01h55 na base da casa. O site usa SÓ estas duas frases (o total histórico
 // de 3.401 fica fora do público: inclui 2022–2025 do sistema anterior). Fonte pública: "uma rede de óticas da casa", nunca o nome da rede.
 export const retornoReceita: { valor: string; label: string; data: string } | null = {
-  valor: '926',
-  label: 'clientes com a receita vencida no último ano; 912 deles sem nenhum contato da loja em 90 dias.',
-  data: '24/09/2026',
+  valor: '802',
+  label: 'clientes com a receita vencida no último ano; 713 deles sem nenhum contato da loja em 90 dias.',
+  data: '24/11/2026',
 };
 export const retornoProximos: { valor: string; label: string; data: string } | null = {
-  valor: '70',
-  label: 'clientes vencem a receita nos próximos 30 dias; 66 ainda sem contato.',
-  data: '24/09/2026',
+  valor: '88',
+  label: 'receitas vencem nos próximos 30 dias; 64 desses clientes sem contato.',
+  data: '24/11/2026',
 };
 // Método e ressalva da folha: "vencida" = data da receita + 12 meses (só 17 de 5.932 têm validade preenchida); "sem contato" = nenhuma
 // ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias. Ligação sem registro e WhatsApp fora das linhas integradas não entram.
 export const retornoNota =
-  'Vencida = data da receita + 12 meses. Sem contato = nenhuma ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias; ligação sem registro não entra.';
+  'Vencida = data da receita + 12 meses. Sem contato = nenhuma ligação registrada nem WhatsApp enviado pela loja em 90 dias (pelo sistema ou digitado no celular da loja e registrado); ligação sem registro não entra.';
 
 // Captura real desfocada do módulo "Quem chamar hoje" (06-prints/aprovadas → public/capturas/, com AVIF/WebP via scripts/gerar-imagens.mjs).
 // Null até passar na conferência (folha §7). Sem captura, a seção mostra o cartão de texto do módulo.

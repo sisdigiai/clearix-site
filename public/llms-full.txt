@@ -62,15 +62,15 @@ Um login por pessoa, com acesso por loja e por papel.
 Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele todos os dias e o histórico de outras cinco
 lojas da mesma rede está preservado no mesmo banco.
 
-Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
+Medido no banco de produção em 24/11/2026 (carnê em 11/11; demais números de 14 a 16/09 indicados), sem dado pessoal:
 
-- 1.694 OS em 2026 (1.685 criadas no balcão, no dia da venda)
+- mais de 1.990 OS em 2026 (até 24/11/2026)
 - 926 parcelas de carnê recebidas em 2026 (R$ 108.871, até 11/11/2026)
-- 132 caixas abertos e fechados pela equipe em 2026
+- 165 caixas abertos e fechados pela equipe em 2026 (até 24/11/2026)
 - 1.588 OS de 2026 entregues em 2026
 - mediana de 7 a 10 dias do pedido à entrega (abril a agosto de 2026)
 - 341 OS enviadas ao laboratório por WhatsApp
-- 3.401 mensagens de WhatsApp trocadas em 30 dias
+- 6.298 mensagens de WhatsApp registradas em 30 dias (até 24/11/2026; 1.393 enviadas pelo sistema, as demais digitadas no celular da loja)
 - 1.630 avisos por WhatsApp enviados pelo sistema desde abril (link do portal, laboratório, entrega)
 - 1.562 links do portal do paciente emitidos
 - 2.410 linhas de extrato bancário conciliadas em 2026
@@ -78,12 +78,12 @@ Medido no banco de produção em 14 e 15/09/2026, sem dado pessoal:
 
 OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
 
-Retorno de clientes, medido em 24/09/2026 numa rede de óticas da casa, sem dado pessoal:
+Retorno de clientes, medido em 24/11/2026 numa rede de óticas da casa, sem dado pessoal:
 
-- 926 clientes com a receita vencida no último ano; 912 deles sem nenhum contato da loja em 90 dias
-- 70 clientes vencem a receita nos próximos 30 dias; 66 ainda sem contato
+- 802 clientes com a receita vencida no último ano; 713 deles sem nenhum contato da loja em 90 dias
+- 88 receitas vencem nos próximos 30 dias; 64 desses clientes sem contato
 
-Definições: "vencida" = data da receita + 12 meses; "sem contato" = nenhuma ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias (ligação sem registro não entra). O módulo "Quem chamar hoje" (lista diária, sem repetir quem já foi chamado; sem disparo em massa e sem recall por IA) faz parte do plano Crescimento (R$ 1.499/mês).
+Definições: "vencida" = data da receita + 12 meses; "sem contato" = nenhuma ligação registrada nem WhatsApp enviado pela loja (pelo sistema ou digitado no celular da loja e registrado) em 90 dias (ligação sem registro não entra). O módulo "Quem chamar hoje" (lista diária, sem repetir quem já foi chamado; sem disparo em massa e sem recall por IA) faz parte do plano Crescimento (R$ 1.499/mês).
 
 ## Perguntas frequentes
 

@@ -539,3 +539,10 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 - O Geral suspendeu na folha única (25/11, 18h07) qualquer número de linhas de comissão: a comissão é teste no app e ninguém recebeu. Saiu a linha da jornada da OS (`landing.ts`) e do `llms-full.txt`; não foi trocada por outro número.
 - Não mudei o texto qualitativo ("comissão calculada da venda entregue"): decisão do Geral se continua valendo.
 - OS em 2026 fica em 1.694 (14/09) até a folha dizer qual valor vale (2.004 foi medido com venda cancelada; sem canceladas, 1.999 até 24/11).
+
+## 2026-11-25 — v0.14.0 · troca dos números da home pela remedição de 24/11 (pronta, não publicada)
+
+- Valores e datas da folha única (remedição do eco de 24/11, régua do Vendas de 25/11): OS em 2026 "mais de 1.990, até 24/11" (a folha trava o número exato até o dono decidir 2 OS com só `status = cancelled`); caixas 165; mensagens "6.298 registradas em 30 dias"; receita vencida 802 / 713 sem contato; vencem em 30 dias 88 / 64 sem contato. Comissão fora (suspensa pelo Geral).
+- "Sem contato" agora diz que inclui mensagem digitada no celular da loja e registrada (a queda de 912 para 713 vem em parte daí).
+- Mesmo conjunto em `llms.txt` e `llms-full.txt`. "No dia da venda" sai do texto (proibido pela folha).
+- Os números que a folha ainda não remediu (1.588 entregues, 7 a 10 dias, 2.410, 1.630, 1.562, 20.375, 652, 399) seguem com a data original; chegam do eco em 30/11.

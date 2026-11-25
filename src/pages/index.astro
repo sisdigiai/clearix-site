@@ -91,14 +91,14 @@ const tour = [
         {retornoReceita && (
           <li class="py-5 pr-6">
             <p class="font-mono text-[30px] leading-none tabular-nums text-clarity-off">{retornoReceita.valor}</p>
-            <p class="mt-2 text-[13px] text-clarity-dim">clientes com a receita vencida no último ano numa ótica real; {retornoReceita.label.match(/912 deles[^.]*/)?.[0]}.</p>
+            <p class="mt-2 text-[13px] text-clarity-dim">clientes com a receita vencida no último ano numa ótica real; {retornoReceita.label.match(/\d+ deles[^.]*/)?.[0]}.</p>
             <p class="mt-1 text-[12px] text-clarity-muted">Medido em {retornoReceita.data}. Sem dado pessoal.</p>
           </li>
         )}
         <li class="py-5 pr-6">
-          <p class="font-mono text-[30px] leading-none tabular-nums text-clarity-off">1.694</p>
+          <p class="font-mono text-[30px] leading-none tabular-nums text-clarity-off">Mais de 1.990</p>
           <p class="mt-2 text-[13px] text-clarity-dim">OS em 2026 no mesmo sistema que você vai usar.</p>
-          <p class="mt-1 text-[12px] text-clarity-muted">Medido em 14/09/2026, numa rede de óticas da casa.</p>
+          <p class="mt-1 text-[12px] text-clarity-muted">Medido até 24/11/2026, numa rede de óticas da casa.</p>
         </li>
         <li class="py-5 pr-6">
           <p class="text-[17px] font-semibold text-clarity-off">Feito dentro de uma ótica</p>
