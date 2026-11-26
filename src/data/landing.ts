@@ -187,18 +187,18 @@ export const rotuloDepois = [
 // de 3.401 fica fora do público: inclui 2022–2025 do sistema anterior). Fonte pública: "uma rede de óticas da casa", nunca o nome da rede.
 export const retornoReceita: { valor: string; label: string; data: string } | null = {
   valor: '802',
-  label: 'clientes com a receita vencida no último ano; 713 deles sem nenhum contato da loja em 90 dias.',
+  label: 'clientes com a receita vencida no último ano.',
   data: '24/11/2026',
 };
 export const retornoProximos: { valor: string; label: string; data: string } | null = {
   valor: '88',
-  label: 'receitas vencem nos próximos 30 dias; 64 desses clientes sem contato.',
+  label: 'receitas vencem nos próximos 30 dias.',
   data: '24/11/2026',
 };
-// Método e ressalva da folha: "vencida" = data da receita + 12 meses (só 17 de 5.932 têm validade preenchida); "sem contato" = nenhuma
-// ligação registrada nem WhatsApp enviado pela loja pelo sistema em 90 dias. Ligação sem registro e WhatsApp fora das linhas integradas não entram.
+// Método da folha: "vencida" = data da receita + 12 meses. As contagens de "sem contato" saíram em 25/11: mensagem digitada no celular
+// da loja pode ficar fora da ficha do cliente, então o dado não prova que ninguém falou com ele (eco/Client).
 export const retornoNota =
-  'Vencida = data da receita + 12 meses. Sem contato = nenhuma ligação registrada nem WhatsApp enviado pela loja em 90 dias (pelo sistema ou digitado no celular da loja e registrado); ligação sem registro não entra.';
+  'Vencida = data da receita + 12 meses.';
 
 // Captura real desfocada do módulo "Quem chamar hoje" (06-prints/aprovadas → public/capturas/, com AVIF/WebP via scripts/gerar-imagens.mjs).
 // Null até passar na conferência (folha §7). Sem captura, a seção mostra o cartão de texto do módulo.

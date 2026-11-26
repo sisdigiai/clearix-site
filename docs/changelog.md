@@ -546,3 +546,7 @@ Em telas entre 1024 e 1279 px o texto do hero ficava por cima do rosto. Agora o 
 - "Sem contato" agora diz que inclui mensagem digitada no celular da loja e registrada (a queda de 912 para 713 vem em parte daí).
 - Mesmo conjunto em `llms.txt` e `llms-full.txt`. "No dia da venda" sai do texto (proibido pela folha).
 - Os números que a folha ainda não remediu (1.588 entregues, 7 a 10 dias, 2.410, 1.630, 1.562, 20.375, 652, 399) seguem com a data original; chegam do eco em 30/11.
+
+## 2026-11-25 — v0.14.1 · saem as contagens "sem contato" (pronto, não publicado)
+
+- O Client mediu em 25/11 que parte das mensagens digitadas no celular da loja fica fora da ficha do cliente: "713 sem nenhum contato da loja" afirma mais do que o dado prova. Saem o 713 e o 64 da home, do `llms.txt` e do `llms-full.txt`; ficam 802 (receita vencida) e 88 (vencem em 30 dias). Se a folha trouxer frase nova, ela entra no lugar.

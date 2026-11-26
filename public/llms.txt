@@ -33,7 +33,7 @@ Uma rede de óticas da Grande São Paulo opera no Clearix: uma loja vende nele t
 lojas da mesma rede está preservado no mesmo banco. Medido no banco de produção em 24/11/2026 (carnê em 11/11; os demais números têm a data ao lado), sem dado pessoal:
 mais de 1.990 OS em 2026 (até 24/11), 926 parcelas de carnê recebidas em 2026 (R$ 108.871, até 11/11), 165 caixas abertos e fechados pela equipe em 2026 (até 24/11), 6.298 mensagens de WhatsApp registradas em 30 dias (até 24/11), 2.410 linhas de extrato bancário conciliadas em 2026 e 20.375 OS no histórico preservado.
 OS de 2020 a 2025 vieram do sistema anterior: é histórico preservado, não processado pelo Clearix.
-Retorno de clientes (medido em 24/11/2026, mesma rede, sem dado pessoal): 802 clientes com a receita vencida no último ano, 713 deles sem nenhum contato da loja em 90 dias; 88 receitas vencem nos próximos 30 dias, 64 desses clientes sem contato. "Vencida" = data da receita + 12 meses; "sem contato" = nenhuma ligação registrada nem WhatsApp enviado pela loja (pelo sistema ou digitado no celular da loja e registrado) em 90 dias.
+Retorno de clientes (medido em 24/11/2026, mesma rede, sem dado pessoal): 802 clientes com a receita vencida no último ano; 88 receitas vencem nos próximos 30 dias. "Vencida" = data da receita + 12 meses.
 
 ## O que o Clearix não faz nesta fase
 
